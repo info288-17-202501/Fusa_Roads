@@ -20,6 +20,7 @@ function Home() {
 					<img src={FusaLogo} className='col-8 mx-auto mb-4'/>
 					<Button className='col-8 mx-auto mb-3' variant='primary' onClick={() => handleNavigate("/secciones-calles")}>Secciones calles</Button>
 					<Button className='col-8 mx-auto mb-3' variant='primary' onClick={() => handleNavigate("/videos")}>Videos</Button>
+					<Button className='col-8 mx-auto mb-3' variant='primary' onClick={() => handleNavigate("/test")}>Boton de testeo de ramas</Button>
 
 				</Card>
 			</div>
