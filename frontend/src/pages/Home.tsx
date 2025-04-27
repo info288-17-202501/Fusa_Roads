@@ -19,6 +19,7 @@ function Home() {
 				<Card className='py-5 col-3'>
 					<img src={FusaLogo} className='col-8 mx-auto mb-4'/>
 					<Button className='col-8 mx-auto mb-3' variant='primary' onClick={() => handleNavigate("/secciones-calles")}>Secciones calles</Button>
+					<Button className='col-8 mx-auto mb-3' variant='primary' onClick={() => handleNavigate("/videos")}>Videos</Button>
 
 				</Card>
 			</div>

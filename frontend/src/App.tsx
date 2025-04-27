@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home'; 
 import SeccioneCalles from './pages/SeccionesCalles'
+import Videos from './pages/Videos'
 
 
 const App: React.FC = () => {
@@ -11,6 +12,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Navigate to="/home" />} /> 
         <Route path="/home" element={<Home/>} /> 
         <Route path="/secciones-calles" element={<SeccioneCalles/>} /> 
+        <Route path="/videos" element={<Videos/>} /> 
+
 
 
       </Routes>
