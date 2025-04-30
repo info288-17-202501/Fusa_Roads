@@ -1,8 +1,8 @@
-import Card from 'react-bootstrap/Card';
 import Table from '../components/Table';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Row } from '@tanstack/react-table';
+import { Container } from 'react-bootstrap';
 
 
 const handleEdit = (calle: Calle) => {
@@ -65,16 +65,11 @@ type Calle = {
 function TablePage() {
     return (
         <>
-            <div className="d-flex justify-content-center align-items-center my-5">
-                <Card className='p-5 col-10'>
-                    <Card.Title className='mx-auto fs-2'>
-                        Calles
-                    </Card.Title>
-                    <Card.Body className=''>
-                        <Table columns={columnas} data={calles} showNewButton={true}/>
-                    </Card.Body>
-                </Card>
-            </div>
+            <Container className="w-75 my-5">
+                <h1 className="d-flex justify-content-center mb-4">Secciones Calles</h1>
+                <Table columns={columnas} data={calles} showNewButton={true}/>
+
+            </Container>
         </>
     )
 }
