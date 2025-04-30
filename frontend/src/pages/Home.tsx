@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBrain, faComputer, faEye, faFile, faMapLocationDot, faRoad, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 const menu = [
 	{
@@ -24,7 +24,7 @@ const menu = [
 	  "url": "/secciones-calles"
 	},
 	{
-	  "icono": faFile,
+	  "icono": faFileAlt,
 	  "nombre": "Proyectos IA de Análisis (PIA)",
 	  "descripcion": "Crea y configura proyectos de análisis acústico con IA.",
 	  "url": "/proyectos-ia"
