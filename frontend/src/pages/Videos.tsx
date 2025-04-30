@@ -74,9 +74,9 @@ function Videos() {
                 </div>
 
 
-                <Row className="g-4">
+                <Row className="g-4 justify-content-center justify-content-md-between">
                     {paginatedVideos.map((video) => (
-                        <Col md={4} xs={8}>
+                        <Col lg={4} md={6} xs={10}>
                             <VideoCard
                                 image={video.image}
                                 name={video.name}
