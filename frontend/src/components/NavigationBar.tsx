@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import FusaLogo from "../assets/fusa_logo.png";
+import FusaLogo from "../resources/fusa_logo.png";
 import { useLocation } from "react-router-dom";
 
 const NavButtons = [

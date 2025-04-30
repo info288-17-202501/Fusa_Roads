@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home'; 
-import SeccioneCalles from './pages/SeccionesCalles'
-import Videos from './pages/Videos'
+import MenuCentral from './MenuCentral/MenuCentral'; 
+import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
+import Videos from './Videos/Videos'
 
 import NavigationBar from './components/NavigationBar';
 
@@ -13,7 +13,7 @@ const App: React.FC = () => {
       		<NavigationBar/>
       		<Routes>
         		<Route path="/" element={<Navigate to="/home" />} /> 
-				<Route path="/home" element={<Home/>} /> 
+				<Route path="/home" element={<MenuCentral/>} /> 
 				<Route path="/secciones-calles" element={<SeccioneCalles/>} /> 
 				<Route path="/videos" element={<Videos/>} /> 
       		</Routes>
