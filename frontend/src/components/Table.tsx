@@ -7,7 +7,7 @@ import {
     getPaginationRowModel
 } from '@tanstack/react-table';
 import { useState } from 'react'
-import { faCirclePlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faFileCsv, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from 'react-bootstrap';
 
@@ -19,9 +19,19 @@ interface Props<T>{
     data: T[];
     columns: ColumnDef<T, unknown>[];
     showNewButton?: boolean;
+    onClickNewButton?: () => void;
+    showCargaMasivaButton?: boolean;
+    onClickCargaMasivaButton?: () => void;
 }
 
-function Table<T extends { id: number }>({ data, columns, showNewButton = false }: Props<T>) {
+function Table<T extends { id: number }>({
+    data,
+    columns,
+    showNewButton = false,
+    onClickNewButton,
+    showCargaMasivaButton = false,
+    onClickCargaMasivaButton
+}: Props<T>) {
     const [globalFilter, setGlobalFilter] = useState("");
 
     const filterableKeys = columns
@@ -70,9 +80,16 @@ function Table<T extends { id: number }>({ data, columns, showNewButton = false 
                 </InputGroup>
 
                 {showNewButton && (
-                    <Button className="d-flex gap-2" variant='primary'>
+                    <Button className="d-flex gap-2" variant='primary' onClick={onClickNewButton}>
                         <FontAwesomeIcon className="my-auto" icon={faCirclePlus}/>
                         Nuevo
+                    </Button>
+                )}
+
+                {showCargaMasivaButton && (
+                    <Button className="d-flex gap-2" variant='outline-primary' onClick={onClickCargaMasivaButton}>
+                        <FontAwesomeIcon className="my-auto" icon={faFileCsv}/>
+                        Carga Masiva
                     </Button>
                 )}
             </div>
