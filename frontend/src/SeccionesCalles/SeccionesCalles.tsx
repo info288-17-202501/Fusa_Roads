@@ -35,10 +35,7 @@ function SeccionesCalles() {
             <ModalNuevaSeccionCalle
                 show={showNuevo}
                 onClose={() => setShowNuevo(false)}
-                onSubmit={() => {
-                    // Lógica de guardado
-                    setShowNuevo(false)
-                }}
+                data={regiones_comunas.regiones}
             />
         </>
     )

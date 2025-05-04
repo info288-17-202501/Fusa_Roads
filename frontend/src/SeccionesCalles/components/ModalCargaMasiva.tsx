@@ -1,4 +1,4 @@
-import { Col, Modal, Row, Form, Button } from "react-bootstrap";
+import { Modal, Row, Form, Button } from "react-bootstrap";
 import { useState, useEffect } from 'react'
 
 interface RegionData{
@@ -62,51 +62,43 @@ function ModalCargaMasiva ({show, onClose, data}: Props){
             </Modal.Header>
             
             <Modal.Body>
-                <Row className='d-flex align-items-center justify-content-center mb-3'>
-                    <Col lg={2}>
+                <Row className='justify-content-center mb-3'>
+                    <Form.Group className="w-75">    
                         <Form.Label>País:</Form.Label>
-                    </Col>
-                    <Col lg={10}>
                         <Form.Select value={pais} onChange={(e) => setPais(e.target.value)}>
                             <option value={''}>Seleccione País</option>
                             <option>Chile</option>
                         </Form.Select>
-                    </Col>
+                    </Form.Group>
                 </Row>
-                <Row className='d-flex align-items-center justify-content-center mb-3'>
-                    <Col lg={2}>
+                <Row className='justify-content-center mb-3'>
+                    <Form.Group className="w-75">
                         <Form.Label>Región:</Form.Label>
-                    </Col>
-                    <Col lg={10}>
                         <Form.Select disabled={pais ==''} value={region} onChange={(e) => setRegion(e.target.value)}>
                             <option value={''}>Seleccione Región</option>
                             {regiones.map((r) => (
                                 <option key={r.region}>{r.region}</option>
                             ))}
                         </Form.Select>
-                    </Col>
+                    </Form.Group>
                 </Row>
-                <Row className='d-flex align-items-center justify-content-center mb-3'>
-                    <Col lg={2}>
+                <Row className='justify-content-center mb-3'>
+                    <Form.Group className="w-75">
                         <Form.Label>Comuna:</Form.Label>
-                    </Col>
-                    <Col lg={10}>
                         <Form.Select disabled={region == ''} value={comuna} onChange={(e) => setComuna(e.target.value)}>
                             <option value={''}>Seleccione Comuna</option>
                             {comunas.map((c) => (
                                 <option key={c}>{c}</option>
                             ))}
                         </Form.Select>
-                    </Col>
+                    </Form.Group>
                 </Row>
-                <Row className='d-flex align-items-center'>
-                    <Form.Group>
+                <Row className='justify-content-center mb-3'>
+                    <Form.Group className="w-75">
                         <Form.Label>Subir archivo</Form.Label>
                         <Form.Control type='file'/>
                     </Form.Group>
                 </Row>
-
-                
             </Modal.Body>
 
             <Modal.Footer>
