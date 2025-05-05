@@ -9,7 +9,7 @@ import {
 import { useState } from 'react'
 import { faCirclePlus, faFileCsv, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Pagination } from 'react-bootstrap';
+import { Pagination, Form } from 'react-bootstrap';
 
 
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
@@ -80,14 +80,14 @@ function Table<T extends { id: number }>({
                 </InputGroup>
 
                 {showNewButton && (
-                    <Button className="d-flex gap-2" variant='primary' onClick={onClickNewButton}>
+                    <Button className="d-flex gap-2 align-items-center" variant='primary' onClick={onClickNewButton}>
                         <FontAwesomeIcon className="my-auto" icon={faCirclePlus}/>
                         Nuevo
                     </Button>
                 )}
 
                 {showCargaMasivaButton && (
-                    <Button className="d-flex gap-2" variant='outline-primary' onClick={onClickCargaMasivaButton}>
+                    <Button className="d-flex gap-2 align-items-center" variant='outline-primary' onClick={onClickCargaMasivaButton}>
                         <FontAwesomeIcon className="my-auto" icon={faFileCsv}/>
                         Carga Masiva
                     </Button>
@@ -119,6 +119,18 @@ function Table<T extends { id: number }>({
                         ))}
                     </tbody>
                 </table>
+
+                <Form.Select
+                    className='w-auto ms-1 mt-3'
+                    value={table.getState().pagination.pageSize}
+                    onChange={e => table.setPageSize(Number(e.target.value))}
+                >
+                    {[5,10,20,50].map(size => (
+                        <option key={size} value={size}>
+                                Ver {size}
+                        </option>
+                    ))}
+                </Form.Select>
 
                 <Pagination  className="mt-4 justify-content-center">
                     <Pagination.First disabled={!table.getCanPreviousPage()} onClick={() => table.setPageIndex(0)}/>
