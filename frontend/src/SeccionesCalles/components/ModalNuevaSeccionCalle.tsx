@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState, useEffect, FormEvent } from 'react'
 import FormRow from "./FormRow";
+import { Calle } from "../resources/types";
 
 interface RegionData{
     region: string;
@@ -11,9 +12,11 @@ interface Props {
     show: boolean;
     onClose: () => void;
     data: RegionData[];
+    initialValues?: Calle;
+    onSave: (calle: Calle) => void;
 }
 
-function ModalNuevaSeccionCalle ({show, onClose, data}: Props){
+function ModalNuevaSeccionCalle ({show, onClose, data, initialValues, onSave}: Props){
     const [validated, setValidated] = useState(false);
 
     const [pais, setPais] = useState('');
@@ -26,6 +29,27 @@ function ModalNuevaSeccionCalle ({show, onClose, data}: Props){
     const [regiones, setRegiones] = useState<RegionData[]>([]);
     const [comunas, setComunas] = useState<string[]>([]);
 
+    // Carga los valores de la sección de calle que se quiere editar
+    useEffect(() => {
+        if (initialValues) {
+            setPais(initialValues.pais);
+            setRegion(initialValues.region);
+            setComuna(initialValues.comuna);
+            setNombreCalle(initialValues.nombre);
+            setApp(initialValues.app);
+            setTipoVia(initialValues.tipo_via);
+        } else {
+            setPais('');
+            setRegion('');
+            setComuna('');
+            setNombreCalle('');
+            setApp('');
+            setTipoVia('');
+        }
+        setValidated(false);
+    }, [initialValues, show]);
+
+    // Si el País seleccionado es Chile, muestra las regiones de Chile
     useEffect(()=> {
         if(pais == 'Chile'){
             setRegiones(data)
@@ -36,6 +60,7 @@ function ModalNuevaSeccionCalle ({show, onClose, data}: Props){
         }
     }, [pais, data]);
 
+    // Muestra las comunas según la región que se haya seleccionado
     useEffect(() => {
         const selectedRegion = regiones.find((r) => r.region === region);
         if(selectedRegion){
@@ -58,7 +83,17 @@ function ModalNuevaSeccionCalle ({show, onClose, data}: Props){
     }
 
     const handleGuardarYLimpiar = () => {
-        console.log({pais, region, comuna, nombreCalle, app, tipoVia});
+        const calle: Calle = {
+            id: initialValues?.id ?? Date.now(),
+            pais,
+            region,
+            comuna,
+            nombre: nombreCalle,
+            app,
+            tipo_via: tipoVia
+        }
+        onSave(calle)
+        // console.log({pais, region, comuna, nombreCalle, app, tipoVia});
         // Aqui se deberia manejar la logica para mandar a la BD (podemos unir esta funcion con la de handleSubmit)
         // Limpiar todos los campos
         setPais('');
@@ -117,17 +152,17 @@ function ModalNuevaSeccionCalle ({show, onClose, data}: Props){
                         </Form.Select>
                     </FormRow>
                     <FormRow label="Nombre de la Calle" showFeedback>
-                        <Form.Control placeholder="Ingrese el nombre de la calle" required onChange={(e) => setNombreCalle(e.target.value)}/>
+                        <Form.Control value={nombreCalle} placeholder="Ingrese el nombre de la calle" required onChange={(e) => setNombreCalle(e.target.value)}/>
                     </FormRow>
                     <FormRow label="App:" showFeedback>
-                        <Form.Select required onChange={(e) => setApp(e.target.value)}>
+                        <Form.Select required value={app} onChange={(e) => setApp(e.target.value)}>
                             <option value={''}>Seleccione Modelo de IA</option>
                             <option>CadnaA</option>
                             <option>NoiseModelling</option>
                         </Form.Select>
                     </FormRow>
                     <FormRow label="Tipo de Vía:" showFeedback>
-                        <Form.Select required onChange={(e) => setTipoVia(e.target.value)}>
+                        <Form.Select required value={tipoVia} onChange={(e) => setTipoVia(e.target.value)}>
                             <option value={''}>Seleccione el tipo de vía</option>
                             <option>Troncal</option>
                             <option>Federal</option>

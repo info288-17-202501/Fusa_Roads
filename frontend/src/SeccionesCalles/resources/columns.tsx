@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Row } from '@tanstack/react-table';
 
-export const columns = (handleAskDelete: (id: number, nombre:string) => void) => [
+export const columns = (
+    handleAskDelete: (id: number, nombre:string) => void,
+    onEdit: (calle: Calle) => void
+) => [
     { accessorKey: 'id', header: 'ID' },
     { accessorKey: 'pais', header: 'País' },
     { accessorKey: 'region', header: 'Región' },
@@ -15,7 +18,7 @@ export const columns = (handleAskDelete: (id: number, nombre:string) => void) =>
         header: 'Acciones',
         cell: ({ row }: { row: Row<Calle> }) => (
             <div className='d-flex gap-2'>
-                <button className='bg-primary px-2 py-1 rounded border-0' onClick={() => alert(`Editar calle: ${row.original.nombre}`)}>
+                <button className='bg-primary px-2 py-1 rounded border-0' onClick={() => onEdit(row.original)}>
                     <FontAwesomeIcon color='white' icon={faPenToSquare} />
                 </button>
                 <button className='bg-danger px-2 py-1 rounded border-0' onClick={() => handleAskDelete(row.original.id, row.original.nombre)}>

@@ -7,6 +7,7 @@ import ModalCargaMasiva from './components/ModalCargaMasiva';
 import ModalNuevaSeccionCalle from './components/ModalNuevaSeccionCalle';
 import ModalConfirmacion from './components/ModalConfirmacion'
 import regiones_comunas from './resources/comunas-regiones.json'
+import { Calle } from './resources/types';
 
 
 function SeccionesCalles() {
@@ -17,6 +18,14 @@ function SeccionesCalles() {
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
     const [message, setMessage] = useState<React.ReactNode>(null)
     const [deleteId, setDeleteId] = useState<number | null>(null);
+
+    const [editCalle, setEditCalle] = useState<Calle | undefined>(undefined);
+    const [showEditModal, setShowEditModal] = useState(false);
+
+    const handleEdit = (calle: Calle) => {
+        setEditCalle(calle);
+        setShowEditModal(true);
+    }
 
     const handleAskDelete = (id: number, nombre: string) => {
         setDeleteId(id);
@@ -79,7 +88,7 @@ function SeccionesCalles() {
             <Container className="w-75 my-5">
                 <h1 className="d-flex justify-content-center mb-4">Secciones Calles</h1>
                 <Table
-                    columns={columns(handleAskDelete)}
+                    columns={columns(handleAskDelete, handleEdit)}
                     data={calles}
                     showNewButton={true}
                     onClickNewButton={() => setShowNuevo(true)}
@@ -98,6 +107,22 @@ function SeccionesCalles() {
                 show={showNuevo}
                 onClose={() => setShowNuevo(false)}
                 data={regiones_comunas.regiones}
+                onSave={(nuevaCalle) => {
+                    setCalles(prev => [...prev, nuevaCalle]);
+                    setShowNuevo(false)
+                }}
+            />
+
+            <ModalNuevaSeccionCalle
+                show={showEditModal}
+                onClose={() => setShowEditModal(false)}
+                data={regiones_comunas.regiones}
+                initialValues={editCalle}
+                onSave={(updatedCalle: Calle) => {
+                    setCalles((prev) => prev.map((c) => (c.id === updatedCalle.id ? updatedCalle : c)));
+                    setShowEditModal(false);
+                    setEditCalle(undefined);
+                }}
             />
 
             <ModalConfirmacion
