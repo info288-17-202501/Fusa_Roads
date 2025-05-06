@@ -1,18 +1,27 @@
-version: '3.8'
+version: "3.8"
 
 services:
   minio:
     image: minio/minio
     container_name: minio
     ports:
-      - "9000:9000"    # API
-      - "9001:9001"    # UI
+      - "9000:9000"
+      - "9001:9001"
     volumes:
       - minio-data:/data
     environment:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
     command: server --console-address ":9001" /data
+
+  minio-init:
+    image: minio/mc
+    depends_on:
+      - minio
+    volumes:
+      - ./init-minio.sh:/init.sh
+      - ./empty-dir:/empty-dir
+    entrypoint: ["/bin/sh", "/init.sh"]
 
 volumes:
   minio-data:
