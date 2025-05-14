@@ -4,6 +4,7 @@ export type Calle = {
     region: string;
     comuna: string;
     nombre: string;
-    app: 'CadnaA' | 'NoiseModelling';
+    app: string;
+    // app: 'CadnaA' | 'NoiseModelling';
     tipo_via: string;
 };
