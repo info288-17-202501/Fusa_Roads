@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import FusaLogo from "../resources/fusa_logo.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NavButtons = [
 	{ ruta: "/home", etiqueta: "Home", disabled: false },
@@ -15,6 +15,7 @@ const NavButtons = [
   
 
 function NavigationBar() {
+	const navigate = useNavigate();
 	const location = useLocation();
 	const currentPath = location.pathname;
 
@@ -38,7 +39,7 @@ function NavigationBar() {
 							</Nav.Link>
 						))}
 					</Nav>
-					<Button>Log in</Button>
+					<Button onClick={() => navigate("/login")}>Log in</Button>
         		</Navbar.Collapse>
       		</Container>
     	</Navbar>

@@ -1,0 +1,12 @@
+{
+    "seba" : {
+        "username": "seba", 
+        "email":"seba@gmail.com", 
+        "password": "$2b$12$sIp89uZBXRFtGXFVNQtKiecEs7EPKYd1iIPrpUt0c6j1qUHa4wNbi"
+    },
+    "user2" : {
+        "username": "user2", 
+        "email":"user2@gmail.com", 
+        "password": "$2b$12$uZj9OfPT1Ny9CwmhU2FHIuwMTgQ8TH1eKJN4GJ1jU3VEOpscV7auS"
+    }
+}
