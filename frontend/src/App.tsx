@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MenuCentral from './MenuCentral/MenuCentral'; 
 import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
 import Videos from './Videos/Videos'
+import ModelosIA from './ModelosIA/ModelosIA'
 
 import NavigationBar from './components/NavigationBar';
 
@@ -16,6 +17,7 @@ const App: React.FC = () => {
 				<Route path="/home" element={<MenuCentral/>} /> 
 				<Route path="/secciones-calles" element={<SeccioneCalles/>} /> 
 				<Route path="/videos" element={<Videos/>} /> 
+				<Route path="/modelos-ia" element={<ModelosIA/>} />
       		</Routes>
     	</Router>
   	);
