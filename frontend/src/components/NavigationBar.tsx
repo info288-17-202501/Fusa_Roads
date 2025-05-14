@@ -6,7 +6,7 @@ const NavButtons = [
 	{ ruta: "/home", etiqueta: "Home", disabled: false },
 	{ ruta: "/videos", etiqueta: "Videos", disabled: false },
 	{ ruta: "/secciones-calles", etiqueta: "Secciones Calles", disabled: false },
-	{ ruta: "/modelos-ia", etiqueta: "Modelos IA", disabled: true },
+	{ ruta: "/modelos-ia", etiqueta: "Modelos IA", disabled: false },
 	{ ruta: "/proyectos-ia", etiqueta: "PIA", disabled: true },
 	{ ruta: "/monitor-procesos", etiqueta: "Monitor de Procesos", disabled: true },
 	{ ruta: "/proyecto-mapa-de-ruido", etiqueta: "PMR", disabled: true },
