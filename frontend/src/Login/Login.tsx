@@ -5,10 +5,16 @@ import Card from 'react-bootstrap/Card';
 import { Button, Spinner } from 'react-bootstrap';
 import FusaLogo from "./resources/fusa_logo.png"
 import useLogout from "./hooks/useLogout"
-
 import { useNavigate } from "react-router-dom";
 
+import { jwtDecode } from 'jwt-decode';
+import { useUser } from './hooks/useUser';
 
+interface TokenPayload {
+  username: string;
+  email: string;
+  exp: number;
+}
 
 function Login() {
     const navigate = useNavigate();
@@ -23,6 +29,8 @@ function Login() {
 	const [loginError, setLoginError] = useState<string>(""); 
     const [loading, setLoading] = useState(false);
 
+	const logout = useLogout();
+	const { setUser } = useUser();
 
 	const handleLogin = async() => {
         setLoading(true);
@@ -50,6 +58,9 @@ function Login() {
 		localStorage.setItem("access_token", data.access_token);
 		localStorage.setItem("refresh_token", data.refresh_token);
 
+		const decoded: TokenPayload = jwtDecode(data.access_token);
+		setUser(decoded)
+
 		setLoginError("");
         handleNavigate();
 		} catch(err) {
@@ -60,7 +71,7 @@ function Login() {
         }
 	}
 
-	const logout = useLogout();
+
 
 	return (
     	<>
@@ -86,6 +97,11 @@ function Login() {
 									placeholder="Ingrese contraseña.."
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
+									onKeyDown={(e) => {
+										if (e.key === 'Enter') {
+											handleLogin()
+										}
+									}}
 								/>
 							
 							<span

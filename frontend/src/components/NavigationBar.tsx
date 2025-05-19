@@ -1,6 +1,8 @@
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { Container, Nav, Navbar, Button, NavDropdown } from "react-bootstrap";
 import FusaLogo from "../resources/fusa_logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "../Login/hooks/useUser";
+import useLogout from "../Login/hooks/useLogout";
 
 const NavButtons = [
 	{ ruta: "/home", etiqueta: "Home", disabled: false },
@@ -18,6 +20,8 @@ function NavigationBar() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const currentPath = location.pathname;
+	const {user} = useUser();
+	const logout = useLogout();
 
   	return (
     	<Navbar expand="lg" style={{ backgroundColor: "#eee" }} data-bs-theme="light">
@@ -39,7 +43,14 @@ function NavigationBar() {
 							</Nav.Link>
 						))}
 					</Nav>
-					<Button onClick={() => navigate("/login")}>Log in</Button>
+					{user ? (
+						<NavDropdown title={user.username} id="user-dropdown" align="end">
+							<NavDropdown.Item>Perfil</NavDropdown.Item>
+							<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
+						</NavDropdown>
+					) : (
+						<Button onClick={() => navigate("/login")}>Log in</Button>
+					)}
         		</Navbar.Collapse>
       		</Container>
     	</Navbar>
