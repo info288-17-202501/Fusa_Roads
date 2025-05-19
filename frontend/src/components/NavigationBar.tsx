@@ -43,14 +43,16 @@ function NavigationBar() {
 							</Nav.Link>
 						))}
 					</Nav>
-					{user ? (
-						<NavDropdown title={user.username} id="user-dropdown" align="end">
-							<NavDropdown.Item>Perfil</NavDropdown.Item>
-							<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
-						</NavDropdown>
-					) : (
-						<Button onClick={() => navigate("/login")}>Log in</Button>
-					)}
+					<Nav>
+						{user ? (
+							<NavDropdown title={user.username} id="user-dropdown" align="end">
+								<NavDropdown.Item>Perfil</NavDropdown.Item>
+								<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
+							</NavDropdown>
+						) : (
+							<Button onClick={() => navigate("/login")}>Log in</Button>
+						)}
+					</Nav>
         		</Navbar.Collapse>
       		</Container>
     	</Navbar>
