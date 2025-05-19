@@ -11,12 +11,12 @@ REFRESH_SECRET = "refresh_clave_secreta"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Tokens
-def create_access_token(data: dict, expires_delta: timedelta = timedelta(seconds=60)): #Duración del access_token
+def create_access_token(data: dict, expires_delta: timedelta = timedelta(seconds=15)): #Duración del access_token
     to_encode = data.copy()
     to_encode.update({"exp": datetime.utcnow() + expires_delta})
     return jwt.encode(to_encode, ACCESS_SECRET, algorithm="HS256")
 
-def create_refresh_token(data: dict, expires_delta: timedelta = timedelta(days=7)):
+def create_refresh_token(data: dict, expires_delta: timedelta = timedelta(minutes=1)):
     to_encode = data.copy()
     to_encode.update({"exp": datetime.utcnow() + expires_delta})
     return jwt.encode(to_encode, REFRESH_SECRET, algorithm="HS256")

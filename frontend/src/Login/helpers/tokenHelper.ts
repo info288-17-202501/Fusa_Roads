@@ -44,18 +44,9 @@ export async function refreshAccessToken(): Promise<string | null> {
 }
 
 // Función que maneja cualquier request a rutas protegidas
+// tokenHelper.ts
 export async function authFetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
-  let token = localStorage.getItem("access_token");
-
-  if (!token || isExpired(token)) {
-    const newToken = await refreshAccessToken();
-    if (!newToken) {
-      window.location.href = "/login";
-      throw new Error("Not authenticated");
-    }
-    token = newToken;
-  }
-
+  const token = localStorage.getItem("access_token");
   const headers = {
     ...init?.headers,
     Authorization: `Bearer ${token}`,
@@ -66,3 +57,4 @@ export async function authFetch(input: RequestInfo, init?: RequestInit): Promise
     headers,
   });
 }
+

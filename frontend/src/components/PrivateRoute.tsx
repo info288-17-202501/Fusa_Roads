@@ -1,34 +1,44 @@
 import { JSX, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { isExpired, refreshAccessToken } from "../Login/helpers/tokenHelper"
+import { authFetch, isExpired, refreshAccessToken } from "../Login/helpers/tokenHelper";
+import { Spinner } from "react-bootstrap";
 
 type Props = {
-    children: JSX.Element
-}
+  children: JSX.Element;
+};
 
-const PrivateRoute = ({children} : Props) => {
-    const [isAuth, setIsAuth] = useState<boolean | null>(null); 
-    useEffect(() => {
-        const validateToken = async () => {
-            const token = localStorage.getItem("access_token");
+const PrivateRoute = ({ children }: Props) => {
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
 
-            if (!token || isExpired(token)){
-                const newToken = await refreshAccessToken();
-                if(!newToken){
-                    setIsAuth(false);
-                    return;
-                }
-            }
+  useEffect(() => {
+    const validate = async () => {
+      let token = localStorage.getItem("access_token");
 
-            setIsAuth(true)
-        }
+      // Si esta vencido, intenta refrescar
+      if (!token || isExpired(token)) token = await refreshAccessToken();
 
-        validateToken();
-    }, []);
+      if (!token) {
+        setIsAuth(false);
+        return;
+      }
+      
+      // Intenta acceder con el token válido
+      try {
+        const res = await authFetch("http://localhost:8000/users/profile");
+        
+        if (!res.ok) throw new Error();
+        setIsAuth(true);
+      } catch{
+        setIsAuth(false)
+      }
+    };
 
-    if (isAuth === null) return <p>Cargando...</p>
+    validate();
+  }, []);
 
-    return isAuth ? children : <Navigate to="/login" replace/>
-}
+  if (isAuth === null) return <Spinner animation="border" size="sm" variant='light' />;
 
-export default PrivateRoute
+  return isAuth ? children : <Navigate to="/login" replace />;
+};
+
+export default PrivateRoute;

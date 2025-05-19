@@ -5,7 +5,7 @@ import time
 BASE_URL = "http://localhost:8000"
 USERNAME = "seba"
 PASSWORD = "seba0705"
-WAIT_SECONDS = 15  # espera más de lo que dura el token (ej: 1 minuto)
+WAIT_SECONDS = 13  # espera más de lo que dura el token (ej: 1 minuto)
 
 # 1. Hacer login
 login_response = requests.post(
