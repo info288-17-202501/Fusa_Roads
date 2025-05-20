@@ -9,12 +9,14 @@ interface User {
 interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
+  isLoadingUser: boolean;
 }
 
 export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -27,10 +29,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setUser(null);
       }
     }
+    setIsLoadingUser(false);
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, isLoadingUser }}>
       {children}
     </UserContext.Provider>
   );

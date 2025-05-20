@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar, Button, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, Button, NavDropdown, Spinner } from "react-bootstrap";
 import FusaLogo from "../resources/fusa_logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../Login/hooks/useUser";
@@ -20,7 +20,7 @@ function NavigationBar() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const currentPath = location.pathname;
-	const {user} = useUser();
+	const {user, isLoadingUser} = useUser();
 	const logout = useLogout();
 
   	return (
@@ -44,7 +44,9 @@ function NavigationBar() {
 						))}
 					</Nav>
 					<Nav>
-						{user ? (
+						{isLoadingUser ? (
+							<Spinner animation="border"/>
+						) : user ? (
 							<NavDropdown title={user.username} id="user-dropdown" align="end">
 								<NavDropdown.Item>Perfil</NavDropdown.Item>
 								<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
