@@ -98,7 +98,7 @@ function SeccionesCalles() {
         <>
 
             <Container className="w-75 my-5">
-                <h1 className="d-flex justify-content-center mb-4">Secciones Calles</h1>
+                <h1 className="d-flex justify-content-center mb-4">Seccione Calles</h1>
                 <Row className="justify-content-end mb-3">
                     <Col xs={6} sm={5} md={4} lg={3}>
                         <Form.Group className="d-flex">
