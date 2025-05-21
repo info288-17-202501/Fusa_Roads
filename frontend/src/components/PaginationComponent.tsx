@@ -99,6 +99,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
                 disabled={isReactTable ? !canPreviousPage : currentPage === 1}
                 onClick={handlePrevious}
             />
+            
             {renderPageNumbers().map((pageNumber) => {
                 if (pageNumber === "ELLIPSIS") return (<Pagination.Ellipsis disabled/>)
                 return(
@@ -111,15 +112,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
                     </Pagination.Item>
                 )
             })}
-            {/* {[...Array(totalPages)].map((_, idx) => (
-                <Pagination.Item
-                    key={idx}
-                    active={currentPage === idx+1}
-                    onClick={() => handlePageClick(idx+1)}
-                >
-                    {idx + 1}
-                </Pagination.Item>
-            ))} */}
+
             <Pagination.Next
                 disabled={isReactTable ? !canNextPage : currentPage === totalPages}
                 onClick={handleNext}
