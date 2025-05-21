@@ -30,6 +30,7 @@ function Table<T extends { id: number }>({
     onClickCargaMasivaButton
 }: Props<T>) {
     const [globalFilter, setGlobalFilter] = useState("");
+    const [searchInput, setSerachInput] = useState("")
 
     const filterableKeys = columns
         .map((col) => {
@@ -66,12 +67,12 @@ function Table<T extends { id: number }>({
                     <FormControl
                         type="text"
                         placeholder="Buscar..."
-                        value={globalFilter}
-                        onChange={(e) => setGlobalFilter(e.target.value)}
+                        value={searchInput}
+                        onChange={(e) => setSerachInput(e.target.value)}
                         className='border-end-0'
                         style={{ outline: 'none', boxShadow: 'none', border: '1px solid rgb(222, 226, 230)'}}
                     />
-                    <InputGroup.Text className='bg-transparent border-start-0'>
+                    <InputGroup.Text onClick={() => setGlobalFilter(searchInput)} className='bg-transparent border-start-0' style={{cursor:"pointer"}}>
                         <FontAwesomeIcon icon={faSearch} />
                     </InputGroup.Text>
                 </InputGroup>
