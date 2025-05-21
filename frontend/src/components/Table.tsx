@@ -7,7 +7,7 @@ import {
     getPaginationRowModel
 } from '@tanstack/react-table';
 import { useState } from 'react'
-import { faCirclePlus, faFileCsv, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faFileCsv, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { InputGroup, FormControl, Button, Form } from 'react-bootstrap';
 import PaginationComponent from './PaginationComponent';
@@ -68,12 +68,30 @@ function Table<T extends { id: number }>({
                         type="text"
                         placeholder="Buscar..."
                         value={searchInput}
-                        onChange={(e) => setSerachInput(e.target.value)}
+                        onChange={(e) => {
+                            setSerachInput(e.target.value)
+                            if (e.target.value === "") setGlobalFilter("")
+                        }}
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter") setGlobalFilter(searchInput)
+                        }}
                         className='border-end-0'
                         style={{ outline: 'none', boxShadow: 'none', border: '1px solid rgb(222, 226, 230)'}}
                     />
-                    <InputGroup.Text onClick={() => setGlobalFilter(searchInput)} className='bg-transparent border-start-0' style={{cursor:"pointer"}}>
-                        <FontAwesomeIcon icon={faSearch} />
+                    <InputGroup.Text className='bg-transparent border-start-0 gap-2'>
+                        {searchInput ? (
+                            <FontAwesomeIcon
+                                style={{cursor:"pointer"}}
+                                onClick={() => {
+                                    setGlobalFilter("")
+                                    setSerachInput("")
+                                }}
+                                icon={faXmark} color='#bbb'
+                            />
+                        ) : (
+                            <></>
+                        )}
+                        <FontAwesomeIcon style={{cursor:"pointer"}} onClick={() => setGlobalFilter(searchInput)} icon={faSearch} />
                     </InputGroup.Text>
                 </InputGroup>
 
