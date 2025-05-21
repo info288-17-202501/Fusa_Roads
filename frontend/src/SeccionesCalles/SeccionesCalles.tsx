@@ -1,8 +1,9 @@
 import Table from '../components/Table';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { columns } from './resources/columns'
 import { calles as callesData } from './resources/callesData'; //Cambiar esto por un GET a la base de datos
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import ModalCargaMasiva from './components/ModalCargaMasiva';
 import ModalNuevaSeccionCalle from './components/ModalNuevaSeccionCalle';
 import ModalConfirmacion from './components/ModalConfirmacion'
@@ -11,10 +12,17 @@ import { Calle } from './resources/types';
 
 
 function SeccionesCalles() {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const appParam = queryParams.get("app") || "cadnaa"; // Por defecto mostraría cadnaa
+    const [filtroApp, setFiltroApp] = useState<string>(appParam);
+
+    useEffect(() => {
+        setFiltroApp(appParam);
+    }, [appParam]);
+
     const [showNuevo, setShowNuevo] = useState(false);
     const [showCargaMasiva, setShowCargaMasiva] = useState(false);
-    const [filtroApp, setFiltroApp] = useState<string>('cadnaa');
-
 
     const [calles, setCalles] = useState(callesData)
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
@@ -99,22 +107,6 @@ function SeccionesCalles() {
 
             <Container className="w-75 my-5">
                 <h1 className="d-flex justify-content-center mb-4">Secciones Calles</h1>
-                <Row className="justify-content-end mb-3">
-                    <Col xs={6} sm={5} md={4} lg={3}>
-                        <Form.Group className="d-flex">
-                            <Form.Label className='d-flex align-items-center me-2'>App:</Form.Label>
-                            <Form.Select
-                                value={filtroApp}
-                                onChange={(e) => setFiltroApp(e.target.value)}
-                            >
-                                <option value="cadnaa">CadnaA</option>
-                                <option value="noisemodelling">Noise Modelling</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Col>
-                    
-                </Row>
-
                 <Table
                     columns={columns(handleAskDelete, handleEdit)}
                     data={getFilteredCalles()}

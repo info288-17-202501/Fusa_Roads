@@ -32,8 +32,10 @@ function NavigationBar() {
         		<Navbar.Toggle aria-controls="navbar-responsive" />
         		<Navbar.Collapse id="navbar-responsive">
 					<Nav className="me-auto"> {/* mx-auto para que los botones del nav se centren */}
-						{NavButtons.map((button) => (
+						{NavButtons.map((button) => 
+							button.etiqueta !== "Secciones Calles" ? (
 							<Nav.Link
+								key={button.ruta}
 								href={button.ruta}
 								disabled={button.disabled}
 								className="rounded-5 me-auto"
@@ -41,6 +43,16 @@ function NavigationBar() {
 							>
 								{button.etiqueta}
 							</Nav.Link>
+						) : (
+							<NavDropdown
+								key={button.ruta}
+								title={button.etiqueta}
+								className="rounded-5 me-auto"
+								style={{backgroundColor: currentPath === button.ruta ? "#ddd" : ""}}
+							>
+								<NavDropdown.Item onClick={() => navigate(button.ruta + "?app=cadnaa")}>CadnaA</NavDropdown.Item>
+								<NavDropdown.Item onClick={() => navigate(button.ruta + "?app=noisemodelling")}>Noise Modelling</NavDropdown.Item>
+							</NavDropdown>
 						))}
 					</Nav>
 					<Nav>
