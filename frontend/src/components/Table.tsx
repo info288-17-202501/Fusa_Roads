@@ -9,11 +9,8 @@ import {
 import { useState } from 'react'
 import { faCirclePlus, faFileCsv, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Pagination, Form } from 'react-bootstrap';
-
-
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
-
+import { InputGroup, FormControl, Button, Form } from 'react-bootstrap';
+import PaginationComponent from './PaginationComponent';
 
 interface Props<T>{
     data: T[];
@@ -125,28 +122,24 @@ function Table<T extends { id: number }>({
                     value={table.getState().pagination.pageSize}
                     onChange={e => table.setPageSize(Number(e.target.value))}
                 >
-                    {[5,10,20,50].map(size => (
+                    {[1,2,3,5,10,20,50].map(size => (
                         <option key={size} value={size}>
                                 Ver {size}
                         </option>
                     ))}
                 </Form.Select>
 
-                <Pagination  className="mt-4 justify-content-center">
-                    <Pagination.First disabled={!table.getCanPreviousPage()} onClick={() => table.setPageIndex(0)}/>
-                    <Pagination.Prev disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()}/>
-                    {[...Array(table.getPageCount())].map((_, idx) => (
-                        <Pagination.Item
-                            key={idx}
-                            active={table.getState().pagination.pageIndex === idx}
-                            onClick={() => table.setPageIndex(idx)}
-                        >
-                            {idx+1}
-                        </Pagination.Item>
-                    ))}
-                    <Pagination.Next disabled={!table.getCanNextPage()} onClick={() => table.nextPage()}/>
-                    <Pagination.Last disabled={!table.getCanNextPage()} onClick={() => table.setPageIndex(table.getPageCount()-1)}/>
-                </Pagination>
+                <PaginationComponent
+                    currentPage={table.getState().pagination.pageIndex + 1}
+                    totalPages={table.getPageCount()}
+                    onPageChange={(page) => table.setPageIndex(page - 1)}
+                    canPreviousPage={table.getCanPreviousPage()}
+                    canNextPage={table.getCanNextPage()}
+                    goToFirstPage={() => table.setPageIndex(0)}
+                    goToLastPage={() => table.setPageIndex(table.getPageCount() - 1)}
+                    previousPage={() => table.previousPage()}
+                    nextPage={() => table.nextPage()}
+                />
             </div>
         </div>
     )
