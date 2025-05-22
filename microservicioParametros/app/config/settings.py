@@ -1,4 +1,4 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 # aqui se importan las variables de entorno que vienen del docker-compose
 
