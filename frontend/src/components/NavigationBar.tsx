@@ -1,6 +1,8 @@
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { Container, Nav, Navbar, Button, NavDropdown, Spinner } from "react-bootstrap";
 import FusaLogo from "../resources/fusa_logo.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "../Login/hooks/useUser";
+import useLogout from "../Login/hooks/useLogout";
 
 const NavButtons = [
 	{ ruta: "/home", etiqueta: "Home", disabled: false },
@@ -15,8 +17,11 @@ const NavButtons = [
   
 
 function NavigationBar() {
+	const navigate = useNavigate();
 	const location = useLocation();
 	const currentPath = location.pathname;
+	const {user, isLoadingUser} = useUser();
+	const logout = useLogout();
 
   	return (
     	<Navbar expand="lg" style={{ backgroundColor: "#eee" }} data-bs-theme="light">
@@ -27,8 +32,10 @@ function NavigationBar() {
         		<Navbar.Toggle aria-controls="navbar-responsive" />
         		<Navbar.Collapse id="navbar-responsive">
 					<Nav className="me-auto"> {/* mx-auto para que los botones del nav se centren */}
-						{NavButtons.map((button) => (
+						{NavButtons.map((button) => 
+							button.etiqueta !== "Secciones Calles" ? (
 							<Nav.Link
+								key={button.ruta}
 								href={button.ruta}
 								disabled={button.disabled}
 								className="rounded-5 me-auto"
@@ -36,9 +43,30 @@ function NavigationBar() {
 							>
 								{button.etiqueta}
 							</Nav.Link>
+						) : (
+							<NavDropdown
+								key={button.ruta}
+								title={button.etiqueta}
+								className="rounded-5 me-auto"
+								style={{backgroundColor: currentPath === button.ruta ? "#ddd" : ""}}
+							>
+								<NavDropdown.Item onClick={() => navigate(button.ruta + "?app=cadnaa")}>CadnaA</NavDropdown.Item>
+								<NavDropdown.Item onClick={() => navigate(button.ruta + "?app=noisemodelling")}>Noise Modelling</NavDropdown.Item>
+							</NavDropdown>
 						))}
 					</Nav>
-					<Button>Log in</Button>
+					<Nav>
+						{isLoadingUser ? (
+							<Spinner animation="border"/>
+						) : user ? (
+							<NavDropdown title={user.username} id="user-dropdown" align="end">
+								<NavDropdown.Item>Perfil</NavDropdown.Item>
+								<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
+							</NavDropdown>
+						) : (
+							<Button onClick={() => navigate("/login")}>Log in</Button>
+						)}
+					</Nav>
         		</Navbar.Collapse>
       		</Container>
     	</Navbar>
