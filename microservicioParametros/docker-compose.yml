@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    ports:
+      - "8005:8005"
+    #volumes:
+    #  - ./app:/app  
+
+    environment:
+      - APP_ENV=development
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=fusa
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=localhost
+
+    restart: unless-stopped

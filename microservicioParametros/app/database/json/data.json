@@ -1,0 +1,78 @@
+[
+    {
+        "id": 1,
+        "nombre": "prd1",
+        "videoSalida": { "flg": "S", "ruta": "/proyecto/vidSalida.avi" },
+        "ventanasTiempo": { "flg": "S", "tiempo": 1, "unidadTiempo": "hora"},
+        "modelos": {
+                     "video": {"id": 1, "ruta": "/proyecto/m1.mod" }, 
+                     "audio": {"id": 2, "ruta": "/proyecto/m2.mod" }
+                   },
+        "videos":[ 
+                  { "id": 1, "nombre": "vid1" , "ruta": "/proyecto/videos/v1.avi", 
+                      "lineas": [{ "p1": {"x": 1, "y":1 }, "p2": {"x": 5, "y":5 }} ]
+                  },
+                  { "id": 2, "nombre": "vid2", "ruta": "/proyecto/videos/v2.avi", 
+                      "lineas": [{ "p1": {"x": 3, "y":1 }, "p2": {"x": 21, "y":51 }},
+                               { "p1": {"x": 11, "y":21 }, "p2": {"x": 13, "y":66 }}
+                            ]
+                 }
+         ]
+    },
+    {
+        "id": 2,
+        "nombre": "prd2",
+        "videoSalida": { "flg": "N", "ruta": "/proyecto/vidSalida2.avi" },
+        "ventanasTiempo": { "flg": "S", "tiempo": 30, "unidadTiempo": "minuto"},
+        "modelos": {
+                     "video": {"id": 3, "ruta": "/proyecto/m3.mod" }, 
+                     "audio": {"id": 4, "ruta": "/proyecto/m4.mod" }
+                   },
+        "videos":[ 
+                  { "id": 3, "nombre": "vid3" , "ruta": "/proyecto/videos/v3.avi", 
+                      "lineas": [{ "p1": {"x": 10, "y":15 }, "p2": {"x": 25, "y":30 }} ]
+                  },
+                  { "id": 4, "nombre": "vid4", "ruta": "/proyecto/videos/v4.avi", 
+                      "lineas": [{ "p1": {"x": 5, "y":10 }, "p2": {"x": 40, "y":60 }}]
+                 }
+         ]
+    },
+    {
+        "id": 3,
+        "nombre": "prd3",
+        "videoSalida": { "flg": "S", "ruta": "/proyecto/vidSalida3.avi" },
+        "ventanasTiempo": { "flg": "N", "tiempo": 2, "unidadTiempo": "hora"},
+        "modelos": {
+                     "video": {"id": 5, "ruta": "/proyecto/m5.mod" }, 
+                     "audio": {"id": 6, "ruta": "/proyecto/m6.mod" }
+                   },
+        "videos":[ 
+                  { "id": 5, "nombre": "vid5" , "ruta": "/proyecto/videos/v5.avi", 
+                      "lineas": [{ "p1": {"x": 0, "y":0 }, "p2": {"x": 100, "y":100 }},
+                               { "p1": {"x": 50, "y":25 }, "p2": {"x": 75, "y":80 }}
+                            ]
+                  }
+         ]
+    },
+    {
+        "id": 4,
+        "nombre": "prd4",
+        "videoSalida": { "flg": "S", "ruta": "/proyecto/vidSalida4.avi" },
+        "ventanasTiempo": { "flg": "S", "tiempo": 15, "unidadTiempo": "minuto"},
+        "modelos": {
+                     "video": {"id": 7, "ruta": "/proyecto/m7.mod" }, 
+                     "audio": {"id": 8, "ruta": "/proyecto/m8.mod" }
+                   },
+        "videos":[ 
+                  { "id": 6, "nombre": "vid6" , "ruta": "/proyecto/videos/v6.avi", 
+                      "lineas": [{ "p1": {"x": 20, "y":30 }, "p2": {"x": 80, "y":70 }} ]
+                  },
+                  { "id": 7, "nombre": "vid7", "ruta": "/proyecto/videos/v7.avi", 
+                      "lineas": [{ "p1": {"x": 15, "y":20 }, "p2": {"x": 45, "y":55 }},
+                               { "p1": {"x": 60, "y":40 }, "p2": {"x": 90, "y":85 }},
+                               { "p1": {"x": 35, "y":10 }, "p2": {"x": 65, "y":50 }}
+                            ]
+                 }
+         ]
+    }
+    ]
