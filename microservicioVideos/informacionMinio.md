@@ -34,3 +34,10 @@ Minio tiene un sistema de 'Locking' para bloquear objetos y asi evitando la elim
     - Governing locks: reglas temporales para usuarios sin privilegios
 
 Normalmente objetos con el mismo nombre(incluyendo prefijo) se sobrescriben pero existe una opcion para tener objetos con multiples versiones en un mismo bucket.
+
+Minio requiere accesso exclusivo a los drives o volumenes dados para el manejo del almacenamiento de objetos. Niun otro proceso, software, scripts o personas deberian realizar niuna accion directamente a estos almacenamientos[https://min.io/docs/minio/container/administration/object-management.html](Object management)
+
+
+
+
+

@@ -16,12 +16,26 @@ services:
 
   minio-init:
     image: minio/mc
+    container_name: init-carpetas
     depends_on:
       - minio
     volumes:
       - ./init-minio.sh:/init.sh
       - ./empty-dir:/empty-dir
     entrypoint: ["/bin/sh", "/init.sh"]
+
+  minio-carga-masiva:
+    image: minio/mc
+    container_name: carga-masiva
+    depends_on:
+      - minio
+    volumes:
+      - ./carga-masiva.sh:/carga-masiva.sh
+      - ./data-to-upload:/data-to-upload
+    entrypoint: [ "sh", "-c", "/carga-masiva.sh" ]
+    networks:
+      - default
+    restart: "no"
 
 volumes:
   minio-data:

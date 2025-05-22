@@ -1,3 +1,0 @@
-Notas Microservicio Videos
-
-- Docker como tal no tiene carpetas, tiene prefijos que luego se ven como carpeta en la ui de docker, pero no son carpetas como tal, por ejemplo si subo "archivo.png" a la carpeta imagenes/, lo que sucede es que se sube un archivo con nombre imagenes/archivo.png, Si se quiere ver si una carpeta existe se tiene que ver cada archivo para ver si existe el prefijo correspondiente a la carpeta
