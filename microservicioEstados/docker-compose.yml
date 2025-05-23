@@ -6,7 +6,7 @@ services:
     ports:
       - "8004:8004" 
     volumes:
-      - .:/app
+    #  - .:/app
 
 
     environment: 
