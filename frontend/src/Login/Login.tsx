@@ -91,7 +91,7 @@ function Login() {
 						<label className="form-label">Contraseña</label>
 						<div className="input-group position-relative">
 								<input
-									className="form-control pe-5"
+									className="form-control pe-5 rounded-end"
 									type={showPassword ? 'text' : 'password'}
 									placeholder="Ingrese contraseña.."
 									value={password}

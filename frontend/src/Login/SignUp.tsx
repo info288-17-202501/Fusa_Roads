@@ -132,7 +132,11 @@ function SignUp() {
                 } else {
                     const errorMessage = data.detail || "Error al registrar el usuario.";
                     console.error("Error del backend:", errorMessage);
-                    alert(`Error: ${errorMessage}`);
+                    // alert(`Error: ${errorMessage}`);
+                    if(errorMessage === "Username already registered") setErrorsUsername(["Este nombre de usuario ya esta registrado"]);
+                    else if (errorMessage === "Email already registered") setErrorEmail("Este correo ya esta registrado");
+                    else alert(`Error: ${errorMessage}`)
+                        
                 }
             } catch (error) {
                 console.error("Error de red o conexión:", error);
@@ -241,7 +245,7 @@ function SignUp() {
                                         isInvalid={validated && errorsPassword.length > 0}
                                         isValid={validated && password.trim() !== "" && errorsPassword.length === 0}
                                     />
-                                    <InputGroup.Text style={{cursor:"pointer"}} onClick={() => setShowPassword(!showPassword)}>
+                                    <InputGroup.Text className="rounded-end" style={{cursor:"pointer"}} onClick={() => setShowPassword(!showPassword)}>
                                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}/>
                                     </InputGroup.Text>
                                     <Form.Control.Feedback type="invalid">
@@ -271,7 +275,7 @@ function SignUp() {
                                         isInvalid={validated && !!errorPassword2}
                                         isValid={validated && password2.trim() !== "" && !errorPassword2 && password === password2}
                                     />
-                                    <InputGroup.Text style={{cursor:"pointer"}} onClick={() => setShowPassword2(!showPassword2)}>
+                                    <InputGroup.Text className="rounded-end" style={{cursor:"pointer"}} onClick={() => setShowPassword2(!showPassword2)}>
                                         <FontAwesomeIcon icon={showPassword2 ? faEyeSlash : faEye}/>
                                     </InputGroup.Text>
                                     <Form.Control.Feedback type="invalid">{errorPassword2}</Form.Control.Feedback>
