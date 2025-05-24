@@ -60,7 +60,7 @@ function NavigationBar() {
 							<Spinner animation="border"/>
 						) : user ? (
 							<NavDropdown title={user.username} id="user-dropdown" align="end">
-								<NavDropdown.Item>Perfil</NavDropdown.Item>
+								<NavDropdown.Item onClick={() => navigate("/perfil")}>Perfil</NavDropdown.Item>
 								<NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
 							</NavDropdown>
 						) : (

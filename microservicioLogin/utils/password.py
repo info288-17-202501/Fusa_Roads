@@ -1,3 +1,4 @@
+# Funciones para hashear y verificar contraseñas usando bcrypt
 import bcrypt
 
 def hash_password(password: str) -> str:

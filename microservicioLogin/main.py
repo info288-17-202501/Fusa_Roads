@@ -1,3 +1,4 @@
+# Configuración principal de la aplicación
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth

@@ -4,16 +4,17 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Card from 'react-bootstrap/Card';
 import { Button, Spinner } from 'react-bootstrap';
 import FusaLogo from "./resources/fusa_logo.png"
-import useLogout from "./hooks/useLogout"
 import { useNavigate } from "react-router-dom";
 
 import { jwtDecode } from 'jwt-decode';
 import { useUser } from './hooks/useUser';
 
 interface TokenPayload {
-  username: string;
-  email: string;
-  exp: number;
+	name: string,
+	lastname: string;
+  	username: string;
+  	email: string;
+  	exp: number;
 }
 
 function Login() {
@@ -24,19 +25,18 @@ function Login() {
         //window.scrollTo(0, 0);
     };
 	const [showPassword, setShowPassword] = useState(false);
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [loginError, setLoginError] = useState<string>(""); 
     const [loading, setLoading] = useState(false);
 
-	const logout = useLogout();
 	const { setUser } = useUser();
 
 	const handleLogin = async() => {
         setLoading(true);
 		try{
 			const formData = new URLSearchParams();
-			formData.append("username", email);
+			formData.append("username", username);
 			formData.append("password", password);
 
 			const res = await fetch("http://localhost:8000/token",{
@@ -54,7 +54,6 @@ function Login() {
 		const data = await res.json();
 		console.log(data)
 
-		// Aquí puedes guardar los tokens en localStorage o en contexto
 		localStorage.setItem("access_token", data.access_token);
 		localStorage.setItem("refresh_token", data.refresh_token);
 
@@ -79,12 +78,12 @@ function Login() {
 				<Card className='p-4 col-lg-3 col-md-4 col-sm-6'>
 					<img src={FusaLogo} className='col-6 mx-auto mb-4'/>
 					<div className='text-start mb-4'>
-						<label className="form-label">Email</label>
+						<label className="form-label">Nombre de usuario</label>
 						<input
 							className="form-control"
-							placeholder="Ingrese email.."
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
+							placeholder="Ingrese su nombre de usuario.."
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
 						/>
 					</div>
 
@@ -133,7 +132,7 @@ function Login() {
 						<div className='text-center text-danger mt-3'>{loginError}</div>
 					)}
 					<div className="d-flex justify-content-center">
-						<Button onClick={logout} className='w-50 mt-3' variant='secondary'>Log out</Button>
+						<Button onClick={() => navigate("/sign-up")} className='w-50 mt-3' variant='link'>Sign up</Button>
 					</div>
 				</Card>
 			</div>
