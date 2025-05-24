@@ -109,8 +109,8 @@ function SignUp() {
         if (runValidations()) {
             console.log("Formulario válido. Enviando datos...");
             const userData = {
-                // name,
-                // lastname,
+                name,
+                lastname,
                 username,
                 email,
                 password,
