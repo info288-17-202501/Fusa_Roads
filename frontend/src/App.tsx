@@ -5,6 +5,8 @@ import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
 import Videos from './Videos/Videos'
 import ModelosIA from './ModelosIA/ModelosIA'
 import Login from './Login/Login'
+import Profile from './Login/Profile';
+import SignUp from './Login/SignUp';
 
 import NavigationBar from './components/NavigationBar';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,7 +23,8 @@ const App: React.FC = () => {
 				<Route path="/videos" element={<Videos/>} /> 
 				<Route path="/modelos-ia" element={<ModelosIA/>} />
 				<Route path="/login" element={<Login/>} />
-
+				<Route path="/perfil" element={<Profile/>} />
+				<Route path="/sign-up" element={<SignUp/>} />
       		</Routes>
     	</Router>
   	);
