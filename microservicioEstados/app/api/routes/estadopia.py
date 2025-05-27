@@ -13,7 +13,6 @@ router = APIRouter(prefix="/estadopia", tags=["estadopia"])
 BASE_DIR = Path(__file__).resolve().parent.parent.parent 
 ESTADOS_FILE = BASE_DIR / "database" / "json" / "data.json"
 
-print(ESTADOS_FILE)
 
 
 if not os.path.exists(ESTADOS_FILE):
@@ -34,8 +33,21 @@ class Estado(BaseModel):
 
 
 def cargar_estados():
-    with open(ESTADOS_FILE, "r") as f:
-        return json.load(f)
+    try:
+        with open(ESTADOS_FILE, "r") as f:
+            content = f.read()
+            if not content.strip():  # Si el archivo está vacío
+                return {}
+            return json.loads(content)
+    except FileNotFoundError:
+        with open(ESTADOS_FILE, "w") as f:
+            json.dump({}, f)
+        return {}
+    except json.JSONDecodeError:
+        # Si el JSON está corrupto, lo reiniciamos
+        with open(ESTADOS_FILE, "w") as f:
+            json.dump({}, f)
+        return {}
 
 def guardar_estados(data):
     with open(ESTADOS_FILE, "w") as f:
@@ -43,7 +55,7 @@ def guardar_estados(data):
 
 
 
-@router.post("/estadopia/{pia_id}")
+@router.post("/{pia_id}")
 async def crear_estado(pia_id: int, estado: Estado): ## aqui toma como parametro el id del URL y el body del request como Estado
     data = cargar_estados()
     pia_id_str = str(pia_id)
@@ -60,8 +72,8 @@ async def crear_estado(pia_id: int, estado: Estado): ## aqui toma como parametro
 
 
 
-@router.put("/estadopia/{pia_id}")
-async def actualizar_estado(pia_id: int, estado_query: str = Query(...), request: Request = None): # aqui se recibe el id del proyecto y el estado a actualizar
+@router.put("/{pia_id}")
+async def actualizar_estado(pia_id: int, estado_query: str = Query(...,alias="estado"), request: Request = None): # aqui se recibe el id del proyecto y el estado a actualizar
     data = cargar_estados()
     pia_id_str = str(pia_id)
 
@@ -76,7 +88,8 @@ async def actualizar_estado(pia_id: int, estado_query: str = Query(...), request
 
     for est in estados:
         if est["estado"] == estado_query:
-            est["fecha_hora_fin"] = body.get("fecha-hora-fin", est["fecha_hora_fin"])
+
+            est["fecha_hora_fin"] = body.get("fecha_hora_fin", est["fecha_hora_fin"])
             est["flag"] = body.get("flag", est["flag"])
             est["descrip"] = body.get("descrip", est["descrip"])
             encontrado = True
@@ -90,7 +103,7 @@ async def actualizar_estado(pia_id: int, estado_query: str = Query(...), request
 
 
 
-@router.get("/estadopia/{pia_id}")
+@router.get("/{pia_id}")
 async def obtener_estados(pia_id: int):
     data = cargar_estados()
     pia_id_str = str(pia_id)
