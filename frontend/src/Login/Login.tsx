@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Card from 'react-bootstrap/Card';
 import { Button, Spinner } from 'react-bootstrap';
-import FusaLogo from "./resources/fusa_logo.png"
+import FusaLogo from "../resources/FUSAROADS_LOGO_AZUL.png"
 import { useNavigate } from "react-router-dom";
 
 import { jwtDecode } from 'jwt-decode';
