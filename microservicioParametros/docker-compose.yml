@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    ports:
+      - "8005:8005" ## poner el puerto del microservicio
+    #volumes:
+    #  - ./app:/app  
+
+    environment: ## aqui las variables de entorno
+      - APP_ENV=development
+      - APP_PORT=8005
+
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=fusa
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=localhost
+
+    restart: unless-stopped
