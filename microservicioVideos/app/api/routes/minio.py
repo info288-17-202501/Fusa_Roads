@@ -3,16 +3,21 @@ from typing import List, Annotated
 from fusa_minio_service.uploader import upload_file_to_minio
 from fusa_minio_service.deleter import delete_file_from_minio
 from fusa_minio_service.updater import update_file_from_minio
+from fusa_minio_service.visualizer import visualize_file_from_minio
 
 router = APIRouter()
 
 @router.get("/")
 async def get_videos(
     bucket: Annotated[str, Form(...)],
-    folder: Annotated[str, Form(...)]
+    folder: Annotated[str, Form(...)],
+    file_name: Annotated[str, Form(...)]
 ):
+    
+    url = visualize_file_from_minio(file_name, folder, bucket)["URL"]
+
     return {
-        "message" : f"Archivos del bucket: {bucket} y carpeta: {folder}"
+        "message" : url
     }
 
 @router.post("/")

@@ -7,4 +7,4 @@ until mc alias set myminio http://minio:9000 minioadmin minioadmin; do
 done
 
 # Subir tus videos
-mc cp --recursive /data-to-upload/ myminio/fusaroads/videos/
+mc cp --recursive /data/ myminio/fusaroads/videos_original/

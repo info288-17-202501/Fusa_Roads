@@ -31,7 +31,7 @@ services:
       - minio
     volumes:
       - ./carga-masiva.sh:/carga-masiva.sh
-      - ./data-to-upload:/data-to-upload
+      - ./data:/data
     entrypoint: [ "sh", "-c", "/carga-masiva.sh" ]
     networks:
       - default
