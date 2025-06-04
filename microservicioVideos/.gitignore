@@ -1,1 +1,5 @@
 .env
+__pycache__
+data-to-upload
+*.png
+data

@@ -44,4 +44,7 @@ crear .env (en /microservicioVideos):
     MINIO_ENDPOINT=localhost:9000
     MINIO_ACCESS_KEY=minioadmin
     MINIO_SECRET_KEY=minioadmin
-    MINIO_BUCKET=videos
+    MINIO_BUCKET=fusaroads
+
+WARNING: Asegurar que el init.minio.sh este en LF, esto algo de caracteres que si esta en CRLF no dejara ejecutar el init-minio (Lo cual termina por no crear el bucket y carpetas)
+![imagen_ejemplo](image.png)
