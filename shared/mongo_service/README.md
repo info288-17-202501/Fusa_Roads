@@ -1,0 +1,1 @@
+En container/ usar docker-compose up -d para levantar el servicio de mongo, mongo-express es la interfaz web. 
