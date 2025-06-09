@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  minio-carga-masiva:
+    image: minio/mc
+    container_name: carga-masiva
+    depends_on: # Quisas de problemas pq el minio esta en el docker de CargaHTTP
+      - minio
+    volumes:
+      - ./carga-masiva.sh:/carga-masiva.sh
+      - ./data:/data
+    entrypoint: [ "sh", "-c", "/carga-masiva.sh" ]
+    networks:
+      - default
+    restart: "no"
+
+volumes:
+  minio-data:

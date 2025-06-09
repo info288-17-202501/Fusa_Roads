@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    ports:
+      - "8002:8002" ## poner el puerto del microservicio
+    environment: ## aqui las variables de entorno
+      - HOST=localhost
+      - PORT=8002
+      - MINIO_ENDPOINT=localhost:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKETS=fusaroads
+    restart: unless-stopped
+
+
