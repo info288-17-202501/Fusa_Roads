@@ -2,12 +2,12 @@ from pydantic_settings import BaseSettings
 from typing import List
 
 class Settings(BaseSettings):
-    host: str
-    port: int
-    minio_endpoint: str
-    minio_access_key: str
-    minio_secret_key: str
-    minio_buckets: str
+    APP_HOST: str
+    APP_PORT: int
+    MINIO_ENDPOINT: str
+    MINIO_ACCESS_KEY: str
+    MINIO_SECRET_KEY: str
+    MINIO_BUCKETS: str
 
     @property
     def minio_bucket_list(self) -> List[str]:   # Lista de buckets

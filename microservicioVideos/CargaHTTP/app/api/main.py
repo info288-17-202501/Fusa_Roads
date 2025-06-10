@@ -1,8 +1,8 @@
-from fastapi import  Depends, HTTPException, FastAPI
-from .routes.minio import router as parametros_router 
+from fastapi import FastAPI
+from .routes.minio import router as videos_router 
 
 app = FastAPI()
-app.include_router(parametros_router)
+app.include_router(videos_router)
 
 @app.get("/health")
 async def health_check():

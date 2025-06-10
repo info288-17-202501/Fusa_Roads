@@ -14,6 +14,8 @@ services:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
     command: server --console-address ":9001" /data
+    networks:
+      - fusaroadsred
 
   minio-init:
     image: minio/mc
@@ -24,6 +26,12 @@ services:
       - ./init-minio.sh:/init.sh  # Asegurar que el 'Select End of Line Secuence = LF en el .sh'
       - ./empty-dir:/empty-dir
     entrypoint: ["/bin/sh", "/init.sh"]
+    networks:
+      - fusaroadsred
 
 volumes:
   minio-data:
+
+networks:
+  fusaroadsred:
+    external: true
