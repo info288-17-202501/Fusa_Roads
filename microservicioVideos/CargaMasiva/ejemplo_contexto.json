@@ -1,0 +1,77 @@
+{
+    "mongo_id": 1,
+    "posgres_id": 1,
+    "video_ruta_minio": "/videos/campain_name/picarte.avi",
+    "miniatura_ruta_minio": "/videos/campain_name/picarte.jpg",
+    "nombre_video": "picarte",
+    "fecha_de_registro_manual": "2024-02-01",
+    "duracion_s": 3600,
+    "latitud_manual": -39.81422,
+    "longitud_manual": -73.24589,
+    "latitud_metadata": -39.81422,
+    "longitud_metadata": -73.24589,
+    "extension": "avi",
+    "fps": 30,
+    "hora_ini_manual": "15:00:00",
+    "hora_fin_manual": "15:59:00",
+    "hora_ini_metadata": "2024-02-01T15:00:00Z",
+    "hora_fin_metadata": "2024-02-01T15:59:00Z",
+    "res": {
+        "ancho": 320,
+        "alto": 240
+    },
+    "desc_manual": "vídeo grabado por juanito",
+    "contexto": [
+        {
+            "periodo_del_dia": "mañana",
+            "t_ini": "00:00:00",
+            "t_fin": "00:14:00",
+            "detalle": [
+                {
+                    "clima": "soleado",
+                    "t_ini": "00:00:00",
+                    "t_fin": "00:05:00"
+                },
+                {
+                    "clima": "nublado",
+                    "t_ini": "00:05:00",
+                    "t_fin": "00:12:00"
+                },
+                {
+                    "clima": "niebla",
+                    "t_ini": "00:12:00",
+                    "t_fin": "00:14:00"
+                }
+            ]
+        },
+        {
+            "periodo_del_dia": "tarde",
+            "t_ini": "00:14:00",
+            "t_fin": "00:38:00",
+            "detalle": [
+                {
+                    "clima": "niebla",
+                    "t_ini": "00:14:00",
+                    "t_fin": "00:38:00"
+                }
+            ]
+        },
+        {
+            "periodo_del_dia": "noche",
+            "t_ini": "00:38:00",
+            "t_fin": "00:59:00",
+            "detalle": [
+                {
+                    "clima": "lluvia",
+                    "t_ini": "00:51:00",
+                    "t_fin": "00:55:00"
+                },
+                {
+                    "clima": "nieve",
+                    "t_ini": "00:55:00",
+                    "t_fin": "00:59:00"
+                }
+            ]
+        }
+    ]
+}
