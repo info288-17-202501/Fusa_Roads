@@ -10,7 +10,6 @@ def obtenerMetadata(folder_path: str, video_name: str, mcjson_name: str):
     try:
         metadata = ffmpeg.probe(folder_path + video_name)
 
-
         # Contexto a mano
         with open(folder_path + mcjson_name, "r", encoding="utf-8") as f:
             mcjson = json.load(f)
@@ -82,6 +81,4 @@ def obtenerMetadata(folder_path: str, video_name: str, mcjson_name: str):
     except Exception as e:
         print(f"Otro error: {e}")
 
-obtenerMetadata("./data/","VID_2(720P_60FPS).mp4", "VID_2(720P_60FPS).mcjson")
-
-
+# obtenerMetadata("./data/","VID20250403124144.mp4", "VID20250403124144.mcjson")

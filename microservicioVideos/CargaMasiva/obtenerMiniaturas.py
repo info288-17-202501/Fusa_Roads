@@ -23,8 +23,6 @@ def generar_miniatura(video_path: str, salida_path: str) -> dict:
         "status" : 1,
         "msg" : "Miniatura guardada en: {salida_path}"
     }
-
-
-video_file = "./data/VID_1(720P_60FPS).mp4"  
-salida_path = "./data/VID_1(720P_60FPS).jpg"  
-generar_miniatura(video_file, salida_path)
+# video_file = "./data/VID_1(720P_60FPS).mp4"  
+# salida_path = "./data/VID_1(720P_60FPS).jpg"  
+# generar_miniatura(video_file, salida_path)
