@@ -13,6 +13,58 @@ from obtenerMiniaturas import generar_miniatura
 from utils.files_utils import obtener_archivos_en_directorio,actualizar_archivo_json,crear_archivo,filtrar_por_extension
 from utils.json_utils import check_mcjson_format
 
+from minio import Minio
+from minio.error import S3Error
+from pathlib import Path
+from pymongo import MongoClient
+import json
+
+# Inicializa el cliente
+min_client = Minio(
+    "localhost:9000",  
+    access_key="minioadmin",
+    secret_key="minioadmin",
+    secure=False 
+)
+
+def subir_a_mongo(json_data: dict, db_name: str, collection_name: str, mongo_uri="mongodb://root:example@localhost:27017/") -> str | None:
+    try:
+        client = MongoClient(mongo_uri)
+        db = client[db_name]
+        collection = db[collection_name]
+
+        result = collection.insert_one(json_data)
+
+        print(f"Documento insertado con ID: {result.inserted_id}")
+        return str(result.inserted_id)
+
+    except Exception as e:
+        print(f"Error al insertar en MongoDB: {e}")
+        return None
+
+
+def subir_a_minio(ruta_local: str, bucket: str, ruta_destino: str):
+    try:
+        # Verifica que el bucket exista
+        if not min_client.bucket_exists(bucket):
+            print(f"El bucket '{bucket}' no existe.")
+            return False
+
+        # Subida del archivo
+        min_client.fput_object(
+            bucket_name=bucket,
+            object_name=ruta_destino,    
+            file_path=ruta_local,
+        )
+
+        print(f"Archivo subido a '{bucket}/{ruta_destino}'")
+        return True
+
+    except S3Error as e:
+        print(f"Error al subir a MinIO: {e}")
+        return False
+
+
 def obtener_etapa_actual(mem, nombre_video):
     for detalle in mem.get("detalle_videos", []):
         if detalle.get("nombre_video") == nombre_video:
@@ -68,7 +120,7 @@ def etapa_memoria(nombre_memoria: str, path: str, archivos: str, lista_videos: L
 
     if mem_json.get("detalle_videos") == []:
         detalle_video_vacio = True
-        
+
     return mem_json, detalle_video_vacio
 
 def etapa_00(path: str, video: str, nvideo_sin_extension:str , archivos: List[str], mem_json: dict) -> dict | bool:
@@ -161,6 +213,7 @@ if __name__ == '__main__':
             etapa = obtener_etapa_actual(mem_json, video)
             print(f"    Etapa: {etapa}")
         else:
+            etapa = "I_00"
             print(f"    Desde cero")
 
         mc_json = None
@@ -192,28 +245,69 @@ if __name__ == '__main__':
             etapa_03(path, video, nvideo_sin_extension, mem_json)
             etapa = "I_04"
 
-        if detalle_video_vacio or etapa == "I_04":
-            print("Subir pogres")
+        # if detalle_video_vacio or etapa == "I_04":
+        #     print("Subir pogres")
 
-            etapa = "I_05"
+        #     etapa = "I_05"
 
-            # Subir posgres
+        #     # Subir posgres
 
-                # Obtener posgres ID
+        #         # Obtener posgres ID
 
-                    # Actualizar mem
+        #             # Actualizar mem
+
 
 
         if detalle_video_vacio or etapa == "I_05":
-            # Subir mongo
-            print("Subir mongo")
+
+            # Subir MinIO
+            mibucket = "fusaroads"
+
+            # Video
+            subir_a_minio(
+                ruta_local=path + video,
+                bucket=mibucket,
+                ruta_destino=f"videos_original/{general_json["nombre_campagna"]}/videos/{video}"
+            )
+
+            # Miniatura
+            subir_a_minio(
+                ruta_local=path + nvideo_sin_extension + ".jpg",
+                bucket=mibucket,
+                ruta_destino=f"videos_original/{general_json["nombre_campagna"]}/miniaturas/{nvideo_sin_extension + ".jpg"}"
+            )
+
+            for detalle in mem_json["detalle_videos"]:
+                if detalle.get("nombre_video") == video:
+                    detalle.setdefault("etapas", {})["I_05"] = True
+
+            actualizar_archivo_json(path, "mem.json", mem_json)
 
             etapa = "I_06"
 
-        if detalle_video_vacio or etapa == "I_06":
-            print("Subir minio")
-            # Subir MinIO
 
+        if detalle_video_vacio or etapa == "I_06":
+            # Subir mongo
+            print("Subir mongo")
+
+            ruta_ccjson = Path(path) / f"{nvideo_sin_extension}.ccjson"
+            if ruta_ccjson.exists():
+                with open(ruta_ccjson, "r", encoding="utf-8") as f:
+                    ccjson = json.load(f)
+
+            ccjson["ruta_video_minio"] = f"videos_original/{general_json["nombre_campagna"]}/videos/{video}"
+            ccjson["minio_bucket"] = mibucket
+            ccjson["ruta_miniatura_minio"] = f"videos_original/{general_json["nombre_campagna"]}/miniaturas/{nvideo_sin_extension + ".jpg"}"
+            ccjson["mongo_collection"] = "contextos"
+
+            subir_a_mongo(ccjson, "fusa_roads", "contextos")
+
+
+            for detalle in mem_json["detalle_videos"]:
+                if detalle.get("nombre_video") == video:
+                    detalle.setdefault("etapas", {})["I_06"] = True
+
+            actualizar_archivo_json(path, "mem.json", mem_json)
 
             mem_json["lista_videos_procesados"].append(video)
             mem_json["lista_videos"].remove(video)
