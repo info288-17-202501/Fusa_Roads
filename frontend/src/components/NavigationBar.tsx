@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar, Button, NavDropdown, Spinner } from "react-bootstrap";
-import FusaLogo from "../resources/fusa_logo.png";
+import FusaLogo from "../resources/FUSAROADS_LOGO_AZUL.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../Login/hooks/useUser";
 import useLogout from "../Login/hooks/useLogout";
@@ -27,7 +27,7 @@ function NavigationBar() {
     	<Navbar expand="lg" style={{ backgroundColor: "#eee" }} data-bs-theme="light">
       		<Container> {/* className="d-flex align-items-end" para que los botones del nav se peguen abajo */}
        			<Navbar.Brand href="/home">
-          			<img src={FusaLogo} height="55" alt="FusaLogo.png" />
+          			<img src={FusaLogo} height="70" alt="FusaLogo.png" />
         		</Navbar.Brand>
         		<Navbar.Toggle aria-controls="navbar-responsive" />
         		<Navbar.Collapse id="navbar-responsive">
