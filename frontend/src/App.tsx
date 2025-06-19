@@ -5,8 +5,12 @@ import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
 import Videos from './Videos/Videos'
 import ModelosIA from './ModelosIA/ModelosIA'
 import MonitorProcesos from './MonitorProcesos/MonitorProcesos'
+import Login from './Login/Login'
+import Profile from './Login/Profile';
+import SignUp from './Login/SignUp';
 
 import NavigationBar from './components/NavigationBar';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App: React.FC = () => {
@@ -16,10 +20,13 @@ const App: React.FC = () => {
       		<Routes>
         		<Route path="/" element={<Navigate to="/home" />} /> 
 				<Route path="/home" element={<MenuCentral/>} /> 
-				<Route path="/secciones-calles" element={<SeccioneCalles/>} /> 
+				<Route path="/secciones-calles" element={<PrivateRoute><SeccioneCalles/></PrivateRoute>} /> 
 				<Route path="/videos" element={<Videos/>} /> 
 				<Route path="/modelos-ia" element={<ModelosIA/>} />
 				<Route path="/monitor-procesos" element={<MonitorProcesos/>} />
+				<Route path="/login" element={<Login/>} />
+				<Route path="/perfil" element={<Profile/>} />
+				<Route path="/sign-up" element={<SignUp/>} />
       		</Routes>
     	</Router>
   	);
