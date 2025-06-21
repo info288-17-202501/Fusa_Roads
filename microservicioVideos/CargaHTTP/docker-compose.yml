@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   api_microservicio_videos:
