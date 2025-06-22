@@ -8,6 +8,7 @@ import ModalCargaMasiva from './components/ModalCargaMasiva';
 import ModalNuevaSeccionCalle from './components/ModalNuevaSeccionCalle';
 import ModalConfirmacion from './components/ModalConfirmacion'
 import regiones_comunas from './resources/comunas-regiones.json'
+import ciudades from './resources/ciudades.json'
 import { Calle } from './resources/types';
 
 
@@ -120,7 +121,7 @@ function SeccionesCalles() {
             <ModalCargaMasiva
                 show={showCargaMasiva}
                 onClose={() => setShowCargaMasiva(false)}
-                data={regiones_comunas.regiones}
+                data={ciudades.ciudades}
             />
 
             <ModalNuevaSeccionCalle
