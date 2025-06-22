@@ -8,3 +8,8 @@ DB_PASSWORD=
 DB_HOST=
 DB_PORT=
 DB_NAME=FuSA_DB
+
+
+*Activar puerto del backend*
+
+uvicorn app.main:app --reload --port 8001
