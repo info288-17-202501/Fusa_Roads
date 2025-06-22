@@ -1,28 +1,30 @@
 #routes/csv_upload
 #endpoints para comunicar con el backend
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional
-
 from app.database import get_db
 from app.services.csv_service import CSVService
 from app.schemas.csv_upload import CSVUploadResponse
 from app.schemas.tipo_via import TipoVia
 from app.schemas.calle_localidad import CalleLocalidad
 from app.schemas.seccion_calle import SeccionCalle
+from app.schemas.pais import Pais  
+from app.schemas.ciudad import Ciudad  
 
 router = APIRouter(prefix="/csv", tags=["CSV Upload"])
 
 @router.post("/upload", response_model=CSVUploadResponse)
 async def upload_csv(
     file: UploadFile = File(...),
-    pais: str = Form(...),
-    ciudad: str = Form(...),
+    id_pais: int = Form(...),
+    id_ciudad: int = Form(...),
     localidad: Optional[str] = Form(None),
     db: Session = Depends(get_db)
 ):
     """
     Endpoint para cargar un CSV con datos de calles
+    Ahora recibe IDs de país y ciudad en lugar de nombres
     """
     # Validar que sea un archivo CSV
     if not file.filename.endswith('.csv'):
@@ -30,41 +32,41 @@ async def upload_csv(
             status_code=400,
             detail="El archivo debe ser un CSV"
         )
-    
+
     # Validar parámetros requeridos
-    if not pais or not ciudad:
+    if not id_pais or not id_ciudad:
         raise HTTPException(
             status_code=400,
-            detail="País y ciudad son requeridos"
+            detail="ID de país y ciudad son requeridos"
         )
-    
+
     try:
         # Leer contenido del archivo
         content = await file.read()
         csv_content = content.decode('utf-8')
-        
-        # Procesar CSV con los parámetros de ubicación
+
+        # Procesar CSV con los IDs de ubicación
         csv_service = CSVService(db)
         result = csv_service.process_csv_content(
             csv_content=csv_content,
-            pais_nombre=pais,
-            ciudad_nombre=ciudad,
+            id_pais=id_pais,
+            id_ciudad=id_ciudad,
             localidad_nombre=localidad
         )
-        
+
         if not result["success"]:
             raise HTTPException(
                 status_code=400,
                 detail=result["message"]
             )
-        
+
         return CSVUploadResponse(
             message=result["message"],
             processed_rows=result["processed_rows"],
             errors=result["errors"],
             calles_sin_nombre_creadas=result.get("calles_sin_nombre_creadas", 0)
         )
-        
+
     except UnicodeDecodeError:
         raise HTTPException(
             status_code=400,
@@ -75,6 +77,26 @@ async def upload_csv(
             status_code=500,
             detail=f"Error interno del servidor: {str(e)}"
         )
+
+# Nuevos endpoints para obtener países y ciudades
+@router.get("/paises", response_model=List[Pais])
+def get_paises(db: Session = Depends(get_db)):
+    """
+    Obtiene todos los países disponibles
+    """
+    csv_service = CSVService(db)
+    return csv_service.get_paises()
+
+@router.get("/ciudades", response_model=List[Ciudad])
+def get_ciudades(
+    id_pais: Optional[int] = Query(None, description="Filtrar ciudades por país"),
+    db: Session = Depends(get_db)
+):
+    """
+    Obtiene todas las ciudades disponibles, opcionalmente filtradas por país
+    """
+    csv_service = CSVService(db)
+    return csv_service.get_ciudades(id_pais=id_pais)
 
 @router.get("/tipos-via", response_model=List[TipoVia])
 def get_tipos_via(db: Session = Depends(get_db)):
