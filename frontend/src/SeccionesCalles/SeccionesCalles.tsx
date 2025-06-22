@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ModalCargaMasiva from './components/ModalCargaMasiva';
 import ModalNuevaSeccionCalle from './components/ModalNuevaSeccionCalle';
-import ModalConfirmacion from './components/ModalConfirmacion'
+import ModalConfirmacion from '../components/ModalConfirmacion'
 import regiones_comunas from './resources/comunas-regiones.json'
 import { Calle } from './resources/types';
 

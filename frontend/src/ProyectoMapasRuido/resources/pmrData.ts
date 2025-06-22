@@ -1,0 +1,25 @@
+import { PMR } from "./types";
+
+export const PMRs_ejemplo: PMR[] = [
+    { id: 1, nombre: 'Mapa Acústico Centro 2023', descripcion: 'Proyecto que mide niveles de ruido en la zona céntrica de Valdivia durante horarios laborales.', fecha_creacion: '2023-03-15', video_ids: [101, 103] },
+    { id: 2, nombre: 'Ruido Nocturno Barrios Sur', descripcion: 'Estudio del impacto del ruido en barrios residenciales del sector sur durante la noche.', fecha_creacion: '2022-11-20', video_ids: [102, 112] },
+    { id: 3, nombre: 'Monitoreo Acústico Ruta Costera', descripcion: 'Proyecto para analizar la contaminación sonora en rutas costeras con alto flujo turístico.', fecha_creacion: '2023-08-05', video_ids: [108, 110] },
+    { id: 4, nombre: 'CadnaA Tráfico Pesado 2024', descripcion: 'Simulación del ruido generado por vehículos de carga en avenidas principales usando CadnaA.', fecha_creacion: '2024-01-12', video_ids: [101, 110] },
+    { id: 5, nombre: 'Mapa Sonoro Escolar', descripcion: 'Evaluación de niveles de ruido en las cercanías de escuelas durante horas de clase.', fecha_creacion: '2023-04-01', video_ids: [105] },
+    { id: 6, nombre: 'Estudio Acústico Puerto-Chacabuco', descripcion: 'Proyecto para determinar el impacto del puerto en la contaminación acústica urbana.', fecha_creacion: '2022-07-30', video_ids: [111] },
+    { id: 7, nombre: 'Ruido Ferroviario Valdivia', descripcion: 'Análisis del ruido provocado por el paso de trenes en sectores urbanos.', fecha_creacion: '2023-06-14', video_ids: [109] },
+    { id: 8, nombre: 'Zonas Silenciosas 2030', descripcion: 'Identificación de zonas de bajo ruido ambiental con potencial para áreas de descanso o recreación.', fecha_creacion: '2024-09-01', video_ids: [104, 111] },
+    { id: 9, nombre: 'Simulación CadnaA Terminal de Buses', descripcion: 'Simulación de niveles sonoros alrededor del terminal de buses municipal.', fecha_creacion: '2023-12-05', video_ids: [107] },
+    { id: 10, nombre: 'Perfil Acústico Anillo Vial', descripcion: 'Monitoreo y modelado del ruido a lo largo del anillo vial de la ciudad.', fecha_creacion: '2023-10-10', video_ids: [106, 110] },
+    { id: 11, nombre: 'Mapa de Ruido Hospital Regional', descripcion: 'Evaluación del entorno acústico del hospital y su posible afectación a pacientes.', fecha_creacion: '2022-09-18', video_ids: [101, 106] },
+    { id: 12, nombre: 'Análisis Ruido Parques Urbanos', descripcion: 'Medición del ruido ambiental en parques y plazas de alta concurrencia.', fecha_creacion: '2023-02-28', video_ids: [105, 111] },
+    { id: 13, nombre: 'Ruido en Calles Comerciales', descripcion: 'Estudio del ruido generado por comercio, tránsito y peatones en zonas comerciales.', fecha_creacion: '2023-07-19', video_ids: [103, 109] },
+    { id: 14, nombre: 'Estudio Acústico Río Calle-Calle', descripcion: 'Evaluación del ruido generado por actividad recreativa y tránsito cercano al río.', fecha_creacion: '2023-09-03', video_ids: [102, 112] },
+    { id: 15, nombre: 'Proyecto Piloto Barrio Tranquilo', descripcion: 'Intervención urbana para reducir el ruido en un barrio piloto.', fecha_creacion: '2024-02-01', video_ids: [104] },
+    { id: 16, nombre: 'Mapa de Ruido Universitario', descripcion: 'Análisis de ruido en sectores aledaños a campus universitarios.', fecha_creacion: '2023-05-09', video_ids: [104, 106] },
+    { id: 17, nombre: 'Ruido en Ciclovías y Espacios Abiertos', descripcion: 'Estudio de la contaminación sonora en ciclovías y áreas verdes abiertas.', fecha_creacion: '2023-11-11', video_ids: [108] },
+    { id: 18, nombre: 'Evaluación Acústica Mall Regional', descripcion: 'Medición del impacto sonoro generado por centros comerciales y estacionamientos.', fecha_creacion: '2022-06-17', video_ids: [110] },
+    { id: 19, nombre: 'Estudio Ruido Nocturno Zona Costanera', descripcion: 'Evaluación del ruido en la costanera durante horarios de recreación nocturna.', fecha_creacion: '2024-04-06', video_ids: [102, 108] },
+    { id: 20, nombre: 'Mapa Ruido Vehicular 2025', descripcion: 'Modelado y visualización de ruido por tránsito vehicular en toda la comuna.', fecha_creacion: '2025-01-20', video_ids: [101, 103, 110] },
+    { id: 21, nombre: 'Monitoreo Acústico Industrial Oeste', descripcion: 'Seguimiento de la contaminación sonora producida por el parque industrial del sector oeste.', fecha_creacion: '2023-01-23', video_ids: [107, 109] },
+];
