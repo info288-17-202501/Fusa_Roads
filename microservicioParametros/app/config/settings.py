@@ -1,13 +1,11 @@
 from pydantic_settings import BaseSettings
-
+from dotenv import load_dotenv
 # aqui se importan las variables de entorno que vienen del docker-compose
 
 class Settings(BaseSettings):
-    POSTGRES_USER: str 
-    POSTGRES_PASSWORD: str 
-    POSTGRES_DB: str
-    POSTGRES_PORT: str
-    POSTGRES_HOST: str
+
+    MONGOURI: str
+    DATABASE:str
 
     class Config:
         #env_file = ".env"  
