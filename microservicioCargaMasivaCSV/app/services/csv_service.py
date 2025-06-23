@@ -1,4 +1,3 @@
-
 import pandas as pd
 from sqlalchemy.orm import Session
 from typing import List, Dict, Any, Optional
@@ -16,32 +15,54 @@ class CSVService:
     def __init__(self, db: Session):
         self.db = db
         self.contador_calles_sin_nombre = 0
-        self.pais_creado = False
-        self.ciudad_creada = False
         self.localidad_creada = False
     
-    def process_csv_content(self, csv_content: str, pais_nombre: str, ciudad_nombre: str, localidad_nombre: Optional[str] = None) -> Dict[str, Any]:
-        #Procesa el contenido del CSV y carga los datos en la base de datosincluyendo la creación/búsqueda de país, ciudad y localidad
+    def process_csv_content(self, csv_content: str, id_pais: int, id_ciudad: int, localidad_nombre: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Procesa el contenido del CSV y carga los datos en la base de datos
+        Ahora recibe IDs de país y ciudad desde la BD
+        """
         try:
-            # Normalizar datos de entrada a minúsculas
-            pais_nombre = pais_nombre.strip().lower()
-            ciudad_nombre = ciudad_nombre.strip().lower()
-            localidad_nombre = localidad_nombre.strip().lower() if localidad_nombre else None
+            # Validar que el país existe
+            pais = self.db.query(Pais).filter(Pais.id == id_pais).first()
+            if not pais:
+                return {
+                    "success": False,
+                    "message": f"El país con ID {id_pais} no existe en la base de datos",
+                    "processed_rows": 0,
+                    "errors": ["País no encontrado"],
+                    "localidad_creada": False
+                }
+            
+            # Validar que la ciudad existe y pertenece al país
+            ciudad = self.db.query(Ciudad).filter(
+                Ciudad.id == id_ciudad,
+                Ciudad.id_pais == id_pais
+            ).first()
+            if not ciudad:
+                return {
+                    "success": False,
+                    "message": f"La ciudad con ID {id_ciudad} no existe en el país seleccionado",
+                    "processed_rows": 0,
+                    "errors": ["Ciudad no encontrada o no pertenece al país"],
+                    "localidad_creada": False
+                }
+            
+            # Normalizar nombre de localidad
+            localidad_nombre = localidad_nombre.strip().lower() if localidad_nombre else ciudad.nombre.lower()
             
             # Verificar si la localidad ya existe ANTES de procesar
-            if not self._can_create_localidad(pais_nombre, ciudad_nombre, localidad_nombre):
+            if not self._can_create_localidad(id_ciudad, localidad_nombre):
                 return {
                     "success": False,
                     "message": "No se puede procesar el CSV: La localidad ya existe en la base de datos. Para cargar datos en una localidad existente, primero debe eliminar los datos previos.",
                     "processed_rows": 0,
                     "errors": ["Localidad ya existe"],
-                    "pais_creado": False,
-                    "ciudad_creada": False,
                     "localidad_creada": False
                 }
             
             # Procesar los datos de ubicación
-            localidad_id = self._process_location_data(pais_nombre, ciudad_nombre, localidad_nombre)
+            localidad_id = self._process_location_data(id_ciudad, localidad_nombre)
             
             # Leer CSV
             df = pd.read_csv(StringIO(csv_content))
@@ -54,8 +75,6 @@ class CSVService:
                     "message": f"El CSV debe contener las columnas: {', '.join(required_columns)}",
                     "processed_rows": 0,
                     "errors": [f"Columnas faltantes. Columnas encontradas: {list(df.columns)}"],
-                    "pais_creado": self.pais_creado,
-                    "ciudad_creada": self.ciudad_creada,
                     "localidad_creada": self.localidad_creada
                 }
             
@@ -70,8 +89,6 @@ class CSVService:
                     "message": "Error de configuración: No existe el tipo de vía 'no definido' en la base de datos. Este tipo de vía debe existir para manejar casos con tipo de vía vacío.",
                     "processed_rows": 0,
                     "errors": ["Tipo de vía 'no definido' no existe en la base de datos"],
-                    "pais_creado": self.pais_creado,
-                    "ciudad_creada": self.ciudad_creada,
                     "localidad_creada": self.localidad_creada
                 }
             
@@ -84,8 +101,6 @@ class CSVService:
                     "processed_rows": 0,
                     "errors": validation_result["errors"],
                     "tipos_via_no_encontrados": validation_result["tipos_via_no_encontrados"],
-                    "pais_creado": False,
-                    "ciudad_creada": False,
                     "localidad_creada": False
                 }
             
@@ -139,17 +154,9 @@ class CSVService:
             if self.contador_calles_sin_nombre > 0:
                 message += f" Se crearon {self.contador_calles_sin_nombre} calles sin nombre."
             
-            # Agregar información de ubicación creada
-            location_info = []
-            if self.pais_creado:
-                location_info.append(f"País '{pais_nombre}' creado")
-            if self.ciudad_creada:
-                location_info.append(f"Ciudad '{ciudad_nombre}' creada")
+            # Agregar información de localidad creada
             if self.localidad_creada and localidad_nombre:
-                location_info.append(f"Localidad '{localidad_nombre}' creada")
-            
-            if location_info:
-                message += f" {', '.join(location_info)}."
+                message += f" Localidad '{localidad_nombre}' creada en {ciudad.nombre}, {pais.nombre}."
             
             return {
                 "success": True,
@@ -157,8 +164,6 @@ class CSVService:
                 "processed_rows": processed_rows,
                 "errors": errors,
                 "calles_sin_nombre_creadas": self.contador_calles_sin_nombre,
-                "pais_creado": self.pais_creado,
-                "ciudad_creada": self.ciudad_creada,
                 "localidad_creada": self.localidad_creada
             }
             
@@ -170,82 +175,38 @@ class CSVService:
                 "processed_rows": 0,
                 "errors": [str(e)],
                 "calles_sin_nombre_creadas": 0,
-                "pais_creado": False,
-                "ciudad_creada": False,
                 "localidad_creada": False
             }
     
-    def _can_create_localidad(self, pais_nombre: str, ciudad_nombre: str, localidad_nombre: Optional[str] = None) -> bool:
-        #Verifica si se puede crear la localidad (no debe existir previamente)
-        # Si no se proporciona localidad, usar el nombre de la ciudad
-        if not localidad_nombre or localidad_nombre.strip() == "":
-            localidad_nombre = ciudad_nombre
-        
-        # Buscar país
-        pais = self.db.query(Pais).filter(Pais.nombre == pais_nombre).first()
-        if not pais:
-            # Si el país no existe, se puede crear todo
-            return True
-        
-        # Buscar ciudad
-        ciudad = self.db.query(Ciudad).filter(
-            Ciudad.nombre == ciudad_nombre,
-            Ciudad.id_pais == pais.id
-        ).first()
-        if not ciudad:
-            # Si la ciudad no existe, se puede crear todo
-            return True
-        
-        # Buscar localidad
+    def _can_create_localidad(self, id_ciudad: int, localidad_nombre: str) -> bool:
+        """
+        Verifica si se puede crear la localidad (no debe existir previamente)
+        Ahora trabaja con ID de ciudad
+        """
+        # Buscar localidad en la ciudad especificada
         localidad = self.db.query(Localidad).filter(
             Localidad.nombre == localidad_nombre,
-            Localidad.id_ciudad == ciudad.id
+            Localidad.id_ciudad == id_ciudad
         ).first()
         
         # Si la localidad ya existe, NO se puede procesar el CSV
         return localidad is None
     
-    def _process_location_data(self, pais_nombre: str, ciudad_nombre: str, localidad_nombre: Optional[str] = None) -> int:
-        #Procesa los datos de ubicación (país, ciudad, localidad) y retorna el ID de la localidad
-        #Todos los datos se guardan en minúsculas
-
-        # 1. Buscar o crear país
-        pais = self.db.query(Pais).filter(Pais.nombre == pais_nombre).first()
-        if not pais:
-            pais = Pais(nombre=pais_nombre)  # Ya viene en minúsculas
-            self.db.add(pais)
-            self.db.flush()
-            self.pais_creado = True
-        
-        # 2. Buscar o crear ciudad
-        ciudad = self.db.query(Ciudad).filter(
-            Ciudad.nombre == ciudad_nombre,
-            Ciudad.id_pais == pais.id
-        ).first()
-        
-        if not ciudad:
-            ciudad = Ciudad(
-                nombre=ciudad_nombre,  # Ya viene en minúsculas
-                id_pais=pais.id
-            )
-            self.db.add(ciudad)
-            self.db.flush()
-            self.ciudad_creada = True
-        
-        # 3. Buscar o crear localidad
-        # Si no se proporciona localidad, usar el nombre de la ciudad
-        if not localidad_nombre or localidad_nombre.strip() == "":
-            localidad_nombre = ciudad_nombre
-        
+    def _process_location_data(self, id_ciudad: int, localidad_nombre: str) -> int:
+        """
+        Procesa los datos de localidad y retorna el ID de la localidad
+        Ahora solo maneja la localidad ya que país y ciudad vienen desde la BD
+        """
+        # Buscar o crear localidad
         localidad = self.db.query(Localidad).filter(
             Localidad.nombre == localidad_nombre,
-            Localidad.id_ciudad == ciudad.id
+            Localidad.id_ciudad == id_ciudad
         ).first()
         
         if not localidad:
             localidad = Localidad(
-                nombre=localidad_nombre,  # Ya viene en minúsculas
-                id_ciudad=ciudad.id,
+                nombre=localidad_nombre,
+                id_ciudad=id_ciudad,
                 flg_vigencia='S'  # Por defecto vigente
             )
             self.db.add(localidad)
@@ -255,8 +216,10 @@ class CSVService:
         return localidad.id
     
     def _process_row(self, nombre_calle: str, seccion_calle: str, tipo_via_id: int, localidad_id: int):
-        #Procesa una fila individual del CSV
-        #Ahora recibe el ID del tipo de vía en lugar del nombre
+        """
+        Procesa una fila individual del CSV
+        Ahora recibe el ID del tipo de vía en lugar del nombre
+        """
         # 1. Buscar o crear calle_localidad (ahora usando la localidad_id dinámica)
         calle_localidad = self.db.query(CalleLocalidad).filter(
             CalleLocalidad.nombre == nombre_calle,
@@ -288,48 +251,56 @@ class CSVService:
             self.db.add(seccion_calle_obj)
     
     def get_tipo_vias(self) -> List[TipoVia]:
-        #Obtiene todos los tipos de vía
+        """Obtiene todos los tipos de vía"""
         return self.db.query(TipoVia).all()
     
     def get_calles_localidad(self) -> List[CalleLocalidad]:
-        #Obtiene todas las calles por localidad
+        """Obtiene todas las calles por localidad"""
         return self.db.query(CalleLocalidad).all()
     
     def get_secciones_calle(self) -> List[SeccionCalle]:
-        #Obtiene todas las secciones de calle
+        """Obtiene todas las secciones de calle"""
         return self.db.query(SeccionCalle).all()
     
-    # Métodos adicionales para consultar los nuevos datos
+    # Métodos para obtener países y ciudades desde la BD
     def get_paises(self) -> List[Pais]:
-        #Obtiene todos los países
-        return self.db.query(Pais).all()
+        """Obtiene todos los países ordenados por nombre"""
+        return self.db.query(Pais).order_by(Pais.nombre).all()
     
-    def get_ciudades(self, pais_id: Optional[int] = None) -> List[Ciudad]:
-        #Obtiene todas las ciudades, opcionalmente filtradas por país
+    def get_ciudades(self, id_pais: Optional[int] = None) -> List[Ciudad]:
+        """
+        Obtiene todas las ciudades, opcionalmente filtradas por país
+        Ordenadas por nombre
+        """
         query = self.db.query(Ciudad)
-        if pais_id:
-            query = query.filter(Ciudad.id_pais == pais_id)
-        return query.all()
+        if id_pais:
+            query = query.filter(Ciudad.id_pais == id_pais)
+        return query.order_by(Ciudad.nombre).all()
     
-    def get_localidades(self, ciudad_id: Optional[int] = None) -> List[Localidad]:
-        #Obtiene todas las localidades, opcionalmente filtradas por ciudad
+    def get_localidades(self, id_ciudad: Optional[int] = None) -> List[Localidad]:
+        """
+        Obtiene todas las localidades, opcionalmente filtradas por ciudad
+        Solo localidades vigentes, ordenadas por nombre
+        """
         query = self.db.query(Localidad).filter(Localidad.flg_vigencia == 'S')
-        if ciudad_id:
-            query = query.filter(Localidad.id_ciudad == ciudad_id)
-        return query.all()
+        if id_ciudad:
+            query = query.filter(Localidad.id_ciudad == id_ciudad)
+        return query.order_by(Localidad.nombre).all()
     
-    def check_localidad_exists(self, pais_nombre: str, ciudad_nombre: str, localidad_nombre: Optional[str] = None) -> bool:
-        #Método público para verificar si una localidad ya existe
-        #Útil para validaciones desde el frontend
-        pais_nombre = pais_nombre.strip().lower()
-        ciudad_nombre = ciudad_nombre.strip().lower()
-        localidad_nombre = localidad_nombre.strip().lower() if localidad_nombre else ciudad_nombre
-        
-        return not self._can_create_localidad(pais_nombre, ciudad_nombre, localidad_nombre)
+    def check_localidad_exists(self, id_ciudad: int, localidad_nombre: str) -> bool:
+        """
+        Método público para verificar si una localidad ya existe
+        Útil para validaciones desde el frontend
+        Ahora trabaja con ID de ciudad
+        """
+        localidad_nombre = localidad_nombre.strip().lower()
+        return not self._can_create_localidad(id_ciudad, localidad_nombre)
     
     def _validate_tipos_via_in_csv(self, df: pd.DataFrame) -> Dict[str, Any]:
-        #Valida que todos los tipos de vía no vacíos del CSV existan en la BD
-        #Detiene la carga si encuentra tipos de vía inválidos
+        """
+        Valida que todos los tipos de vía no vacíos del CSV existan en la BD
+        Detiene la carga si encuentra tipos de vía inválidos
+        """
         try:
             # Obtener tipos de vía únicos del CSV que NO estén vacíos
             tipos_via_csv = set()
@@ -376,5 +347,3 @@ class CSVService:
                 "errors": [str(e)],
                 "tipos_via_no_encontrados": []
             }
-
-

@@ -1,15 +1,13 @@
-# schemas/seccion_calle.py
+# schemas/pais.py
 from pydantic import BaseModel
 
-class SeccionCalleBase(BaseModel):
+class PaisBase(BaseModel):
     nombre: str
-    id_calle_localidad: int
-    id_tipo_via: int
 
-class SeccionCalleCreate(SeccionCalleBase):
+class PaisCreate(PaisBase):
     pass
 
-class SeccionCalle(SeccionCalleBase):
+class Pais(PaisBase):
     id: int
     
     class Config:

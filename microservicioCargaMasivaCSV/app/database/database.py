@@ -4,6 +4,10 @@ from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
 
+"""
+por si da problemas el path del .env:
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)"""
 load_dotenv()
 
 DB_USER = os.getenv("DB_USER")
