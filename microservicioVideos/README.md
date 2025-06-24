@@ -1,50 +1,10 @@
-Estructura del microservicio de videos
-microservicioVideos/
-│
-├── app/                         # Lógica principal de la app
-│   ├── api/                     # Endpoints (FastAPI, Flask, etc.)
-│   │   ├── routes/
-│   │   │   ├── minio.py         # Tiene los metodos del CRUD
-│   │   │   └── ...
-│   │   └── main.py              # Arranque del servidor, incluye app y routers
-│   │
-│   ├── services/                # Lógica de negocio
-│   │   ├── minio_service.py     # Funciones para MinIO 
-│   │   ├── mongo_service.py     # Funciones para MongoDB
-│   │   └── postgres_service.py  # Funciones para PostgreSQL
-│   │
-│   ├── models/                  # Esquemas (pydantic, ORMs, etc.)
-│   │   └── ...
-│   │
-│   └── utils/                   # Utilidades generales (logs, helpers)
-│   │   └── logger.py
-│   │
-│   └── config/                  # Configuración del microservicio
-│       └── settings.py          # Variables de entorno, conexión a BD, etc.
-│
-├── tests/                       # Pruebas unitarias o de integración
-│   ├── test_minio.py
-│   ├── test_mongo.py
-│   └── test_postgres.py
-│
-├── .env
-├── .gitignore
-├── Dockerfile
-├── docker-compose.ylm           # Permite crear el contenedor de minio
-└── README.md
+# MicroservicioVideos
+
+Este microservicio tiene las funcionalidades para levantar un servidor para recibir solicitudes HTTP de la pagina de fusa. Tambien se tiene los recursos necesarios para realizar la carga masiva de datos.
+
+Estos servicios asumen que los servicios de bases de datos ya estan levantados. (Para ver sobre esto ir a shared /**_service/)
 
 Comandos a usar:
-    > docker-compose up -d      # Compando para el docker-compose, se puede ver el contenedor en docker desktop
-    > Ir a la UI de minio (http://localhost:9001/login) y crear el bucket 'videos', el usuario y contraseña es minioadmin
-    > python main.py            # Esto en /microservicioVideos, corre el microservicio
-
-crear .env (en /microservicioVideos):
-    HOST=localhost
-    PORT=8002
-    MINIO_ENDPOINT=localhost:9000
-    MINIO_ACCESS_KEY=minioadmin
-    MINIO_SECRET_KEY=minioadmin
-    MINIO_BUCKET=fusaroads
 
 WARNING: Asegurar que el init.minio.sh este en LF, esto algo de caracteres que si esta en CRLF no dejara ejecutar el init-minio (Lo cual termina por no crear el bucket y carpetas)
 ![imagen_ejemplo](image.png)
