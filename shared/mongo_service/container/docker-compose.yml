@@ -1,7 +1,7 @@
-version: '3.8'
-
 services:
   mongo:
+    ports:
+      - 27017:27017
     image: mongo
     restart: always
     environment:
@@ -9,8 +9,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - mongo_data:/data/db
-      - ./mongo-init/init.sh:/docker-entrypoint-initdb.d/init.sh
       - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js
+    networks:
+      - fusaroadsred
 
   mongo-express:
     image: mongo-express
@@ -24,6 +25,12 @@ services:
       ME_CONFIG_BASICAUTH: false
     depends_on:
       - mongo
+    networks:
+      - fusaroadsred
 
 volumes:
   mongo_data:
+
+networks:
+  fusaroadsred:
+    external: true

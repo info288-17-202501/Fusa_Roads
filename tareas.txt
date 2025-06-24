@@ -1,0 +1,34 @@
+Actividad: Carga de videos masivos
+    Renato
+
+Actividad: Visualizar miniaturas de videos en el frontend
+    Renato
+    Javier
+
+Actividad: Marcar puntos 
+    Renato
+    Rafael
+    Javier 
+
+Actividad: Enviar codigo de python para puntos y poligonos en imagenes.
+    Luis llanca
+
+Actividad: Seleccion de Modelos de IA  
+    Javier
+
+Actividad: Ejecutar PIA 
+    - Crear API que permite ejecutar
+        Handel 
+        Luis llanca 
+        Rafael
+        Renato (Transparentar como usar MinIO)
+    - Cambiar estructura del json de parametros, debe contener un template de parametros y un arreglo de videos con path y puntos
+        Handel
+    - Programa secuencial para ejecutar cada uno de los videos del archivo de parametros
+        Luis llanca
+
+Actividad: Integracion del PIA con los estados procesos
+    Handel 
+    Luis llanca
+    Javier (Visualizacion)
+    Rafael 
