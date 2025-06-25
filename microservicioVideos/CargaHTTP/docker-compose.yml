@@ -19,6 +19,9 @@ services:
 
     restart: unless-stopped
 
+    volumes:
+      - ./descargas:/app/descargas
+
 networks:
   fusaroadsred:
     external: true

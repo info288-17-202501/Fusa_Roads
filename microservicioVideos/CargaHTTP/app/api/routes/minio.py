@@ -7,13 +7,14 @@ from datetime import timedelta
 from app.fusa_minio_service.uploader import upload_file_to_minio
 from app.fusa_minio_service.deleter import delete_file_from_minio
 from app.fusa_minio_service.visualizer import visualize_file_from_minio
-from app.fusa_minio_service.updater import update_file_from_minio
+# from app.fusa_minio_service.updater import update_file_from_minio
+from app.fusa_minio_service.client import client
+import os
 
 router = APIRouter(prefix="/minio", tags=["MinIO"])
 
-
 @router.get("/")
-async def get_videos(
+async def get_visualize_video(
     bucket: Annotated[str, Form(...)],
     folder: Annotated[str, Form(...)],
     file_name: Annotated[str, Form(...)]
@@ -23,6 +24,21 @@ async def get_videos(
 
     return {
         "message" : url
+    }
+
+@router.get("/video")
+async def get_download_video(
+    bucket: Annotated[str, Form(...)],
+    folder: Annotated[str, Form(...)],
+    file_name: Annotated[str, Form(...)]
+    # download_path: Annotated[str, Form(...)] | None
+):
+    
+    local_path = os.path.join("/app/descargas", file_name)
+    object_name = f"{folder.strip('/')}/{file_name}"
+    video = client.fget_object(bucket, object_name, local_path)
+    return{
+        "data": video 
     }
 
 @router.post("/")
@@ -63,15 +79,15 @@ async def delete_videos(
         "objects": object_names
     }
 
-@router.put("/")
-async def update_video(
-    new_file: Annotated[UploadFile, Form(...)],
-    file_name: Annotated[str, Form(...)],
-    folder: Annotated[str, Form(...)],
-    bucket: Annotated[str, Form(...)]
-):
-    update_file_from_minio(new_file, file_name, folder, bucket)
+# @router.put("/")
+# async def update_video(
+#     new_file: Annotated[UploadFile, Form(...)],
+#     file_name: Annotated[str, Form(...)],
+#     folder: Annotated[str, Form(...)],
+#     bucket: Annotated[str, Form(...)]
+# ):
+#     update_file_from_minio(new_file, file_name, folder, bucket)
 
-    return {
-        "message" : "Video actualizado con exito"
-    }
+#     return {
+#         "message" : "Video actualizado con exito"
+#     }
