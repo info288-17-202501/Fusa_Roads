@@ -1,4 +1,5 @@
 // resources/procesosData.ts
+//ejemplos de data para probar todos los casos en el front
 import { Proceso } from "./types";
 
 export const procesosData: Proceso[] = [

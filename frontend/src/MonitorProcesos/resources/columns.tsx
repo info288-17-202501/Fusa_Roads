@@ -55,6 +55,7 @@ export const getColumns = (abrirModal: (proceso: Proceso) => void) => [
   cell: ({ row }: any) => {
     const proceso: Proceso = row.original;
 
+    //función para mostrar el boton mapas de ruido si se completó correctamente todo el proceso
     const todosOk = proceso.estados.every(
       (estado) => estado.flag === 'ok' && estado.fecha_hora_fin
     );

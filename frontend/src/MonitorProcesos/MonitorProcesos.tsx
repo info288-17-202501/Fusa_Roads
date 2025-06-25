@@ -21,7 +21,7 @@ function MonitorProcesos() {
         setShowModal(false);
     };
 
-    const columns = getColumns(abrirModal); // 👈 Pasamos función al generador
+    const columns = getColumns(abrirModal);
 
     return (
         <Container className="w-75 my-5">

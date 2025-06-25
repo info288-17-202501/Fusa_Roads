@@ -1,22 +1,6 @@
-//codigo original
-/*
- //   export type ProcesoProyecto = {
- //   id: number;
- //   nombre: string;
-    estado: {
-        creado: boolean;
-        iniciado: boolean;
-        audioIA: boolean;
-        videoIA: boolean;
-        integrado: boolean;
-    };
-    };
-
-*/
-
-//tipos segun el backend
-
 // resources/types.ts
+
+// del proceso, si hubo error se incluye descrip con los detalles, para video se usa el atributo avance
 export type Estado = {
   estado: string;
   orden: number;
