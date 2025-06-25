@@ -1,44 +1,85 @@
-import { ProcesoProyecto } from './types';
-import { Row }  from '@tanstack/react-table';
+// resources/columns.tsx
+import { Proceso } from './types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//iconos utilizados
+import { faCheckCircle, faTimesCircle, faSpinner, faEye, faMap, faCircle } from '@fortawesome/free-solid-svg-icons';
 
-export const columns = [
-    { accessorKey: 'id',        header: 'ID' },
-    { accessorKey: 'nombre',    header: 'Nombre' },
 
-    // Acceso manual a propiedades anidadas del estado
-    {
-        header: 'Creado',
-        accessorFn: (row: ProcesoProyecto) => row.estado.creado ? '✅' : '❌'
-    },
-    {
-        header: 'Iniciado',
-        accessorFn: (row: ProcesoProyecto) => row.estado.iniciado ? '✅' : '❌'
-    },
-    {
-        header: 'Audio-IA',
-        accessorFn: (row: ProcesoProyecto) => row.estado.audioIA ? '✅' : '❌'
-    },
-    {
-        header: 'Video-IA',
-        accessorFn: (row: ProcesoProyecto) => row.estado.videoIA ? '✅' : '❌'
-    },
-    {
-        header: 'Integrado',
-        accessorFn: (row: ProcesoProyecto) => row.estado.integrado ? '✅' : '❌'
-    },
+//asigna icono segun el flag de estado
+const iconoEstado = (estados: Proceso["estados"], nombreEstado: string) => {
+  const estado = estados.find(e => e.estado === nombreEstado);
+  if (!estado) return <FontAwesomeIcon icon={faSpinner} className="text-secondary" />;
 
-    // Botones de acción
-    {
-    header: 'Detalle',
-    cell: ({ row }: { row: Row<ProcesoProyecto> }) => (
-        <div className="d-flex gap-2">
-            <button className="btn btn-success px-3 py-1 rounded">
-                Mapa de ruido
-            </button>
-            <button className="btn btn-danger px-3 py-1 rounded">
-                Ver detalle
-            </button>
-        </div>
-    )
+  if (estado.flag === 'ok') {
+    return <FontAwesomeIcon icon={faCheckCircle} className="text-success" />;
+  } else if (estado.flag === 'error') {
+    return <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />;
+  } else {
+    return <FontAwesomeIcon icon={faCircle} className="text-secondary" />;
+  }
+};
+
+
+
+export const getColumns = (abrirModal: (proceso: Proceso) => void) => [
+  {
+    accessorKey: 'id',
+    header: 'ID'
+  },
+  {
+    accessorKey: 'nombre',
+    header: 'Nombre'
+  },
+  {
+  header: 'Creado',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'creado')
+},
+{
+  header: 'Iniciado',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'iniciado')
+},
+{
+  header: 'Audio',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'audio')
+},
+{
+  header: 'Video',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'video')
+},
+{
+  header: 'Integrado',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'integrado')
+},
+  {
+  header: 'Detalle',
+  cell: ({ row }: any) => {
+    const proceso: Proceso = row.original;
+
+    const todosOk = proceso.estados.every(
+      (estado) => estado.flag === 'ok' && estado.fecha_hora_fin
+    );
+
+    if (todosOk) {
+      return (
+        <button
+          className="btn btn-outline-secondary btn-sm"
+          onClick={() => {
+            // Funcionalidad de mapas de ruido pendiente
+          }}
+        >
+          <FontAwesomeIcon icon={faMap} /> Mapas de ruido
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className="btn btn-outline-primary btn-sm"
+          onClick={() => abrirModal(proceso)}
+        >
+          <FontAwesomeIcon icon={faEye} /> Ver detalle
+        </button>
+      );
+    }
+  }
 }
 ];
