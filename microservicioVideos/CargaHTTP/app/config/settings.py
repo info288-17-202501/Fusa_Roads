@@ -15,6 +15,6 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
-        # extra = "ignore" # Esto permite no tener que definir todas las variables en el .env
+        extra = "ignore" # Esto permite no tener que definir todas las variables en el .env
 
 settings = Settings()
