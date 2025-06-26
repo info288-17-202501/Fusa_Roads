@@ -8,3 +8,5 @@ Para ejecutar usar
     (Necesita que el contenedor Mongo este activo (ir a shared/mongo_service/container))
 
 La descarga de videos crea actualmente una carpeta en la app que guarda los videos.
+
+[http://localhost:8002/redoc](Documentacion), Esta es la documentacion que genera FastAPI automaticamente.
