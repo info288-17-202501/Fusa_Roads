@@ -13,6 +13,12 @@ services:
       - MINIO_ACCESS_KEY=minioadmin
       - MINIO_SECRET_KEY=minioadmin
       - MINIO_BUCKETS=fusaroads
+      - MONGO_HOST=mongo
+      - MONGO_USER=root
+      - MONGO_PASS=example
+      - MONGO_PORT=27017
+      - MONGO_DB=fusa_roads
+      - MONGO_COLLECTION=contextos_videos
 
     networks:
       - fusaroadsred

@@ -1,4 +1,4 @@
-import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo, faGears } from '@fortawesome/free-solid-svg-icons';
 
 export const menuItems = [
 	{
@@ -42,5 +42,11 @@ export const menuItems = [
 	    "nombre": "Visor de mapas de proyectos",
 	    "descripcion": "Visualiza los mapas de ruido generados por cada proyecto en una interfaz geoespacial.",
 	    "url": "/visor-mapas-de-ruido"
+	},
+	{
+	    "icono": faGears,
+	    "nombre": "Test",
+	    "descripcion": "Para realizar test",
+	    "url": "/test"
 	}
 ]

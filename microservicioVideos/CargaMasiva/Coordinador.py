@@ -298,9 +298,9 @@ if __name__ == '__main__':
             ccjson["ruta_video_minio"] = f"videos_original/{general_json["nombre_campagna"]}/videos/{video}"
             ccjson["minio_bucket"] = mibucket
             ccjson["ruta_miniatura_minio"] = f"videos_original/{general_json["nombre_campagna"]}/miniaturas/{nvideo_sin_extension + ".jpg"}"
-            ccjson["mongo_collection"] = "contextos"
+            ccjson["mongo_collection"] = "contextos_videos"
 
-            subir_a_mongo(ccjson, "fusa_roads", "contextos")
+            subir_a_mongo(ccjson, "fusa_roads", "contextos_videos")
 
 
             for detalle in mem_json["detalle_videos"]:
