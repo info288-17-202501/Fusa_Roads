@@ -2,26 +2,56 @@ import { Modal, Form, Button } from "react-bootstrap";
 import { useState, useEffect, FormEvent } from 'react'
 import FormRow from "./FormRow";
 
+interface Pais {
+    id: number;
+    nombre: string;
+}
+
+interface Ciudad {
+    id: number;
+    nombre: string;
+    pais_id: number;
+}
 interface Props {
     show: boolean;
     onClose: () => void;
     data: string[]; // cada string es el nombre de una ciudad
 }
 
-function ModalCargaMasiva ({show, onClose, data}: Props){
+function ModalCargaMasiva ({show, onClose}: Props){
     const [validated, setValidated] = useState(false);
 
-    const [pais, setPais] = useState('');
-    const [ciudad, setCiudad] = useState('');
     const [localidad, setLocalidad] = useState('');
     const [archivo, setArchivo] = useState<File | null>(null);
 
-    const [ciudades, setCiudades] = useState<string[]>(data); //setCiudades lo usare cuando exista una relacion entre ciudad y pais. Aparecerán solo las ciudades del pais seleccionado previamente
+    const [paises, setPaises] = useState<Pais[]>([]);
+    const [ciudades, setCiudades] = useState<Ciudad[]>([]); //setCiudades lo usare cuando exista una relacion entre ciudad y pais. Aparecerán solo las ciudades del pais seleccionado previamente
+    const [paisId, setPaisId] = useState('');
+    const [ciudadId, setCiudadId] = useState('');
 
+    useEffect(() => {
+        fetch("http://localhost:8001/csv/paises")
+            .then(res => res.json())
+            .then(setPaises)
+            .catch(err => console.error("Error al cargar países", err));
+    }, []);
+
+    useEffect(() => {
+        if (paisId === '') {
+            setCiudades([]);
+            setCiudadId('');
+            return;
+        }
+
+        fetch(`http://localhost:8001/csv/ciudades?id_pais=${paisId}`)
+            .then(res => res.json())
+            .then(setCiudades)
+            .catch(err => console.error("Error al cargar ciudades", err));
+    }, [paisId]);
 
     const handleCancelar = () => {
-        setPais('');
-        setCiudad('');
+        setPaisId('');
+        setCiudadId('');
         setLocalidad('');
         setArchivo(null);
         setValidated(false);
@@ -33,9 +63,12 @@ function ModalCargaMasiva ({show, onClose, data}: Props){
 
         const formData = new FormData()
         formData.append("file", archivo)
-        formData.append("pais", pais)
-        formData.append("ciudad", ciudad)
+        formData.append("id_pais", paisId)
+        formData.append("id_ciudad", ciudadId)
         formData.append("localidad", localidad)
+        for (const [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
         
         try{
             const response = await fetch("http://localhost:8001/csv/upload",{
@@ -56,8 +89,8 @@ function ModalCargaMasiva ({show, onClose, data}: Props){
             alert("Error al conectar con el servidor")
         }
 
-        setPais('');
-        setCiudad('');
+        setPaisId('');
+        setCiudadId('');
         setLocalidad('');
         setArchivo(null);
         setValidated(false);
@@ -88,16 +121,18 @@ function ModalCargaMasiva ({show, onClose, data}: Props){
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Modal.Body>
                     <FormRow label="País:" showFeedback>
-                        <Form.Select required value={pais} onChange={(e) => setPais(e.target.value)}>
-                            <option value={''}>Seleccione País</option>
-                            <option>Chile</option>
+                        <Form.Select required value={paisId} onChange={(e) => setPaisId(e.target.value)}>
+                            <option value="">Seleccione País</option>
+                            {paises.map((p) => (
+                                <option key={p.id} value={p.id}>{p.nombre}</option>
+                            ))}
                         </Form.Select>
                     </FormRow>
                     <FormRow label="Ciudad:" showFeedback>
-                        <Form.Select required disabled={pais ==''} value={ciudad} onChange={(e) => setCiudad(e.target.value)}>
-                            <option value={''}>Seleccione Ciudad</option>
-                            {ciudades.map((r) => (
-                                <option key={r}>{r}</option>
+                        <Form.Select required disabled={paisId ==''} value={ciudadId} onChange={(e) => setCiudadId(e.target.value)}>
+                            <option value="">Seleccione Ciudad</option>
+                            {ciudades.map((c) => (
+                                <option key={c.id} value={c.id}>{c.nombre}</option>
                             ))}
                         </Form.Select>
                     </FormRow>
@@ -106,22 +141,6 @@ function ModalCargaMasiva ({show, onClose, data}: Props){
 
                         </Form.Control>
                     </FormRow>
-                    {/* <FormRow label="Región:" showFeedback>
-                        <Form.Select required disabled={pais ==''} value={region} onChange={(e) => setRegion(e.target.value)}>
-                            <option value={''}>Seleccione Región</option>
-                            {regiones.map((r) => (
-                                <option key={r.region}>{r.region}</option>
-                            ))}
-                        </Form.Select>
-                    </FormRow>
-                    <FormRow label="Comuna:" showFeedback>
-                        <Form.Select required disabled={region == ''} value={comuna} onChange={(e) => setComuna(e.target.value)}>
-                            <option value={''}>Seleccione Comuna</option>
-                            {comunas.map((c) => (
-                                <option key={c}>{c}</option>
-                            ))}
-                        </Form.Select>
-                    </FormRow> */}
                     <FormRow label="Subir archivo:" showFeedback>
                         <Form.Control
                             required
