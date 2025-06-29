@@ -1,8 +1,7 @@
 import Table from '../components/Table';
 import { Container } from 'react-bootstrap';
-import { PMRs_ejemplo } from './resources/pmrData';
 import { columns } from './resources/columns'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PMR } from './resources/types';
 import ModalConfirmacion from '../components/ModalConfirmacion';
 import ModalNuevoPMR from './components/ModalNuevoPMR';
@@ -10,7 +9,7 @@ import ModalNuevoPMR from './components/ModalNuevoPMR';
 
 
 function PMR_page() {
-    const [PMRs, setPMRs] = useState(PMRs_ejemplo)
+    const [PMRs, setPMRs] = useState<PMR[]>([])
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
     const [message, setMessage] = useState<React.ReactNode>(null)
     const [deleteId, setDeleteId] = useState<number | null>(null);
@@ -18,6 +17,13 @@ function PMR_page() {
     const [editPMR, setEditPMR] = useState<PMR | undefined>(undefined);
     const [showEditModal, setShowEditModal] = useState(false);
     const [showNuevo, setShowNuevo] = useState(false);
+
+    useEffect(() => {
+        fetch('http://localhost:8006/pmr/')
+            .then(res => res.json())
+            .then(data => setPMRs(data))
+            .catch(err => console.error('Error cargando PMRs:', err));
+    }, []);
 
     const handleEdit = (pmr: PMR) => {
         setEditPMR(pmr);
@@ -34,13 +40,26 @@ function PMR_page() {
         setShowConfirmarModal(true);
     }
 
-    const handleConfirmDelete = () => {
-        if(deleteId === null) return;
+    const handleConfirmDelete = async () => {
+        if (deleteId === null) return;
 
-        setPMRs((prev) => prev.filter((c) => c.id !== deleteId))
+        try{
+            const response = await fetch(`http://localhost:8006/pmr/${deleteId}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) throw new Error("Error al eliminar el PMR")
+            
+            setPMRs((prev) => prev.filter((c) => c.id !== deleteId))
+
+        } catch (error) {
+            console.error("Error eliminando PMR: ", error);
+            alert("Hubo un problema al eliminar el PMR");
+        } finally {
+            setShowConfirmarModal(false);
+            setDeleteId(null);
+        }
         
-        setShowConfirmarModal(false);
-        setDeleteId(null);
     }
     
     return (
@@ -71,10 +90,18 @@ function PMR_page() {
             <ModalNuevoPMR 
                 show={showEditModal}
                 onClose={() => setShowEditModal(false)}
-                onSave={(pmrEditado) => {
-                    setPMRs(prev => prev.map(p => (p.id === pmrEditado.id ? pmrEditado : p)));
-                    setShowEditModal(false)
-                }}
+                onSave={() => {
+                            fetch("http://localhost:8006/pmr/")
+                                .then(res => res.json())
+                                .then(data => {
+                                    setPMRs(data);
+                                    setShowEditModal(false);
+                                })
+                                .catch(err => {
+                                    console.error("Error al recargar PMRs:", err);
+                                    setShowEditModal(false);
+                                });
+                        }}
                 pmrAEditar={editPMR}
             />
 

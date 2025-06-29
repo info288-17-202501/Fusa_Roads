@@ -3,6 +3,10 @@ import { PMR } from './types';
 import { Row } from '@tanstack/react-table';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
+function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleString('sv-SE').replace('T', ' ');
+}
 
 export const columns = (
     handleAskDelete: (id: number, nombre:string) => void,
@@ -12,7 +16,17 @@ export const columns = (
     { accessorKey: 'nombre', header: 'Nombre' },
     { accessorKey: 'descripcion', header: 'Descripción' },
     {
-        header: 'Seleccionado',
+        accessorKey: 'fecha_creacion',
+        header: 'Fecha Creación',
+        cell: ({row}: {row: Row<PMR>}) => (
+            <>{formatDate(row.original.fecha_creacion)}</>
+        )
+    },
+    { accessorKey: 'nombre_pais', header: 'País' },
+    { accessorKey: 'nombre_ciudad', header: 'Ciudad' },
+    { accessorKey: 'nombre_localidad', header: 'Localidad' },
+    {
+        header: 'Acciones',
         cell: ({ row }: { row: Row<PMR> }) => (
             <div className='d-flex gap-2'>
                 <button className='bg-primary px-2 py-1 rounded border-0' onClick={() => onEdit(row.original)}>
