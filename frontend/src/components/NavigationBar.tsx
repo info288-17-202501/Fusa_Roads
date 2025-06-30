@@ -9,7 +9,7 @@ const NavButtons = [
 	{ ruta: "/videos", etiqueta: "Videos", disabled: false },
 	{ ruta: "/secciones-calles", etiqueta: "Secciones Calles", disabled: false },
 	{ ruta: "/modelos-ia", etiqueta: "Modelos IA", disabled: false },
-	{ ruta: "/proyectos-ia", etiqueta: "PIA", disabled: true },
+	{ ruta: "/proyectos-ia", etiqueta: "PIA", disabled: false },
 	{ ruta: "/monitor-procesos", etiqueta: "Monitor de Procesos", disabled: true },
 	{ ruta: "/proyecto-mapa-de-ruido", etiqueta: "PMR", disabled: true },
 	{ ruta: "/visor-mapas-de-ruido", etiqueta: "Visor de Mapas", disabled: true }
