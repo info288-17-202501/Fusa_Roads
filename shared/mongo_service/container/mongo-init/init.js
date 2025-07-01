@@ -1,5 +1,5 @@
 // mongo-init/init.js
-db = db.getSiblingDB('fusa_mongo');
+db = db.getSiblingDB('fusa_roads');
 
 if (!db.getCollectionNames().includes('videos')) {
     db.createCollection('contextos_videos');
