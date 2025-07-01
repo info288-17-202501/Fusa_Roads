@@ -1,144 +1,125 @@
-import { Modal, Button, Form } from "react-bootstrap";
-import { useState, useEffect, FormEvent } from 'react';
-import FormRow from "../../components/FormRow";
-import { ProyectoIA } from "../resources/types";
+//ModalNuevoPoryecto.tsx
+//MOdal para añadir/editar PIA
+//TODO añadir verificaciones (que la lista de videos no este vacia por ej) 
+//TODO conexion backend
 
-interface Props {
-    show: boolean;
-    onClose: () => void;
-    initialValues?: ProyectoIA;
-    onSave: (proyecto: ProyectoIA) => void;
+import { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
+import FormProyecto from './FormProyecto';
+import SeleccionVideos from './SeleccionVideos'; //vista para seleccionar videos
+import SeleccionPuntos from './SeleccionPuntos'; //vista para seleccionar puntos
+import { ProyectoIA, Video } from '../resources/types';
+
+const dummyVideos: Video[] = [
+  { id: 1, nombre: 'picartet1', activo: false },
+  { id: 2, nombre: 'picartet2', activo: true },
+  { id: 3, nombre: 'General Logos1', activo: true },
+  { id: 4, nombre: 'General Logos2', activo: true },
+];
+
+type Props = {
+  show: boolean;
+  onClose: () => void;
+  onSave: (proyecto: ProyectoIA) => void;
+  initialValues?: ProyectoIA;
+};
+
+export default function ModalNuevoProyecto({ show, onClose, onSave, initialValues }: Props) {
+  const [currentView, setCurrentView] = useState<'form' | 'videos' | 'puntos'>('form');
+  const [videos, setVideos] = useState<Video[]>(dummyVideos);
+  const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
+  const [proyectoData, setProyectoData] = useState<ProyectoIA>({
+    id: 0,
+    nombre: '',
+    mVideo: '',
+    mAudio: '',
+    videoSalida: false,
+    ventanasTiempo: false,
+    tiempo: undefined,
+    unidad: 'hora'
+  });
+
+  // Resetear al formulario cuando se abre el modal
+  useEffect(() => {
+    if (show) {
+      setCurrentView('form');
+      if (initialValues) {
+        setProyectoData(initialValues);
+      } else {
+        setProyectoData({
+          id: 0,
+          nombre: '',
+          mVideo: '',
+          mAudio: '',
+          videoSalida: false,
+          ventanasTiempo: false,
+          tiempo: undefined,
+          unidad: 'hora'
+        });
+      }
+    }
+  }, [show, initialValues]);
+
+  const handleToggleActivo = (id: number) => {
+    setVideos(videos.map(v => v.id === id ? { ...v, activo: !v.activo } : v));
+  };
+
+  const handleLineaClick = (video: Video) => {
+    setVideoSeleccionado(video);
+    setCurrentView('puntos');
+  };
+
+  const handleSaveProyecto = (data: ProyectoIA) => {
+    setProyectoData(data);
+    onSave(data);
+  };
+
+  const renderView = () => {
+    switch (currentView) {
+      case 'videos':
+        return (
+          <SeleccionVideos 
+            videos={videos}
+            onToggleActivo={handleToggleActivo}
+            onLineaClick={handleLineaClick}
+            onBack={() => setCurrentView('form')}
+          />
+        );
+      case 'puntos':
+        return (
+          <SeleccionPuntos 
+            video={videoSeleccionado!}
+            onBack={() => setCurrentView('videos')}
+          />
+        );
+      default:
+        return (
+          <FormProyecto 
+            data={proyectoData}
+            onSave={handleSaveProyecto}
+            onCancel={onClose}
+            onShowVideos={() => setCurrentView('videos')}
+          />
+        );
+    }
+  };
+
+  const getTitle = () => {
+    switch (currentView) {
+      case 'videos': return 'Selección de Videos';
+      case 'puntos': return `Líneas para: ${videoSeleccionado?.nombre}`;
+      default: return initialValues ? "Editar Proyecto" : "Nuevo Proyecto IA";
+    }
+  };
+
+  return (
+    <Modal show={show} onHide={onClose} centered size={currentView === 'puntos' ? 'xl' : 'lg'}>
+      <Modal.Header closeButton>
+        <Modal.Title>{getTitle()}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {renderView()}
+      </Modal.Body>
+    </Modal>
+  );
 }
-
-function ModalNuevoProyecto({ show, onClose, initialValues, onSave }: Props) {
-    const [validated, setValidated] = useState(false);
-
-    const [nombre, setNombre] = useState('');
-    const [videoSalida, setVideoSalida] = useState(false);
-    const [ventanasTiempo, setVentanasTiempo] = useState(false);
-    const [mVideo, setMVideo] = useState('');
-    const [mAudio, setMAudio] = useState('');
-
-    useEffect(() => {
-        if (initialValues) {
-            setNombre(initialValues.nombre);
-            setVideoSalida(initialValues.videoSalida);
-            setVentanasTiempo(initialValues.ventanasTiempo);
-            setMVideo(initialValues.mVideo);
-            setMAudio(initialValues.mAudio);
-        } else {
-            setNombre('');
-            setVideoSalida(false);
-            setVentanasTiempo(false);
-            setMVideo('');
-            setMAudio('');
-        }
-        setValidated(false);
-    }, [initialValues, show]);
-
-    const handleCancelar = () => {
-        setNombre('');
-        setVideoSalida(false);
-        setVentanasTiempo(false);
-        setMVideo('');
-        setMAudio('');
-        setValidated(false);
-        onClose();
-    };
-
-    const handleGuardarYLimpiar = () => {
-        const proyecto: ProyectoIA = {
-            id: initialValues?.id ?? Date.now(),
-            nombre,
-            videoSalida,
-            ventanasTiempo,
-            mVideo,
-            mAudio
-        };
-        onSave(proyecto);
-
-        // Limpiar y cerrar
-        handleCancelar();
-    };
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        if (!form.checkValidity()) {
-            event.stopPropagation();
-            setValidated(true);
-            return;
-        }
-
-        setValidated(true);
-        handleGuardarYLimpiar();
-    };
-
-    return (
-        <Modal show={show} onHide={handleCancelar} centered>
-            <Modal.Header closeButton>
-                <Modal.Title>
-                    {initialValues ? "Editar Proyecto" : "Nuevo Proyecto IA"}
-                </Modal.Title>
-            </Modal.Header>
-
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Modal.Body>
-
-                    <FormRow label="Nombre del proyecto:" showFeedback>
-                        <Form.Control
-                            required
-                            value={nombre}
-                            placeholder="Ingrese el nombre del proyecto"
-                            onChange={(e) => setNombre(e.target.value)}
-                        />
-                    </FormRow>
-
-                    <FormRow label="Modelo de Video:" showFeedback>
-                        <Form.Control
-                            required
-                            value={mVideo}
-                            placeholder="ej: modelo_video_v1"
-                            onChange={(e) => setMVideo(e.target.value)}
-                        />
-                    </FormRow>
-
-                    <FormRow label="Modelo de Audio:" showFeedback>
-                        <Form.Control
-                            required
-                            value={mAudio}
-                            placeholder="ej: modelo_audio_v1"
-                            onChange={(e) => setMAudio(e.target.value)}
-                        />
-                    </FormRow>
-
-                    <FormRow label="¿Genera video de salida?" showFeedback>
-                        <Form.Check
-                            type="checkbox"
-                            label="Sí"
-                            checked={videoSalida}
-                            onChange={(e) => setVideoSalida(e.target.checked)}
-                        />
-                    </FormRow>
-
-                    <FormRow label="¿Usa ventanas de tiempo?" showFeedback>
-                        <Form.Check
-                            type="checkbox"
-                            label="Sí"
-                            checked={ventanasTiempo}
-                            onChange={(e) => setVentanasTiempo(e.target.checked)}
-                        />
-                    </FormRow>
-
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCancelar}>Cancelar</Button>
-                    <Button type="submit">Guardar</Button>
-                </Modal.Footer>
-            </Form>
-        </Modal>
-    );
-}
-
-export default ModalNuevoProyecto;

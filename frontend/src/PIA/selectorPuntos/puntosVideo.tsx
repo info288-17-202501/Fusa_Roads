@@ -1,3 +1,4 @@
+//PuntosVideo.tsx
 import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Button, Card, ListGroup } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";

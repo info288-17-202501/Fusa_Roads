@@ -5,4 +5,12 @@ export type ProyectoIA = {
     ventanasTiempo: boolean;
     mVideo: string;
     mAudio: string;
+    tiempo?: number;
+    unidad?: string;
+};
+
+export type Video = {
+  id: number;
+  nombre: string;
+  activo: boolean;
 };
