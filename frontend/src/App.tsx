@@ -4,6 +4,7 @@ import MenuCentral from './MenuCentral/MenuCentral';
 import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
 import Videos from './Videos/Videos'
 import ModelosIA from './ModelosIA/ModelosIA'
+import MonitorProcesos from './MonitorProcesos/MonitorProcesos'
 import Login from './Login/Login'
 import Profile from './Login/Profile';
 import SignUp from './Login/SignUp';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 				<Route path="/videos" element={<Videos/>} /> 
 				<Route path="/modelos-ia" element={<ModelosIA/>} />
 				<Route path="/proyectos-ia" element={<ProyectosIA/>} />
+				<Route path="/monitor-procesos" element={<MonitorProcesos/>} />
 				<Route path="/login" element={<Login/>} />
 				<Route path="/perfil" element={<Profile/>} />
 				<Route path="/sign-up" element={<SignUp/>} />
