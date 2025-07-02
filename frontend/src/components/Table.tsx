@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { InputGroup, FormControl, Button, Form } from 'react-bootstrap';
 import PaginationComponent from './PaginationComponent';
 
-interface Props<T>{
+interface Props<T> {
     data: T[];
     columns: ColumnDef<T, unknown>[];
     showNewButton?: boolean;
@@ -35,17 +35,17 @@ function Table<T extends { id: number }>({
     const filterableKeys = columns
         .map((col) => {
             if ('accessorKey' in col && typeof col.accessorKey === 'string') {
-            return col.accessorKey;
+                return col.accessorKey;
             }
             return null;
         })
         .filter(Boolean) as string[];
 
-  
+
     const table = useReactTable({
         data,
         columns,
-        state:{
+        state: {
             globalFilter
         },
         onGlobalFilterChange: setGlobalFilter,
@@ -57,13 +57,13 @@ function Table<T extends { id: number }>({
                 const value = row.original[key as keyof T];
                 return String(value).toLowerCase().includes(filterValue.toLowerCase());
             });
-          }
+        }
     });
 
     return (
         <div>
             <div className="d-flex justify-content-end gap-3 mb-3">
-                <InputGroup className='w-25' style={{ minWidth: 66}}>
+                <InputGroup className='w-25' style={{ minWidth: 66 }}>
                     <FormControl
                         type="text"
                         placeholder="Buscar..."
@@ -73,15 +73,15 @@ function Table<T extends { id: number }>({
                             if (e.target.value === "") setGlobalFilter("")
                         }}
                         onKeyDown={(e) => {
-                            if(e.key === "Enter") setGlobalFilter(searchInput)
+                            if (e.key === "Enter") setGlobalFilter(searchInput)
                         }}
                         className='border-end-0'
-                        style={{ outline: 'none', boxShadow: 'none', border: '1px solid rgb(222, 226, 230)'}}
+                        style={{ outline: 'none', boxShadow: 'none', border: '1px solid rgb(222, 226, 230)' }}
                     />
                     <InputGroup.Text className='bg-transparent border-start-0 gap-2'>
                         {searchInput ? (
                             <FontAwesomeIcon
-                                style={{cursor:"pointer"}}
+                                style={{ cursor: "pointer" }}
                                 onClick={() => {
                                     setGlobalFilter("")
                                     setSerachInput("")
@@ -91,31 +91,31 @@ function Table<T extends { id: number }>({
                         ) : (
                             <></>
                         )}
-                        <FontAwesomeIcon style={{cursor:"pointer"}} onClick={() => setGlobalFilter(searchInput)} icon={faSearch} />
+                        <FontAwesomeIcon style={{ cursor: "pointer" }} onClick={() => setGlobalFilter(searchInput)} icon={faSearch} />
                     </InputGroup.Text>
                 </InputGroup>
 
                 {showNewButton && (
                     <Button className="d-flex gap-2 align-items-center" variant='primary' onClick={onClickNewButton}>
-                        <FontAwesomeIcon className="my-auto" icon={faCirclePlus}/>
+                        <FontAwesomeIcon className="my-auto" icon={faCirclePlus} />
                         Nuevo
                     </Button>
                 )}
 
                 {showCargaMasivaButton && (
                     <Button className="d-flex gap-2 align-items-center" variant='outline-primary' onClick={onClickCargaMasivaButton}>
-                        <FontAwesomeIcon className="my-auto" icon={faFileCsv}/>
+                        <FontAwesomeIcon className="my-auto" icon={faFileCsv} />
                         Carga Masiva
                     </Button>
                 )}
             </div>
             <div className='table-responsive'>
                 <table className='w-100'>
-                    <thead style={{backgroundColor:"#ccc"}}>
+                    <thead style={{ backgroundColor: "#ccc" }}>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <tr key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => (
-                                    <th key={header.id} className='px-4 py-2' style={{border: '1px solid #b2b2b2'}}>
+                                    <th key={header.id} className='px-4 py-2' style={{ border: '1px solid #b2b2b2' }}>
                                         {flexRender(header.column.columnDef.header, header.getContext())}
                                     </th>
                                 ))}
@@ -125,9 +125,9 @@ function Table<T extends { id: number }>({
 
                     <tbody>
                         {table.getRowModel().rows.map((row, index) => (
-                            <tr key={row.id} style={{backgroundColor: index % 2 === 0 ? '#ffffff' : '#eee'}}>
+                            <tr key={row.id} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#eee' }}>
                                 {row.getVisibleCells().map((cell) => (
-                                    <td key={cell.id} className='px-4 py-2' style={{border: '1px solid #b2b2b2'}}>
+                                    <td key={cell.id} className='px-4 py-2' style={{ border: '1px solid #b2b2b2' }}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </td>
                                 ))}
@@ -141,9 +141,9 @@ function Table<T extends { id: number }>({
                     value={table.getState().pagination.pageSize}
                     onChange={e => table.setPageSize(Number(e.target.value))}
                 >
-                    {[1,2,3,5,10,20,50].map(size => (
+                    {[1, 2, 3, 5, 10, 20, 50].map(size => (
                         <option key={size} value={size}>
-                                Ver {size}
+                            Ver {size}
                         </option>
                     ))}
                 </Form.Select>

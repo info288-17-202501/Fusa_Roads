@@ -4,7 +4,7 @@
 
 import { Button } from 'react-bootstrap';
 import { Video } from '../resources/types';
-import  PuntosVideo from  '../selectorPuntos/puntosVideo' //codigo renato
+import  PuntosVideo from  './puntosVideo' //codigo renato
 
 type Props = {
   video: Video;
@@ -14,7 +14,7 @@ type Props = {
 export default function SeleccionPuntos({ video, onBack }: Props) {
   return (
     <div style={{ height: '60vh' }}>
-      <h5>Editando líneas para: {video.nombre}</h5>
+      <h5>Editando líneas para: {video.name}</h5>
       <div className="border rounded p-3 mb-3" style={{ height: '90%' }}>
         <PuntosVideo/>
       </div>

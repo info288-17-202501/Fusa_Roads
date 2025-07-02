@@ -1,19 +1,22 @@
-import Table from '../components/Table';
 import { Container } from 'react-bootstrap';
 import { columns } from './resources/columns';
-import { proyectosData } from './resources/proyectosData';
-import { useState } from 'react';
-import ModalConfirmacion from '../components/ModalConfirmacion';
+import { useState, useEffect } from 'react';
 import { ProyectoIA } from './resources/types';
+import Table from '../components/Table';
+import ModalConfirmacion from '../components/ModalConfirmacion';
 import ModalNuevoProyecto from './components/ModalNuevoProyecto';
 
+// Borrar en futuro
+import { proyectosData } from './resources/proyectosData';
+
 function ProyectosIA() {
-    const [showNuevo, setShowNuevo] = useState(false);
+    // Cambiar esto cuando se realize la consulta a mongo
     const [proyectos, setProyectos] = useState(proyectosData);
+
+    const [showNuevo, setShowNuevo] = useState(false);
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
     const [message, setMessage] = useState<React.ReactNode>(null);
     const [deleteId, setDeleteId] = useState<number | null>(null);
-
     const [editProyecto, setEditProyecto] = useState<ProyectoIA | undefined>(undefined);
     const [showEditModal, setShowEditModal] = useState(false);
 
@@ -25,9 +28,7 @@ function ProyectosIA() {
     const handleAskDelete = (id: number, nombre: string) => {
         setDeleteId(id);
         setMessage(
-            <>
-                ¿Estás seguro que deseas eliminar el proyecto <strong>{nombre}</strong> con <strong>ID {id}</strong>?
-            </>
+            <>¿Estás seguro que deseas eliminar el proyecto <strong>{nombre}</strong> con <strong>ID {id}</strong>?</>
         );
         setShowConfirmarModal(true);
     };
@@ -39,9 +40,9 @@ function ProyectosIA() {
         setDeleteId(null);
     };
 
-        const handleProcess = (proyecto: ProyectoIA) => {
+    const handleProcess = (proyecto: ProyectoIA) => {
         alert(`Procesando proyecto: ${proyecto.nombre} (ID: ${proyecto.id})`);
-        // Aquí podrías disparar una petición a la API o iniciar alguna lógica
+        // ACA SE DEBERIA LLAMAR AL PROCESO DE IA
     };
 
     return (
