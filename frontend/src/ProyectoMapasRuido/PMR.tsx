@@ -79,10 +79,22 @@ function PMR_page() {
             <ModalNuevoPMR 
                 show={showNuevo}
                 onClose={() => setShowNuevo(false)}
-                onSave={(nuevoPMR) => {
-                    setPMRs(prev => [...prev, nuevoPMR]);
-                    setShowNuevo(false)
-                }}
+                // onSave={(nuevoPMR) => {
+                //     setPMRs(prev => [...prev, nuevoPMR]);
+                //     setShowNuevo(false)
+                // }}
+                onSave={() => {
+                            fetch("http://localhost:8006/pmr/")
+                                .then(res => res.json())
+                                .then(data => {
+                                    setPMRs(data);
+                                    setShowNuevo(false);
+                                })
+                                .catch(err => {
+                                    console.error("Error al recargar PMRs:", err);
+                                    setShowNuevo(false);
+                                });
+                        }}
                 
             />
 
