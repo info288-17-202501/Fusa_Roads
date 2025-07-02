@@ -7,7 +7,7 @@ class PiaVideoService:
     def __init__(self, db: Session):
         self.db = db
 
-    def get_all_pia_videos(self):
+    def get_pia_videos_por_ciudad(self, id_ciudad: int):
         results = (
             self.db.query(
                 PiaVideo.id,
@@ -22,6 +22,7 @@ class PiaVideoService:
             )
             .join(Videos, PiaVideo.id_video == Videos.id)
             .join(TipoVia, Videos.id_tipo_via == TipoVia.id)
+            .filter(Videos.id_ciudad == id_ciudad)
             .order_by(Videos.fecha_grabacion.desc())
             .all()
         )
