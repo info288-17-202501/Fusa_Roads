@@ -1,4 +1,4 @@
-import { Modal, Button, Form, Container } from "react-bootstrap";
+import { Modal, Button, Form, Container, Alert} from "react-bootstrap";
 import { useState, useEffect, FormEvent } from 'react'
 import { PMR, Pais, Ciudad, Localidad, PiaVideo } from '../resources/types'
 import FormRow from "../../components/FormRow";
@@ -24,12 +24,14 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
     const [localidades, setLocalidades] = useState<Localidad[]>([]);
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
+    const [activo, setActivo] = useState<boolean>(false);
     const [videos, setVideos] = useState<PiaVideo[]>([]);
     const [videosSeleccionados, setVideosSeleccionados] = useState<number[]>([]);
+    const [errorVideos, setErrorVideos] = useState<string | null>(null);
+
 
     useEffect(() => {
         fetchPaises();
-        fetchVideos();
     }, []);
 
     const fetchPaises = async () => {
@@ -59,7 +61,10 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
         setCiudad(e.target.value);
         setLocalidad('');
         setLocalidades([]);
-        if (!isNaN(selectedId)) fetchLocalidades(selectedId);
+        if (!isNaN(selectedId)) {
+            fetchLocalidades(selectedId);
+            fetchVideos(selectedId)
+        }
     };
 
     const fetchLocalidades = async (idCiudad: number) => {
@@ -68,43 +73,46 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
         setLocalidades(data);
     };
 
-    const fetchVideos = async () => {
-        const response = await fetch('http://localhost:8006/pia_videos/');
-        const data = await response.json();
-        setVideos(data);
+    const fetchVideos = async (idCiudad: number) => {
+        try{
+            const response = await fetch(`http://localhost:8006/pia_videos/?id_ciudad=${idCiudad}`);
+            if (!response.ok) throw new Error("Error al obtener pia_videos")
+            const data = await response.json();
+            setVideos(data)
+        } catch (error){
+            console.error(error);
+            setVideos([]);
+            setErrorVideos("Error al obtener pia_videos de la ciudad seleccionada")
+        }
     };
 
     useEffect(() => {
-        if (pmrAEditar) {
-            setNombre(pmrAEditar.nombre);
-            setDescripcion(pmrAEditar.descripcion);
+        if (!pmrAEditar) return;
+        setNombre(pmrAEditar.nombre);
+        setDescripcion(pmrAEditar.descripcion);
+        setActivo(pmrAEditar.activo)
 
-            // Cargar jerarquía de ubicación
-            console.log(pmrAEditar)
-            fetch(`http://localhost:8006/ubicacion/detalles_localidad/${pmrAEditar.id_localidad}`)
-                .then(res => res.json())
-                .then(data => {
-                    setPais(data.id_pais.toString());
-                    setCiudad(data.id_ciudad.toString());
-                    setLocalidad(data.id_localidad.toString());
+        const cargarUbicacionYVideos = async () => {
+            const locRes = await fetch(`http://localhost:8006/ubicacion/detalles_localidad/${pmrAEditar.id_localidad}`);
+            const data = await locRes.json();
 
-                    fetchCiudades(data.id_pais);
-                    fetchLocalidades(data.id_ciudad);
-                });
+            setPais(data.id_pais.toString());
+            setCiudad(data.id_ciudad.toString());
+            setLocalidad(data.id_localidad.toString());
 
-            // Cargar videos asociados
-            fetch(`http://localhost:8006/uso/${pmrAEditar.id}`)
-                .then(res => res.json())
-                .then((ids: number[]) => setVideosSeleccionados(ids));
-        } else {
-            // Reiniciar si no hay edición
-            setNombre('');
-            setDescripcion('');
-            setPais('');
-            setCiudad('');
-            setLocalidad('');
-            setVideosSeleccionados([]);
-        }
+            fetchCiudades(data.id_pais);
+            fetchLocalidades(data.id_ciudad);
+            fetchVideos(data.id_ciudad);
+        };
+
+        const cargarVideosSeleccionados = async () => {
+            const res = await fetch(`http://localhost:8006/uso/${pmrAEditar.id}`);
+            const ids: number[] = await res.json();
+            setVideosSeleccionados(ids);
+        };
+
+        cargarUbicacionYVideos();
+        cargarVideosSeleccionados();
     }, [pmrAEditar]);
 
     const toggleVideo = (id: number) => {
@@ -116,10 +124,16 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
     const handleCancelar = () => {
         if (!pmrAEditar) {
             // Solo limpiar si estás creando un nuevo PMR
-            setNombre('');
-            setDescripcion('');
-            setVideosSeleccionados([]);
-            setValidated(false);
+            resetForm();
+            // setPais('')
+            // setCiudad('')
+            // setLocalidad('')
+            // setNombre('');
+            // setDescripcion('');
+            // setVideos([])
+            // setVideosSeleccionados([]);
+            // setErrorVideos('')
+            // setValidated(false);
         }
         console.log(videosSeleccionados)
         onClose(); // Siempre cerrar
@@ -133,8 +147,14 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
             setValidated(true);
             return;
         }
+
+        if(videosSeleccionados.length === 0){
+            setErrorVideos("¡Debe seleccionar al menos un video!");
+            return;
+        }
     
         setValidated(true);
+        setErrorVideos(null)
         handleGuardarYLimpiar();
     };
 
@@ -147,9 +167,10 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        nombre,
-                        descripcion,
-                        id_localidad: parseInt(localidad)
+                        nombre: nombre.trim(),
+                        descripcion: descripcion.trim(),
+                        id_localidad: parseInt(localidad),
+                        activo
                     })
                 });
 
@@ -194,9 +215,10 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        nombre,
-                        descripcion,
-                        id_localidad: parseInt(localidad)
+                        nombre: nombre.trim(),
+                        descripcion: descripcion.trim(),
+                        id_localidad: parseInt(localidad),
+                        activo
                     })
                 });
 
@@ -219,10 +241,12 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                 }
             }
             onSave(nuevoPMR);
-            setNombre('');
-            setDescripcion('');
-            setVideosSeleccionados([]);
-            setValidated(false);
+            resetForm();
+            // setNombre('');
+            // setDescripcion('');
+            // setVideos([])
+            // setVideosSeleccionados([]);
+            // setValidated(false);
             onClose();
         } catch (error) {
             console.error("Error al guardar PMR:", error);
@@ -230,18 +254,31 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
         }
     }
 
+    const resetForm = () => {
+        setPais('');
+        setCiudad('');
+        setLocalidad('');
+        setNombre('');
+        setDescripcion('');
+        setActivo(false)
+        setVideos([]);
+        setVideosSeleccionados([]);
+        setErrorVideos(null);
+        setValidated(false);
+    };
+
     return (
         <Modal show={show} onHide={handleCancelar} centered size="lg">
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Nuevo Proyecto de Mapa de Ruido
+                    {pmrAEditar ? "Editar Proyecto de Mapa de Ruido" : "Nuevo Proyecto de Mapa de Ruido"}
                 </Modal.Title>
             </Modal.Header>
 
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Modal.Body>
                     <FormRow label="Pais:" showFeedback>
-                        <Form.Select required value={pais} onChange={handlePaisChange}>
+                        <Form.Select required value={pais} onChange={handlePaisChange} disabled={!!pmrAEditar}>
                             <option value={''}>Seleccione Pais</option>
                             {paises.map((p: Pais) => (
                                 <option key={p.id} value={p.id}>{p.nombre}</option>
@@ -249,7 +286,7 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                         </Form.Select>
                     </FormRow>
                     <FormRow label="Ciudad:" showFeedback>
-                        <Form.Select required disabled={!pais} value={ciudad} onChange={handleCiudadChange}>
+                        <Form.Select required disabled={!!pmrAEditar || !pais} value={ciudad} onChange={handleCiudadChange}>
                             <option value={''}>Seleccione Ciudad</option>
                             {ciudades.map((c: Ciudad) => (
                                 <option key={c.id} value={c.id}>{c.nombre}</option>
@@ -257,7 +294,7 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                         </Form.Select>
                     </FormRow>
                     <FormRow label="Localidad:" showFeedback>
-                        <Form.Select required disabled={!ciudad} value={localidad} onChange={(e) => setLocalidad(e.target.value)}>
+                        <Form.Select required disabled={!!pmrAEditar || !ciudad} value={localidad} onChange={(e) => setLocalidad(e.target.value)}>
                             <option value={''}>Seleccione Localidad</option>
                             {localidades.map((l: Localidad) => (
                                 <option key={l.id} value={l.id}>{l.nombre}</option>
@@ -270,13 +307,43 @@ function ModalNuevoPMR ({show, onClose, onSave, pmrAEditar} : Props){
                     <FormRow label="Descripción">
                         <Form.Control value={descripcion} placeholder="Ingrese una breve descripción del PMR" required maxLength={50} onChange={(e) => setDescripcion(e.target.value)}/>
                     </FormRow>
+
+                    <FormRow label="Estado de Activación del PMR">
+                        <Form.Switch label={activo ? "Activado" : "Desactivado"} checked={activo} onChange={(e) => setActivo(e.target.checked)}/>
+                        {activo && (
+                            <Alert variant="warning" className="mb-0 mt-2 p-2">
+                                ¡Al activar esta opción, <strong>todos</strong> los demás PMRs serán <strong>desactivados automáticamente</strong>!
+                            </Alert>
+                        )}
+                    </FormRow>
                     
                     <Container className="">
                         <Form.Label>Seleccione Videos</Form.Label>
-                        <Table
-                            columns={columnsVideos(videosSeleccionados, toggleVideo)}
-                            data={videos}
-                        />
+                        {errorVideos && (
+                            <Alert variant="danger">
+                                {errorVideos}
+                            </Alert>
+                        )} 
+
+                        {videos.length === 0 && ! ciudad && (
+                            <Alert variant="info">
+                                Debe seleccionar una ciudad para ver videos disponibles
+                            </Alert>
+                        )}
+
+                        {videos.length === 0 && ciudad && (
+                            <Alert variant="warning">
+                                No hay videos disponibles para esta ciudad
+                            </Alert>
+                        )}
+                        
+                        {videos.length > 0 && (
+                            <Table
+                                columns={columnsVideos(videosSeleccionados, toggleVideo)}
+                                data={videos}
+                            />
+                        )}
+                        
                     </Container>
 
                 </Modal.Body>
