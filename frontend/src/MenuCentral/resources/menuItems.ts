@@ -42,11 +42,5 @@ export const menuItems = [
 	    "nombre": "Visor de mapas de proyectos",
 	    "descripcion": "Visualiza los mapas de ruido generados por cada proyecto en una interfaz geoespacial.",
 	    "url": "/visor-mapas-de-ruido"
-	},
-	{
-	    "icono": faGears,
-	    "nombre": "Test",
-	    "descripcion": "Para realizar test",
-	    "url": "/test"
 	}
 ]

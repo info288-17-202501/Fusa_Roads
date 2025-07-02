@@ -1,16 +1,25 @@
 export type ProyectoIA = {
-    id: number;
-    nombre: string;
+    nombreProyecto: string;
     videoSalida: boolean;
     ventanasTiempo: boolean;
     mVideo: string;
     mAudio: string;
+    listaVideos: Video[];
     tiempo?: number;
     unidad?: string;
 };
 
 export type Video = {
-  id: number;
-  nombre: string;
+  _id: number;
+  name: string;
   activo: boolean;
+  ruta_miniatura_minio: string;
+  minio_bucket: string;
+  linea?: Point[];      // Agregado
+  poligono?: Point[];   // Agregado
+};
+
+export type Point = {
+  x: number;
+  y: number;
 };

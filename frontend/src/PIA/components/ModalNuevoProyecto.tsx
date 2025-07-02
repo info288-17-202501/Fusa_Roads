@@ -4,122 +4,218 @@
 //TODO conexion backend
 
 import { useState, useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Table, Button } from 'react-bootstrap';
 import FormProyecto from './FormProyecto';
-import SeleccionVideos from './SeleccionVideos'; //vista para seleccionar videos
-import SeleccionPuntos from './SeleccionPuntos'; //vista para seleccionar puntos
+import PuntosVideo from './puntosVideo'; //vista para seleccionar puntos
 import { ProyectoIA, Video } from '../resources/types';
 
-const dummyVideos: Video[] = [
-  { id: 1, nombre: 'picartet1', activo: false },
-  { id: 2, nombre: 'picartet2', activo: true },
-  { id: 3, nombre: 'General Logos1', activo: true },
-  { id: 4, nombre: 'General Logos2', activo: true },
-];
-
 type Props = {
-  show: boolean;
-  onClose: () => void;
-  onSave: (proyecto: ProyectoIA) => void;
-  initialValues?: ProyectoIA;
+	show: boolean;
+	onClose: () => void;
+	onSave: (proyecto: ProyectoIA) => void;
+	initialValues?: ProyectoIA;
 };
 
 export default function ModalNuevoProyecto({ show, onClose, onSave, initialValues }: Props) {
-  const [currentView, setCurrentView] = useState<'form' | 'videos' | 'puntos'>('form');
-  const [videos, setVideos] = useState<Video[]>(dummyVideos);
-  const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
-  const [proyectoData, setProyectoData] = useState<ProyectoIA>({
-    id: 0,
-    nombre: '',
-    mVideo: '',
-    mAudio: '',
-    videoSalida: false,
-    ventanasTiempo: false,
-    tiempo: undefined,
-    unidad: 'hora'
-  });
 
-  // Resetear al formulario cuando se abre el modal
-  useEffect(() => {
-    if (show) {
-      setCurrentView('form');
-      if (initialValues) {
-        setProyectoData(initialValues);
-      } else {
-        setProyectoData({
-          id: 0,
-          nombre: '',
-          mVideo: '',
-          mAudio: '',
-          videoSalida: false,
-          ventanasTiempo: false,
-          tiempo: undefined,
-          unidad: 'hora'
-        });
-      }
-    }
-  }, [show, initialValues]);
+	const [videos, setVideos] = useState<any[]>([]);	// Videos en mongo
+	const [loading, setLoading] = useState(true);
 
-  const handleToggleActivo = (id: number) => {
-    setVideos(videos.map(v => v.id === id ? { ...v, activo: !v.activo } : v));
-  };
+	const hayVideosActivos = videos.some(video => video.activo);
 
-  const handleLineaClick = (video: Video) => {
-    setVideoSeleccionado(video);
-    setCurrentView('puntos');
-  };
+	const [currentView, setCurrentView] = useState<'form' | 'videos' | 'puntos'>('form');
+	const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
+	const [proyectoData, setProyectoData] = useState<ProyectoIA>({
+		nombreProyecto: '',
+		mVideo: '',
+		mAudio: '',
+		listaVideos:[],
+		videoSalida: false,
+		ventanasTiempo: false,
+		tiempo: undefined,
+		unidad: 'hora'
+	});
 
-  const handleSaveProyecto = (data: ProyectoIA) => {
-    setProyectoData(data);
-    onSave(data);
-  };
+	useEffect(() => {
+		const fetchVideos = async () => {
+			try {
+				const res = await fetch('http://localhost:8002/mongo/datos', { method: 'GET' });
+				const data = await res.json();
 
-  const renderView = () => {
-    switch (currentView) {
-      case 'videos':
-        return (
-          <SeleccionVideos 
-            videos={videos}
-            onToggleActivo={handleToggleActivo}
-            onLineaClick={handleLineaClick}
-            onBack={() => setCurrentView('form')}
-          />
-        );
-      case 'puntos':
-        return (
-          <SeleccionPuntos 
-            video={videoSeleccionado!}
-            onBack={() => setCurrentView('videos')}
-          />
-        );
-      default:
-        return (
-          <FormProyecto 
-            data={proyectoData}
-            onSave={handleSaveProyecto}
-            onCancel={onClose}
-            onShowVideos={() => setCurrentView('videos')}
-          />
-        );
-    }
-  };
+				const processedData = data.map((video: any) => ({
+					_id: video._id,
+					name: video.nombre_video,
+					activo: false,
+					ruta_miniatura_minio: video.ruta_miniatura_minio,
+					minio_bucket: video.minio_bucket
+				}));
 
-  const getTitle = () => {
-    switch (currentView) {
-      case 'videos': return 'Selección de Videos';
-      case 'puntos': return `Líneas para: ${videoSeleccionado?.nombre}`;
-      default: return initialValues ? "Editar Proyecto" : "Nuevo Proyecto IA";
-    }
-  };
+				setVideos(processedData);
+				setLoading(false);
+			} catch (error) {
+				console.error("Error cargando los videos:", error);
+				setLoading(false);
+			}
+		};
+		fetchVideos();
+	}, []);
 
-  return (
-    <Modal show={show} onHide={onClose} centered size={currentView === 'puntos' ? 'xl' : 'lg'}>
-      <Modal.Header closeButton>
-        <Modal.Title>{getTitle()}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {renderView()}
-      </Modal.Body>
-    </Modal>
-  );
+	// Resetear al formulario cuando se abre el modal
+	useEffect(() => {
+		if (show) {
+			setCurrentView('form');
+			if (initialValues) {
+				setProyectoData(initialValues);
+			} else {
+				setProyectoData({
+					nombreProyecto: '',
+					mVideo: 'yolo12s.pt',
+					mAudio: 'Cnn14_DecisionLevelMax.pth',
+					listaVideos: [],
+					videoSalida: false,
+					ventanasTiempo: false,
+					tiempo: undefined,
+					unidad: 'hora'
+				});
+			}
+		}
+	}, [show, initialValues]);
+
+	const handleToggleActivo = (_id: number) => {
+		setVideos(prev =>
+			prev.map(v =>
+				v._id === _id ? { ...v, activo: !v.activo } : v
+			)
+		);
+	};
+
+	const handleLineaClick = (video: Video) => {
+		setVideoSeleccionado(video);
+		setCurrentView('puntos');
+	};
+
+	const handleSaveProyecto = (data: ProyectoIA) => {
+		// setProyectoData(data);
+		// onSave(data);
+		console.log(data)
+		console.log("test")
+	};
+
+	const handleGuardarSeleccionVideos = () => {
+		const videosSeleccionados = videos.filter(v => v.activo).map(v => v);
+		setProyectoData(prev => ({
+			...prev,
+			listaVideos: videosSeleccionados // puedes cambiarlo según tu backend
+		}));
+		setCurrentView('form');
+	};
+
+	const renderView = () => {
+		switch (currentView) {
+			case 'videos':
+				return (
+					// De volver lista de videos
+					<div>
+						<Table bordered hover responsive>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Acción</th>
+								</tr>
+							</thead>
+							<tbody>
+								{videos.map((video) => (
+									<tr key={video._id} className={video.activo ? 'table-success' : ''}>
+										<td>{video._id}</td>
+										<td>{video.name}</td>
+										<td className="d-flex gap-2">
+											<Button
+												size="sm"
+												variant={video.activo ? 'success' : 'secondary'}
+												onClick={() => handleToggleActivo(video._id)}
+												title={video.activo ? 'Desactivar video' : 'Activar video'}
+											>
+												{video.activo ? '✔' : '✕'}
+											</Button>
+											<Button
+												size="sm"
+												variant="primary"
+												onClick={() => handleLineaClick(video)}
+												disabled={!video.activo} // Deshabilitar si el video no esta seleccionado
+												title={!video.activo ? 'Video no seleccionado' : 'Editar líneas del video'}
+											>
+												líneas
+											</Button>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</Table>
+
+						<div className="d-flex justify-content-between mt-3">
+							<Button variant="secondary"  onClick={() => setCurrentView('form')}>
+								Volver
+							</Button>
+							<Button
+								variant="primary"
+								disabled={!hayVideosActivos}
+								title={!hayVideosActivos ? 'Seleccione al menos un video para continuar' : 'Guardar selección'}
+								onClick={handleGuardarSeleccionVideos}
+							>
+								Guardar selección
+							</Button>
+						</div>
+
+						{!hayVideosActivos && (
+							<div className="text-danger mt-2 text-center">
+								Seleccione al menos un video para poder continuar
+							</div>
+						)}
+					</div>
+				);
+			case 'puntos':
+				return (
+					<PuntosVideo
+						video={videoSeleccionado!}
+						onGuardar={(videoActualizado) => {
+							setVideos(prev =>
+								prev.map(v => v._id === videoActualizado._id ? videoActualizado : v)
+							);
+							setCurrentView('videos');
+						}}
+						onVolver={() => setCurrentView('videos')}
+					/>
+
+				);
+			default:
+				return (
+					<FormProyecto
+						data={proyectoData}
+						onSave={handleSaveProyecto}
+						onCancel={onClose}
+						onShowVideos={() => setCurrentView('videos')}
+					/>
+				);
+		}
+	};
+
+	const getTitle = () => {
+		switch (currentView) {
+			case 'videos': return 'Selección de Videos';
+			case 'puntos': return `Líneas para: ${videoSeleccionado?.name}`;
+			default: return initialValues ? "Editar Proyecto" : "Nuevo Proyecto IA";
+		}
+	};
+
+	return (
+		<Modal show={show} onHide={onClose} centered size={currentView === 'puntos' ? 'xl' : 'lg'}>
+			<Modal.Header closeButton>
+				<Modal.Title>{getTitle()}</Modal.Title>
+			</Modal.Header>
+			<Modal.Body>
+				{renderView()}
+			</Modal.Body>
+		</Modal>
+	);
 }
