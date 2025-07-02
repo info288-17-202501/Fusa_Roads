@@ -4,6 +4,7 @@ export type PMR = {
     descripcion: string;
     fecha_creacion: string;
     id_localidad: number;
+    activo: boolean;
 };
 
 export type Pais = {

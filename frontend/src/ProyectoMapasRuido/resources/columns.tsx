@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PMR } from './types';
 import { Row } from '@tanstack/react-table';
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck, faCircleXmark, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 function formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -13,6 +13,19 @@ export const columns = (
     onEdit: (pmr: PMR) => void
 ) => [
     { accessorKey: 'id', header: 'ID' },
+    {
+        accessorKey: 'activo',
+        header: 'Activo',
+        cell: ({row}: {row: Row<PMR>}) => (
+            <div className='d-flex justify-content-center'>
+                <FontAwesomeIcon
+                    fontSize={25}
+                    color={row.original.activo ? "green" : "rgb(220, 53, 69)"}
+                    icon={row.original.activo ? faCircleCheck : faCircleXmark}
+                />
+            </div>
+        )
+    },
     { accessorKey: 'nombre', header: 'Nombre' },
     { accessorKey: 'descripcion', header: 'Descripción' },
     {

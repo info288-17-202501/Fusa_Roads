@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Boolean, Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database.database import Base
 from app.models.localidad import Localidad
@@ -13,6 +13,7 @@ class PMR(Base):
     descripcion = Column(String(50), nullable=False)
     fecha_creacion = Column(DateTime, nullable=False)
     id_localidad = Column(Integer, ForeignKey("calles.localidad.id"), nullable=False)
+    activo = Column(Boolean, default=False, nullable=False)
 
     usos = relationship(Uso, back_populates="pmr", cascade="all, delete")
     localidad = relationship("Localidad", back_populates="pmrs")

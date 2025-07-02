@@ -6,6 +6,7 @@ class PMRBase(BaseModel):
     nombre: str
     descripcion: str
     id_localidad: int
+    activo: bool = False
 
 class PMRCreate(PMRBase):
     pass
@@ -28,6 +29,7 @@ class PMRResponse(BaseModel):
     nombre_localidad: str
     nombre_ciudad: str
     nombre_pais: str
+    activo: bool
 
     class Config:
         from_attributes = True

@@ -17,7 +17,8 @@ class PMRService:
             nombre=pmr_in.nombre,
             descripcion=pmr_in.descripcion,
             fecha_creacion=datetime.utcnow(),
-            id_localidad=pmr_in.id_localidad
+            id_localidad=pmr_in.id_localidad,
+            activo=pmr_in.activo
         )
         self.db.add(db_pmr)
         self.db.commit()
@@ -34,6 +35,7 @@ class PMRService:
                 PMRModel.descripcion,
                 PMRModel.fecha_creacion,
                 PMRModel.id_localidad,
+                PMRModel.activo,
                 Localidad.nombre.label("nombre_localidad"),
                 Ciudad.nombre.label("nombre_ciudad"),
                 Pais.nombre.label("nombre_pais")
@@ -52,6 +54,7 @@ class PMRService:
                 "descripcion": r.descripcion,
                 "fecha_creacion": r.fecha_creacion,
                 "id_localidad": r.id_localidad,
+                "activo": r.activo,
                 "nombre_localidad": r.nombre_localidad,
                 "nombre_ciudad": r.nombre_ciudad,
                 "nombre_pais": r.nombre_pais,
@@ -75,6 +78,7 @@ class PMRService:
         pmr.nombre = pmr_data.nombre
         pmr.descripcion = pmr_data.descripcion
         pmr.id_localidad = pmr_data.id_localidad
+        pmr.activo = pmr_data.activo
 
         self.db.commit()
         self.db.refresh(pmr)
