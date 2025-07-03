@@ -1,9 +1,12 @@
 // mongo-init/init.js
-db = db.getSiblingDB('fusa_mongo');
+db = db.getSiblingDB('fusa_roads');
 
 if (!db.getCollectionNames().includes('videos')) {
-    db.createCollection('videos');
-    print('Colección "videos" creada en fusa_mongo');
+    db.createCollection('contextos_videos');
+    db.createCollection('estados');
+    db.createCollection('parametrosPia');
+    db.createCollection('modelosIA');
+    print('Las colecciones fueron creadas correctamente');
 } else {
-    print('La colección "videos" ya existe');
+    print('No se pudo crear todas las colecciones');
 }

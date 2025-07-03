@@ -1,4 +1,4 @@
-import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo, faGears } from '@fortawesome/free-solid-svg-icons';
 
 export const menuItems = [
 	{
