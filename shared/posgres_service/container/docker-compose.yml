@@ -1,16 +1,31 @@
+version: "3.9"
 services:
   postgres:
-    image: postgres:15
+    image: postgres:17
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: myuser
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydatabase
     ports:
       - "5432:5432"
     volumes:
+      - ./fusa_db.sql:/docker-entrypoint-initdb.d/fusa_db.sql:ro
       - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
 
 volumes:
   postgres_data:
+  pgadmin_data:
