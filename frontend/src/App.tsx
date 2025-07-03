@@ -9,6 +9,7 @@ import Login from './Login/Login'
 import Profile from './Login/Profile';
 import SignUp from './Login/SignUp';
 import ProyectosIA from './PIA/PIA'
+import PMR_page from './ProyectoMapasRuido/PMR';
 
 import NavigationBar from './components/NavigationBar';
 import PrivateRoute from './components/PrivateRoute';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
 				<Route path="/login" element={<Login/>} />
 				<Route path="/perfil" element={<Profile/>} />
 				<Route path="/sign-up" element={<SignUp/>} />
+				<Route path="/pmr" element={<PMR_page/>} />
       		</Routes>
     	</Router>
   	);
