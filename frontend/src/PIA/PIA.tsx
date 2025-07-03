@@ -72,7 +72,7 @@ function ProyectosIA() {
         alert(`Procesando proyecto: ${proyecto.nombre_proyecto} (ID: ${proyecto._id})`);
         // ACA SE DEBE INDICAR A PARAMETROS QUE SE QUIERE COMENZAR EL PROCESO
         try {
-            const res = await fetch(`http://localhost:8005/parametros/${proyecto._id}`, {
+            const res = await fetch(`http://localhost:8005/parametros/execpia/${proyecto._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
