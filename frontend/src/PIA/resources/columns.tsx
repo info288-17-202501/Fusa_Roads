@@ -15,33 +15,33 @@ export const columns = (
 	onEdit: (proyecto: ProyectoIA) => void,
 	onProcess: (proyecto: ProyectoIA) => void
 ) => [
-		{ accessorKey: 'id', header: 'ID' },
-		{ accessorKey: 'nombreProyecto', header: 'Nombre' },
+		{ accessorKey: 'id', header: 'Mongo ID' },
+		{ accessorKey: 'nombre_proyecto', header: 'Nombre del proyecto' },
 
 		{
-			header: 'Video Salida',
-			accessorKey: 'videoSalida',
+			header: 'Con videos de salida?',
+			accessorKey: 'flag_videos_salida',
 			cell: ({ row }: { row: Row<ProyectoIA> }) => (
 				<FontAwesomeIcon
-					icon={row.original.videoSalida ? faCheckCircle : faTimesCircle}
-					className={row.original.videoSalida ? 'text-success' : 'text-danger'}
+					icon={row.original.flag_videos_salida ? faCheckCircle : faTimesCircle}
+					className={row.original.flag_videos_salida ? 'text-success' : 'text-danger'}
 				/>
 			),
 		},
 
 		{
-			header: 'Ventanas de Tiempo',
-			accessorKey: 'ventanasTiempo',
+			header: 'Con ventanas de tiempo?',
+			accessorKey: 'flag_ventanas_tiempo',
 			cell: ({ row }: { row: Row<ProyectoIA> }) => (
 				<FontAwesomeIcon
-					icon={row.original.ventanasTiempo ? faCheckCircle : faTimesCircle}
-					className={row.original.ventanasTiempo ? 'text-success' : 'text-danger'}
+					icon={row.original.flag_ventanas_tiempo ? faCheckCircle : faTimesCircle}
+					className={row.original.flag_ventanas_tiempo ? 'text-success' : 'text-danger'}
 				/>
 			),
 		},
 
-		{ accessorKey: 'mVideo', header: 'Modelo Video' },
-		{ accessorKey: 'mAudio', header: 'Modelo Audio' },
+		{ accessorKey: 'modelo_video', header: 'Modelo Video' },	// Aca estaria bacan agregar los otros atributos si estos son true. (algo como apretar el tic y que se expanda para abajo)
+		{ accessorKey: 'modelo_audio', header: 'Modelo Audio' },
 
 		{
 			header: 'Acciones',
@@ -57,7 +57,7 @@ export const columns = (
 					<button
 						className="bg-danger px-2 py-1 rounded border-0"
 						title="Eliminar"
-						onClick={() => handleAskDelete(row.original.id, row.original.nombreProyecto)}
+						onClick={() => handleAskDelete(row.original._id, row.original.nombre_proyecto)}
 					>
 						<FontAwesomeIcon color="white" icon={faTrashCan} />
 					</button>

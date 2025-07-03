@@ -11,12 +11,12 @@ import { ProyectoIA, Video } from '../resources/types';
 
 type Props = {
 	show: boolean;
-	onClose: () => void;
-	onSave: (proyecto: ProyectoIA) => void;
-	initialValues?: ProyectoIA;
+	cerrar_nuevo_proyecto: () => void;
+	guardar_nuevo_proyecto: (proyecto: ProyectoIA) => void;
+	datos_guardados?: ProyectoIA;
 };
 
-export default function ModalNuevoProyecto({ show, onClose, onSave, initialValues }: Props) {
+export default function ModalNuevoProyecto({ show, cerrar_nuevo_proyecto, guardar_nuevo_proyecto, datos_guardados }: Props) {
 
 	const [videos, setVideos] = useState<any[]>([]);	// Videos en mongo
 	const [loading, setLoading] = useState(true);
@@ -27,14 +27,15 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 	const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
 	const [proyectoData, setProyectoData] = useState<ProyectoIA>({
 		id: 1,
-		nombreProyecto: '',
-		mVideo: '',
-		mAudio: '',
-		listaVideos: [],
-		videoSalida: false,
-		ventanasTiempo: false,
-		tiempo: undefined,
-		unidad: 'hora'
+		_id: 1,
+		nombre_proyecto: '',
+		modelo_audio: '',
+		modelo_video: '',
+		lista_videos: [],
+		flag_videos_salida: false,
+		flag_ventanas_tiempo: false,
+		cant_ventanas: undefined,
+		unidad_tiempo_ventanas: ''
 	});
 
 	useEffect(() => {
@@ -65,23 +66,24 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 	useEffect(() => {
 		if (show) {
 			setCurrentView('form');
-			if (initialValues) {
-				setProyectoData(initialValues);
+			if (datos_guardados) {
+				setProyectoData(datos_guardados);
 			} else {
 				setProyectoData({
-					id: 1,
-					nombreProyecto: '',
-					mVideo: 'yolo12s.pt',
-					mAudio: 'Cnn14_DecisionLevelMax.pth',
-					listaVideos: [],
-					videoSalida: false,
-					ventanasTiempo: false,
-					tiempo: undefined,
-					unidad: 'hora'
+					nombre_proyecto: '',
+					_id: 1,
+					id: 2,
+					modelo_audio: 'yolo12s.pt',
+					modelo_video: 'Cnn14_DecisionLevelMax.pth',
+					lista_videos: [],
+					flag_videos_salida: false,
+					flag_ventanas_tiempo: false,
+					cant_ventanas: undefined,
+					unidad_tiempo_ventanas: ''
 				});
 			}
 		}
-	}, [show, initialValues]);
+	}, [show, ]);
 
 	const handleToggleActivo = (_id: number) => {
 		setVideos(prev =>
@@ -110,7 +112,7 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 
 			const result = await res.json();
 			console.log("Proyecto guardado:", result);
-			onSave(data);
+			guardar_nuevo_proyecto(data);
 		} catch (error) {
 			console.error("Error al mandar los datos del PIA", error);
 		}
@@ -208,7 +210,7 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 					<FormProyecto
 						data={proyectoData}
 						onSave={handleSaveProyecto}
-						onCancel={onClose}
+						onCancel={cerrar_nuevo_proyecto}
 						onShowVideos={() => setCurrentView('videos')}
 					/>
 				);
@@ -219,12 +221,12 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 		switch (currentView) {
 			case 'videos': return 'Selección de Videos';
 			case 'puntos': return `Líneas para: ${videoSeleccionado?.name}`;
-			default: return initialValues ? "Editar Proyecto" : "Nuevo Proyecto IA";
+			default: return videoSeleccionado? "Editar Proyecto" : "Nuevo Proyecto IA";
 		}
 	};
 
 	return (
-		<Modal show={show} onHide={onClose} centered size={currentView === 'puntos' ? 'xl' : 'lg'}>
+		<Modal show={show} onHide={cerrar_nuevo_proyecto} centered size={currentView === 'puntos' ? 'xl' : 'lg'}>
 			<Modal.Header closeButton>
 				<Modal.Title>{getTitle()}</Modal.Title>
 			</Modal.Header>
