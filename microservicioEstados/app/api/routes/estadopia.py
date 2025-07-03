@@ -2,113 +2,95 @@ from fastapi import APIRouter, HTTPException, Request, Query
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
-import json
-import os
-import sys
-from pathlib import Path
-
+from config.db import conn
+#from api.models.estadopia import Config
+from pydantic import Field
 router = APIRouter(prefix="/estadopia", tags=["estadopia"])
 
+class Avance(BaseModel):
+    actual: int
+    total: int
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent 
-ESTADOS_FILE = BASE_DIR / "database" / "json" / "data.json"
-
-
-
-if not os.path.exists(ESTADOS_FILE):
-    with open(ESTADOS_FILE, "w") as f:
-        json.dump({}, f)
-
-class Estado(BaseModel):
-    estado: str
-    orden: int
-    fecha_hora_ini: str
-    fecha_hora_fin: Optional[str] = ""
-    flag: Optional[str] = ""
-    descrip: Optional[str] = ""
+class Config(BaseModel):
+    #id: str = Field(..., alias="_id")  
+    pia_id: Optional[str] = None 
+    estado: Optional[str] = None
+    orden: Optional[int] = None
+    fecha_hora_ini: Optional[str] = None  # Opcional
+    fecha_hora_fin: Optional[str] = None  # Opcional
+    flag: Optional[str] = None  # Opcional
+    descrip: Optional[str] = None  # Opciona
+    avance: Optional[Avance] = None  # Opcional, para el avance del estado
 
 
 
-
-
-
-def cargar_estados():
+@router.post("/{pia_id}", response_model=Config)
+def crear_estado(pia_id: str,estado_mandado: Config ,request: Request):
+     
     try:
-        with open(ESTADOS_FILE, "r") as f:
-            content = f.read()
-            if not content.strip():  # Si el archivo está vacío
-                return {}
-            return json.loads(content)
-    except FileNotFoundError:
-        with open(ESTADOS_FILE, "w") as f:
-            json.dump({}, f)
-        return {}
-    except json.JSONDecodeError:
-        # Si el JSON está corrupto, lo reiniciamos
-        with open(ESTADOS_FILE, "w") as f:
-            json.dump({}, f)
-        return {}
+        nuevo_estado = {
+            "estado": estado_mandado.estado,
+            "orden": estado_mandado.orden,
+            "fecha_hora_ini": estado_mandado.fecha_hora_ini,
+            "fecha_hora_fin": "",
+            "flag": "",
+            "descrip": "",
+        }
+        
+        if estado_mandado.avance:
+            nuevo_estado["avance"] = {
+                "actual": estado_mandado.avance.actual,
+                "total": estado_mandado.avance.total,
+            }
 
-def guardar_estados(data):
-    with open(ESTADOS_FILE, "w") as f:
-        json.dump(data, f, indent=2)
+        doc =  conn.fusa.estados.find_one({"pia_id": pia_id})
 
+        if doc:
+            result =  conn.fusa.estados.update_one(
+                {"pia_id": pia_id},
+                {"$push": {"estados": nuevo_estado}}
+            )
+        else:
+            result =  conn.fusa.estados.insert_one({
+                "pia_id": pia_id,
+                "fecha_inicio": datetime.utcnow(),
+                "estados": [nuevo_estado]
+            })
 
-
-@router.post("/{pia_id}")
-async def crear_estado(pia_id: int, estado: Estado): ## aqui toma como parametro el id del URL y el body del request como Estado
-    data = cargar_estados()
-    pia_id_str = str(pia_id)
-
-    if pia_id_str not in data:
-        data[pia_id_str] = [] # si no existe el proyecto, lo crea como una lista vacia
-
-
-    data[pia_id_str].append(estado.dict()) # agrega el nuevo estado a la lista de estados del proyecto
-
-    guardar_estados(data)
-
-    return {"mensaje": "Estado creado", "estado": estado}
+        return {"status": "ok", "estado_creado": nuevo_estado}
+        
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=str(e))
 
 
 
-@router.put("/{pia_id}")
-async def actualizar_estado(pia_id: int, estado_query: str = Query(...,alias="estado"), request: Request = None): # aqui se recibe el id del proyecto y el estado a actualizar
-    data = cargar_estados()
-    pia_id_str = str(pia_id)
 
-    if pia_id_str not in data:
-        raise HTTPException(status_code=404, detail="Proyecto no encontrado")
+@router.put("/{pia_id}/{estado}", response_model=dict)
+def crear_estado(estado_mandado: Config , pia_id : str, estado: str ,request: Request):
 
-    estados = data[pia_id_str] # pia_id_str es el id del proyecto, y estados es la lista de estados del proyecto
 
-    encontrado = False
-
-    body = await request.json()
-
-    for est in estados:
-        if est["estado"] == estado_query:
-
-            est["fecha_hora_fin"] = body.get("fecha_hora_fin", est["fecha_hora_fin"])
-            est["flag"] = body.get("flag", est["flag"])
-            est["descrip"] = body.get("descrip", est["descrip"])
-            encontrado = True
-            break
-
-    if not encontrado:
-        raise HTTPException(status_code=404, detail="Estado no encontrado")
-
-    guardar_estados(data)
-    return {"mensaje": "Estado actualizado", "estado": estado_query}
+    try:
+        update_data = {
+            f"estados.$[element].{k}": v
+            for k, v in estado_mandado.model_dump(by_alias=True, exclude_unset=True).items()
+            }
+        
+        result =  conn.fusa.estados.find_one_and_update(
+            {"pia_id": pia_id},
+            {"$set": update_data},
+            array_filters=[{"element.estado": estado}],  # Aquí filtramos por estado
+            return_document=True,
+    )
 
 
 
-@router.get("/{pia_id}")
-async def obtener_estados(pia_id: int):
-    data = cargar_estados()
-    pia_id_str = str(pia_id)
+        
+        if result is None:
+            raise HTTPException(status_code=404, detail="Documento no encontrado.")
+        
+        result["_id"] = str(result["_id"])
+        return {"status": "ok", "estado_actualizado": result}
+        
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=str(e))
 
-    if pia_id_str not in data:
-        raise HTTPException(status_code=404, detail="Proyecto no encontrado")
-
-    return {"estados": data[pia_id_str]}

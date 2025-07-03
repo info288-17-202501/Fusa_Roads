@@ -12,10 +12,10 @@ services:
       - APP_ENV=development
       - APP_PORT=8005
 
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=fusa
-      - POSTGRES_PORT=5432
-      - POSTGRES_HOST=localhost
+      - MONGOURI=mongodb://host.docker.internal:27017
+      
+
+      - DATABASE=fusa
+
 
     restart: unless-stopped

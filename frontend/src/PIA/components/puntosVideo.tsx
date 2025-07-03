@@ -1,20 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Button, Card, ListGroup } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
+import { Video } from '../resources/types';
 
 type Point = { x: number; y: number };
 
-function PuntosVideo() {
-    const navigate = useNavigate();
+type Props = {
+    video: Video;
+    onGuardar: (videoActualizado: Video) => void;
+    onVolver: () => void;
+};
+
+export default function PuntosVideo({ video, onGuardar, onVolver }: Props) {
     const imageRef = useRef<HTMLImageElement>(null);
     const [linePoints, setLinePoints] = useState<Point[]>([]);
     const [polygonPoints, setPolygonPoints] = useState<Point[]>([]);
     const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
-    const [rotation, setRotation] = useState(0);
-
-    const handleRotate = () => {
-        setRotation((prev) => (prev + 90) % 360);
-    };
 
     useEffect(() => {
         const img = imageRef.current;
@@ -31,7 +31,6 @@ function PuntosVideo() {
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
 
-        // A veces si se apreta el borde de la img da un negativo asi que se pasa a 0 
         x = Math.max(x, 0);
         y = Math.max(y, 0);
 
@@ -58,6 +57,14 @@ function PuntosVideo() {
         return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x},${p.y}`).join(' ') + (points.length >= 3 ? ' Z' : '');
     };
 
+    const imageUrl = `http://localhost:8002/minio/stream-thumbnail?ruta_miniatura_minio=${video.ruta_miniatura_minio}&minio_bucket=${video.minio_bucket}`;
+
+    useEffect(() => {
+        if (video.linea) setLinePoints(video.linea);
+        if (video.poligono) setPolygonPoints(video.poligono);
+    }, [video]);
+
+
     return (
         <Container fluid className="my-4">
             <Row>
@@ -67,8 +74,7 @@ function PuntosVideo() {
                         <Card.Body>
                             <Card.Title>Información</Card.Title>
                             <Card.Text>
-                                Imagen: <strong>VID_2(720P_60FPS).jpg</strong><br />
-                                Resolución: <strong>1250x720</strong>
+                                Video: <strong>{video.name}</strong><br />
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -92,7 +98,7 @@ function PuntosVideo() {
                         onClick={handleClick}
                     >
                         <Image
-                            src="VID_2(720P_60FPS).jpg"
+                            src={imageUrl}
                             alt="Imagen clickeable"
                             ref={imageRef}
                             onLoad={(e) => {
@@ -103,9 +109,6 @@ function PuntosVideo() {
                             style={{ cursor: 'crosshair' }}
                         />
 
-                        
-
-                        {/* SVG para dibujar líneas/polígonos */}
                         <svg
                             style={{
                                 position: 'absolute',
@@ -191,8 +194,26 @@ function PuntosVideo() {
                     </Card>
                 </Col>
             </Row>
+
+            <div className="d-flex justify-content-between mt-4">
+                <Button variant="secondary" onClick={onVolver}>
+                    Volver
+                </Button>
+                <Button
+                    variant="primary"
+                    onClick={() => {
+                        const videoActualizado: Video = {
+                            ...video,
+                            linea: linePoints,
+                            poligono: polygonPoints
+                        };
+                        onGuardar(videoActualizado);
+                    }}
+                    disabled={linePoints.length < 2 || polygonPoints.length < 4}
+                >
+                    Guardar puntos
+                </Button>
+            </div>
         </Container>
     );
 }
-
-export default PuntosVideo;

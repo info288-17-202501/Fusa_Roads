@@ -5,7 +5,8 @@ if (!db.getCollectionNames().includes('videos')) {
     db.createCollection('contextos_videos');
     db.createCollection('estados');
     db.createCollection('parametrosPia');
-    print('Colección "videos" creada en fusa_mongo');
+    db.createCollection('modelosIA');
+    print('Las colecciones fueron creadas correctamente');
 } else {
-    print('La colección "videos" ya existe');
+    print('No se pudo crear todas las colecciones');
 }

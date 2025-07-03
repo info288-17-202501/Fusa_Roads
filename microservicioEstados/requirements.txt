@@ -1,0 +1,10 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+sqlalchemy==2.0.23
+python-dotenv==1.0.0
+psycopg2-binary==2.9.7
+pydantic-settings==2.1.0
+asyncpg==0.29.0
+requests==2.31.0
+pymongo==4.5.0
