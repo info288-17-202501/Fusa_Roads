@@ -26,10 +26,11 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 	const [currentView, setCurrentView] = useState<'form' | 'videos' | 'puntos'>('form');
 	const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
 	const [proyectoData, setProyectoData] = useState<ProyectoIA>({
+		id: 1,
 		nombreProyecto: '',
 		mVideo: '',
 		mAudio: '',
-		listaVideos:[],
+		listaVideos: [],
 		videoSalida: false,
 		ventanasTiempo: false,
 		tiempo: undefined,
@@ -68,6 +69,7 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 				setProyectoData(initialValues);
 			} else {
 				setProyectoData({
+					id: 1,
 					nombreProyecto: '',
 					mVideo: 'yolo12s.pt',
 					mAudio: 'Cnn14_DecisionLevelMax.pth',
@@ -94,11 +96,29 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 		setCurrentView('puntos');
 	};
 
-	const handleSaveProyecto = (data: ProyectoIA) => {
+	const handleSaveProyecto = async (data: ProyectoIA) => {
 		// setProyectoData(data);
 		// onSave(data);
 		console.log(data)
-		console.log("test")
+		// console.log("test")
+
+		try {
+			// const res = await fetch("endpoint", {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		'Content-Type': 'application/json'
+			// 	},
+			// 	body: JSON.stringify(data)
+			// });
+
+			// if (!res.ok) throw new Error("Error en la respuesta del servidor");
+
+			// const result = await res.json();
+			// console.log("Proyecto guardado:", result);
+			onSave(data);
+		} catch (error) {
+			console.error("Error al mandar los datos del PIA", error);
+		}
 	};
 
 	const handleGuardarSeleccionVideos = () => {
@@ -154,7 +174,7 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 						</Table>
 
 						<div className="d-flex justify-content-between mt-3">
-							<Button variant="secondary"  onClick={() => setCurrentView('form')}>
+							<Button variant="secondary" onClick={() => setCurrentView('form')}>
 								Volver
 							</Button>
 							<Button

@@ -41,7 +41,7 @@ function ProyectosIA() {
     };
 
     const handleProcess = (proyecto: ProyectoIA) => {
-        alert(`Procesando proyecto: ${proyecto.nombre} (ID: ${proyecto.id})`);
+        alert(`Procesando proyecto: ${proyecto.nombreProyecto} (ID: ${proyecto.id})`);
         // ACA SE DEBERIA LLAMAR AL PROCESO DE IA
     };
 
