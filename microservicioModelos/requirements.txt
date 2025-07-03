@@ -1,0 +1,30 @@
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+
+# MinIO client
+minio>=7.2.0
+
+# Pydantic for data validation and settings
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Type hints support
+typing-extensions>=4.8.0
+
+# HTTP client (often needed with FastAPI)
+httpx>=0.25.0
+requests>=2.31.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Logging (if using structured logging)
+loguru>=0.7.2
+
+# Security (often needed in FastAPI apps)
+python-multipart>=0.0.6
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# Mongo
+pymongo==4.6.3
