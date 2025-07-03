@@ -12,10 +12,13 @@ services:
       - APP_ENV=development
       - APP_PORT=8005
 
-      - MONGOURI=mongodb://root:example@host.docker.internal:27018/admin
-      
+      - MONGOURI=mongodb://root:example@host.docker.internal:27017/admin
 
       - DATABASE=fusa_roads
 
 
     restart: unless-stopped
+
+networks:
+  fusaroadsred:
+    external: true

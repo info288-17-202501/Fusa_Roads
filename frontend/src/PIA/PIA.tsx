@@ -23,7 +23,7 @@ function ProyectosIA() {
 				const data = await res.json();
 
 				const processedData = data.map((ProyectoIA: any) => ({
-					_id: ProyectoIA.id,
+					id: ProyectoIA._id,
 					nombreProyecto: ProyectoIA.nombreProyecto,
                     videoSalida: ProyectoIA.videoSalida,
                     ventanasTiempo: ProyectoIA.ventanasTiempo,

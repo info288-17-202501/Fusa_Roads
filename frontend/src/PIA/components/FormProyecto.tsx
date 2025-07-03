@@ -112,7 +112,7 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
 
             <div className="d-flex justify-content-end mt-3 gap-2">
                 <Button variant="secondary" onClick={onCancel}>Cancelar</Button>
-                <Button type="submit" onClick={() => onSave(formData)}>Guardar</Button>
+                <Button type="submit">Guardar</Button>
             </div>
         </Form>
     );

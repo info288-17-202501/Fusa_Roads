@@ -97,24 +97,19 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 	};
 
 	const handleSaveProyecto = async (data: ProyectoIA) => {
-		// setProyectoData(data);
-		// onSave(data);
-		console.log(data)
-		// console.log("test")
-
 		try {
-			// const res = await fetch("endpoint", {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: JSON.stringify(data)
-			// });
+			const res = await fetch("http://localhost:8005/parametros/", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			});
 
-			// if (!res.ok) throw new Error("Error en la respuesta del servidor");
+			if (!res.ok) throw new Error("Error en la respuesta del servidor");
 
-			// const result = await res.json();
-			// console.log("Proyecto guardado:", result);
+			const result = await res.json();
+			console.log("Proyecto guardado:", result);
 			onSave(data);
 		} catch (error) {
 			console.error("Error al mandar los datos del PIA", error);
