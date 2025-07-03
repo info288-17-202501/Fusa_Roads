@@ -4,26 +4,48 @@ import { ProyectoIA } from "./types";
 export const proyectosData: ProyectoIA[] = [
   {
     id: 1,
-    nombre: "Proyecto A",
-    videoSalida: true,
-    ventanasTiempo: true,
-    mVideo: "modelo_video_v1",
-    mAudio: "modelo_audio_v1",
-  },
-  {
-    id: 2,
-    nombre: "Proyecto B",
+    nombreProyecto: "placeholder",
     videoSalida: false,
-    ventanasTiempo: true,
-    mVideo: "modelo_video_v2",
-    mAudio: "modelo_audio_v2",
-  },
-  {
-    id: 3,
-    nombre: "Proyecto C",
-    videoSalida: true,
     ventanasTiempo: false,
-    mVideo: "modelo_video_experimental",
-    mAudio: "modelo_audio_v3",
+    mVideo: "m1",
+    mAudio: "m2",
+    listaVideos: [
+      {
+        _id: 2,
+        name: "VID20250403124144.mp4",
+        activo: true,
+        ruta_miniatura_minio:
+          "videos_original/test/miniaturas/VID20250403124144.jpg",
+        minio_bucket: "fusaroads",
+        linea: [
+          {
+            x: 365.0234375,
+            y: 268.89453125,
+          },
+          {
+            x: 316.0234375,
+            y: 126.89453125,
+          },
+        ],
+        poligono: [
+          {
+            x: 484.0234375,
+            y: 276.89453125,
+          },
+          {
+            x: 297.0234375,
+            y: 34.89453125,
+          },
+          {
+            x: 232.0234375,
+            y: 164.89453125,
+          },
+          {
+            x: 269.0234375,
+            y: 283.89453125,
+          },
+        ],
+      },
+    ],
   },
 ];
