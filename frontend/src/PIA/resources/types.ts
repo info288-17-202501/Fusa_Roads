@@ -1,13 +1,20 @@
 export type ProyectoIA = {
+  _id: number
   id: number;
-  nombreProyecto: string;
-  videoSalida: boolean;
-  ventanasTiempo: boolean;
-  mVideo: string;
-  mAudio: string;
-  listaVideos: Video[];
-  tiempo?: number;
-  unidad?: string;
+  nombre_proyecto: string;
+  lista_videos: Video[];
+  modelo_video: string;
+  modelo_audio: string;
+
+  listaVideos?: Video[];
+  
+  flag_videos_salida: boolean;
+  path_videos_salida?: string;
+  bucket_video_salida?: string;
+
+  flag_ventanas_tiempo: boolean;
+  cantidad_ventanas?: number;
+  unidad_tiempo_ventanas?: string;
 };
 
 export type Video = {

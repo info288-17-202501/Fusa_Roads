@@ -6,44 +6,40 @@ import Table from '../components/Table';
 import ModalConfirmacion from '../components/ModalConfirmacion';
 import ModalNuevoProyecto from './components/ModalNuevoProyecto';
 
-// Borrar en futuro
-import { proyectosData } from './resources/proyectosData';
-
 function ProyectosIA() {
     // Cambiar esto cuando se realize la consulta a mongo
-    const [proyectos, setProyectos] = useState(proyectosData);
+    const [proyectos, setProyectos] = useState<ProyectoIA[]>([]);
     const [loading, setLoading] = useState(true);
 
-
-
     useEffect(() => {
-		const fetchVideos = async () => {
-			try {
-				const res = await fetch('http://localhost:8005/', { method: 'GET' });
-				const data = await res.json();
+        const fetchVideos = async () => {
+            try {
+                const res = await fetch('http://localhost:8005/parametros/', { method: 'GET' });
+                const data = await res.json();
 
-				const processedData = data.map((ProyectoIA: any) => ({
-					id: ProyectoIA._id,
-					nombreProyecto: ProyectoIA.nombreProyecto,
-                    videoSalida: ProyectoIA.videoSalida,
-                    ventanasTiempo: ProyectoIA.ventanasTiempo,
-                    mVideo: ProyectoIA.mVideo,
-                    mAudio: ProyectoIA.mAudio,
-                    listaVideos: ProyectoIA.listaVideos,
-                    tiempo: ProyectoIA.tiempo,
-                    unidad: ProyectoIA.unidad,
-				}));
+                const processedData = data.map((ProyectoIA: ProyectoIA) => ({
+                    id: ProyectoIA._id,
+                    _id: ProyectoIA._id,
+                    nombre_proyecto: ProyectoIA.nombre_proyecto,
+                    flag_videos_salida: ProyectoIA.flag_videos_salida,
+                    flag_ventanas_tiempo: ProyectoIA.flag_ventanas_tiempo,
+                    modelo_video: ProyectoIA.modelo_video,
+                    modelo_audio: ProyectoIA.modelo_audio,
+                    lista_videos: ProyectoIA.lista_videos,
+                    cantidad_ventanas: ProyectoIA.cantidad_ventanas,
+                    unidad_tiempo_ventanas: ProyectoIA.unidad_tiempo_ventanas,
+                }));
 
 
-				setProyectos(processedData);
-				setLoading(false);
-			} catch (error) {
-				console.error("Error cargando los videos:", error);
-				setLoading(false);
-			}
-		};
-		fetchVideos();
-	}, []);
+                setProyectos(processedData);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error cargando los videos:", error);
+                setLoading(false);
+            }
+        };
+        fetchVideos();
+    }, []);
 
     const [showNuevo, setShowNuevo] = useState(false);
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
@@ -72,9 +68,24 @@ function ProyectosIA() {
         setDeleteId(null);
     };
 
-    const handleProcess = (proyecto: ProyectoIA) => {
-        alert(`Procesando proyecto: ${proyecto.nombreProyecto} (ID: ${proyecto.id})`);
-        // ACA SE DEBERIA LLAMAR AL PROCESO DE IA
+    const handleProcess = async (proyecto: ProyectoIA) => {
+        alert(`Procesando proyecto: ${proyecto.nombre_proyecto} (ID: ${proyecto._id})`);
+        // ACA SE DEBE INDICAR A PARAMETROS QUE SE QUIERE COMENZAR EL PROCESO
+        try {
+            const res = await fetch(`http://localhost:8005/parametros/execpia/${proyecto._id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!res.ok) throw new Error("Error en la respuesta del servidor");
+
+            const result = await res.json();
+            console.log("Se mandó a procesar correctamente:", result);
+        } catch (error) {
+            console.error("Error al mandar los datos", error);
+        }
     };
 
     return (
