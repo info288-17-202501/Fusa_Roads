@@ -6,17 +6,18 @@ export type Estado = {
   orden: number;
   fecha_hora_ini?: string;
   fecha_hora_fin?: string;
-  descrip?: string;
+  descrip: string;
   flag?: string;
   avance?: {
-    actual: string;
-    total: string;
+    actual: number;
+    total: number;
   };
 };
 
 
 export type Proceso = {
-  id: number;
-  nombre: string;
+  _id: string;
+  pia_id: string;
+  fecha_inicio: string;
   estados: Estado[];
 };
