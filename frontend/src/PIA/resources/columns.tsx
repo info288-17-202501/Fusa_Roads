@@ -16,15 +16,15 @@ export const columns = (
 	onProcess: (proyecto: ProyectoIA) => void
 ) => [
 		{ accessorKey: 'id', header: 'ID' },
-		{ accessorKey: 'nombreProyecto', header: 'Nombre' },
+		{ accessorKey: 'nombre_proyecto', header: 'Nombre' },
 
 		{
 			header: 'Video Salida',
 			accessorKey: 'videoSalida',
 			cell: ({ row }: { row: Row<ProyectoIA> }) => (
 				<FontAwesomeIcon
-					icon={row.original.videoSalida ? faCheckCircle : faTimesCircle}
-					className={row.original.videoSalida ? 'text-success' : 'text-danger'}
+					icon={row.original.flag_videos_salida ? faCheckCircle : faTimesCircle}
+					className={row.original.flag_videos_salida ? 'text-success' : 'text-danger'}
 				/>
 			),
 		},
@@ -34,14 +34,14 @@ export const columns = (
 			accessorKey: 'ventanasTiempo',
 			cell: ({ row }: { row: Row<ProyectoIA> }) => (
 				<FontAwesomeIcon
-					icon={row.original.ventanasTiempo ? faCheckCircle : faTimesCircle}
-					className={row.original.ventanasTiempo ? 'text-success' : 'text-danger'}
+					icon={row.original.flag_ventanas_tiempo ? faCheckCircle : faTimesCircle}
+					className={row.original.flag_ventanas_tiempo ? 'text-success' : 'text-danger'}
 				/>
 			),
 		},
 
-		{ accessorKey: 'mVideo', header: 'Modelo Video' },
-		{ accessorKey: 'mAudio', header: 'Modelo Audio' },
+		{ accessorKey: 'modelo_video', header: 'Modelo Video' },
+		{ accessorKey: 'modelo_audio', header: 'Modelo Audio' },
 
 		{
 			header: 'Acciones',
@@ -57,7 +57,7 @@ export const columns = (
 					<button
 						className="bg-danger px-2 py-1 rounded border-0"
 						title="Eliminar"
-						onClick={() => handleAskDelete(row.original.id, row.original.nombreProyecto)}
+						onClick={() => handleAskDelete(row.original.id, row.original.nombre_proyecto)}
 					>
 						<FontAwesomeIcon color="white" icon={faTrashCan} />
 					</button>

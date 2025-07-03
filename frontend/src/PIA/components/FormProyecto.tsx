@@ -18,7 +18,7 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         setValidated(true);
-        if (!formData.nombreProyecto || !formData.mVideo || !formData.mAudio) return;
+        if (!formData.nombre_proyecto || !formData.modelo_audio || !formData.modelo_video) return;
         onSave(formData);
     };
 
@@ -31,8 +31,8 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
             <FormRow label="Nombre del proyecto:" showFeedback>
                 <Form.Control
                     required
-                    value={formData.nombreProyecto}
-                    onChange={(e) => handleChange('nombreProyecto', e.target.value)}
+                    value={formData.nombre_proyecto}
+                    onChange={(e) => handleChange('nombre_proyecto', e.target.value)}
                     placeholder="Ingrese el nombre del proyecto"
                 />
             </FormRow>
@@ -41,8 +41,8 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
                 <Form.Control
                     disabled={true}
                     required
-                    value={formData.mVideo}
-                    onChange={(e) => handleChange('mVideo', e.target.value)}
+                    value={formData.modelo_video}
+                    onChange={(e) => handleChange('modelo_video', e.target.value)}
                     placeholder="ej: modelo_video_v1"
                 />
             </FormRow>
@@ -51,8 +51,8 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
                 <Form.Control
                     required
                     disabled={true}
-                    value={formData.mAudio}
-                    onChange={(e) => handleChange('mAudio', e.target.value)}
+                    value={formData.modelo_audio}
+                    onChange={(e) => handleChange('modelo_audio', e.target.value)}
                     placeholder="ej: modelo_audio_v1"
                 />
             </FormRow>
@@ -62,8 +62,8 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
                     type="checkbox"
                     disabled={true}
                     label="Sí"
-                    checked={formData.videoSalida}
-                    onChange={(e) => handleChange('videoSalida', e.target.checked)}
+                    checked={formData.flag_videos_salida}
+                    onChange={(e) => handleChange('flag_videos_salida', e.target.checked)}
                 />
             </FormRow>
 
@@ -72,27 +72,27 @@ export default function FormProyecto({ data, onSave, onCancel, onShowVideos }: P
                     type="checkbox"
                     label="Sí"
                     disabled={true}
-                    checked={formData.ventanasTiempo}
-                    onChange={(e) => handleChange('ventanasTiempo', e.target.checked)}
+                    checked={formData.flag_ventanas_tiempo}
+                    onChange={(e) => handleChange('flag_ventanas_tiempo', e.target.checked)}
                 />
             </FormRow>
 
-            {formData.ventanasTiempo && (
+            {formData.flag_ventanas_tiempo && (
                 <>
                     <FormRow label="Tiempo (numérico):" showFeedback>
                         <Form.Control
                             required
                             type="number"
                             min={1}
-                            value={formData.tiempo ?? ''}
-                            onChange={(e) => handleChange('tiempo', parseInt(e.target.value))}
+                            value={formData.cantidad_ventanas ?? ''}
+                            onChange={(e) => handleChange('cantidad_ventanas', parseInt(e.target.value))}
                         />
                     </FormRow>
 
                     <FormRow label="Unidad de tiempo:" showFeedback>
                         <Form.Select
-                            value={formData.unidad}
-                            onChange={(e) => handleChange('unidad', e.target.value)}
+                            value={formData.unidad_tiempo_ventanas}
+                            onChange={(e) => handleChange('unidad_tiempo_ventanas', e.target.value)}
                         >
                             <option value="hora">hora</option>
                             <option value="minuto">minuto</option>
