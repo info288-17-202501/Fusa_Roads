@@ -27,16 +27,24 @@ export const getColumns = (abrirModal: (proceso: Proceso) => void) => [
     header: 'ID'
   },
   {
-    accessorKey: 'nombre',
-    header: 'Nombre'
+    accessorKey: 'pia_id',
+    header: 'PIA ID'
   },
   {
-  header: 'Creado',
-  cell: ({ row }: any) => iconoEstado(row.original.estados, 'creado')
+    accessorKey: 'fecha_inicio',
+    header: 'Fecha Inicio',
+    cell: ({ row }: any) => {
+      const fecha = new Date(row.original.fecha_inicio);
+      return fecha.toLocaleString('es-ES');
+    }
+  },
+  {
+  header: 'Inicio',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'inicio')
 },
 {
-  header: 'Iniciado',
-  cell: ({ row }: any) => iconoEstado(row.original.estados, 'iniciado')
+  header: 'Preproceso',
+  cell: ({ row }: any) => iconoEstado(row.original.estados, 'preproceso')
 },
 {
   header: 'Audio',

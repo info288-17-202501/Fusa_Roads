@@ -1,113 +1,115 @@
 // resources/procesosData.ts
-//ejemplos de data para probar todos los casos en el front
+// Los datos ahora se cargan desde la API
 import { Proceso } from "./types";
+import { fetchProcesos } from "./api";
 
-export const procesosData: Proceso[] = [
-  // 1. Proceso totalmente finalizado correctamente
-  {
-    id: 1,
-    nombre: 'proceso1',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-01T10:00:00', fecha_hora_fin: '2025-06-01T10:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-01T10:02:00', fecha_hora_fin: '2025-06-01T10:03:00', flag: 'ok' },
-      { estado: 'audio', orden: 3, fecha_hora_ini: '2025-06-01T10:04:00', fecha_hora_fin: '2025-06-01T10:05:00', flag: 'ok' },
-      { estado: 'video', orden: 4, fecha_hora_ini: '2025-06-01T10:06:00', fecha_hora_fin: '2025-06-01T10:10:00', flag: 'ok' },
-      { estado: 'integrado', orden: 5, fecha_hora_ini: '2025-06-01T10:11:00', fecha_hora_fin: '2025-06-01T10:12:00', flag: 'ok' }
-    ]
-  },
+// Función para obtener los datos de la API
+export const loadProcesosData = async (): Promise<Proceso[]> => {
+  return await fetchProcesos();
+};
 
-  // 2. En ejecución en etapa video (con avance)
+// Datos de ejemplo para casos de prueba (ya no se usan en producción)
+export const procesosDataExample: Proceso[] = [
   {
-    id: 2,
-    nombre: 'proceso2',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-02T09:00:00', fecha_hora_fin: '2025-06-02T09:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-02T09:10:00', fecha_hora_fin: '2025-06-02T09:11:00', flag: 'ok' },
-      { estado: 'audio', orden: 3, fecha_hora_ini: '2025-06-02T09:12:00', fecha_hora_fin: '2025-06-02T09:20:00', flag: 'ok' },
+    "_id": "6865f6f8caa6d789464a8152",
+    "pia_id": "1",
+    "fecha_inicio": "2025-07-02T23:20:24.550501",
+    "estados": [
       {
-        estado: 'video',
-        orden: 4,
-        fecha_hora_ini: '2025-06-02T09:21:00',
-        flag: '',
-        avance: {
-          actual: '34',
-          total: '100'
+        "estado": "inicio",
+        "orden": 1,
+        "fecha_hora_ini": "2025-07-02T23:20:24.562762",
+        "fecha_hora_fin": "2025-07-02T23:20:24.571799",
+        "flag": "ok",
+        "descrip": ""
+      },
+      {
+        "estado": "preproceso",
+        "orden": 2,
+        "fecha_hora_ini": "2025-07-02T23:20:24.581676",
+        "fecha_hora_fin": "2025-07-02T23:20:24.594232",
+        "flag": "ok",
+        "descrip": ""
+      },
+      {
+        "estado": "video",
+        "orden": 3,
+        "fecha_hora_ini": "2025-07-02T23:20:24.602744",
+        "fecha_hora_fin": "2025-07-02T23:20:24.699624",
+        "flag": "ok",
+        "descrip": "",
+        "avance": {
+          "actual": 90,
+          "total": 100
         }
       },
-      { estado: 'integrado', orden: 5 }
-    ]
-  },
-
-  // 3. En ejecución sin avance
-  {
-    id: 3,
-    nombre: 'proceso3',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-03T08:00:00', fecha_hora_fin: '2025-06-03T08:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-03T08:15:00', fecha_hora_fin: '2025-06-03T08:16:00', flag: 'ok' },
-      { estado: 'audio', orden: 3, fecha_hora_ini: '2025-06-03T08:30:00', fecha_hora_fin: '2025-06-03T08:40:00', flag: 'ok' },
-      { estado: 'video', orden: 4, fecha_hora_ini: '2025-06-03T08:41:00', flag: '' },
-      { estado: 'integrado', orden: 5 }
-    ]
-  },
-
-  // 4. Error en etapa audio
-  {
-    id: 4,
-    nombre: 'proceso4',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-04T09:00:00', fecha_hora_fin: '2025-06-04T09:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-04T09:02:00', fecha_hora_fin: '2025-06-04T09:03:00', flag: 'ok' },
       {
-        estado: 'audio',
-        orden: 3,
-        fecha_hora_ini: '2025-06-04T09:04:00',
-        fecha_hora_fin: '2025-06-04T09:05:00',
-        flag: 'error',
-        descrip: 'Error al cargar el archivo de audio.'
+        "estado": "audio",
+        "orden": 4,
+        "fecha_hora_ini": "2025-07-02T23:20:24.707623",
+        "fecha_hora_fin": "2025-07-02T23:20:24.717622",
+        "flag": "ok",
+        "descrip": ""
       },
-      { estado: 'video', orden: 4 },
-      { estado: 'integrado', orden: 5 }
-    ]
-  },
-
-  // 5. Error en etapa integrado, ejecución previa exitosa
-  {
-    id: 5,
-    nombre: 'proceso5',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-05T08:00:00', fecha_hora_fin: '2025-06-05T08:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-05T08:02:00', fecha_hora_fin: '2025-06-05T08:03:00', flag: 'ok' },
-      { estado: 'audio', orden: 3, fecha_hora_ini: '2025-06-05T08:04:00', fecha_hora_fin: '2025-06-05T08:05:00', flag: 'ok' },
-      { estado: 'video', orden: 4, fecha_hora_ini: '2025-06-05T08:06:00', fecha_hora_fin: '2025-06-05T08:07:00', flag: 'ok' },
       {
-        estado: 'integrado',
-        orden: 5,
-        fecha_hora_ini: '2025-06-05T08:08:00',
-        fecha_hora_fin: '2025-06-05T08:09:00',
-        flag: 'error',
-        descrip: 'Falló la consolidación de resultados.'
+        "estado": "integrado",
+        "orden": 5,
+        "fecha_hora_ini": "2025-07-02T23:20:24.727624",
+        "fecha_hora_fin": "2025-07-02T23:20:24.737624",
+        "flag": "ok",
+        "descrip": ""
       }
     ]
   },
-
-  // 6. Etapas mezcladas: iniciado en ejecución, video con error
   {
-    id: 6,
-    nombre: 'proceso6',
-    estados: [
-      { estado: 'creado', orden: 1, fecha_hora_ini: '2025-06-06T07:00:00', fecha_hora_fin: '2025-06-06T07:01:00', flag: 'ok' },
-      { estado: 'iniciado', orden: 2, fecha_hora_ini: '2025-06-06T07:02:00', flag: '' },
-      { estado: 'audio', orden: 3 },
+    "_id": "6865f707caa6d789464a8153",
+    "pia_id": "1",
+    "fecha_inicio": "2025-07-02T23:20:39.186758",
+    "estados": [
       {
-        estado: 'video',
-        orden: 4,
-        fecha_hora_ini: '2025-06-06T07:04:00',
-        fecha_hora_fin: '2025-06-06T07:05:00',
-        flag: 'error',
-        descrip: 'Error al procesar el frame 230.'
+        "estado": "inicio",
+        "orden": 1,
+        "fecha_hora_ini": "2025-07-02T23:20:39.198453",
+        "fecha_hora_fin": "2025-07-02T23:20:39.208555",
+        "flag": "ok",
+        "descrip": ""
       },
-      { estado: 'integrado', orden: 5 }
+      {
+        "estado": "preproceso",
+        "orden": 2,
+        "fecha_hora_ini": "2025-07-02T23:20:39.217255",
+        "fecha_hora_fin": "2025-07-02T23:20:39.228977",
+        "flag": "ok",
+        "descrip": ""
+      },
+      {
+        "estado": "video",
+        "orden": 3,
+        "fecha_hora_ini": "2025-07-02T23:20:39.239541",
+        "fecha_hora_fin": "2025-07-02T23:20:39.333043",
+        "flag": "ok",
+        "descrip": "",
+        "avance": {
+          "actual": 90,
+          "total": 100
+        }
+      },
+      {
+        "estado": "audio",
+        "orden": 4,
+        "fecha_hora_ini": "2025-07-02T23:20:39.342780",
+        "fecha_hora_fin": "2025-07-02T23:20:39.355234",
+        "flag": "ok",
+        "descrip": ""
+      },
+      {
+        "estado": "integrado",
+        "orden": 5,
+        "fecha_hora_ini": "2025-07-02T23:20:39.364330",
+        "fecha_hora_fin": "2025-07-02T23:20:39.375014",
+        "flag": "ok",
+        "descrip": ""
+      }
     ]
   }
 ];
