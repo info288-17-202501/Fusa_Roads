@@ -12,6 +12,38 @@ import { proyectosData } from './resources/proyectosData';
 function ProyectosIA() {
     // Cambiar esto cuando se realize la consulta a mongo
     const [proyectos, setProyectos] = useState(proyectosData);
+    const [loading, setLoading] = useState(true);
+
+
+
+    useEffect(() => {
+		const fetchVideos = async () => {
+			try {
+				const res = await fetch('http://localhost:8005/', { method: 'GET' });
+				const data = await res.json();
+
+				const processedData = data.map((ProyectoIA: any) => ({
+					_id: ProyectoIA.id,
+					nombreProyecto: ProyectoIA.nombreProyecto,
+                    videoSalida: ProyectoIA.videoSalida,
+                    ventanasTiempo: ProyectoIA.ventanasTiempo,
+                    mVideo: ProyectoIA.mVideo,
+                    mAudio: ProyectoIA.mAudio,
+                    listaVideos: ProyectoIA.listaVideos,
+                    tiempo: ProyectoIA.tiempo,
+                    unidad: ProyectoIA.unidad,
+				}));
+
+
+				setProyectos(processedData);
+				setLoading(false);
+			} catch (error) {
+				console.error("Error cargando los videos:", error);
+				setLoading(false);
+			}
+		};
+		fetchVideos();
+	}, []);
 
     const [showNuevo, setShowNuevo] = useState(false);
     const [showConfirmarModal, setShowConfirmarModal] = useState(false);
@@ -49,7 +81,7 @@ function ProyectosIA() {
         <>
             <Container className="w-75 my-5">
                 <h1 className="d-flex justify-content-center mb-4">Proyectos IA</h1>
-                <Table 
+                <Table
                     columns={columns(handleAskDelete, handleEdit, handleProcess)}
                     data={proyectos}
                     showNewButton={true}
