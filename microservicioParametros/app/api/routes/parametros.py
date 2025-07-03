@@ -107,55 +107,56 @@ def crear_parametrospia(parametro_front_id: str):
     if existing_pia:
         raise HTTPException(status_code=400, detail="Ya existe una relación para este parámetro")
     
+    # Crear la estructura base del documento parametrosPia
     parametro_pia = {
-        "server": True,
-        "model-yolo": {
-            "version": parametro_front.get("mVideo", "yolo12s.pt"),
-            "conf_min": 0.6,
-            "tracker": {
-                "max_age": 30,
-                "n_init": 1,
-                "max_cosine_distance": 0.3
-            }
+        "nombre": parametro_front.get("nombreProyecto", "proceso1"),
+        "params": {
+            "server": True,
+            "model-yolo": {
+                "version": parametro_front.get("mVideo", "yolo12s.pt"),
+                "conf_min": 0.6,
+                "tracker": {
+                    "max_age": 30,
+                    "n_init": 1,
+                    "max_cosine_distance": 0.3
+                }
+            },
+            "pann": {
+                "ruta": parametro_front.get("mAudio", "Cnn14_DecisionLevelMax.pth"),
+                "umbral": 0.1,
+                "margen_frames": 20
+            },
+            "contexto": parametro_front.get("nombreProyecto", "prueba"),
+            "video": "",
+            "regiones": "",
+            "dispositivo": "cuda"
         },
-        "pann": {
-            "ruta": parametro_front.get("mAudio", "Cnn14_DecisionLevelMax.pth"),
-            "umbral": 0.1,
-            "margen_frames": 20
-        },
-        "contexto": parametro_front.get("nombreProyecto", "prueba"),
-        "dispositivo": "cuda",
+        "videos": [],
         "parametro_front_id": oid  
     }
     
     lista_videos = parametro_front.get("listaVideos", [])
-    videos_procesados = []
     
     for video in lista_videos:
         if video.get("activo", False):
-            video_data = {
-                "video": video.get("name", ""),
-                "regiones": {}
-            }
+            regiones_obj = {}
             
             if "linea" in video and video["linea"]:
-                video_data["regiones"]["line"] = [
+                regiones_obj["line"] = [
                     [punto["x"], punto["y"]] for punto in video["linea"]
                 ]
             
             if "poligono" in video and video["poligono"]:
-                video_data["regiones"]["polygon"] = [
+                regiones_obj["polygon"] = [
                     [punto["x"], punto["y"]] for punto in video["poligono"]
                 ]
             
-            videos_procesados.append(video_data)
-    
-    if videos_procesados:
-        if len(videos_procesados) == 1:
-            parametro_pia["video"] = videos_procesados[0]["video"]
-            parametro_pia["regiones"] = videos_procesados[0]["regiones"]
-        else:
-            parametro_pia["videos"] = videos_procesados
+            video_data = {
+                "ruta": video.get("name", ""),
+                "regiones": regiones_obj
+            }
+            
+            parametro_pia["videos"].append(video_data)
     
     result = conn.fusa_roads.parametrosPia.insert_one(parametro_pia)
     nuevo_doc = conn.fusa_roads.parametrosPia.find_one({"_id": result.inserted_id})
