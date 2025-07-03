@@ -73,7 +73,10 @@ function Table<T extends { id: number }>({
                             if (e.target.value === "") setGlobalFilter("")
                         }}
                         onKeyDown={(e) => {
-                            if(e.key === "Enter") setGlobalFilter(searchInput)
+                            if(e.key === "Enter") {
+                                e.preventDefault();
+                                setGlobalFilter(searchInput);
+                            }
                         }}
                         className='border-end-0'
                         style={{ outline: 'none', boxShadow: 'none', border: '1px solid rgb(222, 226, 230)'}}
