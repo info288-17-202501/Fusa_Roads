@@ -245,20 +245,7 @@ if __name__ == '__main__':
             etapa_03(path, video, nvideo_sin_extension, mem_json)
             etapa = "I_04"
 
-        # if detalle_video_vacio or etapa == "I_04":
-        #     print("Subir pogres")
-
-        #     etapa = "I_05"
-
-        #     # Subir posgres
-
-        #         # Obtener posgres ID
-
-        #             # Actualizar mem
-
-
-
-        if detalle_video_vacio or etapa == "I_05":
+        if detalle_video_vacio or etapa == "I_04":
 
             # Subir MinIO
             mibucket = "fusaroads"
@@ -279,14 +266,14 @@ if __name__ == '__main__':
 
             for detalle in mem_json["detalle_videos"]:
                 if detalle.get("nombre_video") == video:
-                    detalle.setdefault("etapas", {})["I_05"] = True
+                    detalle.setdefault("etapas", {})["I_04"] = True
 
             actualizar_archivo_json(path, "mem.json", mem_json)
 
-            etapa = "I_06"
+            etapa = "I_05"
 
 
-        if detalle_video_vacio or etapa == "I_06":
+        if detalle_video_vacio or etapa == "I_05":
             # Subir mongo
             print("Subir mongo")
 
@@ -305,7 +292,7 @@ if __name__ == '__main__':
 
             for detalle in mem_json["detalle_videos"]:
                 if detalle.get("nombre_video") == video:
-                    detalle.setdefault("etapas", {})["I_06"] = True
+                    detalle.setdefault("etapas", {})["I_05"] = True
 
             actualizar_archivo_json(path, "mem.json", mem_json)
 

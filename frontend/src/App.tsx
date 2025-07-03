@@ -8,7 +8,6 @@ import MonitorProcesos from './MonitorProcesos/MonitorProcesos'
 import Login from './Login/Login'
 import Profile from './Login/Profile';
 import SignUp from './Login/SignUp';
-import PuntosVideo from './PIA/selectorPuntos/puntosVideo';
 import ProyectosIA from './PIA/PIA'
 
 import NavigationBar from './components/NavigationBar';
@@ -30,7 +29,6 @@ const App: React.FC = () => {
 				<Route path="/login" element={<Login/>} />
 				<Route path="/perfil" element={<Profile/>} />
 				<Route path="/sign-up" element={<SignUp/>} />
-				<Route path="/test" element={<PuntosVideo/>} />
       		</Routes>
     	</Router>
   	);
