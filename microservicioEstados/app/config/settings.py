@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     MONGOURI: str 
+    MONGO_DB: str
 
     class Config:
         #env_file = ".env"  
