@@ -9,9 +9,17 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ image, name, date, onEdit, onDelete }) => {
-    return(
+    return (
         <Card>
-            <Card.Img variant="top" src={image}/>
+            <Card.Img 
+                variant="top" 
+                src={image}
+                style={{
+                    maxWidth: '100%',
+                    maxHeight: '200px',
+                    objectFit: 'contain',
+                    alignItems: 'center'
+                }}/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{date}</Card.Text>

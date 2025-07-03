@@ -18,6 +18,7 @@ class PannParams(BaseModel):
     margen_frames: int
 
 class Params(BaseModel):
+    nombre: Optional[str] = None
     server: bool
     model_yolo: ModelYoloParams = Field(..., alias="model-yolo")
     pann: PannParams
@@ -25,14 +26,43 @@ class Params(BaseModel):
     video: str
     regiones: str
     dispositivo: str
+    
+    @classmethod
+    def from_mongo(cls, data: dict):
+        data["id"] = str(data["_id"])
+        return cls(**data)
+    
+    class Config:
+        #allow_population_by_field_name = True
+        populate_by_name = True
 
+class ParamsResponse(BaseModel):
+    server: bool
+    model_yolo: ModelYoloParams = Field(..., alias="model-yolo")
+    pann: PannParams
+    contexto: str
+    video: str
+    regiones: str
+    dispositivo: str
+    
+    @classmethod
+    def from_mongo(cls, data: dict):
+        data["id"] = str(data["_id"])
+        return cls(**data)
+    
+    class Config:
+        #allow_population_by_field_name = True
+        populate_by_name = True
+
+    
 class VideoItem(BaseModel):
     ruta: str
     regiones: str
 
 class Config(BaseModel):
-    id: str = Field(..., exclude=True)  # No lo esperamos en input
-    params: Params
+    id: str = Field(default=None, exclude=True)  # No lo esperamos en input
+    nombre: Optional[str] = None
+    params: ParamsResponse
     videos: List[VideoItem]
     
     @classmethod
@@ -44,3 +74,18 @@ class Config(BaseModel):
         #allow_population_by_field_name = True
         populate_by_name = True
 
+
+
+class ConfigResponse(BaseModel):
+    id: str = Field(default=None, exclude=True) 
+    params: ParamsResponse
+    videos: List[VideoItem]
+    
+    @classmethod
+    def from_mongo(cls, data: dict):
+        data["id"] = str(data["_id"])
+        return cls(**data)
+    
+    class Config:
+        #allow_population_by_field_name = True
+        populate_by_name = True

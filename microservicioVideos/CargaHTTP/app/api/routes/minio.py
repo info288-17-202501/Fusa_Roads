@@ -1,4 +1,5 @@
-from fastapi import APIRouter, UploadFile, File, Form, HTTPException
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from typing import List, Annotated
 from minio import Minio
 from app.config.settings import settings
@@ -78,6 +79,35 @@ async def delete_videos(
         "folder": folder,
         "objects": object_names
     }
+
+@router.get("/thumbnail")
+async def get_thumbnail_url(
+    ruta_miniatura_minio: str = Query(..., description="Ruta completa del objeto en el bucket"),
+    minio_bucket: str = Query(..., description="Nombre del bucket en MinIO")
+):
+    try:
+        url = client.presigned_get_object(
+            bucket_name=minio_bucket,
+            object_name=ruta_miniatura_minio,
+            expires=timedelta(hours=1)  # Tiempo que estará activa la URL
+        )
+
+        public_url = url.replace("http://minio:9000", "http://localhost:9000")
+
+        return {"thumbnail_url": public_url}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al generar URL: {str(e)}")
+    
+@router.get("/stream-thumbnail")
+async def stream_thumbnail(
+    ruta_miniatura_minio: str = Query(...),
+    minio_bucket: str = Query(...)
+):
+    try:
+        data = client.get_object(minio_bucket, ruta_miniatura_minio)
+        return StreamingResponse(data, media_type="image/jpeg")  # O cambia a image/png si corresponde
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al servir la miniatura: {str(e)}")
 
 # @router.put("/")
 # async def update_video(
