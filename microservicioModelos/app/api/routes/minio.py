@@ -14,18 +14,18 @@ import os
 
 router = APIRouter(prefix="/minio", tags=["MinIO"])
 
-@router.get("/")
-async def get_visualize_video(
-    bucket: Annotated[str, Form(...)],
-    folder: Annotated[str, Form(...)],
-    file_name: Annotated[str, Form(...)]
-):
+# @router.get("/")
+# async def get_visualize_video(
+#     bucket: Annotated[str, Form(...)],
+#     folder: Annotated[str, Form(...)],
+#     file_name: Annotated[str, Form(...)]
+# ):
     
-    url = visualize_file_from_minio(file_name, folder, bucket)["URL"]
+#     url = visualize_file_from_minio(file_name, folder, bucket)["URL"]
 
-    return {
-        "message" : url
-    }
+#     return {
+#         "message" : url
+#     }
 
 @router.get("/modelo")
 async def get_download_video(

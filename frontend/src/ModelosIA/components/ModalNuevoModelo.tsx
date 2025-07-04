@@ -1,8 +1,7 @@
-import { Modal, Button, Form } from "react-bootstrap";
-import { useState, useEffect, FormEvent } from 'react'
+import { Modal, Button, Form, Alert } from "react-bootstrap";
+import { useState, useEffect, FormEvent } from 'react';
 import FormRow from "../../components/FormRow";
 import { Modelo } from "../resources/types";
-
 
 interface Props {
     show: boolean;
@@ -11,23 +10,24 @@ interface Props {
     onSave: (modelo: Modelo) => void;
 }
 
-function ModalNuevoModelo ({show, onClose, initialValues, onSave}: Props){
+function ModalNuevoModelo({ show, onClose, initialValues, onSave }: Props) {
     const [validated, setValidated] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const [nombre, setNombre] = useState('');
     const [tipo, setTipo] = useState('');
-    const [ruta, setRuta] = useState('modelos/');
+    const [ruta, setRuta] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [archivo, setArchivo] = useState<File | null>(null);
 
-    // Carga los valores del modelo que se quiere editar
+    const isEditing = Boolean(initialValues);
+
     useEffect(() => {
         if (initialValues) {
-            setNombre(initialValues.nombre);
-            setTipo(initialValues.tipo);
+            setNombre(initialValues.nomb_modelo);
+            setTipo(initialValues.tipo_modelo);
             setRuta(initialValues.ruta);
             setDescripcion(initialValues.descripcion);
-            
         } else {
             setNombre('');
             setTipo('');
@@ -35,49 +35,75 @@ function ModalNuevoModelo ({show, onClose, initialValues, onSave}: Props){
             setDescripcion('');
         }
         setValidated(false);
+        setError(null);
     }, [initialValues, show]);
 
     const handleCancelar = () => {
-        // Limpiar todos los campos
         setNombre('');
         setTipo('');
         setRuta('');
         setDescripcion('');
-        setArchivo(null);
         setValidated(false);
+        setError(null);
+        setLoading(false);
         onClose();
-    }
+    };
 
-    const handleGuardarYLimpiar = () => {
+    const handleGuardarYLimpiar = async () => {
+        setLoading(true);
+        setError(null);
+
         const modelo: Modelo = {
-            id: initialValues?.id ?? Date.now(),
-            nombre,
-            tipo: 'Video',
+            id_modelo: initialValues?.id_modelo ?? Date.now(),
+            nomb_modelo: nombre,
+            tipo_modelo: tipo as 'a' | 'v',
+            flag_vigente: 'S',
             ruta,
             descripcion
+        };
+
+        // Si estamos editando, incluir el _id de MongoDB
+        if (initialValues?._id) {
+            modelo._id = initialValues._id;
         }
-        onSave(modelo)
-        // console.log({pais, region, comuna, nombreCalle, app, tipoVia});
-        // Aqui se deberia manejar la logica para mandar a la BD (podemos unir esta funcion con la de handleSubmit)
-        // Limpiar todos los campos
-        setNombre('');
-        setTipo('');
-        setRuta('');
-        setDescripcion('');
-        setArchivo(null);
-        setValidated(false);
-        onClose();
-    }
+
+        try {
+            const url = isEditing 
+                ? `http://localhost:8003/mongo/datos/${initialValues!.id_modelo}`
+                : "http://localhost:8003/mongo/datos";
+            
+            const method = isEditing ? 'PUT' : 'POST';
+
+            const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(modelo)
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.detail || `Error ${res.status}: ${res.statusText}`);
+            }
+
+            const data: Modelo = await res.json();
+            onSave(data);
+            handleCancelar();
+        } catch (error) {
+            console.error("Error al guardar modelo:", error);
+            setError(error instanceof Error ? error.message : 'Error desconocido al guardar');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;
-        if (!form.checkValidity()) { //Si no es válido, entra aquí
+        if (!form.checkValidity()) {
             event.stopPropagation();
             setValidated(true);
             return;
         }
-    
         setValidated(true);
         handleGuardarYLimpiar();
     };
@@ -85,85 +111,96 @@ function ModalNuevoModelo ({show, onClose, initialValues, onSave}: Props){
     const rutasMinio = [
         "modelos/audio/pann",
         "modelos/video/yolo",
-        "modelos/pruebas/",
+        "modelos/pruebas/"
     ];
 
     return (
         <Modal show={show} onHide={handleCancelar} centered>
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Nueva Sección de Calle
+                    {isEditing ? 'Editar Modelo IA' : 'Nuevo Modelo IA'}
                 </Modal.Title>
             </Modal.Header>
-            
+
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Modal.Body>
-                    
-                <FormRow label="Subir archivo:" showFeedback>
-                        <Form.Control
-                            required
-                            type='file'
-                            accept=".pt"
-                            onChange={(e) => {
-                                const target = e.target as HTMLInputElement;
-                                const file = target.files?.[0] || null
-                                setArchivo(file)
+                    {error && (
+                        <Alert variant="danger" className="mb-3">
+                            {error}
+                        </Alert>
+                    )}
 
-                                if (file && !nombre) {
-                                    const nombreSinExtension = file.name.replace(/\.[^/.]+$/, "");
-                                    setNombre(nombreSinExtension);
-                                    setRuta('modelos/' + file.name)
-                                }
-                            }}
+                    <FormRow label="Nombre del modelo:" showFeedback>
+                        <Form.Control
+                            value={nombre}
+                            placeholder="Ingrese el nombre del modelo"
+                            required
+                            disabled={loading}
+                            onChange={(e) => setNombre(e.target.value)}
                         />
                     </FormRow>
 
-                    <FormRow label="Nombre del modelo:" showFeedback>
-                        <Form.Control value={nombre} placeholder="Ingrese el nombre del modelo" required onChange={(e) => setNombre(e.target.value)}/>
-                    </FormRow>
-                    
                     <FormRow label="Ruta destino en MinIO:" showFeedback>
-  <Form.Select
-    value={ruta}
-    onChange={(e) => setRuta(e.target.value)}
-    required
-  >
-    <option value="">Seleccione una ruta</option>
-    {rutasMinio.map((ruta, idx) => (
-      <option key={idx} value={ruta}>
-        {ruta}
-      </option>
-    ))}
-  </Form.Select>
-</FormRow>
-
-                    <FormRow label="Tipo:" showFeedback>
-                        <Form.Select aria-label="Selecciones el tipo de modelo" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                            <option value={''}>Seleccione el tipo de Modelo de IA</option>
-                            <option>Audio</option>
-                            <option>Video</option>
+                        <Form.Select
+                            value={ruta}
+                            onChange={(e) => setRuta(e.target.value)}
+                            required
+                            disabled={loading}
+                        >
+                            <option value="">Seleccione una ruta</option>
+                            {rutasMinio.map((rutaOption, idx) => (
+                                <option key={idx} value={rutaOption}>
+                                    {rutaOption}
+                                </option>
+                            ))}
                         </Form.Select>
                     </FormRow>
-                    <FormRow label="Descripción:" showFeedback>
-                        <Form.Control as="textarea" value={descripcion} placeholder="Ingrese una descripción del modelo" required onChange={(e) => setDescripcion(e.target.value)}/>
+
+                    <FormRow label="Tipo:" showFeedback>
+                        <Form.Select
+                            required
+                            value={tipo}
+                            onChange={(e) => setTipo(e.target.value)}
+                            disabled={loading}
+                        >
+                            <option value="">Seleccione el tipo de IA</option>
+                            <option value="a">Audio</option>
+                            <option value="v">Video</option>
+                        </Form.Select>
                     </FormRow>
 
-                    
-                
+                    <FormRow label="Descripción:" showFeedback>
+                        <Form.Control
+                            as="textarea"
+                            value={descripcion}
+                            placeholder="Ingrese una descripción del modelo"
+                            required
+                            disabled={loading}
+                            onChange={(e) => setDescripcion(e.target.value)}
+                            rows={3}
+                        />
+                    </FormRow>
+
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant='secondary' onClick={handleCancelar}>Cancelar</Button>
-                    <Button type="submit">Guardar</Button>
+                    <Button 
+                        variant='secondary' 
+                        onClick={handleCancelar}
+                        disabled={loading}
+                    >
+                        Cancelar
+                    </Button>
+                    <Button 
+                        type="submit" 
+                        disabled={loading}
+                    >
+                        {loading ? 'Guardando...' : (isEditing ? 'Actualizar' : 'Guardar')}
+                    </Button>
                 </Modal.Footer>
             </Form>
         </Modal>
-    )
+    );
 }
-export default ModalNuevoModelo
 
-
-
-
-
-
+export default ModalNuevoModelo;

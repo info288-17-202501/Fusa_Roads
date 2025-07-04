@@ -16,7 +16,7 @@ services:
       - MONGO_PASS=example
       - MONGO_PORT=27017
       - MONGO_DB=fusa_roads
-      - MONGO_COLLECTION=modelos_ia
+      - MONGO_COLLECTION=modelosIA
 
     networks:
       - fusaroadsred

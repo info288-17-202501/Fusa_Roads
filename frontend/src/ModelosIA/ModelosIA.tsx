@@ -1,90 +1,124 @@
-import Table from '../components/Table';
+import { useState, useEffect, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
-import { columns } from './resources/columns'
-import { modelos as modelosData } from './resources/modelosData';
-import { useState } from 'react';
-import  ModalConfirmacion  from '../components/ModalConfirmacion';
-import { Modelo } from './resources/types';
-import  ModalNuevoModelo  from './components/ModalNuevoModelo' 
+import Table from '../components/Table';
+import ModalConfirmacion from '../components/ModalConfirmacion';
+import ModalNuevoModelo from './components/ModalNuevoModelo';
+import { Modelo, ModeloParaTabla } from './resources/types';
+import { columns } from './resources/columns';
 
 function ModelosIA() {
-    const [showNuevo, setShowNuevo] = useState(false);
+  const [modelos, setModelos] = useState<Modelo[]>([]);
+  const [showNuevo, setShowNuevo] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editModelo, setEditModelo] = useState<Modelo>();
+  const [showConfirmarModal, setShowConfirmarModal] = useState(false);
+  const [message, setMessage] = useState<React.ReactNode>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
-    const [modelos, setModelos] = useState(modelosData)
-    const [showConfirmarModal, setShowConfirmarModal] = useState(false);
-    const [message, setMessage] = useState<React.ReactNode>(null)
-    const [deleteId, setDeleteId] = useState<number | null>(null);
+  // Cargar modelos desde backend
+  useEffect(() => {
+    fetch("http://localhost:8003/mongo/datos")
+      .then((res) => res.json())
+      .then((data: Modelo[]) => {
+        setModelos(data);
+      })
+      .catch((err) => console.error("Error al cargar modelos IA:", err));
+  }, []);
 
-    const [editModelo, setEditModelo] = useState<Modelo | undefined>(undefined);
-    const [showEditModal, setShowEditModal] = useState(false);
+  // Mapear modelos para incluir la propiedad id requerida por la tabla
+  // useMemo para evitar recalcular en cada render
+  const modelosParaTabla: ModeloParaTabla[] = useMemo(() => 
+    modelos.map(modelo => ({
+      ...modelo,
+      id: modelo.id_modelo
+    })), [modelos]
+  );
 
-    const handleEdit = (modelo: Modelo) => {
-        setEditModelo(modelo);
-        setShowEditModal(true);
+  const handleEdit = (modelo: Modelo) => {
+    setEditModelo(modelo);
+    setShowEditModal(true);
+  };
+
+  const handleAskDelete = (id_modelo: number, nombre: string) => {
+    setDeleteId(id_modelo);
+    setMessage(
+      <>
+        ¿Estás seguro que deseas eliminar el modelo <strong>{nombre}</strong> con <strong>ID {id_modelo}</strong>?
+      </>
+    );
+    setShowConfirmarModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (deleteId === null) return;
+    
+    try {
+      // Hacer la llamada DELETE al backend
+      const res = await fetch(`http://localhost:8003/mongo/datos/${deleteId}`, {
+        method: 'DELETE'
+      });
+      
+      if (!res.ok) {
+        throw new Error(`Error ${res.status}: ${res.statusText}`);
+      }
+      
+      // Solo actualizar el estado si la eliminación fue exitosa
+      setModelos((prev) => prev.filter((m) => m.id_modelo !== deleteId));
+    } catch (error) {
+      console.error("Error al eliminar modelo:", error);
+      // Aquí podrías mostrar un mensaje de error al usuario
+    } finally {
+      setDeleteId(null);
+      setShowConfirmarModal(false);
     }
+  };
 
-    const handleAskDelete = (id: number, nombre: string) => {
-        setDeleteId(id);
-        setMessage( // Quedó así para poder poner letra en negrita
-            <> 
-                ¿Estás seguro que desear eliminar el modelo <strong>{nombre}</strong> con <strong>ID {id}</strong>?
-            </>
-        )
-        // setMessage(`¿Estás seguro que deseas eliminar la sección de Modelo "${nombre}" con ID ${id}?`)
-        setShowConfirmarModal(true);
-    }
+  const handleSaveNew = (nuevoModelo: Modelo) => {
+    setModelos((prev) => [...prev, nuevoModelo]);
+    setShowNuevo(false);
+  };
 
-    const handleConfirmDelete = () => {
-        if(deleteId === null) return;
+  const handleSaveEdit = (updatedModelo: Modelo) => {
+    setModelos((prev) =>
+      prev.map((m) => (m.id_modelo === updatedModelo.id_modelo ? updatedModelo : m))
+    );
+    setEditModelo(undefined);
+    setShowEditModal(false);
+  };
 
-        setModelos((prev) => prev.filter((c) => c.id !== deleteId))
-        
-        setShowConfirmarModal(false);
-        setDeleteId(null);
-    }
+  return (
+    <>
+      <Container className="w-75 my-5">
+        <h1 className="d-flex justify-content-center mb-4">Modelos IA</h1>
+        <Table
+          columns={columns(handleAskDelete, handleEdit)}
+          data={modelosParaTabla}
+          showNewButton
+          onClickNewButton={() => setShowNuevo(true)}
+        />
+      </Container>
 
-    return (
-        <>
-            <Container className="w-75 my-5">
-                <h1 className="d-flex justify-content-center mb-4">Modelos IA</h1>
-                <Table 
-                    columns={columns(handleAskDelete, handleEdit)}
-                    data={modelos}
-                    showNewButton={true}
-                    onClickNewButton={() => setShowNuevo(true)}
-                />     
-            </Container>
+      <ModalNuevoModelo
+        show={showNuevo}
+        onClose={() => setShowNuevo(false)}
+        onSave={handleSaveNew}
+      />
 
+      <ModalNuevoModelo
+        show={showEditModal}
+        onClose={() => setShowEditModal(false)}
+        initialValues={editModelo}
+        onSave={handleSaveEdit}
+      />
 
-            <ModalNuevoModelo
-                show={showNuevo}
-                onClose={() => setShowNuevo(false)}
-                onSave={(nuevaCalle) => {
-                    setModelos(prev => [...prev, nuevaCalle]);
-                    setShowNuevo(false)
-                }}
-            />
-
-            <ModalNuevoModelo
-                show={showEditModal}
-                onClose={() => setShowEditModal(false)}
-                initialValues={editModelo}
-                onSave={(updatedCalle: Modelo) => {
-                    setModelos((prev) => prev.map((c) => (c.id === updatedCalle.id ? updatedCalle : c)));
-                    setShowEditModal(false);
-                    setEditModelo(undefined);
-                }}
-            />
-
-            <ModalConfirmacion
-                show={showConfirmarModal}
-                onClose={() => setShowConfirmarModal(false)}
-                onConfirm={handleConfirmDelete}
-                message={message}
-            />
-
-        </>
-    )
+      <ModalConfirmacion
+        show={showConfirmarModal}
+        onClose={() => setShowConfirmarModal(false)}
+        onConfirm={handleConfirmDelete}
+        message={message}
+      />
+    </>
+  );
 }
 
-export default ModelosIA
+export default ModelosIA;
