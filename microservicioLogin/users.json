@@ -1,0 +1,23 @@
+{
+    "sebamonte": {
+        "name": "Sebasti\u00c3\u00a1n",
+        "lastname": "Montecinos",
+        "username": "sebamonte",
+        "email": "seba@gmail.com",
+        "password": "$2b$12$sIp89uZBXRFtGXFVNQtKiecEs7EPKYd1iIPrpUt0c6j1qUHa4wNbi"
+    },
+    "user2": {
+        "name": "User 2 Name",
+        "lastname": "User 2 Lastname",
+        "username": "user2",
+        "email": "user2@gmail.com",
+        "password": "$2b$12$uZj9OfPT1Ny9CwmhU2FHIuwMTgQ8TH1eKJN4GJ1jU3VEOpscV7auS"
+    },
+    "Tomas": {
+        "name": "Tomas",
+        "lastname": "Contreras",
+        "username": "Tomas",
+        "email": "tomas@gmail.com",
+        "password": "$2b$12$qLYrSQ4VFbzCi8F45KvFyOXz8TcD/8eZ4vdoWVMCg6YuONDjNJmfS"
+    }
+}

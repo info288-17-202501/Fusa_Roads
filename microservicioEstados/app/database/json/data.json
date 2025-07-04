@@ -1,0 +1,44 @@
+{
+  "1234": [
+    {
+      "estado": "iniciado",
+      "orden": 1,
+      "fecha_hora_ini": "2025-05-26T20:32:03.529099",
+      "fecha_hora_fin": "2025-05-26T20:32:06.543360",
+      "flag": "ok",
+      "descrip": ""
+    },
+    {
+      "estado": "preproceso",
+      "orden": 2,
+      "fecha_hora_ini": "2025-05-26T20:32:06.552959",
+      "fecha_hora_fin": "2025-05-26T20:32:09.563772",
+      "flag": "ok",
+      "descrip": ""
+    },
+    {
+      "estado": "audio",
+      "orden": 3,
+      "fecha_hora_ini": "2025-05-26T20:32:09.573722",
+      "fecha_hora_fin": "2025-05-26T20:32:12.584305",
+      "flag": "ok",
+      "descrip": ""
+    },
+    {
+      "estado": "video",
+      "orden": 3,
+      "fecha_hora_ini": "2025-05-26T20:32:12.593746",
+      "fecha_hora_fin": "2025-05-26T20:32:15.605574",
+      "flag": "ok",
+      "descrip": ""
+    },
+    {
+      "estado": "integrado",
+      "orden": 3,
+      "fecha_hora_ini": "2025-05-26T20:32:15.614957",
+      "fecha_hora_fin": "2025-05-26T20:32:18.625685",
+      "flag": "ok",
+      "descrip": ""
+    }
+  ]
+}

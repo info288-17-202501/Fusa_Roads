@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/fusa_minio_service.egg-info/PKG-INFO
+src/fusa_minio_service.egg-info/SOURCES.txt
+src/fusa_minio_service.egg-info/dependency_links.txt
+src/fusa_minio_service.egg-info/requires.txt
+src/fusa_minio_service.egg-info/top_level.txt

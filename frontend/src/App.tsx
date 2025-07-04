@@ -1,21 +1,42 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home'; 
-import SeccioneCalles from './pages/SeccionesCalles'
+import MenuCentral from './MenuCentral/MenuCentral'; 
+import SeccioneCalles from './SeccionesCalles/SeccionesCalles'
+import Videos from './Videos/Videos'
+import ModelosIA from './ModelosIA/ModelosIA'
+import MonitorProcesos from './MonitorProcesos/MonitorProcesos'
+import Login from './Login/Login'
+import Profile from './Login/Profile';
+import SignUp from './Login/SignUp';
+import ProyectosIA from './PIA/PIA'
+import PMR_page from './ProyectoMapasRuido/PMR';
+import MapPage from './VisorMapas/src/components/MapPage';
+
+
+import NavigationBar from './components/NavigationBar';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" />} /> 
-        <Route path="/home" element={<Home/>} /> 
-        <Route path="/secciones-calles" element={<SeccioneCalles/>} /> 
-
-
-      </Routes>
-    </Router>
-  );
+  	return (
+    	<Router>
+      		<NavigationBar/>
+      		<Routes>
+        		<Route path="/" element={<Navigate to="/home" />} /> 
+				<Route path="/home" element={<MenuCentral/>} /> 
+				<Route path="/secciones-calles" element={<PrivateRoute><SeccioneCalles/></PrivateRoute>} /> 
+				<Route path="/videos" element={<Videos/>} /> 
+				<Route path="/modelos-ia" element={<ModelosIA/>} />
+				<Route path="/proyectos-ia" element={<ProyectosIA/>} />
+				<Route path="/monitor-procesos" element={<MonitorProcesos/>} />
+				<Route path="/login" element={<Login/>} />
+				<Route path="/perfil" element={<Profile/>} />
+				<Route path="/sign-up" element={<SignUp/>} />
+				<Route path="/pmr" element={<PMR_page/>} />
+				<Route path="/visor-mapas-de-ruido" element={<MapPage/>} />
+      		</Routes>
+    	</Router>
+  	);
 };
 
 export default App;

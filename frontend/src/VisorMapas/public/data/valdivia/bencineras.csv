@@ -1,0 +1,17 @@
+_type;_tags_name;_tags_brand:wikipedia;_tags_brand:wikidata;_tags_brand;_tags_amenity;_lon;_lat;_id
+node;Copec;en:Empresas Copec;Q11681461;Copec;fuel;-73.2402054;-39.8277937;1329492722
+node;Shell;;Q110716465;Shell;fuel;-73.2412524;-39.8131747;1369638263
+node;Terpel;;;;fuel;-73.2181268;-39.8104024;1614832614
+node;Abastible;;;;fuel;-73.2177113;-39.8462473;2320205215
+node;Autogasco;;;;fuel;-73.2132666;-39.8440197;2320205216
+node;Shell;;Q110716465;Shell;fuel;-73.2099531;-39.8383731;4436708145
+node;Petrobras;;;;fuel;-73.2346839;-39.8170708;5783048612
+node;Shell;;;;fuel;-73.2226188;-39.8140663;5783048627
+node;Aramco;;;;fuel;-73.2399378;-39.8248742;6122472523
+way;Shell;;Q110716465;Shell;fuel;;;124140107
+way;Copec;es:Copec;Q1130956;Copec;fuel;;;678753257
+way;Aramco;;;;fuel;;;818489343
+way;Copec;es:Copec;Q1130956;Copec;fuel;;;850990012
+way;Aramco;;;;fuel;;;1013847794
+way;Shell;;;;fuel;;;1014047720
+way;Copec;;;;fuel;;;1279407803

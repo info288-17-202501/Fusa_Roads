@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    ports:
+      - "8004:8004" 
+    # volumes:
+    #   - .:/app
+    environment:
+      - APP_ENV=development
+      - APP_PORT=8004
+      - MONGOURI=mongodb://root:example@host.docker.internal:27017/admin
+      - MONGO_DB=fusa_roads
+    restart: unless-stopped
