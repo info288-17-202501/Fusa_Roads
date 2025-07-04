@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-07-03 11:09:04
+-- Started on 2025-07-03 22:16:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -105,7 +105,7 @@ CREATE SEQUENCE calles.calle_localidad_id_seq
 ALTER SEQUENCE calles.calle_localidad_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5029 (class 0 OID 0)
+-- TOC entry 5031 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: calle_localidad_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -144,7 +144,7 @@ CREATE SEQUENCE calles.ciudad_id_seq
 ALTER SEQUENCE calles.ciudad_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5030 (class 0 OID 0)
+-- TOC entry 5032 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: ciudad_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -184,7 +184,7 @@ CREATE SEQUENCE calles.localidad_id_seq
 ALTER SEQUENCE calles.localidad_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5031 (class 0 OID 0)
+-- TOC entry 5033 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: localidad_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -222,7 +222,7 @@ CREATE SEQUENCE calles.pais_id_seq
 ALTER SEQUENCE calles.pais_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5032 (class 0 OID 0)
+-- TOC entry 5034 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: pais_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -239,7 +239,9 @@ CREATE TABLE calles.seccion_calle (
     id integer NOT NULL,
     nombre character varying(50) NOT NULL,
     id_calle_localidad integer NOT NULL,
-    id_tipo_via integer NOT NULL
+    id_tipo_via integer NOT NULL,
+    app character varying(20) DEFAULT 'cadnaa'::character varying,
+    CONSTRAINT app_valida CHECK (((app)::text = ANY ((ARRAY['cadnaa'::character varying, 'noisemodelling'::character varying])::text[])))
 );
 
 
@@ -262,7 +264,7 @@ CREATE SEQUENCE calles.seccion_calle_id_seq
 ALTER SEQUENCE calles.seccion_calle_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5033 (class 0 OID 0)
+-- TOC entry 5035 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: seccion_calle_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -300,7 +302,7 @@ CREATE SEQUENCE calles.tipo_via_id_seq
 ALTER SEQUENCE calles.tipo_via_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5034 (class 0 OID 0)
+-- TOC entry 5036 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: tipo_via_id_seq; Type: SEQUENCE OWNED BY; Schema: calles; Owner: postgres
 --
@@ -354,7 +356,7 @@ CREATE SEQUENCE pia.pia_id_seq
 ALTER SEQUENCE pia.pia_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5035 (class 0 OID 0)
+-- TOC entry 5037 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: pia_id_seq; Type: SEQUENCE OWNED BY; Schema: pia; Owner: postgres
 --
@@ -396,7 +398,7 @@ CREATE SEQUENCE pia.pia_videos_id_seq
 ALTER SEQUENCE pia.pia_videos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5036 (class 0 OID 0)
+-- TOC entry 5038 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: pia_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: pia; Owner: postgres
 --
@@ -435,7 +437,7 @@ CREATE SEQUENCE pia.tipo_vehiculo_id_seq
 ALTER SEQUENCE pia.tipo_vehiculo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5037 (class 0 OID 0)
+-- TOC entry 5039 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: tipo_vehiculo_id_seq; Type: SEQUENCE OWNED BY; Schema: pia; Owner: postgres
 --
@@ -476,7 +478,7 @@ CREATE SEQUENCE pia.videos_id_seq
 ALTER SEQUENCE pia.videos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5038 (class 0 OID 0)
+-- TOC entry 5040 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: videos_id_seq; Type: SEQUENCE OWNED BY; Schema: pia; Owner: postgres
 --
@@ -518,7 +520,7 @@ CREATE SEQUENCE pmr.pmr_id_seq
 ALTER SEQUENCE pmr.pmr_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5039 (class 0 OID 0)
+-- TOC entry 5041 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: pmr_id_seq; Type: SEQUENCE OWNED BY; Schema: pmr; Owner: postgres
 --
@@ -580,7 +582,7 @@ ALTER TABLE ONLY calles.seccion_calle ALTER COLUMN id SET DEFAULT nextval('calle
 
 
 --
--- TOC entry 4810 (class 2604 OID 16442)
+-- TOC entry 4811 (class 2604 OID 16442)
 -- Name: tipo_via id; Type: DEFAULT; Schema: calles; Owner: postgres
 --
 
@@ -588,7 +590,7 @@ ALTER TABLE ONLY calles.tipo_via ALTER COLUMN id SET DEFAULT nextval('calles.tip
 
 
 --
--- TOC entry 4813 (class 2604 OID 24694)
+-- TOC entry 4814 (class 2604 OID 24694)
 -- Name: pia id; Type: DEFAULT; Schema: pia; Owner: postgres
 --
 
@@ -596,7 +598,7 @@ ALTER TABLE ONLY pia.pia ALTER COLUMN id SET DEFAULT nextval('pia.pia_id_seq'::r
 
 
 --
--- TOC entry 4815 (class 2604 OID 24718)
+-- TOC entry 4816 (class 2604 OID 24718)
 -- Name: pia_videos id; Type: DEFAULT; Schema: pia; Owner: postgres
 --
 
@@ -604,7 +606,7 @@ ALTER TABLE ONLY pia.pia_videos ALTER COLUMN id SET DEFAULT nextval('pia.pia_vid
 
 
 --
--- TOC entry 4811 (class 2604 OID 16445)
+-- TOC entry 4812 (class 2604 OID 16445)
 -- Name: tipo_vehiculo id; Type: DEFAULT; Schema: pia; Owner: postgres
 --
 
@@ -612,7 +614,7 @@ ALTER TABLE ONLY pia.tipo_vehiculo ALTER COLUMN id SET DEFAULT nextval('pia.tipo
 
 
 --
--- TOC entry 4814 (class 2604 OID 24701)
+-- TOC entry 4815 (class 2604 OID 24701)
 -- Name: videos id; Type: DEFAULT; Schema: pia; Owner: postgres
 --
 
@@ -620,7 +622,7 @@ ALTER TABLE ONLY pia.videos ALTER COLUMN id SET DEFAULT nextval('pia.videos_id_s
 
 
 --
--- TOC entry 4816 (class 2604 OID 24762)
+-- TOC entry 4817 (class 2604 OID 24762)
 -- Name: pmr id; Type: DEFAULT; Schema: pmr; Owner: postgres
 --
 
@@ -628,46 +630,46 @@ ALTER TABLE ONLY pmr.pmr ALTER COLUMN id SET DEFAULT nextval('pmr.pmr_id_seq'::r
 
 
 --
--- TOC entry 5000 (class 0 OID 16392)
+-- TOC entry 5002 (class 0 OID 16392)
 -- Dependencies: 220
 -- Data for Name: calle_localidad; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
 
 COPY calles.calle_localidad (id, nombre, id_localidad) FROM stdin;
-1	arauco	1
-2	san martín	1
-3	carlos anwandter	1
-4	picarte	1
-5	cochrane	1
-6	pudeto	1
-7	simpson	1
-8	aníbal pinto	1
-9	caupolicán	1
-10	janequeo	1
-11	baquedano	1
-12	yerbas buenas	1
-13	sotomayor	1
-14	calle sin nombre 1	1
-15	isla teja	1
-16	maipú	1
-17	san pedro	1
-18	los robles	1
-19	beauchef	1
-20	o'higgins	1
-21	ramírez	1
-22	avenida alemania	1
-23	circunvalación	1
-24	pedro montt	1
-25	matta	1
-26	san carlos	1
-27	independencia	1
-28	calle sin nombre 2	1
-29	lautaro	1
+146	arauco	8
+147	san martín	8
+148	carlos anwandter	8
+149	picarte	8
+150	cochrane	8
+151	pudeto	8
+152	simpson	8
+153	aníbal pinto	8
+154	caupolicán	8
+155	janequeo	8
+156	baquedano	8
+157	yerbas buenas	8
+158	sotomayor	8
+159	calle sin nombre 1	8
+160	isla teja	8
+161	maipú	8
+162	san pedro	8
+163	los robles	8
+164	beauchef	8
+165	o'higgins	8
+166	ramírez	8
+167	avenida alemania	8
+168	circunvalación	8
+169	pedro montt	8
+170	matta	8
+171	san carlos	8
+172	independencia	8
+173	calle sin nombre 2	8
+174	lautaro	8
 \.
 
 
 --
--- TOC entry 5002 (class 0 OID 16396)
+-- TOC entry 5004 (class 0 OID 16396)
 -- Dependencies: 222
 -- Data for Name: ciudad; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
@@ -683,7 +685,7 @@ COPY calles.ciudad (id, nombre, id_pais) FROM stdin;
 
 
 --
--- TOC entry 5004 (class 0 OID 16400)
+-- TOC entry 5006 (class 0 OID 16400)
 -- Dependencies: 224
 -- Data for Name: localidad; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
@@ -692,11 +694,12 @@ COPY calles.localidad (id, nombre, id_ciudad, flg_vigencia) FROM stdin;
 1	centrooo	3	S
 2	test paris	6	S
 3	test paillaco	9	S
+8	test valdivia	3	S
 \.
 
 
 --
--- TOC entry 5006 (class 0 OID 16405)
+-- TOC entry 5008 (class 0 OID 16405)
 -- Dependencies: 226
 -- Data for Name: pais; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
@@ -708,65 +711,65 @@ COPY calles.pais (id, nombre) FROM stdin;
 
 
 --
--- TOC entry 5008 (class 0 OID 16409)
+-- TOC entry 5010 (class 0 OID 16409)
 -- Dependencies: 228
 -- Data for Name: seccion_calle; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
 
-COPY calles.seccion_calle (id, nombre, id_calle_localidad, id_tipo_via) FROM stdin;
-1	s3	1	8
-2	s2	2	4
-3	s2	3	9
-4	s2	4	12
-5	s3	5	6
-6	s1	6	4
-7	s1	7	11
-8	s1	8	3
-9	s2	9	7
-10	s2	10	5
-11	s3	11	9
-12	s1	5	9
-13	s2	12	6
-14	s1	1	3
-15	s2	13	11
-16	s3	8	8
-17	s1	14	2
-18	s2	15	9
-19	s3	4	5
-20	s3	16	9
-21	s1	9	12
-22	s2	17	7
-23	s2	11	12
-24	s2	18	11
-25	s2	16	5
-26	s2	19	9
-27	s2	20	10
-28	s2	21	1
-29	s2	22	3
-30	s3	23	6
-31	s2	24	4
-32	s1	25	6
-33	s3	6	8
-34	s2	8	6
-35	s3	12	12
-36	s2	6	9
-37	s2	26	5
-38	s2	13	2
-39	s1	27	8
-40	s2	28	9
-41	s2	15	12
-42	s1	12	4
-43	s3	27	6
-44	s2	15	3
-45	s2	16	4
-46	s1	19	7
-47	s2	15	4
-48	s3	29	4
+COPY calles.seccion_calle (id, nombre, id_calle_localidad, id_tipo_via, app) FROM stdin;
+243	s3	146	8	cadnaa
+244	s2	147	4	cadnaa
+245	s2	148	9	cadnaa
+246	s2	149	12	cadnaa
+247	s3	150	6	cadnaa
+248	s1	151	4	cadnaa
+249	s1	152	11	cadnaa
+250	s1	153	3	cadnaa
+251	s2	154	7	cadnaa
+252	s2	155	5	cadnaa
+253	s3	156	9	cadnaa
+254	s1	150	9	cadnaa
+255	s2	157	6	cadnaa
+256	s1	146	3	cadnaa
+257	s2	158	11	cadnaa
+258	s3	153	8	cadnaa
+259	s1	159	2	cadnaa
+260	s2	160	9	cadnaa
+261	s3	149	5	cadnaa
+262	s3	161	9	cadnaa
+263	s1	154	12	cadnaa
+264	s2	162	7	cadnaa
+265	s2	156	12	cadnaa
+266	s2	163	11	cadnaa
+267	s2	161	5	cadnaa
+268	s2	164	9	cadnaa
+269	s2	165	10	cadnaa
+270	s2	166	1	cadnaa
+271	s2	167	3	cadnaa
+272	s3	168	6	cadnaa
+273	s2	169	4	cadnaa
+274	s1	170	6	cadnaa
+275	s3	151	8	cadnaa
+276	s2	153	6	cadnaa
+277	s3	157	12	cadnaa
+278	s2	151	9	cadnaa
+279	s2	171	5	cadnaa
+280	s2	158	2	cadnaa
+281	s1	172	8	cadnaa
+282	s2	173	9	cadnaa
+283	s2	160	12	cadnaa
+284	s1	157	4	cadnaa
+285	s3	172	6	cadnaa
+286	s2	160	3	cadnaa
+287	s2	161	4	cadnaa
+288	s1	164	7	cadnaa
+289	s2	160	4	cadnaa
+290	s3	174	4	cadnaa
 \.
 
 
 --
--- TOC entry 5010 (class 0 OID 16413)
+-- TOC entry 5012 (class 0 OID 16413)
 -- Dependencies: 230
 -- Data for Name: tipo_via; Type: TABLE DATA; Schema: calles; Owner: postgres
 --
@@ -788,7 +791,7 @@ COPY calles.tipo_via (id, nombre) FROM stdin;
 
 
 --
--- TOC entry 5020 (class 0 OID 24731)
+-- TOC entry 5022 (class 0 OID 24731)
 -- Dependencies: 240
 -- Data for Name: detalle; Type: TABLE DATA; Schema: pia; Owner: postgres
 --
@@ -804,7 +807,7 @@ COPY pia.detalle (id_pia_video, id_tipo_vehiculo, id_hora, cantidad_vehiculos, d
 
 
 --
--- TOC entry 5015 (class 0 OID 24691)
+-- TOC entry 5017 (class 0 OID 24691)
 -- Dependencies: 235
 -- Data for Name: pia; Type: TABLE DATA; Schema: pia; Owner: postgres
 --
@@ -816,7 +819,7 @@ COPY pia.pia (id, codigo_pia) FROM stdin;
 
 
 --
--- TOC entry 5019 (class 0 OID 24715)
+-- TOC entry 5021 (class 0 OID 24715)
 -- Dependencies: 239
 -- Data for Name: pia_videos; Type: TABLE DATA; Schema: pia; Owner: postgres
 --
@@ -828,7 +831,7 @@ COPY pia.pia_videos (id, id_pia, id_video, nombre_json, duracion, timestamp_inic
 
 
 --
--- TOC entry 5012 (class 0 OID 16428)
+-- TOC entry 5014 (class 0 OID 16428)
 -- Dependencies: 232
 -- Data for Name: tipo_vehiculo; Type: TABLE DATA; Schema: pia; Owner: postgres
 --
@@ -844,7 +847,7 @@ COPY pia.tipo_vehiculo (id, nombre, flg_vigencia) FROM stdin;
 
 
 --
--- TOC entry 5017 (class 0 OID 24698)
+-- TOC entry 5019 (class 0 OID 24698)
 -- Dependencies: 237
 -- Data for Name: videos; Type: TABLE DATA; Schema: pia; Owner: postgres
 --
@@ -856,7 +859,7 @@ COPY pia.videos (id, codigo_video, id_ciudad, id_tipo_via, fecha_grabacion) FROM
 
 
 --
--- TOC entry 5022 (class 0 OID 24759)
+-- TOC entry 5024 (class 0 OID 24759)
 -- Dependencies: 242
 -- Data for Name: pmr; Type: TABLE DATA; Schema: pmr; Owner: postgres
 --
@@ -871,7 +874,7 @@ COPY pmr.pmr (id, nombre, descripcion, fecha_creacion, id_localidad, activo) FRO
 
 
 --
--- TOC entry 5023 (class 0 OID 24770)
+-- TOC entry 5025 (class 0 OID 24770)
 -- Dependencies: 243
 -- Data for Name: uso; Type: TABLE DATA; Schema: pmr; Owner: postgres
 --
@@ -889,16 +892,16 @@ COPY pmr.uso (id_pmr, id_pia_video) FROM stdin;
 
 
 --
--- TOC entry 5040 (class 0 OID 0)
+-- TOC entry 5042 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: calle_localidad_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
 
-SELECT pg_catalog.setval('calles.calle_localidad_id_seq', 29, true);
+SELECT pg_catalog.setval('calles.calle_localidad_id_seq', 174, true);
 
 
 --
--- TOC entry 5041 (class 0 OID 0)
+-- TOC entry 5043 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: ciudad_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
@@ -907,16 +910,16 @@ SELECT pg_catalog.setval('calles.ciudad_id_seq', 10, true);
 
 
 --
--- TOC entry 5042 (class 0 OID 0)
+-- TOC entry 5044 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: localidad_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
 
-SELECT pg_catalog.setval('calles.localidad_id_seq', 3, true);
+SELECT pg_catalog.setval('calles.localidad_id_seq', 8, true);
 
 
 --
--- TOC entry 5043 (class 0 OID 0)
+-- TOC entry 5045 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: pais_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
@@ -925,16 +928,16 @@ SELECT pg_catalog.setval('calles.pais_id_seq', 4, true);
 
 
 --
--- TOC entry 5044 (class 0 OID 0)
+-- TOC entry 5046 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: seccion_calle_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
 
-SELECT pg_catalog.setval('calles.seccion_calle_id_seq', 48, true);
+SELECT pg_catalog.setval('calles.seccion_calle_id_seq', 290, true);
 
 
 --
--- TOC entry 5045 (class 0 OID 0)
+-- TOC entry 5047 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: tipo_via_id_seq; Type: SEQUENCE SET; Schema: calles; Owner: postgres
 --
@@ -943,7 +946,7 @@ SELECT pg_catalog.setval('calles.tipo_via_id_seq', 12, true);
 
 
 --
--- TOC entry 5046 (class 0 OID 0)
+-- TOC entry 5048 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: pia_id_seq; Type: SEQUENCE SET; Schema: pia; Owner: postgres
 --
@@ -952,7 +955,7 @@ SELECT pg_catalog.setval('pia.pia_id_seq', 2, true);
 
 
 --
--- TOC entry 5047 (class 0 OID 0)
+-- TOC entry 5049 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: pia_videos_id_seq; Type: SEQUENCE SET; Schema: pia; Owner: postgres
 --
@@ -961,7 +964,7 @@ SELECT pg_catalog.setval('pia.pia_videos_id_seq', 2, true);
 
 
 --
--- TOC entry 5048 (class 0 OID 0)
+-- TOC entry 5050 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: tipo_vehiculo_id_seq; Type: SEQUENCE SET; Schema: pia; Owner: postgres
 --
@@ -970,7 +973,7 @@ SELECT pg_catalog.setval('pia.tipo_vehiculo_id_seq', 9, true);
 
 
 --
--- TOC entry 5049 (class 0 OID 0)
+-- TOC entry 5051 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: videos_id_seq; Type: SEQUENCE SET; Schema: pia; Owner: postgres
 --
@@ -979,7 +982,7 @@ SELECT pg_catalog.setval('pia.videos_id_seq', 2, true);
 
 
 --
--- TOC entry 5050 (class 0 OID 0)
+-- TOC entry 5052 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: pmr_id_seq; Type: SEQUENCE SET; Schema: pmr; Owner: postgres
 --
@@ -988,7 +991,7 @@ SELECT pg_catalog.setval('pmr.pmr_id_seq', 21, true);
 
 
 --
--- TOC entry 4819 (class 2606 OID 16448)
+-- TOC entry 4821 (class 2606 OID 16448)
 -- Name: calle_localidad calle_localidad_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -997,7 +1000,7 @@ ALTER TABLE ONLY calles.calle_localidad
 
 
 --
--- TOC entry 4821 (class 2606 OID 16450)
+-- TOC entry 4823 (class 2606 OID 16450)
 -- Name: ciudad ciudad_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1006,7 +1009,7 @@ ALTER TABLE ONLY calles.ciudad
 
 
 --
--- TOC entry 4823 (class 2606 OID 16452)
+-- TOC entry 4825 (class 2606 OID 16452)
 -- Name: localidad localidad_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1015,7 +1018,7 @@ ALTER TABLE ONLY calles.localidad
 
 
 --
--- TOC entry 4825 (class 2606 OID 16454)
+-- TOC entry 4827 (class 2606 OID 16454)
 -- Name: pais pais_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1024,7 +1027,7 @@ ALTER TABLE ONLY calles.pais
 
 
 --
--- TOC entry 4827 (class 2606 OID 16456)
+-- TOC entry 4829 (class 2606 OID 16456)
 -- Name: seccion_calle seccion_calle_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1033,7 +1036,7 @@ ALTER TABLE ONLY calles.seccion_calle
 
 
 --
--- TOC entry 4829 (class 2606 OID 16458)
+-- TOC entry 4831 (class 2606 OID 16458)
 -- Name: tipo_via tipo_via_pkey; Type: CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1042,7 +1045,7 @@ ALTER TABLE ONLY calles.tipo_via
 
 
 --
--- TOC entry 4833 (class 2606 OID 24696)
+-- TOC entry 4835 (class 2606 OID 24696)
 -- Name: pia pia_pkey; Type: CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1051,7 +1054,7 @@ ALTER TABLE ONLY pia.pia
 
 
 --
--- TOC entry 4837 (class 2606 OID 24720)
+-- TOC entry 4839 (class 2606 OID 24720)
 -- Name: pia_videos pia_videos_pkey; Type: CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1060,7 +1063,7 @@ ALTER TABLE ONLY pia.pia_videos
 
 
 --
--- TOC entry 4831 (class 2606 OID 16464)
+-- TOC entry 4833 (class 2606 OID 16464)
 -- Name: tipo_vehiculo tipo_vehiculo_pkey; Type: CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1069,7 +1072,7 @@ ALTER TABLE ONLY pia.tipo_vehiculo
 
 
 --
--- TOC entry 4835 (class 2606 OID 24703)
+-- TOC entry 4837 (class 2606 OID 24703)
 -- Name: videos videos_pkey; Type: CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1078,7 +1081,7 @@ ALTER TABLE ONLY pia.videos
 
 
 --
--- TOC entry 4839 (class 2606 OID 24764)
+-- TOC entry 4841 (class 2606 OID 24764)
 -- Name: pmr pmr_pkey; Type: CONSTRAINT; Schema: pmr; Owner: postgres
 --
 
@@ -1087,7 +1090,7 @@ ALTER TABLE ONLY pmr.pmr
 
 
 --
--- TOC entry 4854 (class 2620 OID 24787)
+-- TOC entry 4856 (class 2620 OID 24787)
 -- Name: pmr trg_solo_un_pmr_activo; Type: TRIGGER; Schema: pmr; Owner: postgres
 --
 
@@ -1095,7 +1098,7 @@ CREATE TRIGGER trg_solo_un_pmr_activo BEFORE INSERT OR UPDATE ON pmr.pmr FOR EAC
 
 
 --
--- TOC entry 4840 (class 2606 OID 16467)
+-- TOC entry 4842 (class 2606 OID 16467)
 -- Name: calle_localidad calle_localidad_id_localidad_fkey; Type: FK CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1104,7 +1107,7 @@ ALTER TABLE ONLY calles.calle_localidad
 
 
 --
--- TOC entry 4841 (class 2606 OID 16472)
+-- TOC entry 4843 (class 2606 OID 16472)
 -- Name: ciudad ciudad_id_pais_fkey; Type: FK CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1113,7 +1116,7 @@ ALTER TABLE ONLY calles.ciudad
 
 
 --
--- TOC entry 4842 (class 2606 OID 16477)
+-- TOC entry 4844 (class 2606 OID 16477)
 -- Name: localidad localidad_id_ciudad_fkey; Type: FK CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1122,7 +1125,7 @@ ALTER TABLE ONLY calles.localidad
 
 
 --
--- TOC entry 4843 (class 2606 OID 16482)
+-- TOC entry 4845 (class 2606 OID 16482)
 -- Name: seccion_calle seccion_calle_id_calle_localidad_fkey; Type: FK CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1131,7 +1134,7 @@ ALTER TABLE ONLY calles.seccion_calle
 
 
 --
--- TOC entry 4844 (class 2606 OID 16487)
+-- TOC entry 4846 (class 2606 OID 16487)
 -- Name: seccion_calle seccion_calle_id_tipo_via_fkey; Type: FK CONSTRAINT; Schema: calles; Owner: postgres
 --
 
@@ -1140,7 +1143,7 @@ ALTER TABLE ONLY calles.seccion_calle
 
 
 --
--- TOC entry 4849 (class 2606 OID 24734)
+-- TOC entry 4851 (class 2606 OID 24734)
 -- Name: detalle detalle_id_pia_video_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1149,7 +1152,7 @@ ALTER TABLE ONLY pia.detalle
 
 
 --
--- TOC entry 4850 (class 2606 OID 24739)
+-- TOC entry 4852 (class 2606 OID 24739)
 -- Name: detalle detalle_id_tipo_vehiculo_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1158,7 +1161,7 @@ ALTER TABLE ONLY pia.detalle
 
 
 --
--- TOC entry 4847 (class 2606 OID 24721)
+-- TOC entry 4849 (class 2606 OID 24721)
 -- Name: pia_videos pia_videos_id_pia_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1167,7 +1170,7 @@ ALTER TABLE ONLY pia.pia_videos
 
 
 --
--- TOC entry 4848 (class 2606 OID 24726)
+-- TOC entry 4850 (class 2606 OID 24726)
 -- Name: pia_videos pia_videos_id_video_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1176,7 +1179,7 @@ ALTER TABLE ONLY pia.pia_videos
 
 
 --
--- TOC entry 4845 (class 2606 OID 24704)
+-- TOC entry 4847 (class 2606 OID 24704)
 -- Name: videos videos_id_ciudad_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1185,7 +1188,7 @@ ALTER TABLE ONLY pia.videos
 
 
 --
--- TOC entry 4846 (class 2606 OID 24709)
+-- TOC entry 4848 (class 2606 OID 24709)
 -- Name: videos videos_id_tipo_via_fkey; Type: FK CONSTRAINT; Schema: pia; Owner: postgres
 --
 
@@ -1194,7 +1197,7 @@ ALTER TABLE ONLY pia.videos
 
 
 --
--- TOC entry 4851 (class 2606 OID 24765)
+-- TOC entry 4853 (class 2606 OID 24765)
 -- Name: pmr pmr_id_localidad_fkey; Type: FK CONSTRAINT; Schema: pmr; Owner: postgres
 --
 
@@ -1203,7 +1206,7 @@ ALTER TABLE ONLY pmr.pmr
 
 
 --
--- TOC entry 4852 (class 2606 OID 24778)
+-- TOC entry 4854 (class 2606 OID 24778)
 -- Name: uso uso_id_pia_video_fkey; Type: FK CONSTRAINT; Schema: pmr; Owner: postgres
 --
 
@@ -1212,7 +1215,7 @@ ALTER TABLE ONLY pmr.uso
 
 
 --
--- TOC entry 4853 (class 2606 OID 24773)
+-- TOC entry 4855 (class 2606 OID 24773)
 -- Name: uso uso_id_pmr_fkey; Type: FK CONSTRAINT; Schema: pmr; Owner: postgres
 --
 
@@ -1220,7 +1223,7 @@ ALTER TABLE ONLY pmr.uso
     ADD CONSTRAINT uso_id_pmr_fkey FOREIGN KEY (id_pmr) REFERENCES pmr.pmr(id);
 
 
--- Completed on 2025-07-03 11:09:05
+-- Completed on 2025-07-03 22:16:10
 
 --
 -- PostgreSQL database dump complete
