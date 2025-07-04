@@ -10,7 +10,7 @@ function ModelosIA() {
   const [modelos, setModelos] = useState<ModeloIA[]>([]);
   const [showNuevo, setShowNuevo] = useState(false);
   const [showConfirmarModal, setShowConfirmarModal] = useState(false);
-  const [deleteId, setDeleteId] = useState<string | null>(null); // ahora es el _id de Mongo
+  const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editModelo, setEditModelo] = useState<ModeloIA | null>(null);
   const [message, setMessage] = useState<React.ReactNode>(null);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -39,28 +39,52 @@ function ModelosIA() {
     setShowConfirmarModal(true);
   };
 
-  const handleConfirmDelete = async () => {
-    if (!deleteId) return;
+const handleConfirmDelete = async () => {
+  if (deleteId === null) return;
 
-    try {
-      const res = await fetch(`http://localhost:8003/mongo/datos/${deleteId}`, {
-        method: 'DELETE',
-      });
+  const modelo = modelos.find(m => m._id === deleteId);
+  if (!modelo) return;
 
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.detail || 'Error al eliminar modelo');
-      }
+  try {
+    const rutaCompleta = modelo.ruta;
+    const partes = rutaCompleta.split('/');
+    const fileName = partes.pop() || '';
+    const folder = partes.join('/');
 
-      // Si todo va bien, actualizar el estado local
-      setModelos((prev) => prev.filter((m) => m._id !== deleteId));
-    } catch (error) {
-      alert('Error al eliminar: ' + (error as Error).message);
-    } finally {
-      setShowConfirmarModal(false);
-      setDeleteId(null);
+    const formData = new FormData();
+    formData.append("file_names", fileName);
+    formData.append("folder", folder);
+    formData.append("bucket", "fusaroads");
+
+    // 👇 Asigna la respuesta a resMinio
+    const resMinio = await fetch("http://localhost:8003/minio/modelo", {
+      method: "DELETE",
+      body: formData
+    });
+
+    if (!resMinio.ok) {
+      const err = await resMinio.text();
+      throw new Error(`Error al borrar archivo en MinIO: ${err}`);
     }
-  };
+
+    // ✅ Luego borrar en Mongo
+    const resMongo = await fetch(`http://localhost:8003/mongo/datos/${deleteId}`, {
+      method: "DELETE"
+    });
+
+    if (!resMongo.ok) {
+      throw new Error("Error al borrar modelo en Mongo");
+    }
+
+    setModelos(prev => prev.filter(m => m._id !== deleteId));
+    setShowConfirmarModal(false);
+    setDeleteId(null);
+  } catch (error) {
+    alert("Error al borrar modelo o archivo: " + (error as Error).message);
+  }
+};
+
+
 
   return (
     <>
@@ -90,7 +114,9 @@ function ModelosIA() {
         initialValues={editModelo || undefined}
         onSave={(updated) => {
           setModelos((prev) =>
-            prev.map((m) => (m.id_modelo === updated.id_modelo ? updated : m))
+            prev.map((m) =>
+              m.id_modelo === updated.id_modelo ? updated : m
+            )
           );
           setShowEditModal(false);
           setEditModelo(null);
