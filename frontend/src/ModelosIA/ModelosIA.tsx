@@ -1,46 +1,36 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import Table from '../components/Table';
-import ModalConfirmacion from '../components/ModalConfirmacion';
-import ModalNuevoModelo from './components/ModalNuevoModelo';
-import { Modelo, ModeloParaTabla } from './resources/types';
+import { ModeloIA } from './resources/types';
 import { columns } from './resources/columns';
+import Table from '../components/Table';
+import ModalNuevoModelo from './components/ModalNuevoModelo';
+import ModalConfirmacion from '../components/ModalConfirmacion';
 
 function ModelosIA() {
-  const [modelos, setModelos] = useState<Modelo[]>([]);
+  const [modelos, setModelos] = useState<ModeloIA[]>([]);
   const [showNuevo, setShowNuevo] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [editModelo, setEditModelo] = useState<Modelo>();
   const [showConfirmarModal, setShowConfirmarModal] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null); // ahora es el _id de Mongo
+  const [editModelo, setEditModelo] = useState<ModeloIA | null>(null);
   const [message, setMessage] = useState<React.ReactNode>(null);
-  const [deleteId, setDeleteId] = useState<number | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  // Cargar modelos desde backend
   useEffect(() => {
     fetch("http://localhost:8003/mongo/datos")
       .then((res) => res.json())
-      .then((data: Modelo[]) => {
+      .then((data: ModeloIA[]) => {
         setModelos(data);
       })
       .catch((err) => console.error("Error al cargar modelos IA:", err));
   }, []);
 
-  // Mapear modelos para incluir la propiedad id requerida por la tabla
-  // useMemo para evitar recalcular en cada render
-  const modelosParaTabla: ModeloParaTabla[] = useMemo(() => 
-    modelos.map(modelo => ({
-      ...modelo,
-      id: modelo.id_modelo
-    })), [modelos]
-  );
-
-  const handleEdit = (modelo: Modelo) => {
+  const handleEdit = (modelo: ModeloIA) => {
     setEditModelo(modelo);
     setShowEditModal(true);
   };
 
-  const handleAskDelete = (id_modelo: number, nombre: string) => {
-    setDeleteId(id_modelo);
+  const handleAskDelete = (id_modelo: number, nombre: string, mongoId: string) => {
+    setDeleteId(mongoId);
     setMessage(
       <>
         ¿Estás seguro que deseas eliminar el modelo <strong>{nombre}</strong> con <strong>ID {id_modelo}</strong>?
@@ -50,49 +40,36 @@ function ModelosIA() {
   };
 
   const handleConfirmDelete = async () => {
-    if (deleteId === null) return;
-    
+    if (!deleteId) return;
+
     try {
-      // Hacer la llamada DELETE al backend
       const res = await fetch(`http://localhost:8003/mongo/datos/${deleteId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
       });
-      
+
       if (!res.ok) {
-        throw new Error(`Error ${res.status}: ${res.statusText}`);
+        const err = await res.json();
+        throw new Error(err.detail || 'Error al eliminar modelo');
       }
-      
-      // Solo actualizar el estado si la eliminación fue exitosa
-      setModelos((prev) => prev.filter((m) => m.id_modelo !== deleteId));
+
+      // Si todo va bien, actualizar el estado local
+      setModelos((prev) => prev.filter((m) => m._id !== deleteId));
     } catch (error) {
-      console.error("Error al eliminar modelo:", error);
-      // Aquí podrías mostrar un mensaje de error al usuario
+      alert('Error al eliminar: ' + (error as Error).message);
     } finally {
-      setDeleteId(null);
       setShowConfirmarModal(false);
+      setDeleteId(null);
     }
-  };
-
-  const handleSaveNew = (nuevoModelo: Modelo) => {
-    setModelos((prev) => [...prev, nuevoModelo]);
-    setShowNuevo(false);
-  };
-
-  const handleSaveEdit = (updatedModelo: Modelo) => {
-    setModelos((prev) =>
-      prev.map((m) => (m.id_modelo === updatedModelo.id_modelo ? updatedModelo : m))
-    );
-    setEditModelo(undefined);
-    setShowEditModal(false);
   };
 
   return (
     <>
       <Container className="w-75 my-5">
-        <h1 className="d-flex justify-content-center mb-4">Modelos IA</h1>
+        <h1 className="text-center mb-4">Modelos IA</h1>
+
         <Table
           columns={columns(handleAskDelete, handleEdit)}
-          data={modelosParaTabla}
+          data={modelos.map((m) => ({ ...m, id: m.id_modelo }))}
           showNewButton
           onClickNewButton={() => setShowNuevo(true)}
         />
@@ -101,14 +78,23 @@ function ModelosIA() {
       <ModalNuevoModelo
         show={showNuevo}
         onClose={() => setShowNuevo(false)}
-        onSave={handleSaveNew}
+        onSave={(nuevo) => {
+          setModelos((prev) => [...prev, nuevo]);
+          setShowNuevo(false);
+        }}
       />
 
       <ModalNuevoModelo
         show={showEditModal}
         onClose={() => setShowEditModal(false)}
-        initialValues={editModelo}
-        onSave={handleSaveEdit}
+        initialValues={editModelo || undefined}
+        onSave={(updated) => {
+          setModelos((prev) =>
+            prev.map((m) => (m.id_modelo === updated.id_modelo ? updated : m))
+          );
+          setShowEditModal(false);
+          setEditModelo(null);
+        }}
       />
 
       <ModalConfirmacion

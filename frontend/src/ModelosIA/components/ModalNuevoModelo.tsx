@@ -1,13 +1,13 @@
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import { useState, useEffect, FormEvent } from 'react';
 import FormRow from "../../components/FormRow";
-import { Modelo } from "../resources/types";
+import { ModeloIA } from "../resources/types";
 
 interface Props {
     show: boolean;
     onClose: () => void;
-    initialValues?: Modelo;
-    onSave: (modelo: Modelo) => void;
+    initialValues?: ModeloIA;
+    onSave: (modelo: ModeloIA) => void;
 }
 
 function ModalNuevoModelo({ show, onClose, initialValues, onSave }: Props) {
@@ -50,51 +50,51 @@ function ModalNuevoModelo({ show, onClose, initialValues, onSave }: Props) {
     };
 
     const handleGuardarYLimpiar = async () => {
-        setLoading(true);
-        setError(null);
+  setLoading(true);
+  setError(null);
 
-        const modelo: Modelo = {
-            id_modelo: initialValues?.id_modelo ?? Date.now(),
-            nomb_modelo: nombre,
-            tipo_modelo: tipo as 'a' | 'v',
-            flag_vigente: 'S',
-            ruta,
-            descripcion
-        };
+  const modelo: ModeloIA = {
+    id_modelo: initialValues?.id_modelo ?? Date.now(),
+    nomb_modelo: nombre,
+    tipo_modelo: tipo as 'a' | 'v',
+    flag_vigente: 'S',
+    ruta,
+    descripcion,
+    _id: initialValues?._id
+  };
 
-        // Si estamos editando, incluir el _id de MongoDB
-        if (initialValues?._id) {
-            modelo._id = initialValues._id;
-        }
+  try {
+    const url = isEditing
+      ? `http://localhost:8003/mongo/datos/${initialValues!._id}`
+      : "http://localhost:8003/mongo/datos";
 
-        try {
-            const url = isEditing 
-                ? `http://localhost:8003/mongo/datos/${initialValues!.id_modelo}`
-                : "http://localhost:8003/mongo/datos";
-            
-            const method = isEditing ? 'PUT' : 'POST';
+    const method = isEditing ? 'PUT' : 'POST';
 
-            const res = await fetch(url, {
-                method,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(modelo)
-            });
+    // ❌ Evitar enviar el _id en el body
+    const { _id, ...modeloSinId } = modelo;
 
-            if (!res.ok) {
-                const errorData = await res.json();
-                throw new Error(errorData.detail || `Error ${res.status}: ${res.statusText}`);
-            }
+    const res = await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(modeloSinId),
+    });
 
-            const data: Modelo = await res.json();
-            onSave(data);
-            handleCancelar();
-        } catch (error) {
-            console.error("Error al guardar modelo:", error);
-            setError(error instanceof Error ? error.message : 'Error desconocido al guardar');
-        } finally {
-            setLoading(false);
-        }
-    };
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.detail || `Error ${res.status}: ${res.statusText}`);
+    }
+
+    const data: ModeloIA = await res.json();
+    onSave(data);
+    handleCancelar();
+  } catch (error) {
+    console.error("Error al guardar modelo:", error);
+    setError(error instanceof Error ? error.message : 'Error desconocido al guardar');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
