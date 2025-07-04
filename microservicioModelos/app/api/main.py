@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes.minio import router as videos_router
+from .routes.minio import router as modelos_router
 from .routes.mongo import router as mongo_router
 
 app = FastAPI()
@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],              # permite todos los headers (como Authorization)
 )
 
-app.include_router(videos_router)
+app.include_router(modelos_router)
 app.include_router(mongo_router)
 
 @app.get("/health")
