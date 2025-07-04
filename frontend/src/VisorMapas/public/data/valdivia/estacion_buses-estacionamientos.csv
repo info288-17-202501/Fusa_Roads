@@ -1,0 +1,325 @@
+_type;_tags_surface;_tags_supervised;_tags_public_transport;_tags_parking;_tags_name;_tags_fee;_tags_bus;_tags_amenity;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:housename;_tags_addr:district;_tags_addr:country;_tags_addr:city;_lon;_lat;_id
+node;;;station;;Terminal  Linea nº2;;yes;bus_station;;;;;;;;-73.2197071;-39.7713065;1350682833
+node;;;station;;Terminal Linea 11;;yes;bus_station;Avenida René Schneider;Región de Los Ríos;;;Valdivia;CL;Valdivia;-73.2273999;-39.8539476;1446309477
+node;;;station;;Aníbal Pinto alt. 1111;;yes;bus_station;Aníbal Pinto;Región de Los Ríos;1111;;Valdivia;CL;Valdivia;-73.2417345;-39.8205904;4364952294
+node;;;;;Taller Pullman;;;bus_station;;;;;;;;-73.1953736;-39.8504724;4531899991
+node;;;station;;Cruz del Sur;;yes;bus_station;;;;;;;;-73.2290673;-39.8239551;4715716789
+way;;;station;;Terrapuerto Valdivia;;yes;bus_station;Anfión Muñoz;Región de Los Ríos;360;;Valdivia;CL;Valdivia;;;103403001
+way;;;station;;Terrapuerto Valdivia;;yes;bus_station;Carlos Anwandter;;;;;;Valdivia;;;234307353
+way;;;station;;Buses a la Costa (Niebla-Los Molinos- San Ignacio);;yes;bus_station;Caupolicán;;;;;;Valdivia;;;435073782
+way;;;station;;Buses San Sebastián;;;bus_station;Avenida Ecuador;;2221;;;;Valdivia;;;1052917189
+node;paved;yes;;underground;;yes;;parking;Arauco;Región de Los Ríos;561;Mall Plaza Los Rios;Valdivia;CL;Valdivia;-73.2422936;-39.8160606;1314279501
+node;;;;surface;Avenida Costanera Arturo Prat;;;parking;;;;;;;;-73.2457265;-39.8098618;1373247622
+node;;;;;Estacionamiento;;;parking;;;;;;;;-73.2509032;-39.8330214;1373261648
+node;;;;;Lider;;;parking;;;;;;;;-73.2371616;-39.8281385;1408805984
+node;;;;;Estación Valdivia;;;parking;;;;;;;;-73.2239912;-39.8246187;1657093774
+node;;;;surface;;;;parking;;;;;;;;-73.2463604;-39.8131748;2415428906
+node;;;;;Estacionamiento de Sodimac;;;parking;;;;;;;;-73.206912;-39.8411677;2468869340
+node;;;;;Río Blue Estacionamiento;;;parking;;;;;;;;-73.2493926;-39.8192244;3426984456
+node;asphalt;;;surface;Estacionamiento Contratistas CCK;;;parking;;;;;;;;-73.2801929;-39.835521;4909842332
+node;;;;;;;;parking;;;;;;;;-73.2368262;-39.8142051;6836368206
+node;concrete;;;surface;;;;parking;;;;;;;;-73.2574301;-39.8009031;8707728297
+node;;;;surface;;;;parking;;;;;;;;-73.2176153;-39.827302;12189776242
+node;ground;;;surface;;;;parking;;;;;;;;-73.2324818;-39.8326294;12544932868
+way;asphalt;yes;;surface;;;;parking;;;;;;;;;;111997402
+way;;;;;;;;parking;;;;;;;;;;118152077
+way;;;;;Yungay;;;parking;;;;;;;;;;124139718
+way;;;;surface;Clínica Alemana;;;parking;;;;;;;;;;124493173
+way;;;;;SurMédica;;;parking;;;;;;;;;;124494108
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;124965312
+way;;;;;Universidad Austral;;;parking;;;;;;;;;;124965316
+way;;;;surface;;;;parking;;;;;;;;;;124965317
+way;;;;;Universidad Austral;;;parking;;;;;;;;;;125199376
+way;asphalt;;;surface;SurMédica;;;parking;;;;;;;;;;125436519
+way;;;;surface;Caupolicán/Chacabuco;yes;;parking;;;;;;;;;;125436586
+way;;;;;;;;parking;;;;;;;;;;125669294
+way;;;;;Fac. de Ciencias;;;parking;;;;;;;;;;125674011
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;125674013
+way;;;;;Universidad Austral de Chile Campus Miraflores;;;parking;;;;;;;;;;125706128
+way;;;;;Universidad Austral de Chile Campus Miraflores;;;parking;;;;;;;;;;125706129
+way;;;;;Salfa Sur;;;parking;;;;;;;;;;125708560
+way;;;;;;;;parking;;;;;;;;;;126859337
+way;;;;;;;;parking;;;;;;;;;;126859361
+way;;;;;Universidad Austral de Chile Campus Miraflores;;;parking;;;;;;;;;;127227950
+way;;;;;Consultorio Las Ánimas;;;parking;;;;;;;;;;127236525
+way;;;;;;;;parking;;;;;;;;;;127468583
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;127468584
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;127468585
+way;;;;;;;;parking;;;;;;;;;;127468587
+way;;;;;Fac. Ciencias Forestales y RR.NN.;;;parking;;;;;;;;;;129475862
+way;;;;;Fac. Agronomía;;;parking;;;;;;;;;;129475863
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;129475865
+way;;;;;;;;parking;;;;;;;;;;129476145
+way;;;;;Vicerectoría Académica;;;parking;;;;;;;;;;129476146
+way;;;;lane;Hospital Regional Valdivia;;;parking;;;;;;;;;;129757206
+way;;;;;Universidad Austral;;;parking;;;;;;;;;;130053355
+way;;;;;;;;parking;;;;;;;;;;130767282
+way;;;;;;;;parking;;;;;;;;;;131467031
+way;;;;;;;;parking;;;;;;;;;;133091164
+way;;;;;Colegio Windsor;;;parking;;;;;;;;;;135364055
+way;;;;;;;;parking;;;;;;;;;;135450990
+way;;;;;;;;parking;;;;;;;;;;136016126
+way;;;;;Walter Smith;;;parking;;;;;;;;;;136016166
+way;;;;surface;;;;parking;;;;;;;;;;136018341
+way;;;;;Fogón Palestino;;;parking;;;;;;;;;;163548342
+way;;;;;;;;parking;;;;;;;;;;163548445
+way;;;;;Hospital Regional Valdivia;;;parking;;;;;;;;;;163548446
+way;;;;;;;;parking;;;;;;;;;;174191152
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;180571354
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;180571682
+way;;;;street_side;Instituto Alemán Karl Anwandter;;;parking;;;;;;;;;;181460208
+way;;;;surface;Avenida Alemania / Camilo Henríquez;;;parking;;;;;;;;;;181669933
+way;;;;surface;Chacabuco;;;parking;;;;;;;;;;197683519
+way;;;;;Universidad Austral de Chile;;;parking;;;;;;;;;;205129488
+way;;;;;;;;parking;;;;;;;;;;206269885
+way;;;;surface;Estacionamiento Santo Tomás;;;parking;;;;;;;;;;208821678
+way;;;;surface;Clínica Alemana;no;;parking;;;;;;;;;;208825703
+way;;;;;;;;parking;;;;;;;;;;223930738
+way;;;;;;;;parking;;;;;;;;;;232724442
+way;;;;;;;;parking;;;;;;;;;;232724449
+way;;;;;Carcel Valdivia;;;parking;;;;;;;;;;240408390
+way;;;;;Banco Chile;;;parking;;;;;;;;;;268112503
+way;;;;;Cementerio Parque Los Laureles de Valdivia;;;parking;;;;;;;;;;275081887
+way;;;;;;;;parking;;;;;;;;;;275127227
+way;;;;;;;;parking;;;;;;;;;;275133147
+way;;;;surface;Buses a la Costa;;;parking;;;;;;;;;;275798637
+way;;;;;;;;parking;;;;;;;;;;277312395
+way;;;;;;;;parking;;;;;;;;;;277314583
+way;;;;;;;;parking;;;;;;;;;;278043665
+way;;yes;;surface;Hotel Melillanca;no;;parking;;;;;;;;;;282638333
+way;;;;surface;;no;;parking;;;;;;;;;;294785203
+way;;;;;;;;parking;;;;;;;;;;298172898
+way;;;;;Cementerio Municipal N°2;;;parking;;;;;;;;;;298948302
+way;;;;;;;;parking;;;;;;;;;;305077144
+way;;;;;;;;parking;;;;;;;;;;339603560
+way;;;;;;;;parking;;;;;;;;;;361421388
+way;asphalt;;;surface;Estacionamiento Terrapuerto Valdivia;yes;;parking;;;;;;;;;;404172565
+way;;;;;Aliwen;;;parking;;;;;;;;;;406658282
+way;;;;;;;;parking;;;;;;;;;;431581882
+way;;;;;;;;parking;;;;;;;;;;431582572
+way;;;;;;;;parking;;;;;;;;;;431582574
+way;;;;;Estacionamiento Municipal;;;parking;;;;;;;;;;434943708
+way;;;;;;;;parking;;;;;;;;;;434953257
+way;;;;;;;;parking;;;;;;;;;;435071293
+way;;;;;;;;parking;;;;;;;;;;435212844
+way;;;;;;;;parking;;;;;;;;;;435213437
+way;;;;;Playa de Estacionamientos;;;parking;;;;;;;;;;436317197
+way;;;;surface;Santa Isabel;;;parking;;;;;;;;;;436318439
+way;;;;;;;;parking;;;;;;;;;;437399130
+way;;;;surface;;no;;parking;Nueva Dos;Región de Los Ríos;;;Valdivia;CL;Valdivia;;;437474485
+way;asphalt;;;;Huachocopihue;;;parking;;;;;;;;;;439916104
+way;ground;yes;;surface;;;;parking;;;;;;;;;;446748151
+way;;;;;;;;parking;;;;;;;;;;449106797
+way;;;;;;;;parking;;;;;;;;;;449106892
+way;;;;;;;;parking;;;;;;;;;;449106944
+way;;;;;;;;parking;;;;;;;;;;449107074
+way;;;;;Colegio;;;parking;;;;;;;;;;454780708
+way;;;;;;;;parking;;;;;;;;;;454781534
+way;;;;;Estacionamiento Conaf;;;parking;;;;;;;;;;454990689
+way;;;;;;;;parking;;;;;;;;;;463311326
+way;;;;;;;;parking;;;;;;;;;;463312105
+way;;;;;;;;parking;;;;;;;;;;469231428
+way;;;;;;;;parking;;;;;;;;;;478735931
+way;;;;;;;;parking;;;;;;;;;;478752737
+way;;;;;;;;parking;;;;;;;;;;480965857
+way;;;;;Estacionamientos;;;parking;;;;;;;;;;487204150
+way;;;;surface;;;;parking;;;;;;;;;;509679723
+way;;;;;;;;parking;;;;;;;;;;509687399
+way;;;;;;;;parking;;;;;;;;;;509692791
+way;;;;;;;;parking;;;;;;;;;;511379734
+way;;;;;;;;parking;;;;;;;;;;525053009
+way;;;;;;;;parking;;;;;;;;;;533604552
+way;;;;;;;;parking;;;;;;;;;;544443108
+way;;;;;;;;parking;;;;;;;;;;546417319
+way;paved;no;;surface;;no;;parking;Intendente Luís Damann Asenjo;Región de Los Ríos;963;;Valdivia;CL;Valdivia;;;547716130
+way;gravel;yes;;surface;;no;;parking;;;;;;;;;;549600664
+way;;;;;;;;parking;;;;;;;;;;554279366
+way;gravel;;;;;;;parking;;;;;;;;;;558560755
+way;;;;;Parque Municipal Guillermo Harnecker;;;parking;;;;;;;;;;574637065
+way;;;;;;;;parking;;;;;;;;;;576873993
+way;;;;;;;;parking;;;;;;;;;;579876244
+way;;;;;;;;parking;Los Helechos;;;;;;Valdivia;;;585018605
+way;;;;;;;;parking;;;;;;;;;;585056434
+way;;;;surface;;;;parking;;;;;;;;;;591932116
+way;;;;;;;;parking;;;;;;;;;;592411530
+way;unpaved;;;surface;;no;;parking;;;;;;;;;;595261061
+way;;;;;;;;parking;;;;;;;;;;596972218
+way;;;;;;;;parking;;;;;;;;;;605436179
+way;;;;;;;;parking;;;;;;;;;;606548048
+way;;;;;;;;parking;;;;;;;;;;606548049
+way;;;;;;;;parking;;;;;;;;;;606549827
+way;;;;;;;;parking;;;;;;;;;;606550055
+way;;;;;;;;parking;;;;;;;;;;613437278
+way;;;;;;;;parking;;;;;;;;;;613437834
+way;;;;;;;;parking;;;;;;;;;;613537660
+way;;;;surface;;;;parking;;;;;;;;;;615699441
+way;;;;;;;;parking;;;;;;;;;;617471706
+way;;;;;;;;parking;;;;;;;;;;619631425
+way;;;;;;;;parking;;;;;;;;;;633556335
+way;;;;;SAR;;;parking;;;;;;CL;;;;652883728
+way;;;;;Estación Valdivia;;;parking;;;;;;;;;;673015111
+way;asphalt;;;surface;;;;parking;;;;;;;;;;686698468
+way;asphalt;;;surface;Vicente Pérez Rosales;;;parking;;;;;;;;;;686703310
+way;asphalt;;;surface;;yes;;parking;;;;;;;;;;695870934
+way;;;;;;;;parking;;;;;;;;;;698782917
+way;;;;;;;;parking;;;;;;;;;;711492243
+way;;;;;;;;parking;;;;;;;;;;721022375
+way;asphalt;;;;Estacionamiento CCK;;;parking;;;;;;;;;;727884620
+way;;;;;;;;parking;;;;;;;;;;729794640
+way;;;;;;;;parking;;;;;;;;;;729798203
+way;;;;;;;;parking;;;;;;;;;;729897286
+way;;;;surface;;;;parking;;;;;;;;;;741303472
+way;;;;;;;;parking;;;;;;;;;;758715726
+way;;;;;;;;parking;;;;;;;;;;760392642
+way;;;;;;;;parking;;;;;;;;;;772826946
+way;;;;;;;;parking;;;;;;;;;;773692445
+way;;;;surface;;;;parking;;;;;;;;;;775790674
+way;;;;surface;;;;parking;;;;;;;;;;776815183
+way;;;;;;;;parking;;;;;;;;;;776854311
+way;;;;surface;;;;parking;;;;;;;;;;777368854
+way;asphalt;;;surface;;;;parking;;;;;;;;;;777388142
+way;;;;;;;;parking;;;;;;;;;;780331528
+way;;;;surface;;;;parking;;;;;;;;;;780982137
+way;unpaved;;;surface;;no;;parking;;;;;;;;;;780982138
+way;;;;surface;;;;parking;;;;;;;;;;781334005
+way;;;;;;;;parking;;;;;;;;;;781334006
+way;;;;surface;;;;parking;;;;;;;;;;781994105
+way;;;;;;;;parking;;;;;;;;;;783231078
+way;;;;;;;;parking;;;;;;;;;;789751096
+way;;;;;;;;parking;;;;;;;;;;798998149
+way;;;;surface;;no;;parking;;;;;;;;;;803926176
+way;;;;;;;;parking;;;;;;;;;;804454809
+way;;;;surface;;;;parking;;;;;;;;;;809896245
+way;;;;;;;;parking;;;;;;;;;;813043564
+way;;;;;;;;parking;;;;;;;;;;813043571
+way;;;;;;;;parking;;;;;;;;;;814359193
+way;;;;;;;;parking;;;;;;;;;;816337379
+way;;;;;;;;parking;;;;;;;;;;822358566
+way;asphalt;;;surface;;;;parking;;;;;;;;;;824705139
+way;;;;;;;;parking;;;;;;;;;;824759698
+way;;;;;;;;parking;;;;;;;;;;825084541
+way;;;;surface;;;;parking;;;;;;;;;;826820438
+way;;;;surface;;no;;parking;;;;;;;;;;827234734
+way;;;;surface;;;;parking;;;;;;;;;;827773734
+way;;;;surface;;;;parking;;;;;;;;;;827987817
+way;;;;surface;;;;parking;;;;;;;;;;835573477
+way;;;;surface;;;;parking;;;;;;;;;;835880995
+way;;;;surface;;;;parking;;;;;;;;;;844869486
+way;;;;;;;;parking;;;;;;;;;;849632172
+way;;;;;;;;parking;;;;;;;;;;851088955
+way;;;;surface;;;;parking;;;;;;;;;;859150405
+way;;;;;;;;parking;;;;;;;;;;863908457
+way;;;;surface;;;;parking;;;;;;;;;;863908461
+way;;;;surface;;;;parking;;;;;;;;;;863908462
+way;;;;surface;;;;parking;;;;;;;;;;865793925
+way;;;;surface;;;;parking;;;;;;;;;;886541350
+way;;;;surface;;;;parking;;;;;;;;;;886587471
+way;asphalt;;;surface;;;;parking;;;;;;;;;;886597374
+way;;;;surface;;;;parking;;;;;;;;;;898624116
+way;;;;surface;;;;parking;;;;;;;;;;926014952
+way;;;;surface;;;;parking;;;;;;;;;;926035286
+way;;;;surface;;;;parking;;;;;;;;;;929845108
+way;;;;surface;;;;parking;;;;;;;;;;932019176
+way;;;;surface;;;;parking;;;;;;;;;;932245669
+way;;;;surface;;;;parking;;;;;;;;;;932703234
+way;;;;surface;;;;parking;;;;;;;;;;932983134
+way;;;;surface;;;;parking;;;;;;;;;;933649921
+way;;;;surface;;;;parking;;;;;;;;;;934747957
+way;;;;surface;;;;parking;;;;;;;;;;935225370
+way;;;;surface;;;;parking;;;;;;;;;;935225372
+way;;;;;;;;parking;;;;;;;;;;940649019
+way;;;;;;;;parking;;;;;;;;;;940881987
+way;asphalt;;;surface;;no;;parking;;;;;;;;;;944346714
+way;asphalt;;;surface;;;;parking;;;;;;;;;;945128972
+way;;;;;;;;parking;;;;;;;;;;947618399
+way;;;;surface;;;;parking;;;;;;;;;;957980670
+way;unpaved;;;surface;;;;parking;;;;;;;;;;958324480
+way;;;;surface;;;;parking;;;;;;;;;;999712429
+way;;;;surface;;;;parking;;;;;;;;;;1004711859
+way;;;;surface;;;;parking;;;;;;;;;;1005113181
+way;;;;surface;;;;parking;;;;;;;;;;1005931276
+way;;;;surface;;;;parking;;;;;;;;;;1006464846
+way;;;;surface;;;;parking;;;;;;;;;;1009482654
+way;;;;surface;;;;parking;;;;;;;;;;1015147767
+way;;;;surface;;;;parking;;;;;;;;;;1015147768
+way;;;;surface;;;;parking;;;;;;;;;;1015167592
+way;;;;surface;;;;parking;;;;;;;;;;1015290969
+way;;;;surface;;;;parking;;;;;;;;;;1020737793
+way;;;;surface;;;;parking;;;;;;;;;;1021254085
+way;;;;surface;;;;parking;;;;;;;;;;1049747193
+way;;;;;;;;parking;;;;;;;;;;1049747199
+way;;;;surface;;;;parking;;;;;;;;;;1050371766
+way;;;;surface;;;;parking;;;;;;;;;;1054228818
+way;;;;surface;;;;parking;;;;;;;;;;1054305946
+way;;;;;;;;parking;;;;;;;;;;1058633114
+way;;;;surface;;;;parking;;;;;;;;;;1058923298
+way;;;;surface;;;;parking;;;;;;;;;;1058923299
+way;;;;surface;;;;parking;;;;;;;;;;1059697564
+way;;;;surface;;;;parking;;;;;;;;;;1059699858
+way;unpaved;;;surface;;;;parking;;;;;;;;;;1064990454
+way;gravel;;;surface;;;;parking;;;;;;;;;;1068361323
+way;;;;surface;;yes;;parking;;;;;;;;;;1069052001
+way;;;;surface;;;;parking;;;;;;;;;;1099462517
+way;;;;surface;;;;parking;;;;;;;;;;1099754276
+way;;;;street_side;;;;parking;;;;;;;;;;1115574506
+way;;;;surface;;;;parking;;;;;;;;;;1120867817
+way;;;;surface;;;;parking;;;;;;;;;;1121505821
+way;;;;surface;;;;parking;;;;;;;;;;1122537912
+way;;;;surface;;;;parking;;;;;;;;;;1165980377
+way;;;;surface;;;;parking;;;;;;;;;;1177122114
+way;;;;surface;;;;parking;;;;;;;;;;1177161968
+way;;;;surface;;;;parking;;;;;;;;;;1178017036
+way;;;;surface;;;;parking;;;;;;;;;;1181061586
+way;;;;surface;;;;parking;;;;;;;;;;1195432813
+way;;;;surface;;;;parking;;;;;;;;;;1202404399
+way;;;;surface;;;;parking;;;;;;;;;;1205124753
+way;;;;surface;;;;parking;;;;;;;;;;1221017483
+way;;;;surface;;;;parking;;;;;;;;;;1240048444
+way;;;;surface;;;;parking;;;;;;;;;;1240048446
+way;;;;surface;;;;parking;;;;;;;;;;1240651412
+way;unpaved;;;surface;;yes;;parking;Yerbas Buenas;;;;;;Valdivia;;;1250460226
+way;paved;;;surface;;;;parking;;;;;;;;;;1250462555
+way;asphalt;;;surface;;no;;parking;;;;;;;;;;1250943301
+way;;;;surface;;;;parking;;;;;;;;;;1250964010
+way;;;;surface;;;;parking;;;;;;;;;;1250974645
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1251303969
+way;;;;surface;;;;parking;;;;;;;;;;1251881922
+way;;;;surface;;;;parking;;;;;;;;;;1253824367
+way;asphalt;;;surface;;yes;;parking;;;;;;;;;;1270570480
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1291642972
+way;unpaved;;;surface;;;;parking;;;;;;;;;;1291642980
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1303503519
+way;;;;surface;;;;parking;;;;;;;;;;1305159241
+way;;;;surface;;;;parking;;;;;;;;;;1310783067
+way;;;;surface;;;;parking;;;;;;;;;;1310783073
+way;dirt;;;surface;;;;parking;;;;;;;;;;1310783076
+way;;;;surface;;;;parking;;;;;;;;;;1312155798
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1317105022
+way;;;;surface;;;;parking;;;;;;;;;;1317105025
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1317105026
+way;;;;surface;;;;parking;;;;;;;;;;1317105028
+way;;;;surface;;;;parking;;;;;;;;;;1317105029
+way;;;;surface;;;;parking;;;;;;;;;;1317105030
+way;;;;;;;;parking;;;;;;;;;;1317105031
+way;;;;surface;;;;parking;;;;;;;;;;1317423193
+way;gravel;;;surface;;;;parking;;;;;;;;;;1320213684
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1320379998
+way;;;;surface;;yes;;parking;;;;;;;;;;1320710762
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1320710763
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1320710766
+way;;;;surface;;yes;;parking;;;;;;;;;;1328411622
+way;;;;surface;;;;parking;;;;;;;;;;1329488973
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1330094864
+way;;;;surface;;;;parking;;;;;;;;;;1330094865
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1338748508
+way;;;;surface;;;;parking;;;;;;;;;;1347349509
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1347410183
+way;;;;surface;;yes;;parking;;;;;;;;;;1351851880
+way;;;;surface;;yes;;parking;;;;;;;;;;1351851882
+way;asphalt;;;surface;;no;;parking;;;;;;;;;;1351975659
+way;;;;surface;;;;parking;;;;;;;;;;1352107407
+way;;;;surface;;;;parking;;;;;;;;;;1352121354
+way;ground;;;surface;;;;parking;;;;;;;;;;1355511188
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1357843642
+way;asphalt;;;surface;;;;parking;;;;;;;;;;1357843643
+way;;;;surface;;;;parking;;;;;;;;;;1377315680

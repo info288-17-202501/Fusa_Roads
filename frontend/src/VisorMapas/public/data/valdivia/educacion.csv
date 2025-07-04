@@ -1,0 +1,106 @@
+_type;_tags_wikipedia;_tags_wikidata;_tags_website;_tags_name;_tags_int_name;_tags_description;_tags_building;_tags_amenity;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:district;_tags_addr:country;_tags_addr:city;_lon;_lat;_id
+node;;;;Centro de Formación Técnica Santo Tomás Valdivia;;;;college;Avenida Ramón Picarte;;1160;;;Valdivia;-73.2331458;-39.8174367;11980812161
+way;;;;INACAP Universidad Tecnológica de Chile - Valdivia;;;;college;Pedro Aguirre Cerda;Región de Los Ríos;2115;Valdivia;CL;Valdivia;;;480450137
+way;;;;Escuela de Formación de Carabineros Grupo Valdivia;;Esfocar;yes;college;José Victorino Lastarria;Región de Los Ríos;845;Valdivia;CL;Valdivia;;;547289576
+node;;;;Instituto Alemán Karl Anwandter;Deutsche Schule;;no;school;;;;;;;-73.2529573;-39.8121007;1183468410
+node;;;;Colegio San Lucas;;;;school;;;;;;;-73.2560472;-39.8352883;4550060190
+node;;;;Centro de Integracion Laboral;;;;school;Avenida Ramón Picarte;Región de Los Ríos;1800;Valdivia;CL;Valdivia;-73.2265377;-39.8245634;4988929432
+node;;;;Colegio Bicentenario Helvecia;;;;school;Avenida René Schneider;;3380;;;Valdivia;-73.2168186;-39.8438489;5846898701
+node;;;;Escuela Diferencial Ann Sullivan;;;;school;Pasaje 6;Región de Los Ríos;1179;Valdivia;CL;Valdivia;-73.2357863;-39.8308131;9137826462
+node;;;;Escuela Leonardo da Vinci;;;;school;Domeyko;Región de Los Ríos;310;Valdivia;CL;Valdivia;-73.2470484;-39.8258906;9137840448
+node;;;;Escuela Fedor Dostoievski;;;;school;Avenida Lynch;Región de Los Ríos;77;Valdivia;CL;Valdivia;-73.2138802;-39.8231066;9144663800
+node;;;;Centro Educacional Integrada De Adultos Luis Moll Briones;;;;school;Santiago Bueras;Región de Los Ríos;1839;Valdivia;CL;Valdivia;-73.2297983;-39.8253016;9145927539
+node;;;;Liceo Politecnico Benjamin Vicuna Mackenna;;;;school;;;;;CL;;-73.2367413;-39.8333977;10974325895
+node;;;;Colegio de MUSICA JUAN SEBASTIAN BACH;;;;school;;;;;CL;;-73.2082634;-39.8264804;10974441367
+node;;;;Magus After School;;;;school;Janequeo;;198;;CL;Valdivia;-73.2449344;-39.8107894;10981154012
+node;;;;Lourdes;;;;school;Pedro Aguirre Cerda;;1640;;CL;Valdivia;-73.2127366;-39.7946702;10990201704
+node;;;;Centro Educacion Adultos Andres Bello;;;;school;;;;;CL;;-73.2404611;-39.8177027;11331846211
+node;;;;Colegio Gandhi;;;;school;;;;;CL;;-73.2061154;-39.841523;11333223879
+node;;;;Centro de Educacion de Adultos Sandrock;;;;school;;;;;CL;;-73.2414886;-39.8116719;11333491887
+node;;;;Colegio Parvulario Genesis;;;;school;;;;;CL;;-73.2053662;-39.8393978;11333732263
+node;;;;Escuela de Lenguaje Mis Palabras;;;;school;;;;;CL;;-73.2199661;-39.8332687;11335748372
+node;;;;Centro de Estimulacion Temprana Inka Poyen;;;;school;;;;;CL;;-73.2261604;-39.8534613;11336205862
+node;;;;Hampton College;;;;school;;;;;CL;;-73.2146376;-39.7992662;11336374151
+node;;;;Centro Educacional Ríos De Valdivia;;;;school;Avenida Ramón Picarte;;;;CL;Valdivia;-73.2080878;-39.8391067;11336441048
+node;;;;Escuela Hospitalaria Valdivia;;;;school;;;;;CL;;-73.2397515;-39.8316815;11336577590
+node;;;;Escuela de Lenguaje Amankay;;;;school;;;;;CL;;-73.2083686;-39.8298826;11349602265
+node;;;;Colegio San Lucas de Valdivia;;;;school;;;;;CL;;-73.2568001;-39.8358937;11349624795
+node;;;;Centro Educacional Infantil Meliantu;;;;school;;;;;CL;;-73.2183729;-39.8315511;11349625424
+node;;;;Colegio Ciencias y Tecnologia Luis Pasteur;;;;school;;;;;CL;;-73.2053405;-39.8291705;11368823050
+node;;;;Colegio Ecológico San Felipe;;;;school;Avenida Ramón Picarte;;2805;;;Valdivia;-73.213889;-39.8351597;11414601743
+node;;;;Jardin infantil musical palomillas;;;;school;Río Cau Cau;;3309;;;Valdivia;-73.2055223;-39.8392097;11432386036
+node;;;;Escuela de Parvulo Duendelin;;;;school;;;;;;;-73.250747;-39.8484635;11999905906
+way;;;;Liceo Técnico;;;;school;Ramon Picarte;Región de Los Ríos;2305;Valdivia;CL;Valdivia;;;103409098
+way;;;;Escuela Mulato Gil de Castro;;;;school;;;;;;;;;103413483
+way;;;;Liceo Industrial de Valdivia;;;;school;René Schneider;Región de Los Ríos;188;Valdivia;CL;Valdivia;;;103413489
+way;;;;Liceo Benjamín Vicuña Mackena;;;;school;;;;;;;;;103413505
+way;;;;Colegio Belén;;;;school;;;;;;;;;103450726
+way;;;;Escuela Francia;;;;school;David Arellano;Región de Los Ríos;2727;Valdivia;CL;Valdivia;;;103453990
+way;;;;Instituto Italia;;;;school;Avenida Francia;Región de Los Ríos;2670;Valdivia;CL;Valdivia;;;103454058
+way;;;;Instituto Salesiano;;;;school;Pedro de Valdivia;Región de Los Ríos;480;Valdivia;CL;Valdivia;;;116619855
+way;;;;Instituto Alemán Karl Anwandter;;;;school;Avenida Los Laureles;Región de Los Ríos;050;Valdivia;CL;Valdivia;;;116624760
+way;es:Instituto Comercial de Valdivia;Q107426466;;Instituto Comercial;;;;school;Vicente Peréz Rosales;Región de Los Ríos;774;Valdivia;CL;Valdivia;;;116624773
+way;;;;Colegio de la Inmaculada Concepción;;;;school;;;;;;;;;116624775
+way;;;;Windsor School;;;;school;Avenida Francia;Región de Los Ríos;1695;Valdivia;CL;Valdivia;;;118152436
+way;;;;Liceo Bicentenario Ciudad de Los Ríos;;;;school;Avenida Pedro Montt;Región de Los Ríos;2455;Valdivia;CL;Valdivia;;;118152440
+way;;;;Instituto Superior de Adm. y Turismo INSAT;;;;school;Domeyko;Región de Los Ríos;398;Valdivia;CL;Valdivia;;;123243572
+way;;;;Instituto Cristiano Gracia y Paz;;;;school;Ernesto Riquelme;;;;;Valdivia;;;124295398
+way;;;;Principe de Asturias;;;yes;school;Vicente Pérez Rosales;;;;;Valdivia;;;125669593
+way;;;;Escuela 39 Las Ánimas;;;;school;Pedro Aguirre Cerda;Región de Los Ríos;1002;Valdivia;CL;Valdivia;;;127236526
+way;;;;Colegio Domus Mate;;;;school;Santiago Bueras;Región de Los Ríos;401;Valdivia;CL;Valdivia;;;127263154
+way;;;;Colegio San Luis de Alba;;;;school;;;;;;;;;128032089
+way;;;;Escuela México;;;;school;Ramon Picarte;Región de Los Ríos;1212;Valdivia;CL;Valdivia;;;128037979
+way;;;;Liceo Rector Armando Robles;;;;school;Arauco;Región de Los Ríos;474;Valdivia;CL;Valdivia;;;130942760
+way;;;;Colegio Los Torreones;;;yes;school;;;;;CL;;;;136016157
+way;;;;Colegio María Auxiliadora;;;;school;Avenida Ramón Picarte;Región de Los Ríos;1092;Valdivia;CL;Valdivia;;;136018347
+way;;;;Escuela España;;;;school;Beauchef;Región de Los Ríos;975;Valdivia;CL;Valdivia;;;136018367
+way;;;;Príncipe de Asturias;;;;school;Santiago Bueras;Región de Los Ríos;620;Valdivia;CL;Valdivia;;;149697318
+way;;;;Escuela Especial de Lenguaje San Miguel;;;;school;Avenida René Schneider;Región de Los Ríos;4000;Valdivia;CL;Valdivia;;;161806505
+way;;;;El Molino (Esc. Integrada de Artes);;;;school;Avenida Simpson;Región de Los Ríos;1458;Valdivia;CL;Valdivia;;;181684356
+way;;;;Colegio Holanda;;;;school;Brasil;Región de Los Ríos;;Valdivia;CL;Valdivia;;;208823796
+way;;;;;;;;school;;;;;;;;;208825517
+way;;;;Escuela Angachilla;;;;school;Avenida René Schneider;Región de Los Ríos;3770;Valdivia;CL;Valdivia;;;288671797
+way;;;;Escuela Especial Peque Lines;;;;school;Avenida René Schneider;Región de Los Ríos;3760;Valdivia;CL;Valdivia;;;288675553
+way;;;;Liceo Santa María La Blanca;;;;school;Arauco;Región de Los Ríos;642;Valdivia;CL;Valdivia;;;290267282
+way;;;;Escuela Chile;;;;school;Ramón Picarte;Región de Los Ríos;679;Valdivia;CL;Valdivia;;;290267285
+way;;;;Escuela Popular Bernardo Yeffi;;;;school;General Alberto Montecino Caro;Región de Los Ríos;;Valdivia;CL;Valdivia;;;295173990
+way;;;https://www.colegioaliwen.cl/;Colegio Aliwen;;;;school;General Lagos;Región de Los Ríos;1704;Valdivia;CL;Valdivia;;;306366553
+way;;;;Colegio Alemania;;;;school;Los Pelúes;;200;;;Valdivia;;;361423843
+way;;;;Escuela de Lenguaje Educarte;;;;school;Guallipen;Región de Los Ríos;2546;Valdivia;CL;Valdivia;;;439916943
+way;;;;Colegio Laura Vicuña;;;;school;General Alberto Montecino Caro;Región de Los Ríos;4051;Valdivia;CL;Valdivia;;;459051410
+way;;;;Colegio Adventista de Valdivia;;;;school;Errázuriz;Región de Los Ríos;2565;Valdivia;CL;Valdivia;;;546413462
+way;;;https://www.mlk.cl/;Martin Luther King College;;;;school;Irlanda;Región de Los Ríos;1869;Valdivia;CL;Valdivia;;;568762357
+way;;;;CEIA Comunidad Collico;;;yes;school;;;;;;;;;576879681
+way;;;;Colegio Teniente Hernán Merino Correa;;;;school;Valle Hondo;Región de Los Ríos;2915;Valdivia;CL;Valdivia;;;616744388
+way;;;;;;;;school;Domeyko;Región de Los Ríos;;Valdivia;CL;Valdivia;;;676041043
+way;;;;Escuela Particular Metodista;;;;school;Avenida Argentina;Región de Los Ríos;3595;Valdivia;CL;Valdivia;;;718265546
+way;;;;Escuela El Bosque;;;;school;Avenida Circunvalación Sur;Región de Los Ríos;2365;Valdivia;CL;Valdivia;;;762851701
+way;;;;Jardin Estrellita de Los Ríos;;;;school;Los Algarrobos;;;;;Valdivia;;;804107369
+way;;;;ICAP Valdivia;;;;school;Circunvalación Nueva Región;;12;;;Valdivia;;;818152486
+way;;;;Escuela Fernando Santivan;;;;school;Andrés Bello;Región de Los Ríos;264;Valdivia;CL;Valdivia;;;818490354
+way;;;;Colegio Camilo Henríquez;;;house;school;;;;;CL;;;;886588430
+way;;;https://chilcos.org/;Iniciativa Pedagógica Waldorf Chilcos;;;yes;school;;;;;;;;;924833315
+way;;;;Instituto Tecnologico del Sur;;;yes;school;Avenida Argentina;Región de Los Ríos;2478;Valdivia;CL;Valdivia;;;927216108
+way;;;;Escuela Fedor Dostoievski;;;yes;school;Avenida Argentina;Región de Los Ríos;2310;Valdivia;CL;Valdivia;;;927216113
+way;;;;Escuela de Lenguaje Quelluén;;;;school;Arauco;Región de Los Ríos;;Valdivia;CL;Valdivia;;;932747734
+way;;;;Master College;;;school;school;19 de Junio;Región de Los Ríos;407;Valdivia;CL;Valdivia;;;937471609
+way;;;;Liceo Técnico Profesional de Adultos Coresol de Valdivia;;;;school;;;;;CL;;;;1008655702
+way;;;;Escuela El Laurel;;;;school;Avenida Ramón Picarte;Región de Los Ríos;3295;Valdivia;CL;Valdivia;;;1012759175
+way;;;;;;;;school;Los Pelúes;Región de Los Ríos;085;Valdivia;CL;Valdivia;;;1028124069
+way;;;;Colegio Nuestra Señora del Carmen;;;;school;;;;;;;;;1063800600
+way;;;;Colegio Austral;;;;school;Aníbal Pinto;Región de Los Ríos;1148;Valdivia;CL;Valdivia;;;1063942496
+way;;;;Colegio Valle De Los Rios;;;;school;Camino a Paillao;;19B;;;Valdivia;;;1068286974
+way;;;;Colegio Los Conquistadores;;;;school;;;;;;;;;1224923484
+relation;;;;Instituto Educacional Collico - IEC;;;;school;Avenida Balmaceda;Región de Los Ríos;6020;Valdivia;CL;Valdivia;;;9735552
+node;es:Universidad Austral de Chile;Q961982;https://www.uach.cl/;Universidad Austral de Chile;;Casa Matriz;;university;Independencia;Región de Los Ríos;641;Valdivia;CL;Valdivia;-73.2474278;-39.8153748;5289720978
+way;;;;Centro de Odontología de la Universidad Austral;;;;university;Santiago Bueras;Región de Los Ríos;885;Valdivia;CL;Valdivia;;;118152435
+way;;;;Universidad Austral de Chile Campus Miraflores;;;;university;;;;;;;;;118152438
+way;;;;Universidad San Sebastián;;;yes;university;General Lagos 1163;Región de Los Ríos;;Valdivia;CL;Valdivia;;;121785252
+way;;;;Facultad de Filosofía y Humanidades (UACH);;;yes;university;General Lagos;Región de Los Ríos;;Valdivia;CL;Valdivia;;;125436477
+way;;;;Conservatorio UACH;;;;university;General Lagos;;;;;Valdivia;;;136018322
+way;;;;Centro de Formación Técnica Los Lagos Valdivia;;;;university;Pedro de Valdivia;Región de Los Ríos;403;Valdivia;CL;Valdivia;;;136018340
+way;es:Universidad Austral de Chile;Q961982;;Universidad Austral de Chile;;;;university;;;;;;Valdivia;;;136115984
+way;;;;;;;yes;university;;;;;;;;;275133145
+way;;;;Universidad Santo Tomás;;;;university;Avenida Ramón Picarte;;1160;;;Valdivia;;;831193784
+way;;;;Universidad San Sebastián;;;;university;General Lagos;Región de Los Ríos;1163;Valdivia;CL;Valdivia;;;950300965
+way;;;;Universidad San Sebastián;;;;university;General Lagos;Región de Los Ríos;;Valdivia;CL;Valdivia;;;1312026971
