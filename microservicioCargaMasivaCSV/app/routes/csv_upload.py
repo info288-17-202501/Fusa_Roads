@@ -5,12 +5,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.database import get_db
 from app.services.csv_service import CSVService
-from app.schemas.csv_upload import CSVUploadResponse
-from app.schemas.tipo_via import TipoVia
-from app.schemas.calle_localidad import CalleLocalidad
-from app.schemas.seccion_calle import SeccionCalle
-from app.schemas.pais import Pais  
-from app.schemas.ciudad import Ciudad  
+from app.schemas.csv_upload import CSVUploadResponse 
 
 router = APIRouter(prefix="/csv", tags=["CSV Upload"])
 
@@ -77,47 +72,3 @@ async def upload_csv(
             status_code=500,
             detail=f"Error interno del servidor: {str(e)}"
         )
-
-# Nuevos endpoints para obtener países y ciudades
-@router.get("/paises", response_model=List[Pais])
-def get_paises(db: Session = Depends(get_db)):
-    """
-    Obtiene todos los países disponibles
-    """
-    csv_service = CSVService(db)
-    return csv_service.get_paises()
-
-@router.get("/ciudades", response_model=List[Ciudad])
-def get_ciudades(
-    id_pais: Optional[int] = Query(None, description="Filtrar ciudades por país"),
-    db: Session = Depends(get_db)
-):
-    """
-    Obtiene todas las ciudades disponibles, opcionalmente filtradas por país
-    """
-    csv_service = CSVService(db)
-    return csv_service.get_ciudades(id_pais=id_pais)
-
-@router.get("/tipos-via", response_model=List[TipoVia])
-def get_tipos_via(db: Session = Depends(get_db)):
-    """
-    Obtiene todos los tipos de vía cargados
-    """
-    csv_service = CSVService(db)
-    return csv_service.get_tipo_vias()
-
-@router.get("/calles-localidad", response_model=List[CalleLocalidad])
-def get_calles_localidad(db: Session = Depends(get_db)):
-    """
-    Obtiene todas las calles por localidad cargadas
-    """
-    csv_service = CSVService(db)
-    return csv_service.get_calles_localidad()
-
-@router.get("/secciones-calle", response_model=List[SeccionCalle])
-def get_secciones_calle(db: Session = Depends(get_db)):
-    """
-    Obtiene todas las secciones de calle cargadas
-    """
-    csv_service = CSVService(db)
-    return csv_service.get_secciones_calle()
