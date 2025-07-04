@@ -1,0 +1,36 @@
+_type;_tags_name;_tags_brand:wikidata;_tags_brand;_tags_amenity;_lon;_lat;_id
+node;Shell;Q110716465;Shell;fuel;-72.6095308;-38.7664343;1041864149
+node;Shell;;;fuel;-72.5937431;-38.7572431;4294142573
+node;Copec;;;fuel;-72.6118411;-38.7816269;4521554446
+node;Terpel;;;fuel;-72.5774632;-38.731412;8442694186
+node;Shell Altos del Maipo;Q110716465;Shell;fuel;-72.6619692;-38.75678;10896607279
+way;Copec;Q1130956;Copec;fuel;;;194228581
+way;Copec Avenida Alemania;Q1130956;Copec;fuel;;;251078606
+way;Petrobras;;;fuel;;;400764399
+way;Copec;Q1130956;Copec;fuel;;;426692999
+way;Petrobras;;;fuel;;;909288955
+way;RS;;;fuel;;;912765251
+way;Shell;Q110716465;Shell;fuel;;;912802595
+way;Terpel;;;fuel;;;913564661
+way;Petrobras;;;fuel;;;913564677
+way;Aramco;;;fuel;;;914382593
+way;Shell;;;fuel;;;914856472
+way;Copec;;;fuel;;;914856487
+way;Petrobras;;;fuel;;;915506555
+way;Terpel;;;fuel;;;915831968
+way;Petrobras;;Petrobras;fuel;;;917053918
+way;Shell;;Shell;fuel;;;917480723
+way;H&N;;;fuel;;;917563813
+way;Shell;;;fuel;;;919312170
+way;Terpel;Q7703003;Terpel;fuel;;;919718067
+way;Copec;;;fuel;;;919718070
+way;Copec;;;fuel;;;919730924
+way;Petrobras;;;fuel;;;957200245
+way;Shell;Q110716465;Shell;fuel;;;957204297
+way;Copec;;;fuel;;;957876699
+way;Petrobras;;;fuel;;;957876701
+way;Petrobras;;;fuel;;;958963643
+way;Copec;Q1130956;Copec;fuel;;;1240912963
+way;RS;;;fuel;;;1247656365
+way;Aramco;;;fuel;;;1254403298
+way;Copec;;;fuel;;;1350342608

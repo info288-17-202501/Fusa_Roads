@@ -1,0 +1,277 @@
+_type;_tags_shelter;_tags_public_transport;_tags_network;_tags_name;_tags_highway;_tags_departures_board;_tags_bus;_tags_bench;_lon;_lat;_id
+node;yes;platform;20 - 4 - 3 - 1;20 - 4 - 1 - 3;bus_stop;no;yes;no;-73.2360313;-39.8157814;1363720932
+node;;platform;;1, 3;bus_stop;;yes;;-73.2493638;-39.8276212;1369154319
+node;;platform;;1, 3;bus_stop;;yes;;-73.250646;-39.8273627;1369154324
+node;;platform;;1, 3;bus_stop;;yes;;-73.2508427;-39.8304104;1369154326
+node;;platform;;;bus_stop;no;yes;;-73.2412297;-39.812531;1369637825
+node;;platform;;;bus_stop;;yes;;-73.2859337;-39.8415186;1369639816
+node;;platform;;;bus_stop;;yes;;-73.2331313;-39.8377956;1369650801
+node;;platform;;;bus_stop;;yes;;-73.2267903;-39.837953;1369659764
+node;yes;platform;;P442 - Francia / René Schneider;bus_stop;;yes;;-73.2203014;-39.8364517;1369666632
+node;;platform;;;bus_stop;;yes;;-73.231576;-39.8449786;1369666864
+node;;platform;;;bus_stop;;yes;;-73.231764;-39.8377394;1371765250
+node;;platform;;;bus_stop;;yes;;-73.2059692;-39.8411051;1371780167
+node;yes;platform;;Paradero Chacabuco / Galeria NASS;bus_stop;no;yes;;-73.2446442;-39.8131217;1373247640
+node;yes;platform;;P48 - Arauco / Camilo Henríquez - Caupolicán;bus_stop;;yes;no;-73.2448468;-39.8154458;1373254376
+node;no;platform;;P49 - Mall;bus_stop;;yes;no;-73.2426408;-39.8158297;1373258224
+node;yes;platform;;P-512, Ruta T350/Cerv. Kunstmann;bus_stop;no;yes;yes;-73.2777251;-39.8375999;1373282500
+node;;platform;;Avenida Francia / Avenida Italia;bus_stop;;yes;;-73.2367939;-39.8365536;1373976541
+node;;platform;;4, 5;bus_stop;;yes;;-73.2377496;-39.8318897;1373976542
+node;yes;platform;;Paradero UACh;bus_stop;;yes;no;-73.2515478;-39.8068396;1374009073
+node;;platform;;1, 2, 3;bus_stop;;yes;;-73.2487941;-39.8176199;1375039238
+node;;platform;;;bus_stop;;yes;;-73.229538;-39.8389101;1376078361
+node;;platform;;;bus_stop;;yes;;-73.2397214;-39.8299819;1382273096
+node;;platform;;;bus_stop;;yes;;-73.2385962;-39.8356234;1382495123
+node;yes;platform;;P73 - Picarte / Pedro Montt;bus_stop;;yes;yes;-73.2313135;-39.8189889;1382517254
+node;;platform;;1, 3;bus_stop;;yes;;-73.2505834;-39.8287883;1383813038
+node;;platform;;Paradero Carampangue / Camilo Henríquez;bus_stop;;yes;;-73.2451623;-39.8119184;1388022601
+node;yes;platform;;P82 - Picarte / Simpson;bus_stop;;yes;;-73.2222731;-39.8281432;1389200595
+node;;platform;;;bus_stop;;yes;;-73.2367398;-39.8367752;1390319744
+node;;platform;;Francia alt. 2690;bus_stop;;yes;;-73.2312834;-39.8379866;1390319747
+node;;platform;;1, 3;bus_stop;;yes;;-73.2496702;-39.8213254;1393198856
+node;;platform;;;bus_stop;;yes;;-73.2459493;-39.8421654;1395542154
+node;;platform;;1, 3;bus_stop;;yes;;-73.2484372;-39.8245558;1401831608
+node;yes;platform;;1, 3;bus_stop;;yes;no;-73.2488292;-39.8258318;1405145522
+node;;platform;;;bus_stop;;yes;;-73.2398169;-39.8276977;1408752453
+node;;platform;;;bus_stop;;yes;;-73.2404025;-39.8289965;1408752454
+node;;platform;;;bus_stop;;yes;;-73.2149633;-39.8068252;1408785846
+node;;platform;;;bus_stop;;yes;;-73.2307392;-39.8198609;1408786410
+node;;platform;;I - Beauchef / Picarte;bus_stop;;yes;;-73.2348614;-39.8169438;1408787840
+node;;platform;;Paradero Carampangue;bus_stop;;yes;;-73.2394026;-39.8130925;1408794776
+node;yes;platform;;Paradero Carampangue /  Caupolican;bus_stop;;yes;;-73.2433627;-39.8121905;1408794777
+node;;platform;;Avenida Francia / Calle Dos;bus_stop;;yes;;-73.2239924;-39.8376918;1424167022
+node;;platform;;4 y 5;bus_stop;;yes;;-73.2398168;-39.8328235;1427271881
+node;;platform;;;bus_stop;;yes;;-73.2198958;-39.7726192;1440309003
+node;;platform;;;bus_stop;;yes;;-73.2439501;-39.8141731;1441560479
+node;;platform;;;bus_stop;;yes;;-73.2443685;-39.8156312;1441569875
+node;;platform;;;bus_stop;;yes;;-73.2113916;-39.7892257;1442362906
+node;;platform;;;bus_stop;;yes;;-73.2217133;-39.8097106;1442362920
+node;;platform;;;bus_stop;;yes;;-73.2193472;-39.810985;1442362925
+node;;platform;;;bus_stop;;yes;;-73.2253609;-39.8156799;1442362930
+node;;platform;;;bus_stop;;yes;;-73.2136118;-39.8031649;1442362932
+node;;platform;;;bus_stop;;yes;;-73.2157514;-39.8077205;1442362938
+node;;platform;;;bus_stop;;yes;;-73.2133253;-39.8037977;1442362946
+node;;platform;;;bus_stop;;yes;;-73.2168935;-39.8089021;1442362947
+node;;platform;;;bus_stop;;yes;;-73.2207444;-39.8085509;1442362948
+node;;platform;;;bus_stop;;yes;;-73.221636;-39.8129899;1442362949
+node;;platform;;;bus_stop;;yes;;-73.222447;-39.8134948;1442362950
+node;;platform;;;bus_stop;;yes;;-73.2233742;-39.8144414;1442362964
+node;;platform;;;bus_stop;;yes;;-73.2234701;-39.8143344;1442362967
+node;;platform;;;bus_stop;;yes;;-73.2492005;-39.8489741;1442414158
+node;;platform;;P69 - Picarte / Beauchef;bus_stop;;yes;;-73.2344616;-39.8168628;1463458162
+node;;platform;;Paradero Micros;bus_stop;;yes;;-73.2243691;-39.8523249;1738785028
+node;;platform;;P509-Los Lingues/Los Pelues;bus_stop;no;yes;;-73.2598432;-39.8141944;1918798135
+node;;platform;No pasan micros, paradero fantasma;Aníbal Pinto/Baquedano;bus_stop;;yes;;-73.2402067;-39.8222177;1964002331
+node;;platform;;;bus_stop;;yes;;-73.2398128;-39.8272056;1964002332
+node;;platform;;;bus_stop;;yes;;-73.2349902;-39.8335021;2081295060
+node;;platform;;;bus_stop;;yes;;-73.2347159;-39.8334964;2081313110
+node;;platform;;Pedro Montt alt. 2370;bus_stop;;yes;;-73.2342794;-39.8352273;2085340361
+node;;platform;;;bus_stop;;yes;;-73.2357945;-39.8244675;2214622527
+node;;platform;;I - Arauco / Independencia;bus_stop;;yes;;-73.2466836;-39.8150999;2295396640
+node;;platform;;;bus_stop;;yes;;-73.2270849;-39.8377863;2410535495
+node;yes;platform;;Hospital alt. 1618;bus_stop;;yes;no;-73.2388454;-39.83064;2824785310
+node;;platform;;;bus_stop;;yes;;-73.2228893;-39.8273204;3181249814
+node;;platform;;P568-Los Lingues/Acario Cotapos;bus_stop;;yes;;-73.2583873;-39.8119579;3658975266
+node;;platform;;P17 - Independencia / Chacabuco;bus_stop;no;yes;;-73.246802;-39.8132579;4328522359
+node;;platform;;5;bus_stop;;yes;;-73.2398521;-39.8249071;4328570572
+node;;platform;;;bus_stop;;yes;;-73.2362349;-39.8160034;4328666247
+node;yes;platform;20 - 9 - 11 -3;P77 - Picarte / Coronel Stgo.Bueras - Barros Arana;bus_stop;;yes;yes;-73.2278137;-39.823619;4352124374
+node;;platform;;Sargento Bueras/Lider;bus_stop;;yes;;-73.2369535;-39.8283201;4354489241
+node;;platform;;1,3;bus_stop;;yes;;-73.2492501;-39.8196052;4432908947
+node;yes;platform;Regional de Movilidad;1, 3;bus_stop;yes;yes;;-73.2480077;-39.8232813;4432912414
+node;;platform;;1, 3;bus_stop;;yes;;-73.2501358;-39.8243141;4432951320
+node;;platform;;;bus_stop;;yes;;-73.2408297;-39.8301027;4432999947
+node;;platform;;MTC Picarte alt. 3981;bus_stop;;yes;;-73.1983185;-39.8474646;4444432391
+node;yes;platform;;Hospital alt. 1618;bus_stop;;yes;no;-73.2388734;-39.8304488;4444442900
+node;yes;platform;;1, 3;bus_stop;;yes;yes;-73.2476382;-39.8191566;4444467598
+node;;platform;;Aníbal Pinto alt. 1900;bus_stop;;yes;;-73.2396291;-39.8256636;4444468096
+node;;platform;;MTC Picarte alt.3981;bus_stop;;yes;;-73.1982391;-39.8477398;4444499189
+node;;platform;;P51 - Arauco / García Reyes;bus_stop;;yes;;-73.2401618;-39.8162749;4452515790
+node;yes;platform;;P76 - Picarte / Fuentes - Baquedano;bus_stop;;yes;;-73.2292332;-39.8223448;4452515791
+node;yes;platform;;P71 - Picarte / Condell;bus_stop;;yes;yes;-73.2331521;-39.8178059;4452520090
+node;;platform;;Pedro Montt alt. 1810;bus_stop;;yes;;-73.2353865;-39.827542;4452520091
+node;;platform;;;bus_stop;;yes;;-73.2284622;-39.8426348;4455199828
+node;;platform;;;bus_stop;;yes;;-73.2280257;-39.8440053;4455216830
+node;;platform;;;bus_stop;;yes;;-73.2362695;-39.8441405;4484729882
+node;;platform;;;bus_stop;;yes;;-73.2316441;-39.8447316;4524122405
+node;;platform;;;bus_stop;;yes;;-73.2095167;-39.8114025;4570812990
+node;;platform;;;bus_stop;;yes;;-73.2555908;-39.8153027;4576069304
+node;yes;platform;;Puente Estancilla;bus_stop;;yes;;-73.2906816;-39.843519;4715874495
+node;;platform;;P506-Los Robles/Los Lingues;bus_stop;;yes;;-73.2570986;-39.8101507;4715877790
+node;;platform;;Ruta T-350 / Av. Siete;bus_stop;;yes;;-73.280943;-39.8387803;4715888490
+node;;platform;;Pedro Montt alt. 1200;bus_stop;;yes;;-73.2323054;-39.8446484;4736636901
+node;;platform;;2;bus_stop;;yes;;-73.246571;-39.8282463;4836738623
+node;;platform;;2;bus_stop;;yes;;-73.2443632;-39.8197387;4836738624
+node;;platform;;2;bus_stop;;yes;;-73.2446777;-39.8210018;4836738626
+node;;platform;;2;bus_stop;;yes;;-73.2449726;-39.8220202;4836738627
+node;;platform;;1, 3, 9, 11;bus_stop;;yes;;-73.2397596;-39.8148903;4836738630
+node;;platform;;P510-Ruta T-350/Cruce T-340;bus_stop;no;yes;;-73.2704635;-39.831705;5262482240
+node;;platform;;;bus_stop;;yes;;-73.2344778;-39.8506495;5287744505
+node;;platform;;;bus_stop;;yes;;-73.2365129;-39.8502005;5287744507
+node;;platform;;;bus_stop;;yes;;-73.2384026;-39.8498744;5287744509
+node;;platform;;;bus_stop;;yes;;-73.2396422;-39.8498146;5287744510
+node;;platform;;;bus_stop;;yes;;-73.2381477;-39.8496631;5287744513
+node;;platform;;;bus_stop;;yes;;-73.2366137;-39.8499743;5287744516
+node;;platform;;;bus_stop;;yes;;-73.2054048;-39.8412299;5287832336
+node;yes;platform;;;bus_stop;;yes;;-73.2055027;-39.8411758;5287832337
+node;;platform;;;bus_stop;;yes;;-73.2042165;-39.8403128;5287832338
+node;;platform;;;bus_stop;;yes;;-73.2041657;-39.8403954;5287832339
+node;;platform;;;bus_stop;;yes;;-73.2021063;-39.8388709;5287832343
+node;;platform;;;bus_stop;;yes;;-73.2349915;-39.8293855;5287949763
+node;;platform;;;bus_stop;;yes;;-73.2045244;-39.83635;5288129404
+node;;platform;;;bus_stop;;yes;;-73.2205779;-39.8489257;5288218900
+node;;platform;;;bus_stop;;yes;;-73.2192045;-39.8478289;5288218904
+node;;platform;;;bus_stop;;yes;;-73.2028953;-39.8377869;5288345421
+node;;platform;;;bus_stop;;yes;;-73.2322687;-39.8537714;5288750936
+node;;platform;;;bus_stop;;yes;;-73.2385808;-39.8333225;5288977945
+node;;platform;;;bus_stop;;yes;;-73.2388059;-39.8330798;5288977946
+node;;platform;;;bus_stop;;yes;;-73.2205709;-39.8292697;5293086152
+node;no;platform;;P817 - Picarte / René Schneider;bus_stop;;yes;;-73.2205978;-39.8295624;5303343406
+node;;platform;;P72 - Picarte / Condell;bus_stop;;yes;;-73.2323765;-39.8180391;5303344116
+node;;platform;;Cesfam;bus_stop;;yes;;-73.2165249;-39.8325623;5303344117
+node;yes;platform;;P443 - Francia / Picarte;bus_stop;;yes;;-73.2160298;-39.8338589;5303344249
+node;;platform;;;bus_stop;;yes;;-73.2223331;-39.8373556;5303344250
+node;yes;platform;;;bus_stop;;yes;;-73.254807;-39.8054891;5320470522
+node;yes;platform;;Los Lingues / Los Pelues;bus_stop;;yes;;-73.2597123;-39.8142379;5321967121
+node;;platform;;;bus_stop;;yes;;-73.2340429;-39.8372774;5514353205
+node;;platform;;;bus_stop;;yes;;-73.2576169;-39.8147595;5583751884
+node;;platform;;;bus_stop;;yes;;-73.2558933;-39.815318;5583791053
+node;;platform;;;bus_stop;;yes;;-73.252613;-39.8113785;5584959333
+node;;platform;;Juzgado de Familia;bus_stop;;yes;;-73.2397935;-39.8262261;5592425527
+node;;platform;;;bus_stop;;yes;;-73.2385526;-39.8435845;5703337362
+node;yes;platform;;El Guata Amarilla;bus_stop;;yes;no;-73.2130434;-39.7951891;5937478721
+node;yes;platform;;;bus_stop;;yes;yes;-73.1914005;-39.8530647;6252650405
+node;yes;platform;;;bus_stop;;yes;;-73.2404715;-39.804234;6253635760
+node;yes;platform;;;bus_stop;;yes;;-73.2384354;-39.7865972;6253887770
+node;yes;platform;;;bus_stop;;yes;;-73.2389711;-39.7763348;6253887772
+node;yes;platform;;;bus_stop;;yes;;-73.238771;-39.776464;6253887774
+node;yes;platform;;P52 - Arauco / Anfión Múñoz;bus_stop;;yes;no;-73.2375301;-39.8169099;6604038478
+node;;platform;;P74 - Picarte / Pedro Montt;bus_stop;;yes;;-73.2307531;-39.8190921;6604038479
+node;;platform;;;bus_stop;;yes;;-73.2318766;-39.8452728;7084144761
+node;;platform;;Ruta T-350 / Los Silos de Torobayo;bus_stop;;yes;;-73.2702895;-39.8331023;7100127015
+node;;platform;;;bus_stop;;yes;;-73.2165678;-39.808099;7237036411
+node;;platform;;;bus_stop;;yes;;-73.247078;-39.8173669;7237054383
+node;;platform;;;bus_stop;;yes;;-73.2464339;-39.8278438;7262548343
+node;yes;platform;;;bus_stop;;yes;;-73.2214469;-39.827699;7262648443
+node;yes;platform;;;bus_stop;;yes;no;-73.2146864;-39.8332898;7267392605
+node;;platform;;;bus_stop;;yes;;-73.2338175;-39.8369395;7275540627
+node;;platform;;;bus_stop;;yes;;-73.2333271;-39.8375946;7275540632
+node;;platform;;;bus_stop;;yes;;-73.2182087;-39.8262688;7280929830
+node;;platform;;;bus_stop;;yes;;-73.2179742;-39.826364;7281026210
+node;;platform;;;bus_stop;;yes;;-73.2172;-39.8255956;7281070966
+node;;platform;;;bus_stop;;yes;;-73.2163053;-39.8252674;7281118903
+node;yes;platform;;;bus_stop;;yes;;-73.2158381;-39.824703;7282644013
+node;;platform;;;bus_stop;;yes;;-73.22108;-39.8337584;7292215180
+node;;platform;;;bus_stop;;yes;;-73.2225584;-39.8350633;7293507253
+node;yes;platform;;Avenida Francia / Calle Dos;bus_stop;;yes;;-73.2237016;-39.8374323;7293732210
+node;;platform;;;bus_stop;;yes;;-73.2286128;-39.8438365;7347567470
+node;;platform;;;bus_stop;;yes;;-73.2286704;-39.8442103;7352854171
+node;;platform;;;bus_stop;;yes;;-73.2293018;-39.8398617;7356941052
+node;;platform;;;bus_stop;;yes;;-73.2295818;-39.8393841;7357340200
+node;;platform;;;bus_stop;;yes;;-73.2202297;-39.8358123;7590580822
+node;;platform;;;bus_stop;;yes;;-73.2201079;-39.8357497;7594298800
+node;yes;platform;;Francia / San Luis;bus_stop;;yes;;-73.2223804;-39.837189;7597016469
+node;;platform;;;bus_stop;;yes;;-73.2302066;-39.8194466;7624169044
+node;;platform;;;bus_stop;;yes;;-73.2221507;-39.8365908;7631476146
+node;;platform;;;bus_stop;;yes;;-73.2170096;-39.8445405;7679092265
+node;;platform;;;bus_stop;;yes;;-73.2169385;-39.8434278;7679098799
+node;;platform;;;bus_stop;;yes;;-73.230614;-39.8448435;7700521596
+node;;platform;;;bus_stop;;yes;;-73.2312604;-39.8552098;7799519615
+node;;platform;;;bus_stop;;yes;;-73.2321947;-39.8544425;7799519619
+node;;platform;;;bus_stop;;yes;;-73.2298545;-39.8558702;7801765926
+node;;platform;;;bus_stop;;yes;;-73.2278532;-39.853446;7802012871
+node;;platform;;;bus_stop;;yes;;-73.229138;-39.8548077;7804970913
+node;;platform;;;bus_stop;;yes;;-73.2312924;-39.8535479;7807640667
+node;;platform;;;bus_stop;;yes;;-73.2303829;-39.8540583;7807735193
+node;;platform;;;bus_stop;;yes;;-73.231306;-39.8510555;7866665744
+node;yes;platform;;;bus_stop;;yes;no;-73.215261;-39.8246566;7876638402
+node;;platform;;;bus_stop;;yes;;-73.2293109;-39.8521487;7885927839
+node;;platform;;Paradero;bus_stop;;yes;;-73.2059482;-39.8344561;7902933385
+node;;platform;;;bus_stop;;yes;;-73.227124;-39.8245038;8244074640
+node;;platform;;;bus_stop;;yes;;-73.2244319;-39.8303033;8246230888
+node;;platform;;;bus_stop;;yes;;-73.2175661;-39.7929113;8256065450
+node;;platform;;Villa Hermosa;bus_stop;;yes;;-73.1995496;-39.8367217;8591730813
+node;;platform;;Uruguay / Las Iris;bus_stop;;yes;;-73.2088286;-39.8207826;8655848270
+node;;platform;;Circunvalación Oriente / Honduras;bus_stop;;yes;;-73.2097692;-39.8198376;8655848271
+node;yes;platform;;;bus_stop;;yes;;-73.2293122;-39.8214638;8662655441
+node;;platform;;;bus_stop;;yes;;-73.2206385;-39.8121914;8689230241
+node;;platform;;Colombia / Los Dafnes;bus_stop;;yes;;-73.2080493;-39.8226432;8712172507
+node;;platform;;Colombia / Tamarindos;bus_stop;;yes;;-73.2092345;-39.8221857;8712172508
+node;;platform;;;bus_stop;;yes;;-73.2091615;-39.8045229;8865100870
+node;yes;platform;;;bus_stop;;yes;;-73.2092747;-39.8066325;8867092700
+node;;platform;;;bus_stop;;yes;;-73.2705695;-39.8328734;8916829023
+node;;platform;;;bus_stop;;yes;;-73.2728208;-39.8356567;8916878237
+node;;platform;;;bus_stop;;yes;;-73.2042412;-39.8277127;9225448718
+node;;platform;;;bus_stop;;yes;;-73.2070103;-39.8274113;9225542189
+node;;platform;;;bus_stop;;yes;;-73.2073052;-39.8273045;9225551730
+node;;platform;;;bus_stop;;yes;;-73.2022285;-39.832201;9259005962
+node;;platform;;;bus_stop;;yes;;-73.2062897;-39.8328299;9265566117
+node;;platform;;;bus_stop;;yes;;-73.2064192;-39.8328217;9265566122
+node;;platform;;;bus_stop;;yes;;-73.2057237;-39.8349842;9265566140
+node;;platform;;;bus_stop;;yes;;-73.2071645;-39.8321558;9286834921
+node;yes;platform;;;bus_stop;;yes;no;-73.2076201;-39.8480131;9294483549
+node;;platform;;;bus_stop;;yes;;-73.2083978;-39.8286665;9325655035
+node;;platform;;;bus_stop;;yes;;-73.2157147;-39.8071537;9337812532
+node;yes;platform;;P84 - Picarte / Carlos Hilker;bus_stop;;yes;;-73.218471;-39.8312178;9341864436
+node;yes;platform;;;bus_stop;;yes;no;-73.2030013;-39.8438975;9344059210
+node;;platform;;;bus_stop;;yes;;-73.2174147;-39.8411461;9364617093
+node;;platform;;La Mano;bus_stop;;yes;;-73.2159312;-39.8407843;9364617745
+node;;platform;;;bus_stop;;yes;;-73.2174546;-39.8408093;9364617753
+node;;platform;;;bus_stop;;yes;;-73.2095667;-39.8377747;9364783182
+node;;platform;;;bus_stop;;yes;;-73.21147;-39.8391105;9364853999
+node;;platform;;;bus_stop;;yes;;-73.2113372;-39.8391808;9364854000
+node;;platform;;;bus_stop;;yes;;-73.2178032;-39.8402718;9365855256
+node;yes;platform;;;bus_stop;;yes;no;-73.2116045;-39.8231416;9647047632
+node;;platform;;;bus_stop;;yes;;-73.2093836;-39.8218098;9652583782
+node;;platform;;;bus_stop;;yes;;-73.2367252;-39.8063011;9657445755
+node;;platform;;;bus_stop;;yes;;-73.2441635;-39.8148442;9676102707
+node;;platform;;;bus_stop;;yes;;-73.2101334;-39.8299247;9717273070
+node;;platform;;;bus_stop;;yes;;-73.209882;-39.8299996;9717273087
+node;;platform;;;bus_stop;;yes;;-73.2092149;-39.8307147;9717282356
+node;yes;platform;;;bus_stop;;yes;no;-73.2103541;-39.8490495;9798149534
+node;;platform;;;bus_stop;;yes;;-73.2114837;-39.8518144;9798292046
+node;yes;platform;;;bus_stop;;yes;no;-73.2125295;-39.8539554;9798519725
+node;;platform;;;bus_stop;;yes;;-73.2112447;-39.8330237;9849587018
+node;yes;platform;;Ruta T-350 / Aromos de Torobayo;bus_stop;;yes;yes;-73.2868233;-39.842154;9875316219
+node;no;platform;;Ruta T-350 / Colegio San Luis del Alba;bus_stop;no;yes;;-73.2860206;-39.8412705;9875316220
+node;;platform;;Ruta T-350 / Cervecería Kunstmann;bus_stop;;yes;;-73.277304;-39.8374523;9879222961
+node;;platform;;Ruta T-350 / Condominio El Bayo;bus_stop;;yes;;-73.2720441;-39.835503;9879222962
+node;yes;platform;;P86 - Picarte / Cárdenas;bus_stop;;yes;no;-73.2171151;-39.832299;9892124547
+node;no;platform;;P79 - Picarte / Huemul;bus_stop;;yes;;-73.2252115;-39.8257468;9892156049
+node;yes;platform;;;bus_stop;;yes;;-73.2100401;-39.8492345;10037683061
+node;yes;platform;;;bus_stop;;yes;;-73.2064344;-39.8475016;10047219744
+node;yes;platform;;;bus_stop;;yes;;-73.2010898;-39.8451816;10048984033
+node;yes;platform;;;bus_stop;;yes;;-73.1997763;-39.8462208;10048984056
+node;yes;platform;;;bus_stop;;yes;;-73.2000028;-39.8462693;10048984057
+node;;platform;;;bus_stop;;yes;;-73.2460772;-39.8415409;10263905257
+node;;platform;;;bus_stop;;yes;;-73.2578422;-39.8385989;10617186912
+node;yes;platform;;;bus_stop;;yes;;-73.2047729;-39.8244599;10761782691
+node;yes;platform;;;bus_stop;;yes;;-73.2050076;-39.8240473;10761782692
+node;;platform;;;bus_stop;;yes;;-73.2531007;-39.8482337;10882391520
+node;;platform;;;bus_stop;;yes;;-73.2497708;-39.8468591;10882391523
+node;;platform;;;bus_stop;;yes;;-73.2479619;-39.8446113;10882691345
+node;;platform;;;bus_stop;;yes;;-73.209491;-39.8092222;10935422260
+node;;platform;;;bus_stop;;yes;;-73.2093861;-39.8078815;10935846388
+node;;platform;;;bus_stop;;yes;;-73.2097129;-39.8136401;10936208126
+node;;platform;;;bus_stop;;yes;;-73.2320983;-39.8534661;11150858793
+node;yes;platform;;;bus_stop;;yes;;-73.215386;-39.8246662;11599221549
+node;;platform;;;bus_stop;;yes;;-73.218421;-39.8378958;11631837448
+node;;platform;;;bus_stop;;yes;;-73.2178521;-39.8397007;11631837449
+node;;platform;;;bus_stop;;yes;;-73.205878;-39.7990909;11710399411
+node;;platform;;;bus_stop;;yes;;-73.2476116;-39.8211371;11779826675
+node;;platform;;;bus_stop;;yes;;-73.2397342;-39.8567274;11785302130
+node;;platform;;;bus_stop;;yes;;-73.2415542;-39.8566286;11785302160
+node;;platform;;;bus_stop;;yes;;-73.2237997;-39.814812;11877012342
+node;;platform;;;bus_stop;;yes;;-73.2250667;-39.8245975;12164786362
+node;;platform;;;bus_stop;;yes;;-73.2212385;-39.8497654;12397223075
+node;;platform;;;bus_stop;;yes;;-73.2667121;-39.8074881;12505661057
+node;;platform;;;bus_stop;;yes;;-73.2629554;-39.8085858;12505669311
+node;;platform;;;bus_stop;;yes;;-73.2112716;-39.8226207;12511692183
+node;;platform;;;bus_stop;;yes;;-73.2093656;-39.8198054;12511736554
+node;;platform;;;bus_stop;;yes;;-73.2166131;-39.8462895;12566062192
+node;;platform;;;bus_stop;;yes;;-73.2144455;-39.8471482;12566084411
+node;;platform;;;bus_stop;;yes;;-73.2124781;-39.8480641;12566084436
+node;;platform;;;bus_stop;;yes;;-73.2123392;-39.8479913;12566084443
+node;yes;platform;;;bus_stop;;yes;;-73.2127308;-39.854767;12583743901
+node;;platform;;La Mano;bus_stop;;yes;;-73.2139518;-39.8404977;12586531532
+node;;platform;;;bus_stop;;yes;;-73.2328916;-39.8258959;12753156581

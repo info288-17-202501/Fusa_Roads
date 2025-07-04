@@ -1,0 +1,37 @@
+_type;_tags_shop;_tags_name;_tags_amenity;_tags_addr:suburb;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:district;_tags_addr:country;_tags_addr:city;_lon;_lat;_id
+node;;Boca de Lobos;pub;;Thiers;Región de La Araucanía;504;Temuco;CL;Temuco;-72.6033496;-38.7367121;659997437
+node;;Beermania;pub;;Avenida Alemania;Región de La Araucanía;0120;Temuco;CL;Temuco;-72.603561;-38.7366346;659997438
+node;;Farolito;pub;;Avenida Alemania;Región de La Araucanía;0160;Temuco;CL;Temuco;-72.6037338;-38.7366064;659997439
+node;;Infame;pub;;;;;;;;-72.6040529;-38.7361882;659997440
+node;;La 5ª Avenida;pub;;;;;;;;-72.609604;-38.7356149;672575072
+node;;Bisonte;pub;;;;;;;;-72.6185143;-38.7320977;1130763004
+node;;Madchester;pub;;;;;;;;-72.6042239;-38.7396324;2073740390
+node;;Punto G;pub;;Avenida Alemania;Región de La Araucanía;0170;Temuco;CL;Temuco;-72.6038518;-38.7365789;2573684684
+node;;Tanuki;pub;;Pasaje Arrayán;Región de La Araucanía;499;Temuco;CL;Temuco;-72.6032546;-38.7363048;2573684687
+node;;Vikingos;pub;;Avenida Alemania;Región de La Araucanía;0160;Temuco;CL;Temuco;-72.6042209;-38.7365146;2573684752
+node;;Patiperro;pub;;Avenida Alemania;Región de La Araucanía;0160;Temuco;CL;Temuco;-72.6040549;-38.7365325;2573684754
+node;;JarBar;pub;;Phillippi;Región de La Araucanía;520;Temuco;CL;Temuco;-72.6045668;-38.736683;4101038500
+node;;Casa Birra;pub;;Avenida Alemania;;;;;Temuco;-72.6076115;-38.7352853;4266760392
+node;;La Perrera;pub;;Bernardo O'Higgins;Región de La Araucanía;913;Temuco;CL;Temuco;-72.5899212;-38.7436781;4287034492
+node;;Caravan;pub;;;;;;;;-72.6129249;-38.7344358;4799971323
+node;;Los toneles;pub;;Avenida San Martín;Región de La Araucanía;230;Temuco;CL;Temuco;-72.5988681;-38.7414807;6158908285
+node;;Cervecería Koyonka;pub;;Phillippi;Región de La Araucanía;470;Temuco;CL;Temuco;-72.6042369;-38.7358068;8586924434
+node;alcohol;Shoperia Cathos;bar;Villa Imperial;Avenida Caupolicán;Región de La Araucanía;0402 B;Temuco;CL;Temuco;-72.6070533;-38.7441319;712828325
+node;;Ñam-Ñam;bar;;;;;;;;-72.6181603;-38.7322148;1130762889
+node;;K 21;bar;;;;;;;;-72.6178009;-38.7323236;1130762968
+node;;Remedy Club;bar;;;;;;;;-72.6172054;-38.7329262;1130763003
+node;;Las Canoas;bar;;;;;;;;-72.5691177;-38.7464241;3185200461
+node;;Che Carlitos;bar;;;;;;;;-72.5971008;-38.7379942;4231178989
+node;;Barbudos;bar;;Bernardo O'Higgins;Región de La Araucanía;171;Temuco;CL;Temuco;-72.6000316;-38.7421342;4287060192
+node;;Sanseacabó;bar;;Hochstetter;;435;Temuco;CL;Temuco;-72.6131963;-38.7336891;4449425895
+node;;Jack's;bar;;;;;;;;-72.6069799;-38.735661;4467143489
+node;;Resto Bar Santo Remedio;bar;;Manuel Bulnes;Región de La Araucanía;890;Temuco;CL;Temuco;-72.590157;-38.7424876;4688877091
+node;;La Chingana;bar;;General Carrera;Región de La Araucanía;964;Temuco;CL;Temuco;-72.5983079;-38.7420817;4739908822
+node;;O.K;bar;;Bernardo O'Higgins;Región de La Araucanía;1150;Temuco;CL;Temuco;-72.5872035;-38.7443073;4804902321
+node;;Imperial;bar;Villa Italia;Avenida Manuel Recabarren;Región de La Araucanía;01880;Temuco;CL;Temuco;-72.6340505;-38.7551379;5006060321
+node;;Dominga;bar;;Phillippi;Región de La Araucanía;485;Temuco;CL;Temuco;-72.6038697;-38.7359987;5220458521
+node;;Plan B;bar;;;;;;;;-72.5901426;-38.7424253;5377793925
+node;;Tinta Cantina;bar;;Phillippi;Región de La Araucanía;438;Temuco;CL;Temuco;-72.6041898;-38.7356476;5535067234
+node;;Cantina del diablo;bar;;;;;;;;-72.6158005;-38.7400898;5579650722
+node;;Restaurant y Cafetería Dell Maggio;bar;;Manuel Bulnes;Región de La Araucanía;489;Temuco;CL;Temuco;-72.5888486;-38.7383856;7223717385
+node;;Festhouse;bar;;;;;;;;-72.556779;-38.70661;9344894217

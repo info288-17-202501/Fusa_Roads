@@ -26,12 +26,6 @@ class Config(BaseModel):
     descrip: Optional[str] = None  # Opciona
     avance: Optional[Avance] = None  # Opcional, para el avance del estado
 
-class Estado(BaseModel):
-    id: str = Field(..., alias="_id")
-    pia_id: Optional[str] = None
-    ejecucion: Optional[int] = None
-
-
 
 
 
@@ -75,12 +69,6 @@ def crear_estado(p_id: str,estado_mandado: Config ,request: Request):
                 {"_id": ObjectId(p_id)},
                 {"$push": {"estados": nuevo_estado}}
             )
-        # else:
-        #     result =  db.estados.insert_one({
-        #         "pia_id": pia_id,
-        #         "fecha_inicio": datetime.utcnow(),
-        #         "estados": [nuevo_estado]
-        #     })
 
         return {"status": "ok", "estado_creado": nuevo_estado}
         
@@ -110,6 +98,35 @@ def crear_proceso(pia_id: str, estado_mandado: ProcesoCreado):
         id= str(result.inserted_id))
 
 
+
+# Modelo para finalizar proceso
+class FinalizarProceso(BaseModel):
+    fecha_fin: str
+
+# Endpoint para finalizar proceso completo
+@router.put("/finalizar/{p_id}", response_model=dict)
+def finalizar_proceso(p_id: str, finalizacion: FinalizarProceso):
+    try:
+        # Actualizar el documento agregando fecha_fin
+        result = db.estados.update_one(
+            {"_id": ObjectId(p_id)},
+            {"$set": {"fecha_fin": finalizacion.fecha_fin}}
+        )
+        
+        if result.matched_count == 0:
+            raise HTTPException(status_code=404, detail="Proceso no encontrado")
+        
+        if result.modified_count == 0:
+            raise HTTPException(status_code=400, detail="El proceso ya estaba finalizado")
+        
+        # Obtener el documento actualizado
+        doc = db.estados.find_one({"_id": ObjectId(p_id)})
+        doc = fix_mongo_ids(doc)
+        
+        return {"status": "ok", "proceso_finalizado": doc}
+        
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=str(e))
 
 @router.put("/{p_id}/{estado}", response_model=dict)
 def crear_estado(estado_mandado: Config , p_id : str, estado: str):

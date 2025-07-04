@@ -1,0 +1,50 @@
+_type;_tags_wikidata;_tags_website;_tags_source:addr;_tags_phone;_tags_name;_tags_healthcare;_tags_amenity;_tags_addr:suburb;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:district;_tags_addr:country;_tags_addr:city;_lon;_lat;_id
+node;;;;;Veterinario;;veterinary;;;;;;;;-72.6308433;-38.738289;1093024277
+node;;;;;Veterinario;;veterinary;;;;;;;;-72.6306233;-38.7376333;1093024728
+node;;;;;Clínica de Animales Menores UCT;;veterinary;;;;;;;;-72.5503449;-38.7027482;4365675190
+node;;;;;Clínica de Animales Mayores UCT;;veterinary;;;;;;;;-72.5479584;-38.7006821;4365685190
+node;;;;(45)2240814;Vidapet;;veterinary;;Olimpia;;1940;Temuco;CL;Temuco;-72.6263505;-38.7465883;4729575290
+node;;;;;Clínica Veterinaria Lemantu;;veterinary;Villa Araucana;Tomás Alba Edison;Región de La Araucanía;;Temuco;CL;Temuco;-72.6420608;-38.7569601;5006060221
+node;;http://institutoquirurgico.cl;;(45)2401207;Instituto Quirúrgico Veterinario;;veterinary;Parque Alcántara;Avenida Barros Arana;Región de La Araucanía;03805;Temuco;CL;Temuco;-72.5503013;-38.7083278;5526631229
+node;;;;;Veterinaria Arca de Noé;;veterinary;;Bernardo O'Higgins;;01158;Temuco;CL;Temuco;-72.6190906;-38.7389045;5805839761
+node;;;;;Veterinario;;veterinary;;;;;;;;-72.6518272;-38.7167233;5902435979
+node;;;;;Veterinaria Huichahue;;veterinary;;Huichahue;Región de La Araucanía;250;Padre Las Casas;CL;Padre Las Casas;-72.590826;-38.7608873;8461525022
+node;;;;;;;veterinary;;;;;;;;-72.597084;-38.7711701;11807355773
+node;;;;;;;veterinary;;;;;;;;-72.5852379;-38.7730217;11839116137
+way;;;www.sii.cl, Cartografía Digital SII Mapas;;Veterinaria Padre Las Casas;;veterinary;;Villa Alegre;Región de La Araucanía;604;Padre Las Casas;CL;Padre Las Casas;;;400700611
+node;;http://www.camposquiropractica.com;;;Centro Quiropráctico Campos;;clinic;;Francia;;306;Temuco;CL;Temuco;-72.6086676;-38.7327852;4283389292
+node;;;;;Mega salud;;clinic;;Manuel Bulnes;Región de La Araucanía;;Temuco;CL;Temuco;-72.5900978;-38.7422308;5165697721
+node;;;;;Ortopedia Araucanía;;clinic;;;;;;CL;;-72.6036622;-38.7348653;5244103322
+node;;;;;Clínica Fonoaudiológica U. Mayor;;clinic;;;;;;CL;;-72.6048227;-38.7341345;5551728423
+node;;;;;Centro Médico La Haya;;clinic;;;;;;CL;;-72.6108825;-38.7377801;6268764385
+node;;;;;CESFAM Santa Rosa;hospital;clinic;;Pircunche;;316;;CL;Temuco;-72.572141;-38.7344197;11176586923
+node;;;;;CESFAM Metodista;clinic;clinic;;Bernardo O'Higgins;;1449;;CL;Temuco;-72.6224664;-38.7373414;11190600326
+way;Q93743928;;;;Centro de Referencia de Salud Miraflores;clinic;clinic;;Miraflores;Región de La Araucanía;1369;Temuco;CL;Temuco;;;80506687
+way;;;;;Mutual de Seguridad Temuco;clinic;clinic;;;;;;CL;;;;197076009
+way;;;;+56 45 2962100;CESFAM Pulmahue;;clinic;;Avenida La Quebrada;Región de La Araucanía;1419;Padre Las Casas;CL;Padre Las Casas;;;337471467
+way;;;;+56 45 274 2300;CESFAM Conunhuenu;hospital;clinic;;Avenida Pulmahue;Región de La Araucanía;1405;Padre Las Casas;CL;Padre Las Casas;;;400710876
+way;;;;;Clínica RedSalud Mayor de Temuco;clinic;clinic;;Avenida Gabriela Mistral;Región de La Araucanía;01915;Temuco;CL;Temuco;;;409907491
+way;;;;;CESFAM Cajón;yes;clinic;;Gabriela Mistral;;357;;CL;Vilcún;;;532054065
+way;;;;+56 45 2250;CESFAM Las Colinas;hospital;clinic;;Manil;Región de La Araucanía;130;Padre Las Casas;CL;Padre Las Casas;;;594748641
+way;;;;;CESFAM El Carmen;clinic;clinic;;Los Compositores;Región de La Araucanía;0505;Temuco;CL;Temuco;;;907536391
+way;;;;;CESFAM Amanecer;;clinic;Amanecer;Garibaldi;;01280;Temuco;CL;Temuco;;;913199221
+way;;;;;CESFAM Pedro de Valdivia;;clinic;Villa El Salitre;Chivilcán;Región de La Araucanía;0910;Temuco;CL;Temuco;;;915832016
+way;;;;45 265 4000;Centro Médico ICOS - Inmunomédica;;clinic;;Lago Puyehue;Región de La Araucanía;01745;Temuco;CL;Temuco;;;924535662
+way;;;;;CESFAM Villa Alegre;;clinic;;Argentina;Región de La Araucanía;0820;Temuco;CL;Temuco;;;928881121
+way;;;;;Clínica Alemana;clinic;clinic;;Pasaje La Haya;;;;;Temuco;;;1242382324
+node;;;;+56967293402;Clinica Dental;;dentist;Panamericana Sur;Pasaje Los Quilantos;Región de La Araucanía;350;Padre Las Casas;CL;Padre Las Casas;-72.6058289;-38.767228;4151934591
+node;;;;;Clinica 'Maró';;dentist;;;;;;;;-72.6282546;-38.738887;5215244421
+node;;;;;Dentistas Alcantara;;dentist;;;;;;;;-72.5862308;-38.7391254;5739486171
+node;;;www.sii.cl, Cartografía Digital SII Mapas;;Clinica BOK Temuco;hospital;dentist;;Arturo Prat;Región de La Araucanía;696;Temuco;CL;Temuco;-72.5910314;-38.7402866;8546387513
+node;;;www.sii.cl, Cartografía Digital SII Mapas;;Clínica Odontológica San José;;dentist;;Inglaterra;Región de La Araucanía;871;Temuco;CL;Temuco;-72.6133889;-38.7306772;8586923059
+node;;;;;Araucadent;dentist;dentist;;;;;;;;-72.5913593;-38.7602462;11656934717
+node;;;;;Reinoso Odontología;dentist;dentist;;;;;;;;-72.5918294;-38.7591064;11776281499
+node;;;;;;dentist;dentist;;;;;;;;-72.5950293;-38.7377605;11876749680
+way;;;;;Clínica Dental Cumbre Temuco;dentist;dentist;;Avenida Alemania;;538;;;Temuco;;;873312839
+node;Q93744864;;www.sii.cl, Cartografía Digital SII Mapas;;Clínica OB de Temuco;hospital;hospital;;Antonio Varas;Región de La Araucanía;761;Temuco;CL;Temuco;-72.59118;-38.7402622;8546386650
+node;;;www.sii.cl, Cartografía Digital SII Mapas;;Clínica Oncológica Cido;hospital;hospital;;Hochstetter;Región de La Araucanía;560, of 604;Temuco;CL;Temuco;-72.6140305;-38.7345037;8586833914
+way;;;;;Clínica Alemana de Temuco;hospital;hospital;;Senador Estébanez;;645;Temuco;CL;Temuco;;;135537759
+way;;;;;Hospital del Trabajador de Temuco ACHS;hospital;hospital;;Francia;Región de La Araucanía;324;Temuco;CL;Temuco;;;232250710
+way;Q16576015;;;;Hospital Doctor Hernán Henríquez Aravena;hospital;hospital;;Manuel Montt;Región de La Araucanía;115;Temuco;CL;Temuco;;;251075037
+way;;;;;Clínica Integrada de Salud Univeridad Autónoma;;hospital;;Porvenir;;558;Temuco;CL;Temuco;;;333200524
+way;Q89677609;;;;Complejo Asistencial Padre Las Casas;hospital;hospital;;Camino Aeropuerto Maquehue;;194;;CL;Padre Las Casas;;;523124527
