@@ -11,6 +11,7 @@ class SeccionCalle(Base):
     nombre = Column(String(50), nullable=False)
     id_calle_localidad = Column(Integer, ForeignKey("calles.calle_localidad.id"), nullable=False)
     id_tipo_via = Column(Integer, ForeignKey("calles.tipo_via.id"), nullable=False)
+    app = Column(String(50), nullable=False)
     
     calle_localidad = relationship("CalleLocalidad")
     tipo_via = relationship("TipoVia")

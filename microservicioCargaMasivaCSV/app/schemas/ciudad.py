@@ -13,3 +13,6 @@ class Ciudad(CiudadBase):
     
     class Config:
         from_attributes = True
+
+class CiudadResponse(Ciudad):
+    pass

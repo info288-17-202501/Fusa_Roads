@@ -15,10 +15,10 @@ interface Ciudad {
 interface Props {
     show: boolean;
     onClose: () => void;
-    data: string[]; // cada string es el nombre de una ciudad
+    onSuccess?: () => void;    
 }
 
-function ModalCargaMasiva ({show, onClose}: Props){
+function ModalCargaMasiva ({show, onClose, onSuccess}: Props){
     const [validated, setValidated] = useState(false);
 
     const [localidad, setLocalidad] = useState('');
@@ -30,7 +30,7 @@ function ModalCargaMasiva ({show, onClose}: Props){
     const [ciudadId, setCiudadId] = useState('');
 
     useEffect(() => {
-        fetch("http://localhost:8001/csv/paises")
+        fetch("http://localhost:8001/ubicacion/paises")
             .then(res => res.json())
             .then(setPaises)
             .catch(err => console.error("Error al cargar países", err));
@@ -43,7 +43,7 @@ function ModalCargaMasiva ({show, onClose}: Props){
             return;
         }
 
-        fetch(`http://localhost:8001/csv/ciudades?id_pais=${paisId}`)
+        fetch(`http://localhost:8001/ubicacion/ciudades/${paisId}`)
             .then(res => res.json())
             .then(setCiudades)
             .catch(err => console.error("Error al cargar ciudades", err));
@@ -83,6 +83,7 @@ function ModalCargaMasiva ({show, onClose}: Props){
             }
 
             const result = await response.json();
+            if(onSuccess) onSuccess();
             alert(`Carga existosa: ${result.processed_rows} filas procesadas`)
         } catch (err){
             console.error(err)
