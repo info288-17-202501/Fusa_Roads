@@ -1,0 +1,211 @@
+_type;_tags_source:addr;_tags_short_name;_tags_name;_tags_amenity;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:district;_tags_addr:country;_tags_addr:city;_lon;_lat;_id
+node;;IPCHILE;Instituto Profesional de Chile;college;Claro Solar;Región de La Araucanía;1088;Temuco;CL;Temuco;-72.5869515;-38.7400381;3895628138
+node;;;Casa de la Música;college;Phillippi;Región de La Araucanía;465;Temuco;CL;Temuco;-72.6038383;-38.735904;5515332821
+node;;;CFT Los Lagos;college;Manuel Rodríguez;Región de La Araucanía;477;Temuco;CL;Temuco;-72.594131;-38.7355773;5570194921
+node;www.sii.cl, Cartografía Digital SII Mapas;;Centro de Estudios de las Comunicaciones para el Trabajo;college;General Carrera;Región de La Araucanía;101;Temuco;CL;Temuco;-72.5958679;-38.7335241;8544565130
+node;www.sii.cl, Cartografía Digital SII Mapas;;Instituto Guillermo Subercaseaux Temuco;college;Almirante Patricio Lynch;Región de La Araucanía;594;Temuco;CL;Temuco;-72.594695;-38.7385687;8546369681
+node;www.sii.cl, Cartografía Digital SII Mapas;;CEIA El Sembrador;college;Arturo Prat;Región de La Araucanía;259;Temuco;CL;Temuco;-72.589583;-38.7358624;8546388922
+node;www.sii.cl, Cartografía Digital SII Mapas;;Seminario Teologico de Temuco;college;Dinamarca;Región de La Araucanía;650;Temuco;CL;Temuco;-72.6062785;-38.7370044;8586923073
+node;;;;college;;;;;;;-72.6019355;-38.7369812;11914305273
+node;;;;college;;;;;;;-72.6014446;-38.7366007;11914305274
+way;;;Instituto AIEP Temuco;college;Avenida Alemania;Región de La Araucanía;035;Temuco;CL;Temuco;;;107937658
+way;;;CFT Inacap Temuco;college;Avenida Luis Durand;Región de La Araucanía;02150;Temuco;CL;Temuco;;;409913943
+way;;;CFT Andrés Bello;college;Las Heras;Región de La Araucanía;538;Temuco;CL;Temuco;;;413350518
+way;;;Instituto Profesional Santo Tomás Sede Pedro de Valdivia;college;Avenida Pedro de Valdivia;;340;;;Temuco;;;435466759
+way;;;Preuniversitario CEPECH;college;Avenida Alemania;Región de La Araucanía;059;Temuco;CL;Temuco;;;913525181
+node;;;Colegio Adventista;school;;;;;;;-72.5975045;-38.7361591;474164090
+node;;;Escuela  Particular Nº 304 Francia;school;Andrés Bello;;1016;;;Temuco;-72.588261;-38.7420655;2030668765
+node;;;Escuela de Lenguaje Wilef;school;;;;;CL;;-72.6318827;-38.7573378;3772169699
+node;;;Escuela Francisco Querebán;school;;;;;CL;;-72.602798;-38.7923147;4253612093
+node;;;bellavista;school;;;;;;;-72.5854754;-38.7811563;4569264590
+node;;;Escuela Chillkatuwe Ruka  El Valle Pingelu;school;;;;;;;-72.517265;-38.772508;4983834526
+node;;;Escuela Chilkatuwe Ruka Millahueco;school;;;;;;;-72.514892;-38.757476;4990400121
+node;;;Chilkatuwe Ruka  el Valle;school;;;;;;;-72.517185;-38.7722448;5003334021
+node;;;Escuela Particular Nuevo Membrillar;school;;;;;;;-72.497221;-38.754132;5033374525
+node;;;Escuela Monterrey;school;;;;;;;-72.5051663;-38.6776328;5173822143
+node;;;Escuela Particular Tres Cerros;school;;;;;;;-72.5090698;-38.7286889;5571854622
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Antumalen;school;Vicuña Mackenna;Región de La Araucanía;029;Temuco;CL;Temuco;-72.5901002;-38.7324155;8544565024
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial Hospitalaria Temuco;school;Diego Portales;Región de La Araucanía;16;Temuco;CL;Temuco;-72.6003345;-38.7358997;8544565026
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de adultos aguila real;school;Avenida Balmaceda;Región de La Araucanía;626;Temuco;CL;Temuco;-72.5915891;-38.7330523;8544565198
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Gracia y Paz;school;Avenida General Prieto Norte;Región de La Araucanía;147;Temuco;CL;Temuco;-72.5998911;-38.733256;8544565358
+node;www.sii.cl, Cartografía Digital SII Mapas;;Centro Educacional Especial Inclusivo San Cristobal;school;Las Heras;Región de La Araucanía;159;Temuco;CL;Temuco;-72.5946538;-38.7342004;8544565365
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Adultos Rayenco;school;Lagos;Región de La Araucanía;342;Temuco;CL;Temuco;-72.5928221;-38.7363239;8546386557
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela de Lenguaje Antumapu;school;General Cruz;Región de La Araucanía;632;Temuco;CL;Temuco;-72.5856714;-38.7406291;8546387450
+node;www.sii.cl, Cartografía Digital SII Mapas;;CEIA Paulo Freire Temuco;school;Manuel Rodríguez;Región de La Araucanía;1073;Temuco;CL;Temuco;-72.5863815;-38.7367705;8546387847
+node;www.sii.cl, Cartografía Digital SII Mapas;;CEIA Miguel De Cervantes;school;Diego Portales;Región de La Araucanía;655;Temuco;CL;Temuco;-72.5920721;-38.7369549;8546387886
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Adultos Hacia Un Nuevo Horizonte;school;General Mackenna;Región de La Araucanía;548;Temuco;CL;Temuco;-72.5867118;-38.7394035;8546388365
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Juan XXIII de Temuco;school;Lagos;Región de La Araucanía;435;Temuco;CL;Temuco;-72.5927915;-38.7374466;8546389020
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Particular de Adultos Getsemani;school;Curicó;Región de La Araucanía;940;Temuco;CL;Temuco;-72.5824582;-38.7443533;8549625571
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Congregación Olivos;school;Callejón Kaffman;Región de La Araucanía;220;Temuco;CL;Temuco;-72.5662201;-38.7288643;8549627071
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial Hablaarte;school;Avenida Valparaíso;Región de La Araucanía;725;Temuco;CL;Temuco;-72.5653385;-38.7339766;8549628078
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Ami;school;Malvoa;Región de La Araucanía;920;Temuco;CL;Temuco;-72.5811984;-38.7444825;8549629824
+node;www.sii.cl, Cartografía Digital SII Mapas;;Liceo Americo Vespucio;school;Bramante;Región de La Araucanía;1967;Temuco;CL;Temuco;-72.6342936;-38.7562411;8564230695
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Jóvenes y Adultos Ceia la Haya;school;Ravena;Región de La Araucanía;2031;Temuco;CL;Temuco;-72.6165083;-38.7556121;8565705469
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Nueva Concepción;school;Porvenir;Región de La Araucanía;746;Temuco;CL;Temuco;-72.6193641;-38.734906;8586813830
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial El Castillo Del Lenguaje;school;Hochstetter;Región de La Araucanía;376;Temuco;CL;Temuco;-72.6126728;-38.7322468;8586833876
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Educacion de Adultos Horizonte;school;Trizano;Región de La Araucanía;440;Temuco;CL;Temuco;-72.6072853;-38.7350726;8586921698
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial Liwen;school;Dinamarca;Región de La Araucanía;728;Temuco;CL;Temuco;-72.6067848;-38.7381507;8586923371
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela de Lenguaje Raíces del Sur;school;Callejón Massmann;Región de La Araucanía;379;Temuco;CL;Temuco;-72.6078393;-38.7344352;8586923421
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela de Lenguaje Hablapalabras;school;Francia;Región de La Araucanía;305;Temuco;CL;Temuco;-72.6082974;-38.7329187;8586924390
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela de Lenguaje Pekes;school;Avenida General Prieto Norte;Región de La Araucanía;248;Temuco;CL;Temuco;-72.6008747;-38.7340634;8586924503
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Hebreo;school;Trizano;Región de La Araucanía;426;Temuco;CL;Temuco;-72.6071442;-38.7346325;8586924576
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela De La Comunicación Icalma;school;Recreo;Región de La Araucanía;0495;Temuco;CL;Temuco;-72.6130003;-38.7206905;8611082607
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Particular Alfa y Omega;school;Pangal;Región de La Araucanía;01985;Temuco;CL;Temuco;-72.6261382;-38.7287776;8611091976
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Adultos Sol de America;school;Chivilcán;Región de La Araucanía;01885;Temuco;CL;Temuco;-72.6204216;-38.7180555;8611092126
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio de Aplicacion;school;Colchane;Región de La Araucanía;0800;Temuco;CL;Temuco;-72.6269693;-38.7138559;8611093622
+node;;;Escuela Llolletue;school;Camino Tromen - Sector 5 Laureles;;;;;Temuco;-72.6955852;-38.7054981;9137659266
+node;www.sii.cl, Cartografía Digital SII Mapas;;Liceo San Sebastian;school;Villa Alegre;Región de La Araucanía;777;Padre Las Casas;CL;Padre Las Casas;-72.592928;-38.757084;9169651041
+node;www.sii.cl, Cartografía Digital SII Mapas;;Liceo Adultos Horeb;school;Trarilonco;Región de La Araucanía;891;Padre Las Casas;CL;Padre Las Casas;-72.5951396;-38.7678976;9174431614
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial de Lenguaje Alun Suyai;school;Bombero Carlos Escobar;Región de La Araucanía;145;Padre Las Casas;CL;Padre Las Casas;-72.6056787;-38.7647346;9183135552
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Especial de Lenguaje Newen Alon;school;Lord Cochrane;Región de La Araucanía;1227;Padre Las Casas;CL;Padre Las Casas;-72.5980279;-38.7625766;9204784473
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Holanda;school;Fuentes;Región de La Araucanía;485;Padre Las Casas;CL;Padre Las Casas;-72.595343;-38.7628716;9204784488
+node;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Bicentenario de la Araucania;school;Lord Cochrane;Región de La Araucanía;;Padre Las Casas;CL;Padre Las Casas;-72.5990954;-38.7627866;9204796395
+node;www.sii.cl, Cartografía Digital SII Mapas;;Escuela Miss Clara Brincefield;school;Villa Alegre;Región de La Araucanía;937;Padre Las Casas;CL;Padre Las Casas;-72.5963527;-38.7589651;9207721483
+node;;;Centro Educacional Integral Adultos Futuro;school;Lagos;;247;;;Temuco;-72.5922605;-38.7354993;10108527388
+node;;;Colegio Golden School;school;Avenida Luis Durand;;3193;;;Temuco;-72.637928;-38.7224835;10108659950
+node;;;Jardín Infantil Magic Garden;school;Antonio Varas;;382;;CL;Temuco;-72.5965818;-38.7396249;10992409516
+node;;;Instituto Profesional Santo Tomás SeDe Manuel Rodriguez;school;;;;;CL;;-72.6016817;-38.7346575;11205330241
+node;;;Escuela de Lenguaje Manantial;school;;;;;CL;;-72.6071694;-38.7382224;11206082653
+node;;;Jardín Infantil Los Peques;school;;;;;CL;;-72.6274924;-38.752047;11286717251
+node;;;CEIA Alerta;school;;;;;;;-72.5943593;-38.757473;11286798519
+node;;;Colegio de Lenguaje Pehuen;school;;;;;CL;;-72.6098558;-38.739504;11299884584
+node;;;Escuela Cristiana Desarrolo Integral;school;;;;;CL;;-72.6470334;-38.706199;11300420091
+node;;;Colegio Particular Excelsior;school;;;;;CL;;-72.6244834;-38.7069905;11300820124
+node;;;Escuela de Lenguaje Alemania;school;;;;;CL;;-72.6444144;-38.7206505;11302821940
+node;;;Colegio Latinoamericano;school;República;;;;;Temuco;-72.5632954;-38.7352842;11420370746
+node;;;Liceo Tecnológico de La Araucania;school;Avenida Balmaceda;;429;;;Temuco;-72.5939081;-38.7315751;11439899000
+node;;;Escuela Jose Miguel Carrera;school;Pircunche;;01205;;;Temuco;-72.5622395;-38.7316831;11439964862
+node;;;Escuela Santa Rosa;school;Catrihuala;;485;;;Temuco;-72.5708073;-38.7348546;11439965118
+node;;;Escuela Especial Nielol;school;Avenida Balmaceda;;325;;;Temuco;-72.59542;-38.7318359;11443373278
+node;;;Escuela de Adultos Manuel Rojas;school;Avenida Balmaceda;;450;;;Temuco;-72.5807294;-38.7346467;11443376453
+node;;;Escuela Truf-Truf;school;;;;;;;-72.5368967;-38.743907;11443426873
+node;;;Escuela Reducción Raluncollan;school;;;;;;;-72.6371194;-38.6998149;11443597917
+node;;;Escuela Reducción Monte Verde;school;;;;;;;-72.5905276;-38.695307;11443605007
+node;;;Escuela Licanco;school;;;;;;;-72.6213478;-38.7955807;11443606881
+node;;;Escuela Manio Chico;school;;;;;;;-72.6809341;-38.6853344;11443624884
+node;;;Liceo España de Temuco;school;Lagos;;698;;;Temuco;-72.5937017;-38.7398604;11443644381
+node;;;Escuela y Liceo Montessori;school;Lagos;;652;;;Temuco;-72.5937498;-38.7393249;11443650263
+node;;;Colegio Madre Admirable de Schoenstatt;school;Tucapel;;1777;;;Temuco;-72.5746327;-38.7307909;11443664708
+node;;;Liceo Particular Comercial Temuco;school;Diego Portales;;750;;;Temuco;-72.5908413;-38.7373974;11443671864
+node;;;Liceo Carlos Condell de La Haza;school;Avenida Pedro de Valdivia;;709;;;Temuco;-72.6092766;-38.7286159;11443681359
+node;;;Escuela Padre Venancio;school;Carlos Condell;;490;;;Padre Las Casas;-72.5893935;-38.760876;11443724413
+node;;;Escuela Especial Retardo Mental Las Araucarias;school;Thiers;;439;;;Temuco;-72.6032614;-38.7374274;11443725382
+node;;;Escuela Particular Araucania;school;Araucanía;;865;;;Temuco;-72.5752277;-38.7376473;11443730994
+node;;;Escuela Cristiana N°318 Wenceslao Valdivia;school;Quiriquina;;1790;;;Temuco;-72.5783913;-38.7440665;11443744879
+node;;;Escuela La Espiga;school;;;;;;;-72.6779158;-38.6875791;11443750140
+node;;;Escuela Particular Los Reyes;school;Alessandría;;0880;;;Temuco;-72.6167262;-38.7567961;11443750148
+node;;;Escuela Particular Estrella de Belen;school;Curicó;;940;;;Temuco;-72.5823751;-38.7440005;11443751775
+node;;;Escuela Particular Alianza;school;Guacolda;;855;;;Temuco;-72.567078;-38.7307209;11443753876
+node;;;Escuela Particular Villa Irma;school;Arquímedes;;01726;;;Temuco;-72.631346;-38.7576938;11443759156
+node;;;Colegio Ñielol Che Kimun;school;;;;;;;-72.5252738;-38.7421474;11443770236
+node;;;Escuela Particular San Juan;school;Pircunche;;1096;;;Temuco;-72.5636095;-38.7323123;11443776070
+node;;;Escuela Particular Los Trigales;school;Hochstetter;;660;;;Temuco;-72.6059897;-38.7261524;11443780360
+node;;;Escuela Particular Papelucho;school;Vicente Pérez Rosales;;709;;;Temuco;-72.5649083;-38.7264286;11443780361
+node;;;Colegio Particular Cultura Britanica;school;General Cruz;;63;;;Temuco;-72.5832685;-38.7333151;11443781184
+node;;;Escuela Particular Santa María de La Rivera;school;Tegualda;;1696;;;Temuco;-72.5583096;-38.7248481;11443782690
+node;;;Escuela Particular Nazareth;school;Colombia;;910;;;Temuco;-72.6106139;-38.7209828;11443783948
+node;;;Escuela Bellavista de Coyahue;school;;;;;;;-72.5861707;-38.7810911;11443804265
+node;;;Escuela Particular San Pedro Rapa;school;;;;;;;-72.6602892;-38.771932;11443835387
+node;;;Escuela San Martin de Porres;school;;;;;;;-72.4978284;-38.7053392;11444834920
+node;;;Escuela Particular Luis Cruz Martinez;school;;;;;;;-72.7005329;-38.6767838;11444846484
+node;;;Escuela Particular El Esfuerzo;school;;;;;;;-72.5239775;-38.7200903;11444879015
+node;;;Colegio Metodista;school;Claro Solar;;971;;;Temuco;-72.5883706;-38.7396064;11445019753
+node;;;Escuela Lircay;school;;;;;;;-72.670471;-38.7292641;11939781902
+node;;;Instituto Claret;school;;;;;;;-72.5833103;-38.7384602;11939848594
+node;;;Escuela Particular Nº 530 "David Riadi Matus";school;;;;;;;-72.4952043;-38.7741206;11940780391
+way;;;Colegio de La Salle;school;Claro Solar;Región de La Araucanía;1070;Temuco;CL;Temuco;;;45121129
+way;;;Colegio Bautista;school;Avenida Caupolicán;Región de La Araucanía;71;Temuco;CL;Temuco;;;51653559
+way;;;Complejo educacional Un Amanecer en la Araucanía;school;Garibaldi;;01225;Temuco;CL;Temuco;;;60942841
+way;;;Escuela Los Trigales F-528;school;Avenida San Martín;Región de La Araucanía;02070;Temuco;CL;Temuco;;;89288587
+way;;;Liceo Industrial de Temuco;school;Uruguay;Región de La Araucanía;1398;Temuco;CL;Temuco;;;127255261
+way;;;Instituto Superior de Especialidades Tecnicas de Temuco;school;Avenida Balmaceda;;598;Temuco;CL;Temuco;;;127255264
+way;;;Colegio Alemán de Temuco;school;Holandesa;;855;Temuco;CL;Temuco;;;135537757
+way;;;Colegio Brainstorm;school;Avenida Manuel Recabarren;Región de La Araucanía;3480;Temuco;CL;Temuco;;;154830157
+way;;;Colegio Centenario de Temuco;school;León Gallo;;0491;Temuco;CL;Temuco;;;194228055
+way;;;Liceo Gabriela Mistral;school;Antonio Varas;Región de La Araucanía;630;Temuco;CL;Temuco;;;198216843
+way;;;Colegio Pumahue;school;Avenida Martín Lutero;Región de La Araucanía;01200;Temuco;CL;Temuco;;;198219723
+way;;;Colegio Santa Cruz;school;Avenida Luis Durand;Región de La Araucanía;02201;Temuco;CL;Temuco;;;198219727
+way;;;Centro Educacional La Granja;school;Arturo Prat;;0181;;;Cajón;;;230023996
+way;;;C.E.I.A. Selva Saavedra;school;Millahue;Región de La Araucanía;0644;Temuco;CL;Temuco;;;233695263
+way;;;Escuela Artística Armando Dufey;school;Olimpia;;01355;Temuco;CL;Temuco;;;233895622
+way;;;Escuela San Francisco;school;Manuel Montt;Región de La Araucanía;39;Temuco;CL;Temuco;;;251078610
+way;;;George Chaytor English College;school;Avenida Gabriela Mistral;;03015;Temuco;CL;Temuco;;;265056067
+way;;;Escuela Arturo Prat;school;General Mackenna;Región de La Araucanía;685;Temuco;CL;Temuco;;;326418948
+way;;;Liceo San Roque;school;Piamonte;Región de La Araucanía;01751;Temuco;CL;Temuco;;;331854646
+way;;;Green House School;school;Avenida Inés de Suárez;Región de La Araucanía;1500;Temuco;CL;Temuco;;;338358944
+way;;;Liceo Camilo Henríquez;school;Avenida Andes;;620;Temuco;CL;Temuco;;;394372400
+way;;;Escuela y Jardin Infantil Trencito;school;Antonio Varas;Región de La Araucanía;1415;Temuco;CL;Temuco;;;394375625
+way;;;Liceo Tecnico Centenario;school;Diego Portales;Región de La Araucanía;2165;Temuco;CL;Temuco;;;394377016
+way;;;Liceo Politecnico Pueblo Nuevo Temuco;school;Nahuelbuta;Región de La Araucanía;01590;Temuco;CL;Temuco;;;394378336
+way;;;Escuela Municipal Alonso de Ercilla;school;1 Norte;Región de La Araucanía;01275;Temuco;CL;Temuco;;;394378339
+way;;;Liceo Industrial Pedro Aguirre Cerda;school;Avenida Balmaceda;;429;Temuco;CL;Temuco;;;398080616
+way;;;Liceo Comercial Tiburcio Saavedra;school;Arturo Prat;Región de La Araucanía;0105;Temuco;CL;Temuco;;;398080621
+way;;;Escuela Padre Bartolomé de Las Casas;school;Tomás Guevara;Región de La Araucanía;405;Padre Las Casas;CL;Padre Las Casas;;;400699596
+way;;;Complejo Educacional Padre Las Casas;school;Almirante Barroso;Región de La Araucanía;360;Padre Las Casas;CL;Padre Las Casas;;;400699765
+way;;;Colegio Nuestra Señora del Carmen;school;Villa Alegre;Región de La Araucanía;936;Padre Las Casas;CL;Padre Las Casas;;;400700613
+way;;;Escuela Monseñor Guido Beck de Ramberga;school;Enrique Mac Iver;Región de La Araucanía;838;Padre Las Casas;CL;Padre Las Casas;;;400700615
+way;;;Escuela San Sebastián;school;Villa Alegre;Región de La Araucanía;2235;Padre Las Casas;CL;Padre Las Casas;;;400700616
+way;;;Liceo Técnico Padre Óscar Moser;school;Pasaje Óscar Moser;Región de La Araucanía;56;Padre Las Casas;CL;Padre Las Casas;;;400700794
+way;;;Escuela Darío Salas;school;Villa Alegre;Región de La Araucanía;970;Padre Las Casas;CL;Padre Las Casas;;;400704435
+way;;;Escuela San Bernardo;school;Francisco Pleiteado;Región de La Araucanía;580;Padre Las Casas;CL;Padre Las Casas;;;400778406
+way;www.sii.cl, Cartografía Digital SII Mapas;;Colegio Jan Comenius;school;Ruta S-40;Región de La Araucanía;06720;Temuco;CL;Villa Las Camelias;;;406307521
+way;;;Escuela Cristiana Epu Newen;school;Circunvalación Francisco Huenchumilla;;1321;;;Temuco;;;410986233
+way;;;Escuela Andrés Bello;school;Prieto Sur;;1101;Temuco;CL;Temuco;;;412295804
+way;;;Colegio Innov-Arte;school;Avenida Los Fundadores;Región de La Araucanía;0123;Temuco;CL;Temuco;;;436006404
+way;;;Escuela Municipal Los Avellanos;school;Armando Jobet;;0201;Temuco;CL;Temuco;;;460047122
+way;;;Escuela Millaray;school;Rayén;Región de La Araucanía;1010;Temuco;CL;Temuco;;;470675725
+way;;;Liceo Pablo Neruda;school;Avenida Balmaceda;Región de La Araucanía;659;Temuco;CL;Temuco;;;614223484
+way;;;Temuco College;school;;;;;CL;;;;614246609
+way;;;Centro Educacional Agroturístico Santa Cruz;school;;;;;;;;;618616863
+way;;;Escuela Llaima;school;Coquimbo;Región de La Araucanía;745;Temuco;CL;Temuco;;;635433614
+way;;;Colegio Andes;school;Arturo Prat;Región de La Araucanía;;Temuco;CL;Temuco;;;714960176
+way;;;Escuela San Rafael Arcángel;school;Lord Cochrane;Región de La Araucanía;1670;Padre Las Casas;CL;Padre Las Casas;;;723802186
+way;;;Escuela Especial Alenkura;school;Fuentes;Región de La Araucanía;498;Padre Las Casas;CL;Padre Las Casas;;;723802509
+way;;;Escuela Municipal Campos Deportivos;school;Avenida Gabriela Mistral;Región de La Araucanía;01055;Temuco;CL;Temuco;;;761711909
+way;;;Escuela Manzanar;school;;;;;;;;;768554531
+way;;;Liceo Emprender;school;Pasaje Sirio;Región de La Araucanía;2431;Temuco;CL;Temuco;;;788036018
+way;;;Colegio Emprender;school;Milano;Región de La Araucanía;2025;Temuco;CL;Temuco;;;788036019
+way;;;Colegio Adventista;school;Avenida Los Creadores;Región de La Araucanía;0280;Temuco;CL;Temuco;;;907536392
+way;;;Colegio Augusto Winter;school;Cacique Cheuquellán;Región de La Araucanía;01781;Temuco;CL;Temuco;;;908092988
+way;;;Escuela Municipal Standard;school;Manuel Antonio Matta;Región de La Araucanía;0151;Temuco;CL;Temuco;;;908871578
+way;;;Colegio Providencia;school;General Cruz;Región de La Araucanía;0198;Temuco;CL;Temuco;;;908871579
+way;;;Escuela Especial Retardo Mental Claret;school;Ministro Zenteno;Región de La Araucanía;401;Temuco;CL;Temuco;;;909284397
+way;;;Escuela Municipal F487 V. Turingia;school;;;;;;;;;909665288
+way;;;Liceo Presidente Anibal Pinto;school;Ecuador;Región de La Araucanía;1750;Temuco;CL;Temuco;;;909789425
+way;;;Escuela Manuel Montt;school;Manuel Montt;Región de La Araucanía;1535;Temuco;CL;Temuco;;;910045245
+way;;;Saint Patrick School;school;Avenida General Prieto Norte;;36;Temuco;CL;Temuco;;;912498260
+way;;;;school;;;;;;;;;913195304
+way;;;Escuela Municipal Manuel Recabarren;school;;;;;;;;;913197914
+way;;;Escuela Mundo Mágico;school;Uruguay;Región de La Araucanía;1450;Temuco;CL;Temuco;;;914407175
+way;;;Escuela Villa Alegre;school;Concepción;Región de La Araucanía;1210;Temuco;CL;Temuco;;;914407184
+way;;;Colegio Anglicano para Niños Sordos;school;Avenida Las Encinas;Región de La Araucanía;01590;Temuco;CL;Temuco;;;914737838
+way;;;Escuela San Francisco de Asís;school;San Ernesto;Región de La Araucanía;1098;Temuco;CL;Temuco;;;914737847
+way;;;Colegio Scole Creare;school;Avenida Gabriela Mistral;Región de La Araucanía;01670;Temuco;CL;Temuco;;;915540359
+way;;;Colegio las Américas;school;Chivilcán;Región de La Araucanía;0680;Temuco;CL;Temuco;;;915831962
+way;;;Escuela "Villa Carolina";school;Boyeco;Región de La Araucanía;0561;Temuco;CL;Temuco;;;915831980
+way;;;Escuela Municipal Mono Paine;school;Chivilcán;Región de La Araucanía;0890;Temuco;CL;Temuco;;;915832013
+way;;;Colegio de Aplicación;school;Colchane;Región de La Araucanía;02220;Temuco;CL;Temuco;;;917563820
+way;;;Complejo Educacional La Frontera;school;;;;;;;;;917815526
+way;;;Colegio Betania;school;Claudio Vicuña;Región de La Araucanía;01150;Temuco;CL;Temuco;;;921447362
+way;;;Escuela Arturo Arriagada;school;Las Panteras;Región de La Araucanía;01396;Temuco;CL;Temuco;;;923200190
+way;;;Liceo Comercial del Desarrollo;school;Los Mapaches;Región de La Araucanía;1896;Temuco;CL;Temuco;;;923200191
+way;;;Escuela Municipal Pedro de Valdivia;school;Avenida Pedro de Valdivia;Región de La Araucanía;0991;Temuco;CL;Temuco;;;928881120
+way;;;Liceo Javiera Carrera;school;Las Heras;Región de La Araucanía;754;Temuco;CL;Temuco;;;1065105529
+way;;;Colegio Siglo XXI;school;Avenida General Prieto Norte;Región de La Araucanía;290;Temuco;CL;Temuco;;;1065114335
+way;;;Escuela Botrolhue;school;;;;;;;;;1140894584
+way;;;Escuela Particular Vista Verde;school;Las Grullas;;2750;;;;;;1193479251
+way;;;Liceo Bicentenario de Temuco;school;Avenida Caupolicán;;105;;;;;;1214239257
+way;;;Escuela Particular Luis Israel;school;Huichahue;;1000;;;Padre Las Casas;;;1290639649
+way;;;Escuela Particular N° 508 Claudio Matte;school;Callejón Chispa;;15-A;;;Temuco;;;1319361712
+node;www.sii.cl, Cartografía Digital SII Mapas;;Universidad de Aconcagua Temuco;university;Las Heras;Región de La Araucanía;558;Temuco;CL;Temuco;-72.5959295;-38.7381883;8546386649
+node;;;Universidad la República Temuco;university;Dreves;;988;;CL;Temuco;-72.6049058;-38.7411955;11125121533
+way;;;Universidad Católica de Temuco (Campus San Francisco);university;Manuel Montt;Región de La Araucanía;56;Temuco;CL;Temuco;;;51571009
+way;;;Universidad de la Frontera (Facultad de Medicina);university;Claro Solar;Región de La Araucanía;115;Temuco;CL;Temuco;;;51653558
+way;;;Universidad Católica de Temuco Campus Dr. Luis Rivas del Canto;university;Avenida Rudecindo Ortega;Región de La Araucanía;03690;Temuco;CL;Temuco;;;90744896
+way;;;Universidad Católica de Temuco Campus Norte San Juan Pablo II;university;Avenida Rudecindo Ortega;Región de La Araucanía;02950;Temuco;CL;Temuco;;;140002915
+way;;;Universidad Mayor;university;Avenida Alemania;;0281;Temuco;CL;Temuco;;;251078605
+way;;;Universidad Santo Tomás Temuco;university;Manuel Rodríguez;;060;Temuco;CL;Temuco;;;251078612
+way;;;Universidad Autónoma de Chile;university;Avenida Alemania;;01090;Temuco;CL;Temuco;;;333200529
+way;;;Campus Monseñor Alejandro Mechaca Lira;university;Avenida Alemania;Región de La Araucanía;0422;Temuco;CL;Temuco;;;408315953
+way;;;Universidad de La Frontera;university;Arturo Prat;Región de La Araucanía;331;Temuco;CL;Temuco;;;921742885
+relation;;;Universidad de La Frontera;university;Francisco Salazar;;01145;Temuco;CL;Temuco;;;4296616

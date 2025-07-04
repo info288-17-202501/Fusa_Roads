@@ -1,0 +1,188 @@
+_type;_tags_wheelchair;_tags_toilets:wheelchair;_tags_parking;_tags_name;_tags_layer;_tags_amenity;_tags_addr:street;_tags_addr:state;_tags_addr:housenumber;_tags_addr:district;_tags_addr:country;_tags_addr:city;_tags_access;_lon;_lat;_id
+node;;;;Buses BioBio;;bus_station;Lautaro;Región de La Araucanía;853;Temuco;CL;Temuco;;-72.5888101;-38.7353508;659539867
+node;;;;Buses JAC;;bus_station;Avenida Balmaceda;Región de La Araucanía;1005;Temuco;CL;Temuco;;-72.5860685;-38.7332458;659539869
+node;;;;Intercomunal Sur;;bus_station;;;;;;;;-72.5812154;-38.7338923;1175027757
+node;;;;Buses igi llaima;;bus_station;Avenida Balmaceda;Región de La Araucanía;997;Temuco;CL;Temuco;;-72.5866287;-38.7332192;5164281321
+node;;;;Nar bus;;bus_station;Avenida Balmaceda;Región de La Araucanía;995;Temuco;CL;Temuco;;-72.5867783;-38.733194;5164281322
+way;;;;Pullman Bus;;bus_station;Avenida Rudecindo Ortega;Región de La Araucanía;02051;Temuco;CL;Temuco;;;;394380457
+way;;;;Buses Rurales;;bus_station;;;;;;;;;;426693008
+way;;;;Terminal de Buses Rodoviario Temuco;;bus_station;Vicente Pérez Rosales;;01609;Temuco;CL;Temuco;;;;908416001
+node;yes;no;underground;Portal Temuco;-1;parking;;;;;;;yes;-72.6103643;-38.7330651;474049891
+node;no;no;surface;Estacionamiento German Becker;;parking;;;;;;;customers;-72.620476;-38.7412754;998146357
+node;;;surface;Santa isabel;;parking;;;;;;;;-72.6321738;-38.7388827;1044276735
+node;;;surface;Teatro Municipal;;parking;;;;;;;;-72.6236467;-38.7404369;1044276817
+node;;;;Caupolican;;parking;;;;;;;private;-72.5993611;-38.7386849;1055897709
+node;;;underground;Plaza Manuel Recabarren;-1;parking;;;;;;;yes;-72.5915658;-38.7427674;1064967969
+node;;;surface;;;parking;;;;;;;customers;-72.5621329;-38.7115753;1067068072
+node;;;surface;;;parking;;;;;;;;-72.5619823;-38.7123918;1067068187
+node;;;surface;Minimarket San Martin;;parking;;;;;;;;-72.624892;-38.7354627;1070054454
+node;;;surface;Hospital Universidad Mayor;;parking;;;;;;;customers;-72.6272374;-38.7299559;1070128839
+node;;;underground;Unimarc;;parking;;;;;;;permissive;-72.6317375;-38.7429899;1092882618
+node;;;surface;;;parking;;;;;;;;-72.6147387;-38.7330238;1093095604
+node;;;surface;Easy;;parking;;;;;;;yes;-72.6079435;-38.7467653;1095184349
+node;;;;Revisión Técnica;;parking;;;;;;;;-72.5652171;-38.7135558;1102849770
+node;;;;Ebema;;parking;;;;;;;customers;-72.5641138;-38.7140356;1102849771
+node;;;;Terminal Tur Bus Temuco;;parking;;;;;;;customers;-72.5682855;-38.7161894;1102849820
+node;;;;Museo Ferroviario;;parking;;;;;;;;-72.5701669;-38.7289465;1102859687
+node;;;surface;;;parking;;;;;;;customers;-72.5635085;-38.7114075;1416820353
+node;;;surface;;;parking;;;;;;;customers;-72.5627295;-38.7119367;1416820356
+node;limited;no;;;;parking;;;;;;;customers;-72.6238432;-38.742869;1744991664
+node;;;surface;;;parking;;;;;;;;-72.5491395;-38.7025614;1957161616
+node;;;multi-storey;Estacionamiento Unimarc;;parking;;;;;;;permissive;-72.6109929;-38.7390788;2041262400
+node;;;underground;Unimarc;;parking;;;;;;;permissive;-72.6055201;-38.7419842;3232202218
+node;;;surface;Estacionamiento UCT;;parking;;;;;;;private;-72.5470897;-38.7017259;3669222527
+node;;;;;;parking;;;;;;;customers;-72.5605176;-38.7121661;4139781682
+node;;;;;;parking;;;;;;;customers;-72.5607027;-38.712343;4139781698
+node;;;surface;;;parking;;;;;;;;-72.5980829;-38.7366159;4154625952
+node;;;surface;;;parking;;;;;;;;-72.5967941;-38.7373592;4154625990
+node;;;surface;;;parking;;;;;;;;-72.597183;-38.7374899;4154625991
+node;;;;;;parking;;;;;;;;-72.5949081;-38.7579006;4154626194
+node;;;;;;parking;;;;;;;;-72.5947392;-38.758001;4154626236
+node;;;;;;parking;;;;;;;;-72.595281;-38.7582708;4154626324
+node;;;;;;parking;;;;;;;;-72.6136377;-38.7338151;4410587546
+node;;;;;;parking;;;;;;;;-72.6127067;-38.7341331;4410587549
+node;;;;;;parking;;;;;;;permissive;-72.6133236;-38.7343183;4410587552
+node;;;;;;parking;;;;;;;customers;-72.5968824;-38.7418312;5743784237
+node;;;underground;;-1;parking;;;;;;;customers;-72.6416783;-38.735014;7935369471
+node;;;lane;;;parking;;;;;;;yes;-72.5928177;-38.7478708;9869566513
+node;;;;;;parking;;;;;;;;-72.5075761;-38.6767804;11681719911
+node;;;multi-storey;;;parking;;;;;;;;-72.5895849;-38.7376326;11731029129
+node;;;multi-storey;;;parking;;;;;;;;-72.5864655;-38.7395489;11731165533
+node;;;multi-storey;;;parking;;;;;;;;-72.5881619;-38.7412368;11833952159
+way;;;surface;Estacionamiento Manuel Montt;;parking;;;;;;;;;;45122425
+way;;;surface;Solar / Vicuña Mackenna;;parking;;;;;;;customers;;;80506688
+way;;;;Estacionamiento Aeropuerto Maquehue de Temuco;;parking;;;;;;;customers;;;88604119
+way;;;surface;Andres Bello / Vicuña Mackenna;;parking;;;;;;;;;;135622577
+way;;;surface;Solar / Vicuña Mackenna;;parking;;;;;;;customers;;;135622578
+way;;;surface;;;parking;;;;;;;permissive;;;194228191
+way;;;surface;;;parking;;;;;;;;;;233694481
+way;limited;no;surface;Estacionamiento YMCA;;parking;;;;;;;permissive;;;233895362
+way;no;no;surface;Universidad de La Frontera;;parking;;;;;;;private;;;276780764
+way;limited;no;surface;Universidad de La Frontera;;parking;;;;;;;private;;;276781243
+way;;;surface;;;parking;;;;;;;private;;;304321809
+way;;;surface;;;parking;;;;;;;private;;;304321810
+way;;;;;;parking;;;;;;;private;;;307616639
+way;;;;;;parking;;;;;;;private;;;307616934
+way;;;surface;Universidad de La Frontera;;parking;;;;;;;private;;;307616935
+way;;;;;;parking;;;;;;;private;;;307633495
+way;;;;;;parking;;;;;;;private;;;307633498
+way;;;surface;Unimarc;;parking;;;;;;;permissive;;;317013637
+way;;;surface;;;parking;;;;;;;;;;317439709
+way;;;surface;;;parking;;;;;;;;;;317439710
+way;;;surface;;;parking;;;;;;;customers;;;317439711
+way;;;underground;Estacionamiento Plaza de Armas Temuco;-1;parking;;;;;;;yes;;;317447431
+way;;;;;;parking;;;;;;;;;;317702481
+way;;;;;;parking;;;;;;;customers;;;321887992
+way;;;;;;parking;;;;;;;;;;330085228
+way;;;;Estacionamiento Unimarc;;parking;;;;;;;customers;;;337424563
+way;;;;;;parking;;;;;;;private;;;369594077
+way;;;surface;;;parking;;;;;;;yes;;;371989377
+way;;;;Estacionamiento Centro Comercial Alemania;;parking;;;;;;;;;;378537746
+way;;;;;;parking;;;;;;;;;;398080604
+way;;;;;;parking;;;;;;;;;;398080617
+way;;;;Mercado Padre Las Casas;;parking;;;;;;;customers;;;400767268
+way;;;;Estacionamiento Municipalidad;;parking;;;;;;;;;;400782066
+way;;;;Estacionamiento Supermercado Santa ISabel;;parking;;;;;;;customers;;;400835507
+way;;;;;;parking;;;;;;;permissive;;;400891910
+way;;;sheds;Estacionamiento Montt y Cruz;;parking;Manuel Montt;Región de La Araucanía;1162;Temuco;CL;Temuco;permissive;;;460121175
+way;;;;Estacionamiento Acuenta;;parking;;;;;;;customers;;;550436415
+way;;;;;;parking;;;;;;;private;;;561278771
+way;;;surface;Lider;;parking;;;;;;;customers;;;563081042
+way;;;surface;Construmart;;parking;;;;;;;customers;;;605418999
+way;;;surface;;;parking;;;;;;;customers;;;665709921
+way;;;;;;parking;;;;;;;private;;;665709945
+way;;;;;;parking;;;;;;;private;;;665709947
+way;;;surface;;;parking;;;;;;;private;;;682901065
+way;;;surface;Líder;;parking;;;;;;;customers;;;683024429
+way;;;surface;;;parking;;;;;;;;;;714957766
+way;;;;;;parking;;;;;;;;;;714963113
+way;;;;;;parking;;;;;;;;;;714963114
+way;;;;;;parking;;;;;;;;;;722954504
+way;;;;;;parking;;;;;;;;;;722954509
+way;;;;;;parking;;;;;;;;;;729712390
+way;;;;;;parking;;;;;;;private;;;750592046
+way;;;;;;parking;;;;;;;private;;;751624661
+way;;;;;;parking;;;;;;;private;;;751624662
+way;;;;;;parking;;;;;;;private;;;751624663
+way;;;;;;parking;;;;;;;private;;;751696627
+way;;;;;;parking;;;;;;;;;;779482933
+way;;;;;;parking;;;;;;;private;;;779482934
+way;;;;;;parking;;;;;;;permissive;;;779482939
+way;;;surface;;;parking;;;;;;;;;;796331567
+way;;;;;;parking;;;;;;;;;;796331578
+way;;;surface;;;parking;;;;;;;customers;;;796331581
+way;;;;;;parking;;;;;;;private;;;804210791
+way;;;;;;parking;;;;;;;;;;805978081
+way;;;;;;parking;;;;;;;;;;809144720
+way;;;;;;parking;;;;;;;;;;814500024
+way;;;;Mall Mirage;;parking;;;;;;;;;;818404912
+way;;;;;;parking;;;;;;;;;;826841155
+way;yes;;;;;parking;;;;;;;;;;826841156
+way;;;;;;parking;;;;;;;customers;;;827345917
+way;limited;;surface;Clinica Alemana;;parking;;;;;;;;;;829940137
+way;;;;;;parking;;;;;;;;;;829941093
+way;;;;;;parking;;;;;;;;;;829941094
+way;;;;;;parking;;;;;;;;;;829941095
+way;;;;;;parking;;;;;;;;;;829941096
+way;no;no;surface;Universidad de La Frontera;;parking;;;;;;;private;;;833728554
+way;no;no;surface;Universidad de La Frontera;;parking;;;;;;;private;;;833728555
+way;;;surface;Universidad de La Frontera;;parking;;;;;;;private;;;833728556
+way;;;;;;parking;;;;;;;;;;834884264
+way;;;street_side;;;parking;;;;;;;yes;;;837192396
+way;;;;;;parking;;;;;;;permissive;;;849016903
+way;;;;;;parking;;;;;;;customers;;;850556638
+way;;;;;;parking;;;;;;;private;;;852451799
+way;;;surface;;;parking;;;;;;;customers;;;852459211
+way;;;;;;parking;;;;;;;customers;;;852529069
+way;;;surface;;;parking;;;;;;;customers;;;854972944
+way;;;surface;;;parking;;;;;;;customers;;;854972945
+way;no;no;;Universidad de La Frontera;;parking;;;;;;;private;;;914250597
+way;limited;no;surface;Inacap;;parking;;;;;;;customers;;;917431969
+way;;;;Centro Comercial Barrio Inglés;;parking;;;;;;;customers;;;924364290
+way;;;surface;;;parking;;;;;;;;;;947155576
+way;;;surface;;;parking;;;;;;;;;;947155577
+way;;;surface;;;parking;;;;;;;yes;;;967716884
+way;;;surface;;;parking;;;;;;;;;;1017418638
+way;;;;;;parking;;;;;;;customers;;;1022235668
+way;;;surface;;;parking;;;;;;;;;;1062679642
+way;;;surface;;;parking;;;;;;;;;;1062679644
+way;;;surface;;;parking;;;;;;;yes;;;1076248216
+way;;;surface;;;parking;;;;;;;yes;;;1076248217
+way;;;surface;;;parking;;;;;;;;;;1076248244
+way;;;surface;;;parking;;;;;;;private;;;1084130353
+way;;;surface;;;parking;;;;;;;private;;;1084130356
+way;;;;;;parking;;;;;;;customers;;;1092769036
+way;;;;;;parking;;;;;;;;;;1092775194
+way;;;surface;;;parking;Lautaro;;26;;;Temuco;private;;;1108285339
+way;;;;;;parking;;;;;;;;;;1113199647
+way;;;;;;parking;;;;;;;;;;1113199648
+way;;;;;;parking;;;;;;;;;;1113199649
+way;;;;;;parking;;;;;;;;;;1157095669
+way;;;;;;parking;;;;;;;;;;1205368512
+way;;;;;;parking;;;;;;;;;;1205368514
+way;;;;;;parking;;;;;;;;;;1205368515
+way;;;;;;parking;;;;;;;;;;1225554864
+way;;;;;;parking;;;;;;;;;;1232799149
+way;;;;;;parking;;;;;;;;;;1232799155
+way;;;;;;parking;;;;;;;;;;1232799156
+way;;;;;;parking;;;;;;;private;;;1232799168
+way;;;surface;;;parking;;;;;;;private;;;1242382323
+way;;;;;;parking;;;;;;;;;;1247020594
+way;;;;;;parking;;;;;;;;;;1247306322
+way;;;;;;parking;;;;;;;;;;1252944506
+way;;;surface;;;parking;;;;;;;yes;;;1256535687
+way;;;;;;parking;;;;;;;;;;1278269731
+way;;;;;;parking;;;;;;;;;;1278584091
+way;;;;;;parking;;;;;;;;;;1278584092
+way;;;surface;;;parking;;;;;;;;;;1278584094
+way;;;surface;;;parking;;;;;;;;;;1284242603
+way;;;;;;parking;;;;;;;;;;1284449556
+way;;;;;;parking;;;;;;;;;;1286035183
+way;;;;Estacionamiento UCT;;parking;;;;;;;private;;;1300139424
+way;;;surface;;;parking;;;;;;;customers;;;1305858097
+way;;;surface;Estacionamiento Clínica RedSalud Mayor de Temuco;;parking;;;;;;;customers;;;1305858194
+way;;;surface;Estacionamiento Mayorista 10;;parking;;;;;;;customers;;;1305858372
+way;;;surface;Estacionamiento Supermercado el Trébol;;parking;;;;;;;customers;;;1305858501
+way;;;;;;parking;;;;;;;;;;1378321542
+relation;;;;;;parking;;;;;;;;;;11717987
+relation;;;;Estacionamiento Superficie Sodimac Los Pablos;;parking;;;;;;;no;;;12426752
