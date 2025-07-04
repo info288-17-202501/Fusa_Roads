@@ -12,7 +12,7 @@ const NavButtons = [
 	{ ruta: "/proyectos-ia", etiqueta: "PIA", disabled: false },
 	{ ruta: "/monitor-procesos", etiqueta: "Monitor de Procesos", disabled: false },
 	{ ruta: "/pmr", etiqueta: "PMR", disabled: false },
-	{ ruta: "/visor-mapas-de-ruido", etiqueta: "Visor de Mapas", disabled: true }
+	{ ruta: "/visor-mapas-de-ruido", etiqueta: "Visor de Mapas", disabled: false }
 ];
   
 

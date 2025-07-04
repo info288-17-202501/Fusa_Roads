@@ -6,3 +6,6 @@ con sus respectivos csv que contienen variables urbanisticas que se muestran en 
 en images: se llenan con las imagenes que representan los iconos de las variables urbanisticas en el mapa
 
 
+npm install leaflet
+npm install react-leaflet
+npm install papaparse 

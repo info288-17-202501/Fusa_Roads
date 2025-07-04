@@ -6,9 +6,10 @@ import 'leaflet/dist/leaflet.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './MapView.css';
 
+
 const icons: Record<string, L.Icon> = {
   comercio: new L.Icon({
-    iconUrl: 'images/store.png',
+    iconUrl: '/images/store.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
   }),
@@ -267,6 +268,7 @@ export function MapView() {
           overflowY: 'auto'
         }}
       >
+
         <Card.Body>
           {/* Selector de ciudad */}
           <Form.Group className="mb-3">

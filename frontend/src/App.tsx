@@ -10,6 +10,8 @@ import Profile from './Login/Profile';
 import SignUp from './Login/SignUp';
 import ProyectosIA from './PIA/PIA'
 import PMR_page from './ProyectoMapasRuido/PMR';
+import MapPage from './VisorMapas/src/components/MapPage';
+
 
 import NavigationBar from './components/NavigationBar';
 import PrivateRoute from './components/PrivateRoute';
@@ -31,6 +33,7 @@ const App: React.FC = () => {
 				<Route path="/perfil" element={<Profile/>} />
 				<Route path="/sign-up" element={<SignUp/>} />
 				<Route path="/pmr" element={<PMR_page/>} />
+				<Route path="/visor-mapas-de-ruido" element={<MapPage/>} />
       		</Routes>
     	</Router>
   	);

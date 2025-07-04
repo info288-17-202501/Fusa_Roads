@@ -15,9 +15,12 @@
     "@tanstack/react-table": "^8.21.3",
     "bootstrap": "^5.3.5",
     "jwt-decode": "^4.0.0",
+    "leaflet": "^1.9.4",
+    "papaparse": "^5.5.3",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.5.2"
   },
   "devDependencies": {
