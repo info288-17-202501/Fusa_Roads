@@ -29,6 +29,7 @@ def crear_parametro(parametro: dict = Body(...)):
 
     result = conn.fusa_roads.parametrosFront.insert_one(parametro)
     nuevo_doc = conn.fusa_roads.parametrosFront.find_one({"_id": result.inserted_id})
+
     
     nuevo_doc["_id"] = str(nuevo_doc["_id"])
     return nuevo_doc
@@ -87,3 +88,84 @@ def get_parametro(parametro_id: str):
 
 
 #     return Config.from_mongo(nuevo_doc) if isinstance(parametro, Config) else Params.from_mongo(nuevo_doc)
+
+
+
+
+@router.post("/execpia/{parametro_front_id}")
+def crear_parametrospia(parametro_front_id: str):
+    try:
+        oid = ObjectId(parametro_front_id)
+    except bson_errors.InvalidId:
+        raise HTTPException(status_code=400, detail="ID no válido")
+    
+    parametro_front = conn.fusa_roads.parametrosFront.find_one({"_id": oid})
+    if parametro_front is None:
+        raise HTTPException(status_code=404, detail=f"Parametro {parametro_front_id} no encontrado en parametrosFront")
+    
+    existing_pia = conn.fusa_roads.parametrosPia.find_one({"parametro_front_id": oid})
+    if existing_pia:
+        raise HTTPException(status_code=400, detail="Ya existe una relación para este parámetro")
+    
+    # Crear la estructura base del documento parametrosPia
+    parametro_pia = {
+        "nombre": parametro_front.get("nombre_proyecto", "proceso1"),
+        "params": {
+            "server": True,
+            "model-yolo": {
+                "version": parametro_front.get("modelo_video", "yolo12s.pt"),
+                "conf_min": 0.6,
+                "tracker": {
+                    "max_age": 30,
+                    "n_init": 1,
+                    "max_cosine_distance": 0.3
+                }
+            },
+            "pann": {
+                "ruta": parametro_front.get("modelo_audio", "Cnn14_DecisionLevelMax.pth"),
+                "umbral": 0.1,
+                "margen_frames": 20
+            },
+            "contexto": parametro_front.get("nombre_proyecto", "prueba"),
+            "video": "",
+            "regiones": "",
+            "dispositivo": "cuda"
+        },
+        "videos": [],
+        "parametro_front_id": oid  
+    }
+    
+    lista_videos = parametro_front.get("lista_videos", [])
+    
+    for video in lista_videos:
+        if video.get("activo", False):
+            regiones_obj = {}
+            
+            if "linea" in video and video["linea"]:
+                regiones_obj["line"] = [
+                    [punto["x"], punto["y"]] for punto in video["linea"]
+                ]
+            
+            if "poligono" in video and video["poligono"]:
+                regiones_obj["polygon"] = [
+                    [punto["x"], punto["y"]] for punto in video["poligono"]
+                ]
+            
+            video_data = {
+                "ruta": video.get("name", ""),
+                "gps_manual": video.get("gps_manual", ""),
+                "ruta_video_minio": video.get("ruta_video_minio", ""),
+                "ruta_miniatura_minio": video.get("ruta_miniatura_minio", ""),
+                "minio_bucket": video.get("minio_bucket", ""),
+                "regiones": regiones_obj
+            }
+            
+            parametro_pia["videos"].append(video_data)
+    
+    result = conn.fusa_roads.parametrosPia.insert_one(parametro_pia)
+    nuevo_doc = conn.fusa_roads.parametrosPia.find_one({"_id": result.inserted_id})
+    
+    nuevo_doc["_id"] = str(nuevo_doc["_id"])
+    nuevo_doc["parametro_front_id"] = str(nuevo_doc["parametro_front_id"])
+    
+    return nuevo_doc

@@ -27,14 +27,15 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 	const [videoSeleccionado, setVideoSeleccionado] = useState<Video | null>(null);
 	const [proyectoData, setProyectoData] = useState<ProyectoIA>({
 		id: 1,
-		nombreProyecto: '',
-		mVideo: '',
-		mAudio: '',
-		listaVideos: [],
-		videoSalida: false,
-		ventanasTiempo: false,
-		tiempo: undefined,
-		unidad: 'hora'
+		_id: 1,
+		nombre_proyecto: '',
+		modelo_video: '',
+		modelo_audio: '',
+		lista_videos: [],
+		flag_videos_salida: false,
+		flag_ventanas_tiempo: false,
+		cantidad_ventanas: undefined,
+		unidad_tiempo_ventanas: 'hora'
 	});
 
 	useEffect(() => {
@@ -47,8 +48,11 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 					_id: video._id,
 					name: video.nombre_video,
 					activo: false,
+					minio_bucket: video.minio_bucket,
 					ruta_miniatura_minio: video.ruta_miniatura_minio,
-					minio_bucket: video.minio_bucket
+					ruta_video_minio: video.ruta_video_minio,
+					gps_manual: video.gps_manual
+
 				}));
 
 				setVideos(processedData);
@@ -70,14 +74,15 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 			} else {
 				setProyectoData({
 					id: 1,
-					nombreProyecto: '',
-					mVideo: 'yolo12s.pt',
-					mAudio: 'Cnn14_DecisionLevelMax.pth',
-					listaVideos: [],
-					videoSalida: false,
-					ventanasTiempo: false,
-					tiempo: undefined,
-					unidad: 'hora'
+					_id: 1,
+					nombre_proyecto: '',
+					modelo_video: 'yolo12s.pt',
+					modelo_audio: 'Cnn14_DecisionLevelMax.pth',
+					lista_videos: [],
+					flag_videos_salida: false,
+					flag_ventanas_tiempo: false,
+					cantidad_ventanas: undefined,
+					unidad_tiempo_ventanas: 'hora'
 				});
 			}
 		}
@@ -98,19 +103,30 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 
 	const handleSaveProyecto = async (data: ProyectoIA) => {
 		try {
+			const { id, _id, listaVideos, ...rest } = data;
+			const dataSinIds = {
+				...rest,
+				lista_videos: listaVideos
+			};
+
 			const res = await fetch("http://localhost:8005/parametros/", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(data)
+				body: JSON.stringify(dataSinIds)
 			});
 
 			if (!res.ok) throw new Error("Error en la respuesta del servidor");
 
 			const result = await res.json();
 			console.log("Proyecto guardado:", result);
-			onSave(data);
+
+			onSave({
+				...data,
+				_id: result._id, // opcional, si lo devuelve el backend
+				id: result._id   // opcional, si lo usas como key en frontend
+			});
 		} catch (error) {
 			console.error("Error al mandar los datos del PIA", error);
 		}
