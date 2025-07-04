@@ -1,4 +1,4 @@
-import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo, faGears } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faComputer, faEye, faFileAlt, faMapLocationDot, faRoad, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 export const menuItems = [
 	{
@@ -35,7 +35,7 @@ export const menuItems = [
 	    "icono": faMapLocationDot,
 	    "nombre": "Proyecto mapa de ruido (PMR)",
 	    "descripcion": "Configura los parámetros para generar mapas de ruido a partir de los análisis.",
-	    "url": "/proyecto-mapa-de-ruido"
+	    "url": "/pmr"
 	},
 	{
 	    "icono": faEye,

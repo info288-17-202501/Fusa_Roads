@@ -24,7 +24,16 @@ export const fetchProcesos = async (): Promise<Proceso[]> => {
     
     const data: Proceso[] = await response.json();
     console.log('Datos recibidos:', data);
-    return data;
+    
+    // Filtrar procesos: solo mostrar los que tienen fecha_inicio Y al menos un estado
+    const procesosFiltrados = data.filter(proceso => 
+      proceso.fecha_inicio && 
+      proceso.estados && 
+      proceso.estados.length > 0
+    );
+    
+    console.log('Procesos filtrados:', procesosFiltrados);
+    return procesosFiltrados;
   } catch (error) {
     console.error('Error detallado:', error);
     

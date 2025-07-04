@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from api.models.parametros import Config, Params, ConfigResponse, ParamsResponse
 from bson import ObjectId, errors as bson_errors
 from config.db import conn
+import requests
 
 router = APIRouter(prefix="/parametros", tags=["parametros"])
 
@@ -164,8 +165,19 @@ def crear_parametrospia(parametro_front_id: str):
     
     result = conn.fusa_roads.parametrosPia.insert_one(parametro_pia)
     nuevo_doc = conn.fusa_roads.parametrosPia.find_one({"_id": result.inserted_id})
+
+    url = f"http://127.0.0.1:8011/procesar/{str(result.inserted_id)}"
+    try:
+        response = requests.post(url)
+        response.raise_for_status()  # lanza excepción si la respuesta no es 2xx
+        print("Procesamiento lanzado exitosamente:", response.json())
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Error al ejecutar procesamiento externo: {e}")
+
     
     nuevo_doc["_id"] = str(nuevo_doc["_id"])
     nuevo_doc["parametro_front_id"] = str(nuevo_doc["parametro_front_id"])
+
+    
     
     return nuevo_doc

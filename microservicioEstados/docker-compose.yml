@@ -10,6 +10,6 @@ services:
     environment:
       - APP_ENV=development
       - APP_PORT=8004
-      - MONGOURI=mongodb://root:example@host.docker.internal:27018/admin
+      - MONGOURI=mongodb://root:example@host.docker.internal:27017/admin
       - MONGO_DB=fusa_roads
     restart: unless-stopped

@@ -96,6 +96,7 @@ function MonitorProcesos() {
             _id: proceso._id,
             pia_id: proceso.pia_id,
             fecha_inicio: proceso.fecha_inicio,
+            fecha_fin: proceso.fecha_fin,
             estados: proceso.estados
         };
         setProcesoSeleccionado(procesoOriginal);
