@@ -109,11 +109,11 @@ def crear_parametrospia(parametro_front_id: str):
     
     # Crear la estructura base del documento parametrosPia
     parametro_pia = {
-        "nombre": parametro_front.get("nombreProyecto", "proceso1"),
+        "nombre": parametro_front.get("nombre_proyecto", "proceso1"),
         "params": {
             "server": True,
             "model-yolo": {
-                "version": parametro_front.get("mVideo", "yolo12s.pt"),
+                "version": parametro_front.get("modelo_video", "yolo12s.pt"),
                 "conf_min": 0.6,
                 "tracker": {
                     "max_age": 30,
@@ -122,11 +122,11 @@ def crear_parametrospia(parametro_front_id: str):
                 }
             },
             "pann": {
-                "ruta": parametro_front.get("mAudio", "Cnn14_DecisionLevelMax.pth"),
+                "ruta": parametro_front.get("modelo_audio", "Cnn14_DecisionLevelMax.pth"),
                 "umbral": 0.1,
                 "margen_frames": 20
             },
-            "contexto": parametro_front.get("nombreProyecto", "prueba"),
+            "contexto": parametro_front.get("nombre_proyecto", "prueba"),
             "video": "",
             "regiones": "",
             "dispositivo": "cuda"
@@ -135,7 +135,7 @@ def crear_parametrospia(parametro_front_id: str):
         "parametro_front_id": oid  
     }
     
-    lista_videos = parametro_front.get("listaVideos", [])
+    lista_videos = parametro_front.get("lista_videos", [])
     
     for video in lista_videos:
         if video.get("activo", False):
@@ -153,6 +153,10 @@ def crear_parametrospia(parametro_front_id: str):
             
             video_data = {
                 "ruta": video.get("name", ""),
+                "gps_manual": video.get("gps_manual", ""),
+                "ruta_video_minio": video.get("ruta_video_minio", ""),
+                "ruta_miniatura_minio": video.get("ruta_miniatura_minio", ""),
+                "minio_bucket": video.get("minio_bucket", ""),
                 "regiones": regiones_obj
             }
             

@@ -69,14 +69,11 @@ function ProyectosIA() {
     };
 
     const handleProcess = async (proyecto: ProyectoIA) => {
-        alert(`Procesando proyecto: ${proyecto.nombre_proyecto} (ID: ${proyecto._id})`);
-        // ACA SE DEBE INDICAR A PARAMETROS QUE SE QUIERE COMENZAR EL PROCESO
+        alert(`Procesando proyecto: ${proyecto.nombre_proyecto} (ID: ${proyecto.id})`);
+
         try {
             const res = await fetch(`http://localhost:8005/parametros/execpia/${proyecto._id}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
             });
 
             if (!res.ok) throw new Error("Error en la respuesta del servidor");

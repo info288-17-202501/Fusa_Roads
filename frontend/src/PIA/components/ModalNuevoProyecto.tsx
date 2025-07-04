@@ -48,8 +48,11 @@ export default function ModalNuevoProyecto({ show, onClose, onSave, initialValue
 					_id: video._id,
 					name: video.nombre_video,
 					activo: false,
+					minio_bucket: video.minio_bucket,
 					ruta_miniatura_minio: video.ruta_miniatura_minio,
-					minio_bucket: video.minio_bucket
+					ruta_video_minio: video.ruta_video_minio,
+					gps_manual: video.gps_manual
+
 				}));
 
 				setVideos(processedData);
