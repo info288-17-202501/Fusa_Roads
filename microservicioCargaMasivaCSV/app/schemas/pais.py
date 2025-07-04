@@ -12,3 +12,6 @@ class Pais(PaisBase):
     
     class Config:
         from_attributes = True
+
+class PaisResponse(Pais):
+    pass

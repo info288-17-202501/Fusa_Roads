@@ -246,55 +246,10 @@ class CSVService:
             seccion_calle_obj = SeccionCalle(
                 nombre=seccion_calle,  # Ya viene en minúsculas
                 id_calle_localidad=calle_localidad.id,
-                id_tipo_via=tipo_via_id
+                id_tipo_via=tipo_via_id,
+                app="cadnaa" #TODO - CAMBIAR ESTO. ES TEMPORAL MIENTRAS SABEMOS QUE HACER CON ESTO
             )
             self.db.add(seccion_calle_obj)
-    
-    def get_tipo_vias(self) -> List[TipoVia]:
-        """Obtiene todos los tipos de vía"""
-        return self.db.query(TipoVia).all()
-    
-    def get_calles_localidad(self) -> List[CalleLocalidad]:
-        """Obtiene todas las calles por localidad"""
-        return self.db.query(CalleLocalidad).all()
-    
-    def get_secciones_calle(self) -> List[SeccionCalle]:
-        """Obtiene todas las secciones de calle"""
-        return self.db.query(SeccionCalle).all()
-    
-    # Métodos para obtener países y ciudades desde la BD
-    def get_paises(self) -> List[Pais]:
-        """Obtiene todos los países ordenados por nombre"""
-        return self.db.query(Pais).order_by(Pais.nombre).all()
-    
-    def get_ciudades(self, id_pais: Optional[int] = None) -> List[Ciudad]:
-        """
-        Obtiene todas las ciudades, opcionalmente filtradas por país
-        Ordenadas por nombre
-        """
-        query = self.db.query(Ciudad)
-        if id_pais:
-            query = query.filter(Ciudad.id_pais == id_pais)
-        return query.order_by(Ciudad.nombre).all()
-    
-    def get_localidades(self, id_ciudad: Optional[int] = None) -> List[Localidad]:
-        """
-        Obtiene todas las localidades, opcionalmente filtradas por ciudad
-        Solo localidades vigentes, ordenadas por nombre
-        """
-        query = self.db.query(Localidad).filter(Localidad.flg_vigencia == 'S')
-        if id_ciudad:
-            query = query.filter(Localidad.id_ciudad == id_ciudad)
-        return query.order_by(Localidad.nombre).all()
-    
-    def check_localidad_exists(self, id_ciudad: int, localidad_nombre: str) -> bool:
-        """
-        Método público para verificar si una localidad ya existe
-        Útil para validaciones desde el frontend
-        Ahora trabaja con ID de ciudad
-        """
-        localidad_nombre = localidad_nombre.strip().lower()
-        return not self._can_create_localidad(id_ciudad, localidad_nombre)
     
     def _validate_tipos_via_in_csv(self, df: pd.DataFrame) -> Dict[str, Any]:
         """

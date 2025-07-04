@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
-from app.routes import csv_upload
+from app.routes import csv_upload, ubicacion_routes, secciones_calles_routes
 
 # Crear las tablas en la base de datos
 Base.metadata.create_all(bind=engine)
@@ -23,6 +23,8 @@ app.add_middleware(
 
 # Incluir rutas
 app.include_router(csv_upload.router)
+app.include_router(ubicacion_routes.router)
+app.include_router(secciones_calles_routes.router)
 
 @app.get("/")
 def read_root():
